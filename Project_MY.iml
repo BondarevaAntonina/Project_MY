@@ -18,5 +18,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apache.poi:poi:3.10-FINAL" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.5" level="project" />
     <orderEntry type="library" name="Maven: ru.yandex.qatools.allure:allure-junit-adaptor:${allure.version}" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.resource:connector-api:1.5" level="project" />
   </component>
 </module>
