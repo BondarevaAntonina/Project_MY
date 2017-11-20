@@ -1,4 +1,5 @@
-import org.junit.Rule;
+package webtestsuite;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -22,13 +23,10 @@ public class MaxNumber {
        System.out.println("Большее число из 2 чисел: " + Math.max(a,g));
        System.out.println("Меньшее число из 2 чисел: " + Math.min(a,g));
 
-       // assertEquals("Unexpected string value", Math.max(a,g));
-
 
     }
 
-
-
 }
+
 
 
