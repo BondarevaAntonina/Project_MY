@@ -2,26 +2,26 @@
  * Created by antoni on 20.11.2017.
  */
 public class WorkNumber {
-}
+
+    public int a; // 1-е число
+    public int g; // 2-е число
 
 
-
-/*
-public class MaxNumber {
-
-  //  @Title("Создание уполномоченного лица для удаления/редактирования")
-
-    @Test
-    public static  void main (String [] args) {
-
-        int a = 10;
-        int g = 20;
-        MaxNumber c = new MaxNumber();
-       System.out.println("Большее число из 2 чисел: " + Math.max(a,g));
-       System.out.println("Меньшее число из 2 чисел: " + Math.min(a,g));
-
-
+    public int getMaxNumber(int i1, int i2) {
+        if (i1 < 0 || i2 < 0) {
+            return 0;
+        }
+        return Math.max(i1, i2);
     }
 
+    public int getMinNumber(int i1, int i2) {
+        if (i1 > 0 || i2 > 0) {
+            return 0;
+        }
+        return Math.max(i1, i2);
+    }
 }
-*/
+
+
+
+
