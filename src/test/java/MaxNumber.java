@@ -22,9 +22,9 @@ public class MaxNumber {
         Assert.assertEquals(-10,WorkNumber.getMaxNumber(-10,-20));
     }
 
-    @Title("i1=-10 и i1=-20 ")
+    @Title("i1=20 и i1=215  ")
     @Test
     public void testMaxNumber03 () throws Exception {
-        Assert.assertEquals(-10,WorkNumber.getMaxNumber(-10,-20));
+        Assert.assertEquals(20,WorkNumber.getMaxNumber(20,215));
     }
 }
