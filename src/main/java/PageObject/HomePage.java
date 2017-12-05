@@ -18,7 +18,7 @@ public class HomePage {
     @FindBy(xpath =".//a[@href='https://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/'] " )
     private WebElement smartElectronic;
 
-    @FindBy(xpath =".//a[contains(@href,'http://rozetka.com.ua/portativnaya-ehlektronika/c4627865/') "])
+    @FindBy(xpath =".//a[contains(@href,'http://rozetka.com.ua/portativnaya-ehlektronika/c4627865/')] " )
     private WebElement portElectronic;
 
 
