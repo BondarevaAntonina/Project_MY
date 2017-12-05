@@ -27,4 +27,9 @@ public class MaxNumber {
     public void testMaxNumber03 () throws Exception {
         Assert.assertEquals(20,WorkNumber.getMaxNumber(20,215));
     }
+
+
+
+
+
 }
