@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Maven: org.apache.tika:tika-core:1.7" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: javax.resource:connector-api:1.5" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.1" level="project" />
   </component>
 </module>
