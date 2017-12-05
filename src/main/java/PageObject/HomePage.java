@@ -1,5 +1,7 @@
 package PageObject;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,4 +15,9 @@ public class HomePage {
 
 
 
+    @FindBy(xpath =".//a[@href='https://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/'] " )
+    private WebElement smartElectronic;
+
+    /*@FindBy()
+*/
 }
