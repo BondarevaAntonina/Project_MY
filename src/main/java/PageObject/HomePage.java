@@ -9,17 +9,24 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by antoni on 05.12.2017.
  */
-public class HomePage {
+public class HomePage extends AbstractPageObject {
     private EventFiringWebDriver driver;
     private static final Logger LOGGER =  LoggerFactory.getLogger(HomePage.class);
 
 
 
-    @FindBy(xpath =".//a[@href='https://rozetka.com.ua/telefony-tv-i-ehlektronika/c4627949/'] " )
+    @FindBy(name =".//a[@data-title='Смартфоны, ТВ и электроника'] " )
     private WebElement smartElectronic;
 
-    @FindBy(xpath =".//a[contains(@href,'http://rozetka.com.ua/portativnaya-ehlektronika/c4627865/')] " )
+    @FindBy(xpath =".//a[contains(.,'Портативная электроника')] " )
     private WebElement portElectronic;
+
+    @FindBy(xpath =".//a[contains(.,'Наушники')] " )
+    private WebElement naushnici;
+
+    public HomePage(EventFiringWebDriver driver) {
+        super(driver);
+    }
 
 
 }
