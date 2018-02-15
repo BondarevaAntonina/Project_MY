@@ -1,6 +1,9 @@
 import org.junit.Assert;
+
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Title;
+
+
 
 
 
@@ -18,7 +21,7 @@ public class MaxNumber {
 
     @Title("i1=-10 и i1=-20 ")
     @Test
-    public void testMaxNumber02 () throws Exception {
+    private void testMaxNumber02() throws Exception {
         Assert.assertEquals(-10,WorkNumber.getMaxNumber(-10,-20));
     }
 

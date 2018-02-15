@@ -12,6 +12,7 @@
 
     <properties>
     <allure.version>1.5.2</allure.version>
+        <junit.version>4.12</junit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -26,11 +27,11 @@
             <version>2.7.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.sici.org.junit</groupId>
-            <artifactId>ordered-runner</artifactId>
-            <version>0.0.1-RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sici.org.junit</groupId>-->
+            <!--<artifactId>ordered-runner</artifactId>-->
+            <!--<version>0.0.1-RELEASE</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -75,7 +76,13 @@
             <artifactId>commons-dbutils</artifactId>
             <version>1.6</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
     </dependencies>
+
 
 
     <reporting>

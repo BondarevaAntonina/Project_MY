@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by antoni on 06.12.2017.
  */
+/*
 public abstract class AbstractPageObject {
     protected EventFiringWebDriver driver;
 
@@ -26,13 +27,15 @@ public abstract class AbstractPageObject {
             if (WebElement.class.isAssignableFrom(field.getType()))
             {
                 field.setAccessible(true);
-                WrappedWebElement element = new WrappedWebElement();
+
+
+                WrappedWebElement element = new WrappedWebElement(driver,null);//By вставится при инициализации
                 field.set(this, element);
                 PageFactoryForWrappedElements.initElements(driver, field.get(this), field);
             }
             else if(List.class.isAssignableFrom(field.getType())){
                 field.setAccessible(true);
-                WrappedList<WrappedWebElement> element = new WrappedList<WrappedWebElement>();
+                WrappedList<WrappedWebElement> element = new WrappedList<WrappedWebElement>(driver,null);
                 field.set(this, element);
 
                 //WrappedList<WebElement> sss = new WrappedList<WebElement>();
@@ -45,4 +48,4 @@ public abstract class AbstractPageObject {
         }
         this.driver = driver;
     }
-}
+}*/
