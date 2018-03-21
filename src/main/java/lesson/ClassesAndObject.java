@@ -10,9 +10,10 @@ public class ClassesAndObject {
         Person person1 = new Person();
         person1.setName("Каое-то имя");
         person1.setAge(12);
-        System.out.println("Выводим значение в main методе: " +person1.getName());
-        System.out.println("Выводим значение в main методе: " +person1.getAge());
-        person1.speak();
+        System.out.println("Выводим значение в main методе: " + person1.getName());
+        System.out.println("Выводим значение в main методе: " + person1.getAge());
+
+        //person1.speak();
         //person1.setName("Рома");
         //person1.setAge(50);
         //System.out.println("Меня зовут " + person1.getName() + "," + "мне " + person1.getAge() + " лет");
@@ -32,12 +33,9 @@ class Person {
     private int age;
 
     public void setName(String userName) {
-        //this.name = username;
-
-
-        if (userName.isEmpty()){
+        if (userName.isEmpty()) {
             System.out.println("Ты ввел пустую строку");
-        }else{
+        } else {
             this.name = userName;
         }
     }
@@ -48,6 +46,9 @@ class Person {
     }
 
     public void setAge(int userage) {
+        if (userage < 0) {
+            System.out.println("Возраст должен быть положительным");
+        }
         this.age = userage;
     }
 
@@ -55,6 +56,7 @@ class Person {
 
         return age;
     }
+
     void speak() {
         String hello;
 
