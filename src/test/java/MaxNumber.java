@@ -1,3 +1,4 @@
+import Rozetka.WorkNumber;
 import org.junit.Assert;
 
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class MaxNumber {
     @Title("i1=10 и i1=20 ")
     @Test
     public void testMaxNumber01 () throws Exception {
-        Assert.assertEquals(20,WorkNumber.getMaxNumber(10,20));
+        Assert.assertEquals(20, WorkNumber.getMaxNumber(10,20));
     }
 
     @Title("i1=-10 и i1=-20 ")
