@@ -2,6 +2,8 @@ package Valevskiy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by antoni on 10.04.2018.
@@ -28,3 +30,5 @@ public class ManagerIntArrayList {
     }
 
 }
+
+
