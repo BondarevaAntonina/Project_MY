@@ -10,9 +10,11 @@ public class WorkArrayList {
         int[] myFirstArray; //int[] myArray = new int[27];
         myFirstArray = new int[27];
 
+
         for(int i = 0; i < 27; i++){
             myFirstArray[i] = i;
             System.out.println((i+1) + "-й элемент массива = " +  myFirstArray[i]);
+
         }
 
     }
