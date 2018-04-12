@@ -8,11 +8,39 @@ import java.util.Scanner;
 /**
  * Created by antoni on 10.04.2018.
  */
-public class ManagerIntArrayList {
-    public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
+public class ManagerIntArrayList extends IntArrayList {
+    protected void doAction(int ActionNum) {
+        switch (ActionNum) {
+            case 2:
+                addElements();
+            case 3:
+                deleteElements();
+            case 4:
+                increaseElements();
+            case 5:
+                decreasingElements();
+            case 6:
+                forwardReverseOrder();
+            case 7:
+                blisterSorting();
+            case 8:
+                addArrayToArray();
+            case 9:
+                deleteDuplicates();
+            case 10:
+                searchingLinear();
+            case 0:
+                exitMenu();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void showMenu(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int actionNumber;
-        do{
+        do {
             System.out.println("------- Меню -----------");
             System.out.println("1 - Печать всех элементов");
             System.out.println("2 - Добавлеие элемента в список");
@@ -23,15 +51,25 @@ public class ManagerIntArrayList {
             System.out.println("7 - сортировка листа методом пузырька");
             System.out.println("8 - добавление массива в массив");
             System.out.println("9 - Удалять дубликаты");
-            System.out.println("3 - Поиск элемента методом линейного поиска");
+            System.out.println("10 - Поиск элемента методом линейного поиска");
             System.out.println("0 - Выход");
-            try{
+            try {
                 actionNumber = Integer.parseInt(reader.readLine());
-            }catch(Exception e){
+                doAction(actionNumber);
+            } catch (Exception e) {
                 System.out.println("Ошибка ввода: " + e);
                 actionNumber = -1;
             }
-        }while(actionNumber != 0);
+        } while (actionNumber != 0);
+
+        Scanner sc = new Scanner(System.in); // создаём объект класса Scanner
+        System.out.print("Введите целое число: ");
+        if (sc.hasNextInt()) { // возвращает истинну если с потока ввода можно считать целое число
+            actionNumber = sc.nextInt(); // считывает целое число с потока ввода и сохраняем в переменную
+            System.out.println(actionNumber);
+        } else {
+            System.out.println("Вы ввели не целое число");
+        }
     }
 
 
