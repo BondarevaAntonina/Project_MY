@@ -16,6 +16,7 @@ public class Entry {
         int i=0;
         while ( i<b.length){
             b[i]=a.nextInt();
+
             i++;}
         System.out.println("Массив состоит из");
         System.out.println(Arrays.toString(b));
