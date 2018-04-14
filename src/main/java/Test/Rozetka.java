@@ -1,7 +1,6 @@
 package Test;
 
-import Helper.BaseFunction;
-import PageObject.HomePage;
+import helper.BaseFunction;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.support.events.EventFiringWebDriver;

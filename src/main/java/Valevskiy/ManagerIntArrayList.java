@@ -2,36 +2,37 @@ package Valevskiy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  * Created by antoni on 10.04.2018.
  */
-public class ManagerIntArrayList extends IntArrayList {
-    protected void doAction(int ActionNum) {
-        switch (ActionNum) {
+public class ManagerIntArrayList {
+
+    IntArrayList list = new IntArrayList();
+
+    protected void doAction(int actionNum) {
+        switch (actionNum) {
             case 2:
-                addElements();
+                list.addElement(5);
             case 3:
-                deleteElements();
+                list.changeElementByIndex(0, 7);
             case 4:
-                increaseElements();
+                list.increaseElements();
             case 5:
-                decreasingElements();
+                list.decreasingElements();
             case 6:
-                forwardReverseOrder();
+                list.forwardReverseOrder();
             case 7:
-                blisterSorting();
+                list.blisterSorting();
             case 8:
-                addArrayToArray();
+                list.addArrayToArray();
             case 9:
-                deleteDuplicates();
+                list.deleteDuplicates();
             case 10:
-                searchingLinear();
+                list.searchLinear();
             case 0:
-                exitMenu();
-                break;
+                return;
             default:
                 break;
         }

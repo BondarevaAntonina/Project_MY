@@ -11,13 +11,12 @@ public class WorkArrayList {
         myFirstArray = new int[27];
 
 
-        for(int i = 0; i < 27; i++){
+        for (int i = 0; i < 27; i++) {
             myFirstArray[i] = i;
-            System.out.println((i+1) + "-й элемент массива = " +  myFirstArray[i]);
+            System.out.println((i + 1) + "-й элемент массива = " + myFirstArray[i]);
 
         }
 
     }
-
 
 }

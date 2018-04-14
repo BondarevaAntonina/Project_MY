@@ -1,4 +1,4 @@
-package Helper;
+package helper;
 
 import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.WebDriver;
