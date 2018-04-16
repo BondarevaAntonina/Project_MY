@@ -1,4 +1,4 @@
-package Valevskiy;
+package valevskiy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

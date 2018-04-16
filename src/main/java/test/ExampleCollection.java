@@ -1,4 +1,4 @@
-package Test;
+package test;
 //package edu.javacourse.collection;
 
 /**

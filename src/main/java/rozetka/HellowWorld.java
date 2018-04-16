@@ -1,4 +1,4 @@
-package Rozetka;
+package rozetka;
 
 /**
  * Created by antoni on 20.11.2017.

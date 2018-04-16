@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import helper.BaseFunction;
 import org.junit.BeforeClass;
@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.IOException;
 

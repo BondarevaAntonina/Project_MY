@@ -1,10 +1,4 @@
-package PageObject;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
-
-import java.lang.reflect.Field;
-import java.util.List;
+package pageObject;
 
 /**
  * Created by antoni on 06.12.2017.

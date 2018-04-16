@@ -1,4 +1,4 @@
-package Interfaces;
+package interfaces;
 
 /**
  * Created by antoni on 26.03.2018.

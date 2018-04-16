@@ -1,4 +1,4 @@
-import Rozetka.WorkNumber;
+import rozetka.WorkNumber;
 import org.junit.Assert;
 
 import org.junit.Test;
