@@ -1,4 +1,4 @@
-package Valevskiy;
+package valevskiy;
 
 import java.util.Arrays;
 import java.util.Scanner;

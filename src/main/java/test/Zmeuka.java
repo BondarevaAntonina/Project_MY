@@ -1,6 +1,4 @@
-package Test;
-
-import static jdk.nashorn.tools.ShellFunctions.input;
+package test;
 
 /**
  * Created by antoni on 28.03.2018.

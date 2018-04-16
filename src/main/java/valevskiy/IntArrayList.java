@@ -1,7 +1,4 @@
-package Valevskiy;
-
-import java.util.ArrayList;
-import java.util.List;
+package valevskiy;
 
 /**
  * Создать имитацию коллекции(с помощью массива) ArrayList для работы с типом int.
