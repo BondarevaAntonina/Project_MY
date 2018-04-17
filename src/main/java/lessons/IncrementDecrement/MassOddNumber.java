@@ -13,15 +13,29 @@ public class MassOddNumber {
         mass1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
         int sum = 0;
         int n = 0;
+        int j = 0;
 
         for (int x = 0; x < mass1.length; x++) {
             if (mass1[x] % 2 - 1 == 0) {
-                n++;
-                sum += mass1[x];
                 System.out.print(mass1[x] + " ");
+                mass1[x] = j;
             }
         }
-        System.out.println("");
-        System.out.println("Всего нечетных элементов = " + n);
+
+        int[] mass2 = mass1;
+
+        int i = 0;
+        for (int myInt : mass2) {
+            if (myInt % 5 == 0)
+//            {
+//                System.out.println("");
+                if (myInt > 4 && myInt > 0 && myInt <= 6 || myInt > 10 && myInt < 20) {
+                    System.out.println("Элемент массива равно:" + myInt++);
+                }
+//            }
+
+        }
+
     }
 }
+
