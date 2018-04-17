@@ -1,4 +1,4 @@
-package lessons.IncrementDecrement;
+package homeworks;
 
 /**
  * Создать два массива из 30 чисел. Первый массив проинициализировать нечетными числами.

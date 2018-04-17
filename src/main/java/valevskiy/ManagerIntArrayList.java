@@ -1,4 +1,4 @@
-package valevskiy;
+package Valevskiy;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class ManagerIntArrayList {
 
-    IntArrayList list = new IntArrayList();
+    valevskiy.IntArrayList list = new valevskiy.IntArrayList();
 
     protected void doAction(int actionNum) {
         switch (actionNum) {

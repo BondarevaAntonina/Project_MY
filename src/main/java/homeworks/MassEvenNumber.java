@@ -1,4 +1,4 @@
-package lessons.IncrementDecrement;
+package homeworks;
 
 /**
  * Создать два массива из 20 чисел. Первый массив проинициализировать четными числами.
