@@ -31,7 +31,7 @@ public class MassEvenNumbers {
                 n++;
                 a += mas2[x];
 
-                System.out.println("Нечетный элемент = " + mas2[x]);
+                System.out.println("Нечетный элемент = " + mas2[a]);
             }
         }
     }
