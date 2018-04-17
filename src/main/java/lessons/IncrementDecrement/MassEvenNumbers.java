@@ -13,18 +13,18 @@ public class MassEvenNumbers {
         for (int i = 2; i <= 20; i++) {
             if (i % 2 == 0) a++;
         }
-        int[] mas1 = new int[a];
+        int[]mas2=new int[a];
+        int[] mas1 = mas2;
         for (int i = 2, b = 0; i <= 20; i++) {
             if (i % 2 == 0) {
                 mas1[b] = i;
                 System.out.print(mas1[b] + " ");
                 b++;
+
             }
         }
         System.out.println("");
         //Проинициализировать второй массив элементами первого массива при условии, что индекс делится на 4 без остатка и элемент больше 3, но меньше 16
-
-        int[] mas2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
         int i = 0;
         for (int myInt : mas2) {
             if (myInt % 4 == 0) {
