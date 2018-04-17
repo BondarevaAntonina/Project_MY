@@ -6,7 +6,7 @@ package lessons.IncrementDecrement;
  * что индекс делится на 4 без остатка и элемент больше 3, но меньше 16.
  * Если условие не выполняется оставить элемент массива без изменения.
  */
-public class MassEvenNumbers {
+public class MassEvenNumber {
     public static void main(String[] args) {
         //the variable a will store the array size value
         int a = 0;
@@ -29,7 +29,7 @@ public class MassEvenNumbers {
         for (int myInt : mas2) {
             if (myInt % 4 == 0) {
                 if (myInt > 3 && myInt <= 16) {
-                    System.out.println("Значение элемента равно:" + myInt++);
+                    System.out.println("Элемент массива равно:" + myInt++);
                 }
             }
         }
