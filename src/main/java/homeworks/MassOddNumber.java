@@ -23,17 +23,13 @@ public class MassOddNumber {
 
         System.out.println();
         for (int i = 0; i < 30; i++) {
-            if (    (i > 4) &&
-                    (i % 5 == 0) && (
-                    (mass1[i] > 0) && ( (mass1[i] < 6) || ( (mass1[i] > 10) && (mass1[i]<20) )) )
-                    ) {
-                mass2[i]=mass1[i];
+            if ((i > 4) && (i % 5 == 0) && ((mass1[i] > 0) && ((mass1[i] < 6) || ((mass1[i] > 10) && (mass1[i] < 20))))) {
+                mass2[i] = mass1[i];
                 System.out.println(mass2[i]);
             }
         }
-        for (int al:mass2
-             ) {
-            System.out.print(al+ " ");
+        for (int al : mass2) {
+            System.out.print(al + " ");
         }
     }
 }
