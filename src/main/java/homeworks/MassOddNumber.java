@@ -9,33 +9,32 @@ package homeworks;
 public class MassOddNumber {
 
     public static void main(String[] args) {
-        int mass1[];
-        mass1 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30};
-        int sum = 0;
-        int n = 0;
+        int[] mass1 = new int[30];
+        int[] mass2 = new int[30];
         int j = 0;
-
-        for (int x = 0; x < mass1.length; x++) {
-            if (mass1[x] % 2 - 1 == 0) {
-                System.out.print(mass1[x] + " ");
-                mass1[x] = j;
+        int a = 0;
+        for (int i = 0; (i < 1000) && (j < 30); i++) {
+            if (i % 2 - 1 == 0) {
+                System.out.print(i + " ");
+                mass1[j] = i;
+                j++;
             }
         }
 
-        int[] mass2 = mass1;
-
-        int i = 0;
-        for (int myInt : mass2) {
-            if (myInt % 5 == 0)
-//            {
-//                System.out.println("");
-                if (myInt > 4 && myInt > 0 && myInt <= 6 || myInt > 10 && myInt < 20) {
-                    System.out.println("Элемент массива равно:" + myInt++);
-                }
-//            }
-
+        System.out.println();
+        for (int i = 0; i < 30; i++) {
+            if (    (i > 4) &&
+                    (i % 5 == 0) && (
+                    (mass1[i] > 0) && ( (mass1[i] < 6) || ( (mass1[i] > 10) && (mass1[i]<20) )) )
+                    ) {
+                mass2[i]=mass1[i];
+                System.out.println(mass2[i]);
+            }
         }
-
+        for (int al:mass2
+             ) {
+            System.out.print(al+ " ");
+        }
     }
 }
 
