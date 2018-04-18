@@ -1,4 +1,4 @@
-package homeworks;
+package homeworks.one_dim_array;
 
 /*
 Создать два одномерных массива любой размерности.
@@ -15,18 +15,26 @@ public class Сycle {
         }
         //while
         System.out.println(" ");
+
         int k = 13;
+
         int[] number2 = new int[k];
+
         int j = 0;
+
         while (k > 0) {
             System.out.print(k + " ");
+
             number2[j++] = k--;
         }
 
         //do-while
         System.out.println(" ");
+
         int x = 4;
+
         int[] number3 = new int[x];
+
         do {
             System.out.print(x + " ");
             x++;

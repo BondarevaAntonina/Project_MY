@@ -1,4 +1,4 @@
-package homeworks;
+package homeworks.one_dim_array;
 
 /**
  * Создать два массива из 20 чисел. Первый массив проинициализировать четными числами.
@@ -8,25 +8,40 @@ package homeworks;
  */
 public class MassEvenNumber {
     public static void main(String[] args) {
-        int[] mass1 = new int[20];
-        int[] mass2 = new int[20];
+
+        int length = 20;
+
+        int[] arrayOne = new int[length];
+
+        int[] arrayTwo = new int[length];
+
         int j = 0;
+
         for (int i = 2; (i < 100) && (j < 20); i++) {
             if (i % 2 == 0) {
                 System.out.print(i + " ");
-                mass1[j] = i;
+                arrayOne[j] = i;
                 j++;
             }
         }
 
-        System.out.println();
-        for (int i = 0; i < 20; i++) {
-            if ((i % 4 == 0) && ((mass1[i] > 3) && ((mass1[i] < 16)))) {
-                mass2[i] = mass1[i];
-                System.out.println(mass2[i]);
-            }
+        for (int i = 0; i < length; ++i) {
+            arrayOne[i] = i * 2;
+            System.out.println(arrayOne[i] + "\t");
         }
-        for (int al : mass2) {
+
+        System.out.println();
+
+        for (int i = 0; i < length; i++) {
+            if (i % 4 == 0 && arrayOne[i] > 3 && arrayOne[i] < 16) {
+                arrayTwo[i] = arrayOne[i];
+            }
+
+            System.out.println(arrayTwo[i] + "\t");
+
+        }
+
+        for (int al : arrayTwo) {
             System.out.print(al + " ");
         }
     }
