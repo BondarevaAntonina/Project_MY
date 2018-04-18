@@ -12,7 +12,6 @@ public class MassOddNumber {
         int[] mass1 = new int[30];
         int[] mass2 = new int[30];
         int j = 0;
-        int a = 0;
         for (int i = 0; (i < 1000) && (j < 30); i++) {
             if (i % 2 - 1 == 0) {
                 System.out.print(i + " ");
