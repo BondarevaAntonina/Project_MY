@@ -8,30 +8,26 @@ package homeworks;
  */
 public class MassEvenNumber {
     public static void main(String[] args) {
-        //the variable a will store the array size value
-        int a = 0;
-        for (int i = 2; i <= 20; i++) {
-            if (i % 2 == 0) a++;
-        }
-        int[]mas2=new int[a];
-        int[] mas1 = mas2;
-        for (int i = 2, b = 0; i <= 20; i++) {
+        int[] mass1 = new int[20];
+        int[] mass2 = new int[20];
+        int j = 0;
+        for (int i = 2; (i < 100) && (j < 20); i++) {
             if (i % 2 == 0) {
-                mas1[b] = i;
-                System.out.print(mas1[b] + " ");
-                b++;
-
+                System.out.print(i + " ");
+                mass1[j] = i;
+                j++;
             }
         }
-        System.out.println("");
-        //
-        int i = 0;
-        for (int myInt : mas2) {
-            if (myInt % 4 == 0) {
-                if (myInt > 3 && myInt <= 16) {
-                    System.out.println("Элемент массива равно:" + myInt++);
-                }
+
+        System.out.println();
+        for (int i = 0; i < 20; i++) {
+            if ((i % 4 == 0) && ((mass1[i] > 3) && ((mass1[i] < 16)))) {
+                mass2[i] = mass1[i];
+                System.out.println(mass2[i]);
             }
+        }
+        for (int al : mass2) {
+            System.out.print(al + " ");
         }
     }
 }
