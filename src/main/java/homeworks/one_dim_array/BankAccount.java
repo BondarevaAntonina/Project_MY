@@ -10,7 +10,7 @@ import java.util.Scanner;
  * сумму. Если денег недостаточно,  тогда написать в консоль - "Пополните счет".  Счет можно пополнить другим методом.
  */
 public class BankAccount {
-    private double balance = 200.0;
+    private double balance = 0;
     private String owner = "Владелец";
     private String currency;
 
@@ -25,22 +25,23 @@ public class BankAccount {
 
     }
 
-    public String getValuta() {
-        return currency;
-    }
-
-    public void setValuta(String valuta) {
-        this.currency = valuta;
-    }
-
-    public double getSum() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setSum(double sum) {
-        this.balance = sum;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
+    public double cutBalance(double cutvalue) {
+        if (balance >= cutvalue) {
+            balance = balance - cutvalue;
+        }
+        else {
+            System.out.println("У Вас не достаточно средств. Пожалуйста пополните счет");
+        }
+        return balance;
+    }
 
 }
 
