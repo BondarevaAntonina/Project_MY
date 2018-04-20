@@ -18,6 +18,7 @@ public class ArrayTwoDimensional {
                 massive[i][j] = ((int) Math.round(Math.random() * 9));
 
                 System.out.print(massive[i][j] + "\t");
+
             }
             System.out.println();
         }
