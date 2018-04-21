@@ -21,16 +21,16 @@ public class ArrayTwoDimensional {
                 System.out.print(massive[i][j] + "\t");
 
             }
-
-            System.out.println(+ maxb );
-
-        }
-        for (int i = 0; i < massive.length; i++) {
-            for (int j = 0; j < massive[i].length; j++) {
-                if (maxb < massive[i][j]) {
-                    maxb = massive[i][j];
+            for (int d = 0; d < massive.length; d++) {
+                for (int j = 0; j < massive[d].length; j++) {
+                    if (maxb < massive[i][j]) {
+                        maxb = massive[i][j];
+//                        maxb++;
+                    }
                 }
             }
+            System.out.println(+ maxb );
+
         }
         System.out.println("Максимальный элемент двумерного массива " + maxb);
     }
