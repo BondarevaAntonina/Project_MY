@@ -38,7 +38,7 @@ public class BankAccount {
             balance = balance - cutvalue;
         }
         else {
-            System.out.println("У Вас не достаточно средств. Пожалуйста пополните счет");
+            System.out.println("У Вас недостаточно средств. Пожалуйста пополните счет");
         }
         return balance;
     }

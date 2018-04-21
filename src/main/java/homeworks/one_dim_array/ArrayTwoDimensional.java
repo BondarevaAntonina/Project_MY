@@ -8,6 +8,7 @@ public class ArrayTwoDimensional {
     public static void main(String[] args) {
 
         int arrayCount = 4;
+        int maxb=0;
 
         int[][] massive = new int[arrayCount][arrayCount];
 
@@ -20,7 +21,17 @@ public class ArrayTwoDimensional {
                 System.out.print(massive[i][j] + "\t");
 
             }
-            System.out.println();
+
+            System.out.println(+ maxb );
+
         }
+        for (int i = 0; i < massive.length; i++) {
+            for (int j = 0; j < massive[i].length; j++) {
+                if (maxb < massive[i][j]) {
+                    maxb = massive[i][j];
+                }
+            }
+        }
+        System.out.println("Максимальный элемент двумерного массива " + maxb);
     }
 }
