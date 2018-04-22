@@ -29,7 +29,8 @@ public class TryPowerMock {
 
         PowerMockito.doReturn(5).when(spyCalc, "getValue");
 
+        int sum = spyCalc.sum(8, 7);
 
-        Assert.assertEquals(20, calculator.sum(8, 7));
+        Assert.assertEquals(20, sum);
     }
 }

@@ -7,6 +7,10 @@ public class Calculator {
         return value1 + value2 + getValue();
     }
 
+    public int sumParams(int value1, int value2) {
+        return value1 + value2;
+    }
+
     private int getValue() {
 
         int anotherValue = getAnotherValue();

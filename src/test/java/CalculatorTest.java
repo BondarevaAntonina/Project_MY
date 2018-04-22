@@ -18,13 +18,13 @@ public class CalculatorTest {
 
     @Test
     public void shouldReturnSumValues() {
-        Calculator calculator = new Calculator();
+        Calculator calculator1 = new Calculator();
 
 //        Calculator mockCalculator = Mockito.mock(Calculator.class);
 
 //        Mockito.when(mockCalculator.sum(5, 8)).thenReturn(10);
 
-        Mockito.when(mockCalculator.sum(5, 8)).thenCallRealMethod();
+//        Mockito.when(mockCalculator.sum(5, 8)).thenCallRealMethod();
 
 //        Mockito.when(mockCalculator.getValue()).thenCallRealMethod();
 //        Mockito.when(mockCalculator.getValue()).thenReturn(10);
@@ -32,7 +32,9 @@ public class CalculatorTest {
 
 //        Assert.assertEquals(23, mockCalculator.sum(5, 8));
 
-        Mockito.verify(mockCalculator, Mockito.times(2)).getAnotherValue();
+        calculator.sum(5, 8);
+
+        Mockito.verify(calculator, Mockito.times(3)).getAnotherValue();
     }
 
     @Test

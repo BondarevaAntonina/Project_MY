@@ -1,4 +1,4 @@
-package homeworks;
+package homeworks.one_dim_array;
 
 /**
  * Дан массив чисел: а[0], a[1], a[2], ..., а[n-1]. В массиве числа в диапазоне от -15 до 15.

@@ -1,8 +1,4 @@
-package homeworks.one_dim_array;
-
-import org.eclipse.jetty.util.IO;
-
-import java.util.Scanner;
+package homeworks.bank_account;
 
 /**
  * Created by antoni on 20.04.2018.
@@ -10,37 +6,35 @@ import java.util.Scanner;
  * сумму. Если денег недостаточно,  тогда написать в консоль - "Пополните счет".  Счет можно пополнить другим методом.
  */
 public class BankAccount {
-    private double balance = 0;
-    private String owner = "Владелец";
+    private double balance;
+    private String owner;
     private String currency;
 
-
-    public BankAccount() {
-    }
 
     public BankAccount(double initialBalance, String name, String currencyDollar) {
         balance = initialBalance;
         owner = name;
-        currencyDollar = currency;
-
+        currency = currencyDollar;
     }
 
     public double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double cutBalance(double cutvalue) {
-        if (balance >= cutvalue) {
-            balance = balance - cutvalue;
-        }
-        else {
+    public void cutBalance(double cutValue) {
+        /*if (balance >= cutValue) {
+            balance = balance - cutValue;
+        } else {
             System.out.println("У Вас недостаточно средств. Пожалуйста пополните счет");
+        }*/
+
+        if (balance < cutValue) {
+            System.out.println("У Вас недостаточно средств. Пожалуйста пополните счет");
+
+            return;
         }
-        return balance;
+
+        balance = balance - cutValue;
     }
 
 }

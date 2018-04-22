@@ -5,7 +5,7 @@ public class LearnClass {
 
     private String name;
 
-    public static int count = 0;
+    private static int count = 0;
 
     public static final String LAST_NAME;
 
@@ -31,12 +31,21 @@ public class LearnClass {
 
     public void setAge(int age) {//(this, age)
         if (age < 0) {
-            System.out.println();
+            System.out.println(count);
             return;
         }
         this.age = age;
     }
 
+    public static int getCount() {
+
+//        System.out.println(age);
+        return count;
+    }
+
+    public static void setCount(int count) {
+        LearnClass.count = count;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -57,6 +66,6 @@ class TestClass {
 
         LearnClass class2 = new LearnClass(10, "John");
 
-        System.out.println(LearnClass.count);
+        System.out.println(LearnClass.getCount());
     }
 }
