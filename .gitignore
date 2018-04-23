@@ -1,0 +1,22 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+ifobs-selenium-test.iml
+
+## File-based project format:
+*.iws
+
+## Local properties for each programmer
+ifobs-selenium-test-local-before-custom-file.properties
+ifobs-selenium-test-local-after-custom-file.properties
+*ifobs-selenium-test-document.properties
+ifobs-selenium-test-ifobs.properties
+
+# lib
+.lib/
+
+# target
+.target/
+
+
