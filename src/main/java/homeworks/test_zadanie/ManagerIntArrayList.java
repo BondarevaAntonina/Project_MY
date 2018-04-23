@@ -1,4 +1,4 @@
-package Valevskiy;
+package homeworks.test_zadanie;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,26 +9,28 @@ import java.util.Scanner;
  */
 public class ManagerIntArrayList {
 
-    valevskiy.IntArrayList list = new valevskiy.IntArrayList();
+    IntArrayList list = new IntArrayList();
 
     protected void doAction(int actionNum) {
         switch (actionNum) {
-            case 2:
+            case 1:
                 list.addElement(5);
+            case 2:
+                list.changeElementByIndex(0,7);
             case 3:
-                list.changeElementByIndex(0, 7);
+                list.deleteElementIndex();
             case 4:
-                list.increaseElements();
+                list.increaseElement();
             case 5:
-                list.decreasingElements();
+                list.decreasingElement();
             case 6:
                 list.forwardReverseOrder();
             case 7:
-                list.blisterSorting();
+                list.blisterSort();
             case 8:
                 list.addArrayToArray();
             case 9:
-                list.deleteDuplicates();
+                list.deleteDuplicat();
             case 10:
                 list.searchLinear();
             case 0:

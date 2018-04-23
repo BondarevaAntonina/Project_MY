@@ -1,4 +1,4 @@
-package valevskiy;
+package homeworks.test_zadanie;
 
 /**
  * Создать имитацию коллекции(с помощью массива) ArrayList для работы с типом int.
@@ -44,7 +44,7 @@ public class IntArrayList {
         System.out.println(length);
     }
 
-    //2 - Добавлеие элемента в список
+    //1 - Adding an item to the list
     public void addElement(int element) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == 0) {
@@ -54,22 +54,24 @@ public class IntArrayList {
         }
     }
 
-    //create method for resizing array
-
-    //3 - Изменение элементов по индексу
+    //2 - create method for resizing array
     public void changeElementByIndex(int index, int newElement) {
         array[index] = newElement;
     }
 
+    //3 - Delete items by index
+    public void deleteElementIndex() {
+
+    }
 
 
     //4 - Увеличение листа на заданное количество элементов
-    public void increaseElements() {
+    public void increaseElement() {
 
     }
 
     //5 - Уменьшение листа до заданного количество элементов
-    public void decreasingElements() {
+    public void decreasingElement() {
 
     }
 
@@ -79,16 +81,17 @@ public class IntArrayList {
     }
 
     //7 - Сортировка листа методом пузырька
-    public void blisterSorting() {
+    public void blisterSort() {
 
     }
+
     //8 - Добавление массива в массив
     public void addArrayToArray() {
 
     }
 
     //9 - Удалять дубликаты
-    public void deleteDuplicates() {
+    public void deleteDuplicat() {
 
     }
 
