@@ -19,7 +19,6 @@ public class AmountRow {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
 
-//                array[i][j] = ((int) Math.round(Math.random() * 9));
                 array[i][j] = random.nextInt(20);
 
                 System.out.print(array[i][j] + "\t");
