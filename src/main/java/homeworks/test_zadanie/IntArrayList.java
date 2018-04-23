@@ -38,7 +38,7 @@ public class IntArrayList {
         for (int i = 0; i < length; i++) {
             myArray[i] = i;
 
-            System.out.println("Последний  элемент массива " + myArray[i] + 45);//all words in English
+            System.out.println("The last element of the array " + myArray[i]);
         }
 
         System.out.println(length);
@@ -65,37 +65,37 @@ public class IntArrayList {
     }
 
 
-    //4 - Увеличение листа на заданное количество элементов
+    //4 - Increase the sheet by a specified number of elements
     public void increaseElement() {
 
     }
 
-    //5 - Уменьшение листа до заданного количество элементов
+    //5 - Reducing the sheet to a specified number of elements
     public void decreasingElement() {
 
     }
 
-    //6 - Вывод элементов в консоль в прямом и обратном порядке
+    //6 - Output elements to the console in the forward and reverse order
     public void forwardReverseOrder() {
 
     }
 
-    //7 - Сортировка листа методом пузырька
+    //7 - Sorting sheet by bubble method
     public void blisterSort() {
 
     }
 
-    //8 - Добавление массива в массив
+    //8 - Adding an Array to an Array
     public void addArrayToArray() {
 
     }
 
-    //9 - Удалять дубликаты
+    //9 - Delete duplicates
     public void deleteDuplicat() {
 
     }
 
-    //10 - Поиск элемента методом линейного поиска
+    //10 - Searching for an element using the linear search method
     public void searchLinear() {
 
     }
