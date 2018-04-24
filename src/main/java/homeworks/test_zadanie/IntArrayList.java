@@ -51,19 +51,24 @@ public class IntArrayList {
                 array[i] = element;
                 break;
             }
+            System.out.println();
         }
     }
 
     //2 - create method for resizing array
-    public void changeElementByIndex(int index, int newElement) {
+    public void removeElementByIndex(int index, int newElement) {
         array[index] = newElement;
     }
 
     //3 - Delete items by index
-    public void deleteElementIndex() {
-
+    public void deleteElementIndex(int index, int newElement) {
+        array[index] = newElement;
+        if (index >= 0 && index < array.length) {
+            int[] copy = new int[array.length - 1];
+            System.out.println();
+        }
+        return;
     }
-
 
     //4 - Increase the sheet by a specified number of elements
     public void increaseElement() {

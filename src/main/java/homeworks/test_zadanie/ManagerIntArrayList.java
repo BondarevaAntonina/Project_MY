@@ -16,9 +16,9 @@ public class ManagerIntArrayList {
             case 1:
                 list.addElement(5);
             case 2:
-                list.changeElementByIndex(0,7);
+                list.removeElementByIndex(0,7);
             case 3:
-                list.deleteElementIndex();
+                list.deleteElementIndex(4, 3);
             case 4:
                 list.increaseElement();
             case 5:
