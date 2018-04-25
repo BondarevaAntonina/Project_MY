@@ -11,5 +11,6 @@ package homeworks.three_calculyator;
  Создать public static методы, возвращающих случ. числа и сделать аналогичные операции.PowerMock + verify
  */
 public class CalculatorHome {
+
 }
 
