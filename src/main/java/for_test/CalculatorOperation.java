@@ -16,33 +16,49 @@ import java.util.Random;
 //---------------------------------------------------
 public class CalculatorOperation {
 
-    private int d1;
-    private int d2;
+    // metod *
+    public int multiply(int value1, int value2) {
 
-
-    public int multiply(int d1, int d2) {
-        return multiply(d1, d2);
+        return value1 * value2 + getValue();
     }
 
-    public int divide(int d1, int d2) {
-        return divide(d1, d2);
+    // metod /
+    public int divide(int value1, int value2) {
+        try{
+            int p = value1 / value2;
+        }catch(ArithmeticException e){
+            System.out.println(e + " арифметичесская ошибка");
+        }
+        return (value1 / value2 );
     }
 
-    public int minus(int d1, int d2) {
-        return minus(d1, d2);
+    // metod -
+    public int minus(int value1, int value2) {
+        return value1 - value2 + getValue();
     }
 
-    public int add(int d1, int d2) {
-        return add(d1, d2);
+    // metod +
+    public int sum(int value1, int value2) {
+        return value1 + value2 + getValue();
     }
 
-    public int percent(int d1, int d2) {
-        return percent(d1, d2);
-    }
+//    // metod %
+//    public int percent(int value1, int value2) {
+//        return value1 + value2 + getValue();
+//    }
 
-    public int getAnotherValue() {
-        return new Random().nextInt(20);
+    private int getValue() {
+
+        int anotherValue = getAnotherValue();
+
+        int anotherValue1 = getAnotherValue();
+
+
+        return new Random().nextInt(20) + anotherValue + anotherValue1;
     }
+        public int getAnotherValue() {
+            return new Random().nextInt(20);
+        }
 
 }
 
