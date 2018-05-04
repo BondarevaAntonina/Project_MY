@@ -41,6 +41,6 @@ public class CalculatorTest {
     public void trySpy() {
 //        Mockito.when(calculator.getValue()).thenReturn(10);
 
-        Assert.assertEquals(25, calculator.sum(7, 8));
+        Assert.assertEquals(20, calculator.sum(7, 8));
     }
 }

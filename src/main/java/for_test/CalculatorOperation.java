@@ -13,23 +13,23 @@ import java.util.Random;
  * Создать public static методы, возвращающих случ. числа и сделать аналогичные операции.PowerMock + verify
  */
 
-//---------------------------------------------------
 public class CalculatorOperation {
 
     // metod *
     public int multiply(int value1, int value2) {
 
         return value1 * value2 + getValue();
+
     }
 
     // metod /
     public int divide(int value1, int value2) {
-        try{
+        try {
             int p = value1 / value2;
-        }catch(ArithmeticException e){
+        } catch (ArithmeticException e) {
             System.out.println(e + " арифметичесская ошибка");
         }
-        return (value1 / value2 );
+        return (value1 / value2);
     }
 
     // metod -
@@ -47,6 +47,9 @@ public class CalculatorOperation {
 //        return value1 + value2 + getValue();
 //    }
 
+    public int sumParams(int value1, int value2) {
+        return value1 + value2;
+    }
     private int getValue() {
 
         int anotherValue = getAnotherValue();
@@ -56,9 +59,10 @@ public class CalculatorOperation {
 
         return new Random().nextInt(20) + anotherValue + anotherValue1;
     }
-        public int getAnotherValue() {
-            return new Random().nextInt(20);
-        }
+
+    public int getAnotherValue() {
+        return new Random().nextInt(15);
+    }
 
 }
 
