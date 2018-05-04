@@ -1,4 +1,3 @@
-import for_test.Calculator;
 import for_test.CalculatorOperation;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,6 +6,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static com.sun.javaws.JnlpxArgs.verify;
 
 /**
  * Created by antoni on 25.04.2018.
@@ -29,7 +30,9 @@ public class CalculatorHomeTest {
         Mockito.when(mockCalculator.sum(5, 8)).thenReturn(10);
         calculatorOperation.sum(9, 7);
         Mockito.verify(calculatorOperation, Mockito.times(2)).getAnotherValue();
-//        Assert.assertEquals(16, mockCalculator.sum(7, 7));
+        Assert.assertEquals(10, calculatorOperation.sum(7, 7));
+
+
 
     }
 

@@ -17,11 +17,11 @@ public class SumColumn {
 
                 array[i][j] = ((int) Math.round(Math.random() * 9));
 
-                System.out.print(array[i][j] + "\t");
+                System.out.print(array[i][j] +  "\t");
 
             }
 
-            System.out.println();
+            System.out.println(" ");
 
         }
 
