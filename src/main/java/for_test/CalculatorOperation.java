@@ -37,30 +37,31 @@ public class CalculatorOperation {
         return value1 - value2 + getValue();
     }
 
-    // metod +
-    public int sum(int value1, int value2) {
-        return value1 + value2 + getValue();
-    }
 
 //    // metod %
 //    public int percent(int value1, int value2) {
 //        return value1 + value2 + getValue();
 //    }
 
-    public int sumParams(int value1, int value2) {
-        return value1 + value2;
+    public int sum() {
+        return getValueOne() + getValueTwo();
     }
+
     private int getValue() {
 
-        int anotherValue = getAnotherValue();
+        int anotherValue = getValueOne();
 
-        int anotherValue1 = getAnotherValue();
+        int anotherValue1 = getValueOne();
 
 
         return new Random().nextInt(20) + anotherValue + anotherValue1;
     }
 
-    public int getAnotherValue() {
+    public int getValueOne() {
+        return new Random().nextInt(15);
+    }
+
+    public int getValueTwo() {
         return new Random().nextInt(15);
     }
 

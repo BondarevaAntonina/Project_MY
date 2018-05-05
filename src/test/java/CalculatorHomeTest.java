@@ -7,8 +7,6 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static com.sun.javaws.JnlpxArgs.verify;
-
 /**
  * Created by antoni on 25.04.2018.
  */
@@ -25,14 +23,18 @@ public class CalculatorHomeTest {
 
     @Test
     public void shouldReturnSumValues() {
-        CalculatorOperation mockCalculator = Mockito.mock(CalculatorOperation.class);
-        Mockito.when(mockCalculatorOperation.getAnotherValue()).thenReturn(10);
-        Mockito.when(mockCalculator.sum(5, 8)).thenReturn(10);
-        calculatorOperation.sum(9, 7);
-        Mockito.verify(calculatorOperation, Mockito.times(2)).getAnotherValue();
-        Assert.assertEquals(10, calculatorOperation.sum(7, 7));
 
+        Mockito.when(mockCalculatorOperation.getValueOne()).thenReturn(10);
 
+        Mockito.when(mockCalculatorOperation.getValueTwo()).thenReturn(10);
+
+        Mockito.when(mockCalculatorOperation.sum()).thenCallRealMethod();
+
+        Assert.assertEquals(20, mockCalculatorOperation.sum());
+
+        Mockito.verify(mockCalculatorOperation, Mockito.times(1)).getValueOne();
+
+        Mockito.verify(mockCalculatorOperation, Mockito.times(1)).getValueTwo();
 
     }
 

@@ -10,32 +10,37 @@ import java.util.Scanner;
 public class TwoDigitNumber {
     private static Scanner in;
 
-    public static void main (String[]args){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-            int row = 4;
-            int column = 4;
-            Random random = new Random();
-            int[][] array = new int[row][column];
-            for (int x = 0; x < row; x++) {
-                for (int j = 0; j < column; j++) {
-                    array[x][j] = random.nextInt(100);
-                    System.out.print(array[x][j] + "\t");
+        int row = 4;
+
+        int column = 4;
+
+        Random random = new Random();
+
+        int[][] array = new int[row][column];
+
+        int count = 0;
+
+        for (int x = 0; x < row; x++) {
+            for (int j = 0; j < column; j++) {
+                array[x][j] = random.nextInt(90) + 10;
+
+                int dozens = array[x][j] / 10;
+
+                int numbers = array[x][j] % 10;
+
+                if ((dozens + numbers) % 2 == 0) {
+                    count++;
                 }
-                System.out.println();
-            }
 
-            int sum = 0;
-        while (true) {
-//            int number = in.nextInt();
-            int number = in.nextInt();
-            if (number >= 100 || number <= 9) {
-                break;
-            } else {
-                sum += (number / 10) + (number % 10);
-
+                System.out.print(array[x][j] + "\t");
             }
+            System.out.println();
         }
-        System.out.println(sum);
-        }
+
+        System.out.println(count);
+
     }
+}
