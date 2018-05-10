@@ -24,51 +24,60 @@ package homeworks.test_zadanie;
  */
 public class IntArrayList {
 
-    private int[] array;
 
-    public IntArrayList() {
-        array = new int[10];//0
-    }
-
-    public static void main(String[] args) {
-        int[] myArray = new int[27];
-
-        int length = myArray.length;
-
-        for (int i = 0; i < length; i++) {
-            myArray[i] = i;
-
-            System.out.println("The last element of the array " + myArray[i]);
+    //1 - Add an item to the list
+    public static int[] addElementToEnd(int[] array, int element) {
+        //One option
+        /*
+        int arrayLength = myArray.length;  //+
+        System.out.println("Number of elements in the array myArray: " + arrayLength);
+        int[] myArray2 = new int[arrayLength + 1];
+        System.arraycopy( myArray, 0, myArray2, 0, myArray.length );
+        myArray2[myArray2.length - 1] = element;
+        toString(myArray2);
+*/
+        //Two option
+        int[] myArray2 = new int[array.length + 1];
+        for (int j = 0; j < array.length; j++) {
+            myArray2[j] = array[j];
         }
 
-        System.out.println(length);
+        myArray2[myArray2.length - 1] = element;
+        //toString( myArray2);
+        return myArray2;
     }
 
-    //1 - Adding an item to the list
-    public void addElement(int element) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == 0) {
-                array[i] = element;
-                break;
-            }
-            System.out.println();
-        }
-    }
 
-    //2 - create method for resizing array
-    public void removeElementByIndex(int index, int newElement) {
-        array[index] = newElement;
-    }
+//
+//    //2 - create method for resizing array
+//    public void removeElementByIndex(int index, int newElement) {
+//        array[index] = newElement;
+//    }
 
     //3 - Delete items by index
-    public void deleteElementIndex(int index, int newElement) {
-        array[index] = newElement;
-        if (index >= 0 && index < array.length) {
-            int[] copy = new int[array.length - 1];
-            System.out.println();
+    public static int[] deleteElement(int[] array, int element) {
+        int[] myArray2 = new int[array.length - 1];
+        for (int j = 0; j < array.length; j++) {
+            myArray2[j] = array[j];
+
         }
-        return;
+
+        myArray2[myArray2.length - 1] = element;
+        //toString( myArray2);
+        return myArray2;
     }
+
+//    //3 - Delete items by index
+//    public void deleteElementIndex(int index, int newElement) {
+//        array[index] = newElement;
+//        if (index >= 0 && index < array.length) {
+//            int[] copy = new int[array.length - 1];
+//            System.out.println();
+//        }
+//        return;
+//    }
+
+
 
     //4 - Increase the sheet by a specified number of elements
     public void increaseElement() {
@@ -105,5 +114,10 @@ public class IntArrayList {
 
     }
 
+    public static void toString(int[] val) {
+        for (int j = 0; j < val.length; j++) {
+            System.out.println(val[j]);
+        }
+    }
 }
 
