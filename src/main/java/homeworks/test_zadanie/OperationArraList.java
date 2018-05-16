@@ -22,7 +22,6 @@ public class OperationArraList {
         int counter;
 
         int numm;
-        int a = 1;
 
         Scanner scaner = new Scanner(System.in);
         System.out.println("Enter the size of the array: ");
