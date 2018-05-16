@@ -1,7 +1,11 @@
 package homeworks.test_zadanie;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.invoke.MethodHandles;
 import java.util.Scanner;
 
 
@@ -9,6 +13,8 @@ import java.util.Scanner;
  * Created by antoni on 10.05.2018.
  */
 public class OperationArraList {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     static int arraylist[];
 

@@ -2,6 +2,7 @@ package homeworks.test_zadanie;
 
 import java.util.Arrays;
 
+
 /**
  * Создать имитацию коллекции(с помощью массива) ArrayList для работы с типом int.
  * Создать класс с полем типа массив.
