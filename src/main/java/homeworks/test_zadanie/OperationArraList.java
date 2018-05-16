@@ -96,9 +96,9 @@ public class OperationArraList {
             case 8:
                 arraylist = IntArrayList.blisterSort(arraylist);
                 break;
-//                case 9:
-//                    list.addArrayToArray();
-//            break;
+//            case 9:
+//                arraylist = IntArrayList.addArrayToArray();
+//                break;
             case 10:
                 arraylist = IntArrayList.searchLinear(arraylist, 2);
                 break;
