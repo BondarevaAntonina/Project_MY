@@ -57,15 +57,6 @@ public class OperationArraList {
             }
         } while (actionNumber != 0);
 
-/*
-        System.out.print("Введите целое число: ");
-        if (scaner.hasNextInt()) { // возвращает истинну если с потока ввода можно считать целое число
-            actionNumber = scaner.nextInt(); // считывает целое число с потока ввода и сохраняем в переменную
-            System.out.println(actionNumber);
-        } else {
-            System.out.println("Вы ввели не целое число");
-        }
-        */
     }
 
     public static void doAction(int actionNumber) throws Exception {
