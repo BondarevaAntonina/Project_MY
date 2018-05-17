@@ -72,7 +72,7 @@ public class OperationArraList {
                 arraylist = IntArrayList.addElementToEnd(arraylist, 77);
                 break;
             case 2:
-                arraylist = IntArrayList.removeElementByIndex(arraylist, 5, 4);
+                arraylist = IntArrayList.changeElementByIndex(arraylist, 5, 4);
                 break;
             case 3:
                 arraylist = IntArrayList.deleteElementIndex(arraylist, 9);

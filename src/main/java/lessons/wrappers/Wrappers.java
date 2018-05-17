@@ -14,9 +14,7 @@ public class Wrappers {
 
         Integer i2 = new Integer(10);
 
-        i2 = Integer.valueOf(10);
-
-
+//        i2 = Integer.valueOf(10);
 
         System.out.println(i1 == i2);
     }

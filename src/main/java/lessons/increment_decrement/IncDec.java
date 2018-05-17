@@ -1,4 +1,4 @@
-package lessons.IncrementDecrement;
+package lessons.increment_decrement;
 
 public class IncDec {
     public static void main(String[] args) {
