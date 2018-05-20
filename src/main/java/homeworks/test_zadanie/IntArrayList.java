@@ -166,28 +166,28 @@ public class IntArrayList {
     //1 1 2 2 5 8 9 7
     public static int[] deleteDuplicat(int[] arraylist, int value) {
 
-        int dub_count = 0;
+        int dubCount = 0;
 
         for (int j = 0; j < arraylist.length; j++) {
             if (arraylist[j] == value) {
-                dub_count++;
+                dubCount++;
             }
         }
 
         int[] tempArray = arraylist;
 
-        if (dub_count > 1) {
-            int[] tmp_array = new int[arraylist.length - dub_count];//rename
+        if (dubCount > 1) {
+            int[] tmpArray = new int[arraylist.length - dubCount];//rename
             int t = 0;
 
             for (int j = 0; j < arraylist.length; j++) {
                 if (arraylist[j] != value) {
-                    tmp_array[t] = arraylist[j];
+                    tmpArray[t] = arraylist[j];
                     t++;
                 }
             }
 
-            tempArray = tmp_array;
+            tempArray = tmpArray;
         }
 
         return tempArray;
