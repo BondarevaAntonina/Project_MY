@@ -34,4 +34,8 @@ public class Calculator {
         return new Random().nextInt(20);
     }
 
+    public void throwException() {
+        throw new NullPointerException("I'm NPE");
+    }
+
 }

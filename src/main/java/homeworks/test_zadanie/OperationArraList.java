@@ -14,16 +14,14 @@ import java.util.Scanner;
  */
 public class OperationArraList {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-    static int arraylist[];
+    public int arraylist[];
 
 
-    public static void main(String[] args) throws Exception {
-        showMenu(args);
+    public static void main(String[] args) {
+//        showMenu(args);
     }
 
-    public static void showMenu(String[] args) {
+    public void showMenu(String[] args) {
 
         int counter;
 
@@ -64,44 +62,45 @@ public class OperationArraList {
 
     }
 
-    public static void doAction(int actionNumber) throws Exception {
+    public void doAction(int actionNumber) throws Exception {
 
 //        int[] list = null;
         switch (actionNumber) {
-            case 1:
-                arraylist = IntArrayList.addElementToEnd(arraylist, 77);
-                break;
-            case 2:
-                arraylist = IntArrayList.changeElementByIndex(arraylist, 5, 4);
-                break;
-            case 3:
-                arraylist = IntArrayList.deleteElementIndex(arraylist, 9);
-                break;
-            case 4:
-                arraylist = IntArrayList.addEmptyElement(arraylist, 5);
-                break;
-            case 5:
-                arraylist = IntArrayList.deleteEmptyElement(arraylist, 2);
-                break;
-            case 6:
-                arraylist = IntArrayList.forwardReverseOrder(arraylist);
-                break;
-            case 7:
-                arraylist = IntArrayList.reverseOrder(arraylist);
-                break;
-            case 8:
-                arraylist = IntArrayList.blisterSort(arraylist);
-                break;
-//            case 9:
-//                arraylist = IntArrayList.addArrayToArray();
+//            case 1:
+//                arraylist = IntArrayList.addElementToEnd(arraylist, 77);
 //                break;
-            case 10:
-                arraylist = IntArrayList.searchLinear(arraylist, 2);
-                break;
-            default:
-                return;
+//            case 2:
+//                arraylist = IntArrayList.changeElementByIndex(arraylist, 5, 4);
+//                break;
+//            case 3:
+//                arraylist = IntArrayList.deleteElementIndex(arraylist, 9);
+//                break;
+//            case 4:
+//                arraylist = IntArrayList.addEmptyElement(arraylist, 5);
+//                break;
+//            case 5:
+//                arraylist = IntArrayList.deleteEmptyElement(arraylist, 2);
+//                break;
+//            case 6:
+//                arraylist = IntArrayList.forwardReverseOrder(arraylist);
+//                break;
+//            case 7:
+//                arraylist = IntArrayList.reverseOrder(arraylist);
+//                break;
+//            case 8:
+//                arraylist = IntArrayList.blisterSort(arraylist);
+//                break;
+////            case 9:
+////                arraylist = IntArrayList.addArrayToArray();
+////                break;
+//            case 10:
+//                arraylist = IntArrayList.searchLinear(arraylist, 2);
+//                break;
+//            default:
+//                return;
+//        }
+//        IntArrayList.toString(arraylist);
+//        System.out.println("");
         }
-        IntArrayList.toString(arraylist);
-        System.out.println("");
     }
 }
