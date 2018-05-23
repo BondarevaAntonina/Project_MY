@@ -10,24 +10,17 @@ import java.util.Scanner;
 
 public class CharCounter {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
-        String in;
+        String str = "Строка из букв, цифр 492 и специальных символов %*;№?";
 
-        int counter = 0;
+        int uniqueCharCount = 0;
 
-        while ((in = scan.nextLine()) != null) {
-            if (in.equals(""))
-                break;
-            char[] tmp = in.toCharArray();
-            for (int i = 0; i < tmp.length; i++) {
-                if (Character.isAlphabetic(tmp[i]) && !Character.isDigit(tmp[i])) {
-                    counter++;
-                }
-            }
+        for(int i = 0; i< str.length(); i++){
+            char currChar = str.charAt(i);
+            if( !str.substring(0, i).contains( String.valueOf(currChar)))
+                uniqueCharCount++;
         }
-        scan.close();
-        System.out.println("всего букв - " + counter);
-
+        System.out.println( "Length of the string = " + str.length());
+        System.out.println( "Number of unique characters = " + uniqueCharCount);
     }
 }
