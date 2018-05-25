@@ -14,11 +14,17 @@ import java.util.Scanner;
  */
 public class OperationArraList {
 
-    public int arraylist[];
+    public static int arraylist[];
 
 
     public static void main(String[] args) {
-//        showMenu(args);
+        //showMenu(args);
+        int[] data = {1,4,3,2,6,7,0,0,0};
+       // int[] data = new int[10];
+        MyArrayList myArrayList = new MyArrayList(data);
+        myArrayList.setZeroElement(99);
+        myArrayList.setZeroElement(99);
+        System.out.println( myArrayList.toString());
     }
 
     public void showMenu(String[] args) {
@@ -66,9 +72,9 @@ public class OperationArraList {
 
 //        int[] list = null;
         switch (actionNumber) {
-//            case 1:
-//                arraylist = IntArrayList.addElementToEnd(arraylist, 77);
-//                break;
+            case 1:
+               // arraylist = IntArrayList.addElementToEnd(arraylist, 77);
+              //  break;
 //            case 2:
 //                arraylist = IntArrayList.changeElementByIndex(arraylist, 5, 4);
 //                break;

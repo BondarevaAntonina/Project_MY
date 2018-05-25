@@ -38,7 +38,7 @@ public class IntArrayList {
     }
 
     //1 - Add an item to the list
-    public  void addElementToEnd(int[] arraylist, int element) {
+    public static void addElementToEnd(int[] arraylist, int element) {
 
         int[] myArray2 = new int[arraylist.length + 1];
 
@@ -206,14 +206,14 @@ public class IntArrayList {
 //            System.out.println("Number " + item + " not found in array");
 //        }
 
-    }
-
-
-//    public static void toString(int[] val) {//remove and replace on call printForwardOrder
-//        for (int j = 0; j < val.length; j++) {
-//            System.out.print(" " + val[j]);
-//        }
 //    }
-//}
+
+
+    public void toString(int[] val) {//remove and replace on call printForwardOrder
+        for (int j = 0; j < val.length; j++) {
+            System.out.print(" " + val[j]);
+        }
+    }
+}
 
 
