@@ -1,6 +1,7 @@
 # IntelliJ IDEA
 .idea/
 *.iml
+*.xml
 
 ifobs-selenium-test.iml
 
