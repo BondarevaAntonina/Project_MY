@@ -1,4 +1,4 @@
-package lesson;
+package my_lesson;
 
 /**
  * Created by antoni on 23.03.2018.

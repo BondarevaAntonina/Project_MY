@@ -1,4 +1,4 @@
-package lesson;
+package my_lesson;
 
 import java.io.IOException;
 

@@ -1,47 +1,39 @@
 package homeworks.test_zadanie;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
  * Created by antoni on 25.05.2018.
  */
 public class OperationArray {
-    private int mArraylist[];
 
+    public static final Scanner SCANNER = new Scanner(System.in);
+
+    private MyArrayList myArrayList;
+
+    public OperationArray() {
+        myArrayList = new MyArrayList();
+    }
 
     public static void main(String[] args) {
+        OperationArray operationArray = new OperationArray();
+        operationArray.showMenuOperationArray();
 
 
-//        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0};
-        int[] data = new int[10];
-        MyArrayList myArrayList = new MyArrayList(data);
-        myArrayList.setZeroElement(99);
-        System.out.println(myArrayList.toString());
-
+//        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0,0};
+//        MyArrayList myArrayList = new MyArrayList();
+//        myArrayList.addElement(99);
+//        System.out.println(myArrayList.toString());
 
     }
 
     public void showMenuOperationArray() {
-        int counter;
 
-        int numm;
-
-        Scanner scaner = new Scanner(System.in);
-        System.out.println("Enter the size of the array: ");
-        numm = scaner.nextInt();
-        mArraylist = new int[numm];
-
-        System.out.println("Enter the " + numm + " numbers");
-        for (counter = 0; counter < numm; counter++) {
-            mArraylist[counter] = scaner.nextInt();
-        }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int actionNumber;
+
         do {
-            System.out.println("------- Menu -----------");
-            System.out.println("1 - Add an item to the list");
+            System.out.println("------- Menu -----------\n" +
+                    "1 - Add an item to the list");
             System.out.println("2 - Create method for resizing array");
             System.out.println("3 - Delete items by index");
             System.out.println("4 - Increase the sheet by a specified number of elements");
@@ -53,7 +45,7 @@ public class OperationArray {
             System.out.println("10 - Delete duplicates");
             System.out.println("0 - Exit");
             try {
-                actionNumber = Integer.parseInt(reader.readLine());
+                actionNumber = SCANNER.nextInt();
                 doAction(actionNumber);
             } catch (Exception e) {
                 System.out.println("Ошибка ввода: " + e);
@@ -62,11 +54,21 @@ public class OperationArray {
         } while (actionNumber != 0);
     }
 
-    public void doAction(int actionNumber) throws Exception {
+    public void doAction(int actionNumber) {
+
         switch (actionNumber) {
             case 1:
-//                mArraylist = MyArrayList.setZeroElement(mArraylist, 77);
+                System.out.println("Enter number ");
+
+                int number = SCANNER.nextInt();
+
+                myArrayList.addElement(number);
                 break;
+
+                case 6:
+                    myArrayList.toString1();
+                    break;
         }
+
     }
 }

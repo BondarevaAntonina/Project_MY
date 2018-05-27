@@ -1,6 +1,4 @@
-package lesson;
-
-import org.jvnet.jaxb2_commons.lang.StringUtils;
+package my_lesson;
 
 /**
  * Created by antoni on 16.03.2018.
