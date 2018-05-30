@@ -20,11 +20,6 @@ public class OperationArray {
         operationArray.showMenuOperationArray();
 
 
-//        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0,0};
-//        MyArrayList myArrayList = new MyArrayList();
-//        myArrayList.addElement(99);
-//        System.out.println(myArrayList.toString());
-
     }
 
     public void showMenuOperationArray() {
@@ -54,7 +49,7 @@ public class OperationArray {
         } while (actionNumber != 0);
     }
 
-    public void doAction(int actionNumber) {
+    public void doAction(int actionNumber) throws Exception {
 
         switch (actionNumber) {
             case 1:
@@ -64,9 +59,19 @@ public class OperationArray {
                 break;
 
             case 2:
+                System.out.println("Enter index");
                 int index  = SCANNER.nextInt();
+                System.out.println("Enter element number");
                 int valueInd = SCANNER.nextInt();
                 myArrayList.changeElementByIndex(index, valueInd);
+                break;
+
+            case 3:
+                System.out.println("Enter the index to delete");
+                int deleteIndex= SCANNER.nextInt();
+                myArrayList.deleteElementIndex(deleteIndex);
+                break;
+
             case 6:
                 myArrayList.toString1();
                 break;
