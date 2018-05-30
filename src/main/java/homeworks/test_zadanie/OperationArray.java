@@ -33,17 +33,17 @@ public class OperationArray {
 
         do {
             System.out.println("------- Menu -----------\n" +
-                    "1 - Add an item to the list");
-            System.out.println("2 - Create method for resizing array");
-            System.out.println("3 - Delete items by index");
-            System.out.println("4 - Increase the sheet by a specified number of elements");
-            System.out.println("5 - Reducing the sheet to a specified number of elements");
-            System.out.println("6 - Output elements to the console in the forward and reverse order");
-            System.out.println("7 - Output of elements to the console in the opposite direction");
-            System.out.println("8 - Sorting sheet by bubble method");
-            System.out.println("9 - Adding an Array to an Array");
-            System.out.println("10 - Delete duplicates");
-            System.out.println("0 - Exit");
+                    "1 - Add an item to the list\n" +
+                    "2 - Create method for resizing array\n" +
+                    "3 - Delete items by index\n" +
+                    "4 - Increase the sheet by a specified number of elements\n" +
+                    "5 - Reducing the sheet to a specified number of elements\n" +
+                    "6 - Output elements to the console in the forward and reverse order\n" +
+                    "7 - Output of elements to the console in the opposite direction\n" +
+                    "8 - Sorting sheet by bubble method\n" +
+                    "9 - Adding an Array to an Array\n" +
+                    "10 - Delete duplicates\n" +
+                    "0 - Exit");
             try {
                 actionNumber = SCANNER.nextInt();
                 doAction(actionNumber);
@@ -59,15 +59,17 @@ public class OperationArray {
         switch (actionNumber) {
             case 1:
                 System.out.println("Enter number ");
-
                 int number = SCANNER.nextInt();
-
                 myArrayList.addElement(number);
                 break;
 
-                case 6:
-                    myArrayList.toString1();
-                    break;
+            case 2:
+                int index  = SCANNER.nextInt();
+                int valueInd = SCANNER.nextInt();
+                myArrayList.changeElementByIndex(index, valueInd);
+            case 6:
+                myArrayList.toString1();
+                break;
         }
 
     }
