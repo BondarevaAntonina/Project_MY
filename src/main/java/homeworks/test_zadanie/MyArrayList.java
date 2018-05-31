@@ -76,11 +76,12 @@ public class MyArrayList {
 
         int[] newArray = new int[mArraylist.length - 1];
 
-        for (int i = 0, j = 0; i < mArraylist.length; i++) {//test for deleting first and last element
+        for (int i = 0, j = 0; i < mArraylist.length; i++) {
 
             if (i != index) {
                 newArray[j++] = mArraylist[i];
             }
+
         }
     }
 
@@ -92,6 +93,7 @@ public class MyArrayList {
 
         //copy the new array values from the old one
         System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+        System.out.println(mArraylist.toString());
 
     }
 

@@ -19,7 +19,10 @@ public class OperationArray {
         OperationArray operationArray = new OperationArray();
         operationArray.showMenuOperationArray();
 
-
+//        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0,0};
+//        MyArrayList myArrayList = new MyArrayList();
+//        myArrayList.deleteElementIndex(4);
+//        System.out.println(myArrayList.toString());
     }
 
     public void showMenuOperationArray() {
@@ -70,6 +73,18 @@ public class OperationArray {
                 System.out.println("Enter the index to delete");
                 int deleteIndex= SCANNER.nextInt();
                 myArrayList.deleteElementIndex(deleteIndex);
+                break;
+
+            case 4:
+                System.out.println("Enter a number to increase the array by a certain number of elements");
+                int addcount= SCANNER.nextInt();
+                myArrayList.increaseArray(addcount);
+                break;
+
+            case 5:
+                System.out.println("Enter a number to reducing the array by a certain number of elements");
+                int colelement= SCANNER.nextInt();
+                myArrayList.decreaseArray(colelement);
                 break;
 
             case 6:
