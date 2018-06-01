@@ -12,8 +12,8 @@ package homeworks.Enum;
  - проверять однофамильцев у двух людей.
  */
 public class ManEnum {
+    private static  Sex Sex;
     private String name;
-    private Enum Sex;
     private String surname;
     private String age;
 
@@ -21,6 +21,13 @@ public class ManEnum {
         this.name = name;
         this.surname = surname;
         this.age = age;
+    }
+
+    public static void main(String[] args) {
+        Sex man = Sex.MAN;
+        Sex man1 = Sex.WOMAN;
+
+
     }
 }
 
