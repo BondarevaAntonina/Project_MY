@@ -93,7 +93,6 @@ public class MyArrayList {
 
         //copy the new array values from the old one
         System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
-        System.out.println(mArraylist.toString());
 
     }
 
