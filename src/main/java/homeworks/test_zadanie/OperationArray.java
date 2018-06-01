@@ -90,6 +90,20 @@ public class OperationArray {
             case 6:
                 myArrayList.toString1();
                 break;
+
+            case 7:
+                myArrayList.reverseOrder();
+                break;
+
+            case 8:
+                myArrayList.blisterSort();
+                break;
+
+            case 11:
+                System.out.println("Enter a number");
+                int item= SCANNER.nextInt();
+                myArrayList.searchLinear(item);
+                break;
         }
 
     }

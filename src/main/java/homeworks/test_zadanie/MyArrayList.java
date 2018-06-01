@@ -125,8 +125,9 @@ public class MyArrayList {
     public void reverseOrder() {
 
         for (int j = mArraylist.length - 1; j >= 0; j--) {
-            System.out.println(mArraylist[j]);
+            System.out.print(mArraylist[j]);
         }
+
     }
 
     //8 - Sorting sheet by bubble method
