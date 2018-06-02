@@ -21,7 +21,7 @@ public class OperationArray {
 
 //        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0,0};
 //        MyArrayList myArrayList = new MyArrayList();
-//        myArrayList.deleteElementIndex(4);
+//        myArrayList.deleteElementByIndex(4);
 //        System.out.println(myArrayList.toString());
     }
 
@@ -72,7 +72,7 @@ public class OperationArray {
             case 3:
                 System.out.println("Enter the index to delete");
                 int deleteIndex= SCANNER.nextInt();
-                myArrayList.deleteElementIndex(deleteIndex);
+                myArrayList.deleteElementByIndex(deleteIndex);
                 break;
 
             case 4:
@@ -92,7 +92,7 @@ public class OperationArray {
                 break;
 
             case 7:
-                myArrayList.reverseOrder();
+                myArrayList.printInReverseOrder();
                 break;
 
             case 8:

@@ -10,7 +10,7 @@ package homeworks.test_zadanie;
  * 4) уменьшение листа до заданного количество элементов. СДЕЛАНО
  * 5) вывод элементов в консоль в прямом и обратном порядке. СДЕЛАНО
  * 6) сортировка листа методом пузырька(http://study-java.ru/uroki-java/urok-11-sortirovka-massiva/). СДЕЛАНО
- * 7) добавление массива в массив. СДЕЛАНО
+ * 7) добавление массива в массив.
  * 8) удалять дубликаты. СДЕЛАНО
  * 9) Поиск элемента методом линейного поиска.
  * Начальную размерность листа юзер вводит с консоли. СДЕЛАНО
@@ -64,7 +64,7 @@ public class MyArrayList {
     }
 
     //3 - Delete items by index
-    public void deleteElementIndex(int index) throws Exception {
+    public void deleteElementByIndex(int index) throws Exception {
 
         if (index < 0) {
             throw new Exception("Index can't < 0");
@@ -83,6 +83,8 @@ public class MyArrayList {
             }
 
         }
+
+        mArraylist = newArray;
     }
 
     //4 - Increase the sheet by a specified number of elements
@@ -109,7 +111,7 @@ public class MyArrayList {
     }
 
     //6 - Output elements to the console in the forward and reverse order
-    public void directOrderArray() {
+    public void printInRightOrder() {
 
 //        for (int j = 0; j < mArraylist.length; j++) {
 //            System.out.println(mArraylist[j]);
@@ -121,7 +123,7 @@ public class MyArrayList {
     }
 
     //7 - Output of elements to the console in the opposite direction
-    public void reverseOrder() {
+    public void printInReverseOrder() {
 
         for (int j = mArraylist.length - 1; j >= 0; j--) {
             System.out.print(mArraylist[j]);
@@ -140,6 +142,12 @@ public class MyArrayList {
                 }
             }
         }
+    }
+
+        //10 - Delete duplicates
+    //1 1 2 2 5 8 9 7
+    public void deleteDuplicat() {
+
     }
 
     //11 - Searching for an element using the linear search method

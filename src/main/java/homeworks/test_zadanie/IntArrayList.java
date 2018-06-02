@@ -69,7 +69,7 @@ public class IntArrayList {
 //    }
 //
 //    //3 - Delete items by index
-//    public void deleteElementIndex(int[] arraylist, int index) throws Exception {
+//    public void deleteElementByIndex(int[] arraylist, int index) throws Exception {
 //
 //        if (index < 0) {
 //            throw new Exception("Index can't < 0");
@@ -127,7 +127,7 @@ public class IntArrayList {
 //    }
 //
 //    //7 - Output of elements to the console in the opposite direction
-//    public void reverseOrder(int[] arraylist) {
+//    public void printInReverseOrder(int[] arraylist) {
 //
 //        for (int j = arraylist.length - 1; j >= 0; j--) {
 //            System.out.println(arraylist[j]);
