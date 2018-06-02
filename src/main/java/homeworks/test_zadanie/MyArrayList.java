@@ -95,7 +95,7 @@ public class MyArrayList {
 
         //copy the new array values from the old one
         System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
-
+        mArraylist = tmpArray;
     }
 
     //5 - Reducing the sheet to a specified number of elements
@@ -108,18 +108,24 @@ public class MyArrayList {
         for (int i = 0; i < mArraylist.length - colelement; i++) {
             newArray[i] = mArraylist[i];
         }
+        mArraylist = newArray;
     }
 
     //6 - Output elements to the console in the forward and reverse order
     public void printInRightOrder() {
+        String result = "";
+        for (int i = 0; i < mArraylist.length; i++) {//fpreach
 
-//        for (int j = 0; j < mArraylist.length; j++) {
-//            System.out.println(mArraylist[j]);
-//        }
+            result = result.concat(String.valueOf(mArraylist[i]));
 
-        for (int j : mArraylist) {
-            System.out.println(mArraylist[j]);
+            if (i != mArraylist.length - 1) {
+                result = result.concat(",");
+            }
+
         }
+
+        System.out.print(result);
+        System.out.println();
     }
 
     //7 - Output of elements to the console in the opposite direction
@@ -144,10 +150,20 @@ public class MyArrayList {
         }
     }
 
-        //10 - Delete duplicates
+    //10 - Delete duplicates
     //1 1 2 2 5 8 9 7
     public void deleteDuplicat() {
 
+    }
+
+    //    //9 - Adding an Array to an Array
+    public void addArrayToArray() {
+//        /*
+//        * array - 1 2 3 0 0 0 0 0, newArray - 4 5 6 -> 1 2 3 4 5 6 0 0
+//        * 1) Проверяем наличие места
+//        * 2) Если места достаточно - добавляем, нет - расширяем массив
+//        * 3) Начинать вставлять массив с первого нуля
+//        * */
     }
 
     //11 - Searching for an element using the linear search method
@@ -168,23 +184,4 @@ public class MyArrayList {
             System.out.println("Number " + item + " not found in array");
         }
     }
-
-
-    public void toString1() {
-        String result = "";
-        for (int i = 0; i < mArraylist.length; i++) {//fpreach
-
-            result = result.concat(String.valueOf(mArraylist[i]));
-
-            if (i != mArraylist.length - 1) {
-                result = result.concat(",");
-            }
-
-        }
-
-        System.out.print(result);
-        System.out.println();
-    }
-
-
 }

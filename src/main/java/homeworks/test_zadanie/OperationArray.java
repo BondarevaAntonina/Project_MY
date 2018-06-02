@@ -19,10 +19,6 @@ public class OperationArray {
         OperationArray operationArray = new OperationArray();
         operationArray.showMenuOperationArray();
 
-//        int[] data = {1, 4, 3, 2, 6, 7, 0, 0, 0,0};
-//        MyArrayList myArrayList = new MyArrayList();
-//        myArrayList.deleteElementByIndex(4);
-//        System.out.println(myArrayList.toString());
     }
 
     public void showMenuOperationArray() {
@@ -88,7 +84,7 @@ public class OperationArray {
                 break;
 
             case 6:
-                myArrayList.toString1();
+                myArrayList.printInRightOrder();
                 break;
 
             case 7:
@@ -97,6 +93,14 @@ public class OperationArray {
 
             case 8:
                 myArrayList.blisterSort();
+                break;
+
+            case 9:
+                myArrayList.addArrayToArray();
+                break;
+
+            case 10:
+                myArrayList.deleteDuplicat();
                 break;
 
             case 11:
