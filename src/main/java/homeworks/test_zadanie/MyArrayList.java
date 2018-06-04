@@ -130,20 +130,33 @@ public class MyArrayList {
 
     //7 - Output of elements to the console in the opposite direction
     public void printInReverseOrder() {
+        String result = "";
 
         for (int j = mArraylist.length - 1; j >= 0; j--) {
-            System.out.print(mArraylist[j]);
-        }
 
+            result = result.concat(String.valueOf(mArraylist[j]));
+
+            if (j != mArraylist.length + 1) {
+
+                result = result.concat(",");
+            }
+        }
+        System.out.print(result);
+        System.out.println();
     }
 
     //8 - Sorting sheet by bubble method
     public void blisterSort() {
         for (int i = mArraylist.length - 1; i > 0; i--) {
+
             for (int j = 0; j < i; j++) {
+
                 if (mArraylist[j] > mArraylist[j + 1]) {
+
                     int tmp = mArraylist[j];
+
                     mArraylist[j] = mArraylist[j + 1];
+
                     mArraylist[j + 1] = tmp;
                 }
             }
@@ -154,17 +167,62 @@ public class MyArrayList {
     //1 1 2 2 5 8 9 7
     public void deleteDuplicat() {
 
+        int n = mArraylist.length;
+
+        for (int i = 0, m = 0; i != n; i++, n = m) {
+
+            for (int j = m = i + 1; j != n; j++) {
+
+                if (mArraylist[j] != mArraylist[i]) {
+
+                    if (m != j) mArraylist[m] = mArraylist[j];
+                    m++;
+                }
+            }
+        }
+        if (n != mArraylist.length) {
+
+            int[] b = new int[n];
+
+            for (int i = 0; i < n; i++) b[i] = mArraylist[i];
+
+            mArraylist = b;
+        }
+
+        for (int x : mArraylist)
+
+            System.out.print(x + " ");
+            System.out.println();
+
+
     }
 
-    //    //9 - Adding an Array to an Array
-    public void addArrayToArray() {
+    //9 - Adding an Array to an Array
+    public void addArrayToArray(int newValue) {
+        //define the new array
+        int[] newArray = new int[mArraylist.length + 1];
+
+        //copy values into new array
+        for (int i = 0; i < mArraylist.length; i++) {
+            newArray[i] = mArraylist[i];
+        }
+        //another solution is to use
+        System.arraycopy(mArraylist, 0, newArray, 0, mArraylist.length);
+
+        //add new value to the new array
+        newArray[newArray.length - 1] = newValue;
+        //copy the address to the old reference
+        //the old array values will be deleted by the Garbage Collector
+        mArraylist = newArray;
+
+    }
 //        /*
 //        * array - 1 2 3 0 0 0 0 0, newArray - 4 5 6 -> 1 2 3 4 5 6 0 0
 //        * 1) Проверяем наличие места
 //        * 2) Если места достаточно - добавляем, нет - расширяем массив
 //        * 3) Начинать вставлять массив с первого нуля
 //        * */
-    }
+
 
     //11 - Searching for an element using the linear search method
     public void searchLinear(int item) {
@@ -173,6 +231,7 @@ public class MyArrayList {
 
         for (int d = 0; d < mArraylist.length; d++) {
             if (mArraylist[d] == item) {
+
                 System.out.println(item + " present oneself " + (d + 1) + " on account in an array");
 
                 isValue = true;
