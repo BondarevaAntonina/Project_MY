@@ -54,6 +54,7 @@ public class OperationArray {
             case 1:
                 System.out.println("Enter number ");
                 int number = SCANNER.nextInt();
+                System.out.print ("Inserted array elements:");
                 myArrayList.addElement(number);
                 break;
 
@@ -97,8 +98,8 @@ public class OperationArray {
 
             case 9:
                 System.out.println("Enter array length: ");
-
                 int size= SCANNER.nextInt();
+
                 myArrayList.addArrayToArray(size);
                 break;
 

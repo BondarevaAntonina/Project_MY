@@ -194,48 +194,36 @@ public class MyArrayList {
         for (int x : mArraylist)
 
             System.out.print(x + " ");
-            System.out.println();
+        System.out.println();
 
 
     }
 
     //9 - Adding an Array to an Array
-    public void addArrayToArray(int size) {
-        int newArray[] = new int[size];
+    public void addArrayToArray(int size) throws Exception {
+
+        if (size > mArraylist.length)
+            throw new Exception("The number of elements removed is greater than the array");
+
+        int newArray[] = new int[mArraylist.length + size];
         for (int i = 0; i < size; i++) {
             newArray[i] = SCANNER.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
         }
 
-        /*
-        Scanner input = new Scanner(System.in); // Объявляем Scanner
-    System.out.println("Enter array length: ");
-
-    int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
-    int array[] = new int[size]; // Создаём массив int размером в size
-    System.out.println("Insert array elements:");
-//    /*Пройдёмся по всему массиву, заполняя его*/
-//        for (int i = 0; i < size; i++) {
-//            array[i] = input.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
-//        }
-//        System.out.print ("Inserted array elements:");
-//        for (int i = 0; i < size; i++) {
-//            System.out.print (" " + array[i]); // Выводим на экран, полученный массив
-//        }
-//        System.out.println();
-//
-//         */
-
-        int length = 5;
-
-
+        System.out.print("Inserted array elements:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(" " + newArray[i]);
+        }
+        System.out.println();
 
 //        //define the new array
 //        int[] newArray = new int[mArraylist.length + 1];
 
         //copy values into new array
         for (int i = 0; i < mArraylist.length; i++) {
-            newArray[i] = mArraylist[i];
+            mArraylist[i] = newArray[i];
         }
+
         //another solution is to use
         System.arraycopy(mArraylist, 0, newArray, 0, mArraylist.length);
 
