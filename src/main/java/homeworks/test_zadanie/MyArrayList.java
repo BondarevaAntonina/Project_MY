@@ -207,7 +207,7 @@ public class MyArrayList {
 
         int newArray[] = new int[mArraylist.length + size];
         for (int i = 0; i < size; i++) {
-            newArray[i] = SCANNER.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
+            newArray[i] = SCANNER.nextInt();
         }
 
         System.out.print("Inserted array elements:");
