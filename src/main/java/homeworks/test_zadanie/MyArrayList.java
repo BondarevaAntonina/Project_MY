@@ -1,5 +1,7 @@
 package homeworks.test_zadanie;
 
+import static homeworks.test_zadanie.OperationArray.SCANNER;
+
 /**
  * Создать имитацию коллекции(с помощью массива) ArrayList для работы с типом int.
  * Создать класс с полем типа массив.
@@ -198,9 +200,37 @@ public class MyArrayList {
     }
 
     //9 - Adding an Array to an Array
-    public void addArrayToArray(int newValue) {
-        //define the new array
-        int[] newArray = new int[mArraylist.length + 1];
+    public void addArrayToArray(int size) {
+        int newArray[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            newArray[i] = SCANNER.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
+        }
+
+        /*
+        Scanner input = new Scanner(System.in); // Объявляем Scanner
+    System.out.println("Enter array length: ");
+
+    int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
+    int array[] = new int[size]; // Создаём массив int размером в size
+    System.out.println("Insert array elements:");
+//    /*Пройдёмся по всему массиву, заполняя его*/
+//        for (int i = 0; i < size; i++) {
+//            array[i] = input.nextInt(); // Заполняем массив элементами, введёнными с клавиатуры
+//        }
+//        System.out.print ("Inserted array elements:");
+//        for (int i = 0; i < size; i++) {
+//            System.out.print (" " + array[i]); // Выводим на экран, полученный массив
+//        }
+//        System.out.println();
+//
+//         */
+
+        int length = 5;
+
+
+
+//        //define the new array
+//        int[] newArray = new int[mArraylist.length + 1];
 
         //copy values into new array
         for (int i = 0; i < mArraylist.length; i++) {
@@ -210,7 +240,7 @@ public class MyArrayList {
         System.arraycopy(mArraylist, 0, newArray, 0, mArraylist.length);
 
         //add new value to the new array
-        newArray[newArray.length - 1] = newValue;
+        newArray[newArray.length - 1] = size;
         //copy the address to the old reference
         //the old array values will be deleted by the Garbage Collector
         mArraylist = newArray;

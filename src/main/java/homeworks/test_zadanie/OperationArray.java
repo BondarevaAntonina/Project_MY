@@ -96,9 +96,10 @@ public class OperationArray {
                 break;
 
             case 9:
-                System.out.println("Enter the elements of the new array");
-                int newValue= SCANNER.nextInt();
-                myArrayList.addArrayToArray(newValue);
+                System.out.println("Enter array length: ");
+
+                int size= SCANNER.nextInt();
+                myArrayList.addArrayToArray(size);
                 break;
 
             case 10:
