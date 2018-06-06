@@ -200,38 +200,32 @@ public class MyArrayList {
     }
 
     //9 - Adding an Array to an Array
-    public void addArrayToArray(int size) throws Exception {
-
-        if (size > mArraylist.length)
-            throw new Exception("The number of elements removed is greater than the array");
-
-        int newArray[] = new int[mArraylist.length + size];
-        for (int i = 0; i < size; i++) {
-            newArray[i] = SCANNER.nextInt();
+    public void addArrayToArray(int [] newarray) throws Exception {
+//1
+        int countZero = 0;
+        for(int i :  mArraylist) {
+            if (i == 0) countZero++;
         }
 
-        System.out.print("Inserted array elements:");
-        for (int i = 0; i < size; i++) {
-            System.out.print(" " + newArray[i]);
-        }
-        System.out.println();
 
-//        //define the new array
-//        int[] newArray = new int[mArraylist.length + 1];
-
-        //copy values into new array
-        for (int i = 0; i < mArraylist.length; i++) {
-            mArraylist[i] = newArray[i];
+//2 проверка наличия места
+        if(newarray.length >= countZero){
+            //места не достаточно
+            int[] tmpArray = new int[mArraylist.length + newarray.length - countZero];
+            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+            mArraylist = tmpArray;
         }
 
-        //another solution is to use
-        System.arraycopy(mArraylist, 0, newArray, 0, mArraylist.length);
-
-        //add new value to the new array
-        newArray[newArray.length - 1] = size;
-        //copy the address to the old reference
-        //the old array values will be deleted by the Garbage Collector
-        mArraylist = newArray;
+//3 Начинать вставлять массив с первого нуля
+        int newarrayindex = 0;
+        for(int i = 0; i<mArraylist.length; i++){
+            if(mArraylist[i] == 0){
+                mArraylist[i] = newarray[newarrayindex];
+                newarrayindex++;
+            }
+            if(newarrayindex >= newarray.length)
+                break;
+        }
 
     }
 //        /*
