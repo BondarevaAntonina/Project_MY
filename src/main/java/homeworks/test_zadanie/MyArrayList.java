@@ -165,6 +165,64 @@ public class MyArrayList {
         }
     }
 
+    //9 - Adding an Array to an Array
+    public void addArrayToArray() {
+
+        int size = SCANNER.nextInt();
+
+        int newArray[] = new int[mArraylist.length];
+
+        for (int i = 0; i < size; i++) {
+            newArray[i] = SCANNER.nextInt();
+        }
+
+        System.out.print("Inserted array elements:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(" " + newArray[i]);
+        }
+        System.out.println();
+
+        // Checking for space availability
+        int countZero = 0;
+
+        for (int i : mArraylist) {
+
+            if (i == 0) countZero++;
+        }
+
+        // Check availability
+        if (newArray.length >= countZero) {
+
+            //places are not enough
+            int[] tmpArray = new int[mArraylist.length + newArray.length - countZero];
+
+            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+
+            mArraylist = tmpArray;
+        }
+
+        // Begin to insert an array from the first zero
+        int newarrayindex = 0;
+
+        for (int i = 0; i < mArraylist.length; i++) {
+
+            if (mArraylist[i] == 0) {
+
+                mArraylist[i] = newArray[newarrayindex];
+
+                newarrayindex++;
+            }
+            if (newarrayindex >= newArray.length) break;
+        }
+
+    }
+//        /*
+//        * array - 1 2 3 0 0 0 0 0, newArray - 4 5 6 -> 1 2 3 4 5 6 0 0
+//        * 1) Проверяем наличие места
+//        * 2) Если места достаточно - добавляем, нет - расширяем массив
+//        * 3) Начинать вставлять массив с первого нуля
+//        * */
+
     //10 - Delete duplicates
     //1 1 2 2 5 8 9 7
     public void deleteDuplicat() {
@@ -198,42 +256,6 @@ public class MyArrayList {
 
 
     }
-
-    //9 - Adding an Array to an Array
-    public void addArrayToArray(int [] newarray) throws Exception {
-//1
-        int countZero = 0;
-        for(int i :  mArraylist) {
-            if (i == 0) countZero++;
-        }
-
-
-//2 проверка наличия места
-        if(newarray.length >= countZero){
-            //места не достаточно
-            int[] tmpArray = new int[mArraylist.length + newarray.length - countZero];
-            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
-            mArraylist = tmpArray;
-        }
-
-//3 Начинать вставлять массив с первого нуля
-        int newarrayindex = 0;
-        for(int i = 0; i<mArraylist.length; i++){
-            if(mArraylist[i] == 0){
-                mArraylist[i] = newarray[newarrayindex];
-                newarrayindex++;
-            }
-            if(newarrayindex >= newarray.length)
-                break;
-        }
-
-    }
-//        /*
-//        * array - 1 2 3 0 0 0 0 0, newArray - 4 5 6 -> 1 2 3 4 5 6 0 0
-//        * 1) Проверяем наличие места
-//        * 2) Если места достаточно - добавляем, нет - расширяем массив
-//        * 3) Начинать вставлять массив с первого нуля
-//        * */
 
 
     //11 - Searching for an element using the linear search method
