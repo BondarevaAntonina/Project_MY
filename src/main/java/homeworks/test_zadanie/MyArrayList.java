@@ -202,17 +202,17 @@ public class MyArrayList {
         }
 
         // Begin to insert an array from the first zero
-        int newarrayindex = 0;
+        int newarrayIndex = 0;
 
         for (int i = 0; i < mArraylist.length; i++) {
 
             if (mArraylist[i] == 0) {
 
-                mArraylist[i] = newArray[newarrayindex];
+                mArraylist[i] = newArray[newarrayIndex];
 
-                newarrayindex++;
+                newarrayIndex++;
             }
-            if (newarrayindex >= newArray.length) break;
+            if (newarrayIndex >= newArray.length) break;
         }
 
     }
