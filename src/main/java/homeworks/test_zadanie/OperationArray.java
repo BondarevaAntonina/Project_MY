@@ -16,6 +16,7 @@ public class OperationArray {
 
     public OperationArray() throws IOException {
         myArrayList = new MyArrayList();
+        //System.setOut();
     }
 
     public static void main(String[] args) throws IOException {
