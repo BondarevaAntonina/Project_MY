@@ -1,5 +1,8 @@
 package homeworks.test_zadanie;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -11,15 +14,38 @@ public class OperationArray {
 
     private MyArrayList myArrayList;
 
-    public OperationArray() {
+    public OperationArray() throws IOException {
         myArrayList = new MyArrayList();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+
         OperationArray operationArray = new OperationArray();
         operationArray.showMenuOperationArray();
 
+
+        FileReader fileReader = null;
+        FileWriter fileWriter = null;
+
+        try {
+            fileReader = new FileReader("LogsReader.txt");
+            fileWriter = new FileWriter("LogsWriter.txt");
+
+            int a;
+            while ((a = fileReader.read()) != -1) {
+                fileWriter.write(a);
+            }
+        } finally {
+            if (fileReader != null) {
+                fileReader.close();
+            }
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+        }
     }
+
 
     public void showMenuOperationArray() {
 
@@ -113,4 +139,5 @@ public class OperationArray {
         }
 
     }
+
 }
