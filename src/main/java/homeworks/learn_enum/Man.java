@@ -57,8 +57,10 @@ public class Man {
         return positionNEW;
     }
 
-    public String toString() {
+    public String showDataMan() {
+        System.out.println(name + " " + sex + " " + surname + " " + age + " " + positionNEW + " ");
         return name + " " + sex + " " + surname + " " + age + " " + positionNEW + " ";
+
     }
 }
 
@@ -87,7 +89,4 @@ enum Sex {
         shortName = name;
     }
 
-    public String getShortName() {
-        return shortName;
-    }
 }

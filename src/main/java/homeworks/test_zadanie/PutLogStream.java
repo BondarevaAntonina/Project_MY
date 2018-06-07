@@ -6,7 +6,7 @@ import java.io.*;
  * Created by antoni on 06.06.2018.
  */
 public class PutLogStream extends PrintStream {
-   // FileOutputStream out = new FileOutputStream("log.txt");
+   // FileOutputStream out = new FileOutputStream("LogsWriter.txt");
 
     public PutLogStream() {
         super(System.out);
@@ -17,7 +17,7 @@ public class PutLogStream extends PrintStream {
         super.println(x);
         FileOutputStream f;
         try {
-            f = new FileOutputStream("log.txt");
+            f = new FileOutputStream("LogsWriter.txt");
             byte[] contentInBytes = x.getBytes();
             f.write(contentInBytes);
             f.flush();
@@ -26,7 +26,4 @@ public class PutLogStream extends PrintStream {
             e.printStackTrace();
         }
     }
-
-
-
 }
