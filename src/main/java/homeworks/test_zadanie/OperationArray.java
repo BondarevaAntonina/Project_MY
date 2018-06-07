@@ -25,7 +25,7 @@ public class OperationArray {
         OperationArray operationArray = new OperationArray();
         operationArray.showMenuOperationArray();
 
-        }
+    }
 
 
     public void showMenuOperationArray() {
@@ -43,7 +43,8 @@ public class OperationArray {
                     "7 - Output of elements to the console in the opposite direction\n" +
                     "8 - Sorting sheet by bubble method\n" +
                     "9 - Adding an Array to an Array\n" +
-                    "10 - Delete duplicates\n" +
+                    "10 -Delete duplicates\n" +
+                    "11 -Searching for an element using the linear search method\n" +
                     "0 - Exit");
             try {
                 actionNumber = SCANNER.nextInt();
@@ -63,14 +64,14 @@ public class OperationArray {
 
                 int number = SCANNER.nextInt();
 
-                System.out.print ("Inserted array elements:");
+                System.out.print("Inserted array elements:");
 
                 myArrayList.addElement(number);
                 break;
 
             case 2:
                 System.out.println("Enter index");
-                int index  = SCANNER.nextInt();
+                int index = SCANNER.nextInt();
                 System.out.println("Enter element number");
                 int valueInd = SCANNER.nextInt();
                 myArrayList.changeElementByIndex(index, valueInd);
@@ -78,19 +79,19 @@ public class OperationArray {
 
             case 3:
                 System.out.println("Enter the index to delete");
-                int deleteIndex= SCANNER.nextInt();
+                int deleteIndex = SCANNER.nextInt();
                 myArrayList.deleteElementByIndex(deleteIndex);
                 break;
 
             case 4:
                 System.out.println("Enter a number to increase the array by a certain number of elements");
-                int addcount= SCANNER.nextInt();
+                int addcount = SCANNER.nextInt();
                 myArrayList.increaseArray(addcount);
                 break;
 
             case 5:
                 System.out.println("Enter a number to reducing the array by a certain number of elements");
-                int colelement= SCANNER.nextInt();
+                int colelement = SCANNER.nextInt();
                 myArrayList.decreaseArray(colelement);
                 break;
 
@@ -121,8 +122,8 @@ public class OperationArray {
                     System.out.print(" " + newArray[i]);
                 }
                 System.out.println();
-            myArrayList.addArrayToArray();
-            break;
+                myArrayList.addArrayToArray();
+                break;
 
             case 10:
                 myArrayList.deleteDuplicat();
@@ -130,8 +131,12 @@ public class OperationArray {
 
             case 11:
                 System.out.println("Enter a number");
-                int item= SCANNER.nextInt();
+                int item = SCANNER.nextInt();
                 myArrayList.searchLinear(item);
+                break;
+            case 12:
+                System.out.println("Enter a number");
+                myArrayList.resizeArray();
                 break;
         }
 

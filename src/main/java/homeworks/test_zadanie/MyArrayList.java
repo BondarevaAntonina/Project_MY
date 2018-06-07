@@ -303,6 +303,22 @@ public class MyArrayList {
         }
     }
 
+    
+    public void resizeArray() {
+
+        int size = 2;
+
+        int newCap = mArraylist.length * size;
+
+        int[] tmpArray = new int[newCap];
+
+        System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+
+        mArraylist = tmpArray;
+    }
+
+
+    
     private void writeLog(String log) {
         Path path = Paths.get("./Logs", "Logs.txt");
 
