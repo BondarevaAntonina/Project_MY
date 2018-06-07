@@ -1,5 +1,12 @@
 package homeworks.test_zadanie;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
+
 import static homeworks.test_zadanie.OperationArray.SCANNER;
 
 /**
@@ -18,8 +25,9 @@ import static homeworks.test_zadanie.OperationArray.SCANNER;
  * Начальную размерность листа юзер вводит с консоли. СДЕЛАНО
  * Создать меню для работы с листом из консоли.  СДЕЛАНО
  * Условие добавления: перезаписывать если элемент равен 0;
- * Все действия юзера записывать в файл с название LogsWriter.txt в формате дата + название метода + входящие параметры.
- * По запросу юзера выводить в консоль данные файла LogsWriter.txt.
+ * Все действия юзера записывать в файл с название Logs.txt в формате дата + название метода + входящие параметры.
+ * По запросу юзера выводить в консоль данные файла Logs.txt.
+ * Выводить логи в консоль по определенному методу.
  * При работе с файлами использовать класс Files. В задаче не использовать методы класса Arrays и коллекции, System class.
  * Создать меню.
  * ###############
@@ -45,9 +53,15 @@ public class MyArrayList {
     //1 - Add an item to the list
     public void addElement(int value) {
         if (value == 0) {
-            System.out.println();//
+            System.out.println("Enter ");//
             return;
         }
+
+        //resize array in 2 times
+
+        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + value;
+
+        writeLog(log);
 
         for (int i = 0; i < mArraylist.length; i++) {
             if (mArraylist[i] == 0) {
@@ -97,6 +111,7 @@ public class MyArrayList {
 
         //copy the new array values from the old one
         System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+
         mArraylist = tmpArray;
     }
 
@@ -126,8 +141,7 @@ public class MyArrayList {
 
         }
 
-        System.out.print(result);
-        System.out.println();
+        System.out.print(result + "\n");
     }
 
     //7 - Output of elements to the console in the opposite direction
@@ -143,8 +157,7 @@ public class MyArrayList {
                 result = result.concat(",");
             }
         }
-        System.out.print(result);
-        System.out.println();
+        System.out.print(result + "\n");
     }
 
     //8 - Sorting sheet by bubble method
@@ -225,6 +238,17 @@ public class MyArrayList {
 
     //10 - Delete duplicates
     //1 1 2 2 5 8 9 7
+
+    public void deleteDuplicatesNew() throws Exception {
+        for (int i = 0; i < mArraylist.length; i++) {
+            for (int j = 0; j < mArraylist.length; j++) {
+                if (mArraylist[i] == mArraylist[j]) {
+                    deleteElementByIndex(j);
+                }
+            }
+        }
+    }
+
     public void deleteDuplicat() {
 
         int n = mArraylist.length;
@@ -240,6 +264,7 @@ public class MyArrayList {
                 }
             }
         }
+
         if (n != mArraylist.length) {
 
             int[] b = new int[n];
@@ -275,6 +300,16 @@ public class MyArrayList {
         }
         if (!isValue) {
             System.out.println("Number " + item + " not found in array");
+        }
+    }
+
+    private void writeLog(String log) {
+        Path path = Paths.get("./Logs", "Logs.txt");
+
+        try {
+            Files.write(path, ("\n" + log).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

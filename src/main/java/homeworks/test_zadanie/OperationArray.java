@@ -25,27 +25,7 @@ public class OperationArray {
         OperationArray operationArray = new OperationArray();
         operationArray.showMenuOperationArray();
 
-
-        FileReader fileReader = null;
-        FileWriter fileWriter = null;
-
-        try {
-            fileReader = new FileReader("LogsReader.txt");
-            fileWriter = new FileWriter("LogsWriter.txt");
-
-            int a;
-            while ((a = fileReader.read()) != -1) {
-                fileWriter.write(a);
-            }
-        } finally {
-            if (fileReader != null) {
-                fileReader.close();
-            }
-            if (fileWriter != null) {
-                fileWriter.close();
-            }
         }
-    }
 
 
     public void showMenuOperationArray() {
@@ -80,8 +60,11 @@ public class OperationArray {
         switch (actionNumber) {
             case 1:
                 System.out.println("Enter number ");
+
                 int number = SCANNER.nextInt();
+
                 System.out.print ("Inserted array elements:");
+
                 myArrayList.addElement(number);
                 break;
 
@@ -125,8 +108,21 @@ public class OperationArray {
 
             case 9:
                 System.out.println("Enter array length: ");
-                myArrayList.addArrayToArray();
-                break;
+                int size = SCANNER.nextInt();
+
+                int newArray[] = new int[size];
+
+                for (int i = 0; i < size; i++) {
+                    newArray[i] = SCANNER.nextInt();
+                }
+
+                System.out.print("Inserted array elements:");
+                for (int i = 0; i < size; i++) {
+                    System.out.print(" " + newArray[i]);
+                }
+                System.out.println();
+            myArrayList.addArrayToArray();
+            break;
 
             case 10:
                 myArrayList.deleteDuplicat();
