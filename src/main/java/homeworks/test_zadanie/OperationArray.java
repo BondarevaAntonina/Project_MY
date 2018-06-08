@@ -107,9 +107,14 @@ public class OperationArray {
 
             case 9:
                 System.out.println("Enter array length: ");
+
                 int size = SCANNER.nextInt();
 
                 int newArray[] = new int[size];
+
+                for (int i = 0; i < size; i++) {
+                    newArray[i] = SCANNER.nextInt();
+                }
 
                 System.out.print("Inserted array elements:");
 
