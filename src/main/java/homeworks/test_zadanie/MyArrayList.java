@@ -167,7 +167,7 @@ public class MyArrayList {
 
         String result = "";
 
-        for (int i = 0; i < mArraylist.length; i++) {//fpreach
+        for (int i: mArraylist) {
 
             result = result.concat(String.valueOf(mArraylist[i]));
 
