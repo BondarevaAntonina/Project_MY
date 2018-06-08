@@ -43,7 +43,7 @@ public class MyArrayList {
     private int[] mArraylist;
 
     public MyArrayList() {
-        mArraylist = new int[3];//0
+        mArraylist = new int[10];//0
     }
 
     public void setArray(int[] array) {
