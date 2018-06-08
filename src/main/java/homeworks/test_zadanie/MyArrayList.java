@@ -227,13 +227,11 @@ public class MyArrayList {
     }
 
     //9 - Adding an Array to an Array
-    public void addArrayToArray() {
+    public void addArrayToArray(int size) {
 
-        String log = LocalDateTime.now() + "\taddArrayToArray" + "\t";
+        String log = LocalDateTime.now() + "\taddArrayToArray" + "\tincoming param -> " + size;
 
         writeLog(log);
-
-        int size = SCANNER.nextInt();
 
         int newArray[] = new int[mArraylist.length];
 

@@ -123,7 +123,7 @@ public class OperationArray {
                 }
                 System.out.println();
 
-                myArrayList.addArrayToArray();
+                myArrayList.addArrayToArray(size);
                 break;
 
             case 10:
