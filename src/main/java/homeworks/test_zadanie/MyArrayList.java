@@ -39,10 +39,11 @@ import static homeworks.test_zadanie.OperationArray.SCANNER;
 
 public class MyArrayList {
 
+
     private int[] mArraylist;
 
     public MyArrayList() {
-        mArraylist = new int[10];//0
+        mArraylist = new int[4];//0
     }
 
     public void setArray(int[] array) {
@@ -57,23 +58,46 @@ public class MyArrayList {
             return;
         }
 
-        //resize array in 2 times
 
-        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + value;
 
-        writeLog(log);
+//
+////        int countZero = 0;
+//        for (int i = 0; i < mArraylist.length; i++) {
+//            if (i == 0) {
+//                resizeArray();
+//            }
+//        }
 
-        for (int i = 0; i < mArraylist.length; i++) {
-            if (mArraylist[i] == 0) {
-                mArraylist[i] = value;
-                break;
+
+//        if(mArraylist.length >= countZero){
+//            //места не достаточно
+//            int[] tmpArray = new int[mArraylist.length + newarray.length - countZero];
+//            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+//            mArraylist = tmpArray;
+//        }
+
+
+            String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + value;
+
+            writeLog(log);
+            int countZero=0;
+            for (int i = 0; i < mArraylist.length; i++) {
+                if (mArraylist[i] == 0) {
+                    mArraylist[i] = value;
+                    break;
+                }
+//                if(i == mArraylist.length ){
+                if(mArraylist.length >= countZero){
+                    resizeArray();
+                }
             }
+
+            System.out.println();
         }
 
-        System.out.println();
-    }
 
-    //2 - create method for resizing array
+        //2 - create method for resizing array
+
     public void changeElementByIndex(int index, int value) {
 
         mArraylist[index] = value;
@@ -303,7 +327,7 @@ public class MyArrayList {
         }
     }
 
-    
+
     public void resizeArray() {
 
         int size = 2;
@@ -318,7 +342,6 @@ public class MyArrayList {
     }
 
 
-    
     private void writeLog(String log) {
         Path path = Paths.get("./Logs", "Logs.txt");
 
