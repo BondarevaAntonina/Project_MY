@@ -43,7 +43,7 @@ public class MyArrayList {
     private int[] mArraylist;
 
     public MyArrayList() {
-        mArraylist = new int[4];//0
+        mArraylist = new int[3];//0
     }
 
     public void setArray(int[] array) {
@@ -53,52 +53,39 @@ public class MyArrayList {
 
     //1 - Add an item to the list
     public void addElement(int value) {
+
         if (value == 0) {
-            System.out.println("Enter ");//
+
             return;
         }
 
+        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + value;
 
+        writeLog(log);
 
-//
-////        int countZero = 0;
-//        for (int i = 0; i < mArraylist.length; i++) {
-//            if (i == 0) {
-//                resizeArray();
-//            }
-//        }
+        resizeArray();
 
+        for (int i = 0; i < mArraylist.length; i++) {
 
-//        if(mArraylist.length >= countZero){
-//            //места не достаточно
-//            int[] tmpArray = new int[mArraylist.length + newarray.length - countZero];
-//            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
-//            mArraylist = tmpArray;
-//        }
+            if (mArraylist[i] == 0) {
 
+                mArraylist[i] = value;
 
-            String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + value;
-
-            writeLog(log);
-            int countZero=0;
-            for (int i = 0; i < mArraylist.length; i++) {
-                if (mArraylist[i] == 0) {
-                    mArraylist[i] = value;
-                    break;
-                }
-//                if(i == mArraylist.length ){
-                if(mArraylist.length >= countZero){
-                    resizeArray();
-                }
+                break;
             }
 
-            System.out.println();
         }
+        System.out.println();
+    }
 
 
-        //2 - create method for resizing array
+    //2 - create method for resizing array
 
     public void changeElementByIndex(int index, int value) {
+
+        String log = LocalDateTime.now() + "\tchangeElementByIndex" + "\tincoming param -> " + index + "\tincoming param -> " + value;
+
+        writeLog(log);
 
         mArraylist[index] = value;
     }
@@ -106,11 +93,18 @@ public class MyArrayList {
     //3 - Delete items by index
     public void deleteElementByIndex(int index) throws Exception {
 
+        String log = LocalDateTime.now() + "\tdeleteElementByIndex" + "\tincoming param -> " + index;
+
+        writeLog(log);
+
         if (index < 0) {
+
             throw new Exception("Index can't < 0");
+
         }
 
         if (index > mArraylist.length - 1) {
+
             throw new Exception("Index can't by > array size");
         }
 
@@ -130,6 +124,10 @@ public class MyArrayList {
     //4 - Increase the sheet by a specified number of elements
     public void increaseArray(int addcount) throws Exception {
 
+        String log = LocalDateTime.now() + "\tincreaseArray" + "\tincoming param -> " + addcount;
+
+        writeLog(log);
+
         //new array with values already added
         int[] tmpArray = new int[mArraylist.length + addcount];
 
@@ -142,34 +140,54 @@ public class MyArrayList {
     //5 - Reducing the sheet to a specified number of elements
     public void decreaseArray(int colelement) throws Exception {
 
+        String log = LocalDateTime.now() + "\tdecreaseArray" + "\tincoming param -> " + colelement;
+
+        writeLog(log);
+
         if (colelement > mArraylist.length)
             throw new Exception("The number of elements removed is greater than the array");
 
         int[] newArray = new int[mArraylist.length - colelement];
+
         for (int i = 0; i < mArraylist.length - colelement; i++) {
+
             newArray[i] = mArraylist[i];
         }
+
         mArraylist = newArray;
+
     }
 
     //6 - Output elements to the console in the forward and reverse order
     public void printInRightOrder() {
+
+        String log = LocalDateTime.now() + "\tprintInRightOrder" + "\t";
+
+        writeLog(log);
+
         String result = "";
+
         for (int i = 0; i < mArraylist.length; i++) {//fpreach
 
             result = result.concat(String.valueOf(mArraylist[i]));
 
             if (i != mArraylist.length - 1) {
+
                 result = result.concat(",");
             }
 
         }
 
-        System.out.print(result + "\n");
+        System.out.print("The array consists of: " + result + "\n");
     }
 
     //7 - Output of elements to the console in the opposite direction
     public void printInReverseOrder() {
+
+        String log = LocalDateTime.now() + "\tprintInReverseOrder" + "\t";
+
+        writeLog(log);
+
         String result = "";
 
         for (int j = mArraylist.length - 1; j >= 0; j--) {
@@ -186,6 +204,11 @@ public class MyArrayList {
 
     //8 - Sorting sheet by bubble method
     public void blisterSort() {
+
+        String log = LocalDateTime.now() + "\tblisterSort" + "\t";
+
+        writeLog(log);
+
         for (int i = mArraylist.length - 1; i > 0; i--) {
 
             for (int j = 0; j < i; j++) {
@@ -205,6 +228,10 @@ public class MyArrayList {
     //9 - Adding an Array to an Array
     public void addArrayToArray() {
 
+        String log = LocalDateTime.now() + "\taddArrayToArray" + "\t";
+
+        writeLog(log);
+
         int size = SCANNER.nextInt();
 
         int newArray[] = new int[mArraylist.length];
@@ -214,7 +241,9 @@ public class MyArrayList {
         }
 
         System.out.print("Inserted array elements:");
+
         for (int i = 0; i < size; i++) {
+
             System.out.print(" " + newArray[i]);
         }
         System.out.println();
@@ -228,6 +257,7 @@ public class MyArrayList {
         }
 
         // Check availability
+
         if (newArray.length >= countZero) {
 
             //places are not enough
@@ -260,59 +290,39 @@ public class MyArrayList {
 //        * 3) Начинать вставлять массив с первого нуля
 //        * */
 
-    //10 - Delete duplicates
-    //1 1 2 2 5 8 9 7
 
-    public void deleteDuplicatesNew() throws Exception {
+    //10 - Delete duplicates
+
+    public void deleteDuplicates() throws Exception {
+
+        String log = LocalDateTime.now() + "\tdeleteDuplicates" + "\t";
+
+        writeLog(log);
+
         for (int i = 0; i < mArraylist.length; i++) {
+
             for (int j = 0; j < mArraylist.length; j++) {
+
                 if (mArraylist[i] == mArraylist[j]) {
+
                     deleteElementByIndex(j);
                 }
             }
         }
     }
 
-    public void deleteDuplicat() {
-
-        int n = mArraylist.length;
-
-        for (int i = 0, m = 0; i != n; i++, n = m) {
-
-            for (int j = m = i + 1; j != n; j++) {
-
-                if (mArraylist[j] != mArraylist[i]) {
-
-                    if (m != j) mArraylist[m] = mArraylist[j];
-                    m++;
-                }
-            }
-        }
-
-        if (n != mArraylist.length) {
-
-            int[] b = new int[n];
-
-            for (int i = 0; i < n; i++) b[i] = mArraylist[i];
-
-            mArraylist = b;
-        }
-
-        for (int x : mArraylist)
-
-            System.out.print(x + " ");
-        System.out.println();
-
-
-    }
-
 
     //11 - Searching for an element using the linear search method
     public void searchLinear(int item) {
 
+        String log = LocalDateTime.now() + "\tsearchLinear" + "\tincoming param -> " + item;
+
+        writeLog(log);
+
         boolean isValue = false;
 
         for (int d = 0; d < mArraylist.length; d++) {
+
             if (mArraylist[d] == item) {
 
                 System.out.println(item + " present oneself " + (d + 1) + " on account in an array");
@@ -323,6 +333,7 @@ public class MyArrayList {
             }
         }
         if (!isValue) {
+
             System.out.println("Number " + item + " not found in array");
         }
     }
@@ -330,25 +341,37 @@ public class MyArrayList {
 
     public void resizeArray() {
 
+        String log = LocalDateTime.now() + "\tresizeArray" + "\t";
+
+        writeLog(log);
+
         int size = 2;
 
-        int newCap = mArraylist.length * size;
+        if (mArraylist[mArraylist.length - 1] != 0) {
 
-        int[] tmpArray = new int[newCap];
+            int newSize = mArraylist.length * size;
 
-        System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+            int[] tmpArray = new int[newSize];
 
-        mArraylist = tmpArray;
+            System.arraycopy(mArraylist, 0, tmpArray, 0, mArraylist.length);
+
+            mArraylist = tmpArray;
+        }
     }
 
 
     private void writeLog(String log) {
+
         Path path = Paths.get("./Logs", "Logs.txt");
 
         try {
+
             Files.write(path, ("\n" + log).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+
         } catch (IOException e) {
+
             e.printStackTrace();
+
         }
     }
 }

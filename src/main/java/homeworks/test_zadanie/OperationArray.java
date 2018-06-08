@@ -1,7 +1,5 @@
 package homeworks.test_zadanie;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -64,7 +62,7 @@ public class OperationArray {
 
                 int number = SCANNER.nextInt();
 
-                System.out.print("Inserted array elements:");
+                System.out.print("Inserted array elements: " +  number);
 
                 myArrayList.addElement(number);
                 break;
@@ -126,7 +124,7 @@ public class OperationArray {
                 break;
 
             case 10:
-                myArrayList.deleteDuplicat();
+                myArrayList.deleteDuplicates();
                 break;
 
             case 11:
