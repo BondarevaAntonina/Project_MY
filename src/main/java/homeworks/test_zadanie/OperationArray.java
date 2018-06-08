@@ -119,11 +119,12 @@ public class OperationArray {
                 System.out.print("Inserted array elements:");
 
                 for (int i = 0; i < size; i++) {
+
                     System.out.print(" " + newArray[i]);
                 }
                 System.out.println();
 
-                myArrayList.addArrayToArray(size);
+                myArrayList.addArrayToArray(newArray);
                 break;
 
             case 10:

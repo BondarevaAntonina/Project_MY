@@ -161,14 +161,13 @@ public class MyArrayList {
     //6 - Output elements to the console in the forward and reverse order
     public void printInRightOrder() {
 
-        String log = LocalDateTime.now() + "\tprintInRightOrder" + "\t";
+        String log = LocalDateTime.now() + "\tprintInRightOrder";
 
         writeLog(log);
 
         String result = "";
 
-
-        for (int i: mArraylist) {
+        for (int i = 0; i < mArraylist.length; i++) {
 
             result = result.concat(String.valueOf(mArraylist[i]));
 
@@ -227,25 +226,12 @@ public class MyArrayList {
     }
 
     //9 - Adding an Array to an Array
-    public void addArrayToArray(int size) {
+    public void addArrayToArray(int[] newArray) {
 
-        String log = LocalDateTime.now() + "\taddArrayToArray" + "\tincoming param -> " + size;
+        String log = LocalDateTime.now() + "\taddArrayToArray" + "\tincoming param -> " + newArray;
 
         writeLog(log);
 
-        int newArray[] = new int[mArraylist.length];
-
-        for (int i = 0; i < size; i++) {
-            newArray[i] = SCANNER.nextInt();
-        }
-
-        System.out.print("Inserted array elements:");
-
-        for (int i = 0; i < size; i++) {
-
-            System.out.print(" " + newArray[i]);
-        }
-        System.out.println();
 
         // Checking for space availability
         int countZero = 0;
@@ -280,6 +266,7 @@ public class MyArrayList {
             }
             if (newarrayIndex >= newArray.length) break;
         }
+
 
     }
 //        /*
