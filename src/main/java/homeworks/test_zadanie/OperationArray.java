@@ -111,15 +111,13 @@ public class OperationArray {
 
                 int newArray[] = new int[size];
 
-                for (int i = 0; i < size; i++) {
-                    newArray[i] = SCANNER.nextInt();
-                }
-
                 System.out.print("Inserted array elements:");
+
                 for (int i = 0; i < size; i++) {
                     System.out.print(" " + newArray[i]);
                 }
                 System.out.println();
+
                 myArrayList.addArrayToArray();
                 break;
 

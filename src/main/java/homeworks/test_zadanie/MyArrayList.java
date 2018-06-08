@@ -167,6 +167,7 @@ public class MyArrayList {
 
         String result = "";
 
+
         for (int i: mArraylist) {
 
             result = result.concat(String.valueOf(mArraylist[i]));
