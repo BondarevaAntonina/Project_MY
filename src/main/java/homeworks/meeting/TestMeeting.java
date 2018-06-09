@@ -72,7 +72,6 @@ public class TestMeeting {
                 String city = sc.nextLine();
 
                 personService.addMan(age, shortName, name, surname, children, city);
-
                 break;
 
 

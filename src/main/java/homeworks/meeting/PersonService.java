@@ -20,12 +20,11 @@ public class PersonService {
 
     public void addMan(int age, String shortName, String name, String surname, int children, String city) {
 
-        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + age + shortName + name + surname + children + city;
+        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + age + "" + shortName + "" + name + "" + surname + "" + children + "" + city + "";
 
         writeLog(log);
 
         if (age == 0) {
-
             return;
         }
 
