@@ -7,7 +7,8 @@ public class PersonService {
         men = new Man[10];
     }
 
-    public void addMan(Man man) {
+//Регистрироваться человеку старше 18 лет
+    public void addMan() {
 
     }
 }
