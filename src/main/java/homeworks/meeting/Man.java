@@ -20,6 +20,10 @@ public class Man {
     private int children;
     private String city;
 
+    public String getCity() {
+        return city;
+    }
+
     public Man(Sex sex, String name, String surname, int age, int children, String city) {
         this.sex = sex;
         this.name = name;
@@ -29,6 +33,7 @@ public class Man {
         this.city = city;
 
     }
+
 
     public Sex getSex() {
         return sex;
@@ -48,6 +53,12 @@ public class Man {
 
     public int getChildren() {
         return children;
+    }
+
+    public String showDataPerson() {
+        System.out.println(name + " " + surname + " " + sex + " " + age + " " + children + " " + city + " ");
+        return name + " " + surname + " " + sex + " " + age + " " + children + " " + city + " ";
+
     }
 }
 
