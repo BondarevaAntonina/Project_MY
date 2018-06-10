@@ -28,6 +28,11 @@ public class TestMeeting {
         do {
             System.out.println("------- Dating for dating -------\n" +
                     "1 - To be registered to the person is more senior 18 years\n" +
+                    "2 - After registration, list the suitable men / women for this person by age\n" +
+                    "3 - View people who have registered. For men, only women\n" +
+                    "4 - View people who have registered. For women, only men\n" +
+                    "5 - View the profile of an individual (search by name and surname)\n" +
+                    "6 - Organize \"smart search\". The user enters requirements (city, gender, age, number of children) and displays people who meet the requirements\n" +
                     "0 - Exit");
             try {
                 userActionNumber = SCANNER.nextInt();
@@ -71,7 +76,7 @@ public class TestMeeting {
 
                 String city = sc.nextLine();
 
-                personService.addMan(age, shortName, name, surname, children, city);
+                personService.addPersonWithMaxAge(age, shortName, name, surname, children, city);
                 break;
 
 

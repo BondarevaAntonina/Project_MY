@@ -18,21 +18,22 @@ public class PersonService {
 
 //Регистрироваться человеку старше 18 лет
 
-    public void addMan(int age, String shortName, String name, String surname, int children, String city) {
+    public void addPersonWithMaxAge(int age, String shortName, String name, String surname, int children, String city) {
 
-        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + age  + shortName  + name  + surname  + children + city;
+        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + age + shortName + name + surname + children + city;
 
         writeLog(log);
 
-        if (age == 0) {
-            return;
-        }
+        Man result = null;
 
-        for (int i = 0; i < men.length; i++) {
-            if (age >= 18) {
-                break;
+        for (int i = 0; i < age; i++) {
+
+            if (result == null || result.getAge() < this.men[i].getAge()) {
+
+                result = this.men[i];
             }
         }
+//        return result;
     }
 
 
