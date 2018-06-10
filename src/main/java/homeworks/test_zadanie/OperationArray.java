@@ -140,6 +140,7 @@ public class OperationArray {
                 System.out.println("Enter a number");
                 myArrayList.resizeArray();
                 break;
+
         }
 
     }

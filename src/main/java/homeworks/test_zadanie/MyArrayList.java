@@ -1,6 +1,8 @@
 package homeworks.test_zadanie;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -331,11 +333,9 @@ public class MyArrayList {
 
         writeLog(log);
 
-        int size = 2;
-
         if (mArraylist[mArraylist.length - 1] != 0) {
 
-            int newSize = mArraylist.length * size;
+            int newSize = mArraylist.length * 2;
 
             int[] tmpArray = new int[newSize];
 
@@ -360,4 +360,6 @@ public class MyArrayList {
 
         }
     }
+
+
 }

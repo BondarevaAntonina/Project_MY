@@ -1,6 +1,8 @@
 package homeworks.meeting;
 
 
+import homeworks.learn_enum.Sex;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -50,7 +52,7 @@ public class TestMeeting {
         switch (userActionNumber) {
 
             //1 - To be registered to the person is more senior 18 years
-            case 1:
+            case 1: {
 
                 System.out.print("Enter the person's age:");
 
@@ -58,7 +60,7 @@ public class TestMeeting {
 
                 System.out.print("Enter the person's gender:");
 
-                String shortName = sc.nextLine();
+                Sex sex = Sex.valueOf(sc.nextLine().toUpperCase());
 
                 System.out.println("Enter the person's name:");
 
@@ -76,10 +78,21 @@ public class TestMeeting {
 
                 String city = sc.nextLine();
 
-                personService.addPersonWithMaxAge(age, shortName, name, surname, children, city);
+                Man man = new Man(sex, name, surname, age, children, city);
+
+                personService.addPersonWithMaxAge(man);
                 break;
+            }
 
+            case 2:
 
+            System.out.print("Enter genter man");
+
+            Sex sex = Sex.valueOf(sc.nextLine().toUpperCase());
+
+            personService.showRegistrationPerson(sex);
+
+            break;
         }
     }
 }

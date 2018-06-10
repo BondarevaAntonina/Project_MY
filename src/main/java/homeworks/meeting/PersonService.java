@@ -1,13 +1,9 @@
 package homeworks.meeting;
 
+
 import homeworks.learn_enum.Sex;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class PersonService {
     private Man[] men;
@@ -18,32 +14,59 @@ public class PersonService {
 
 //Регистрироваться человеку старше 18 лет
 
-    public void addPersonWithMaxAge(int age, String shortName, String name, String surname, int children, String city) {
+    public void addPersonWithMaxAge(Man man) {
 
-        String log = LocalDateTime.now() + "\taddElement" + "\tincoming param -> " + age + shortName + name + surname + children + city;
+        if (man.getAge() <= 18) {
+            System.out.println();
 
-        writeLog(log);
+            return;
+        }
 
-        Man result = null;
+        for (int i = 0; i < men.length; i++) {
 
-        for (int i = 0; i < age; i++) {
-
-            if (result == null || result.getAge() < this.men[i].getAge()) {
-
-                result = this.men[i];
+            if (Objects.isNull(men[i])) {
+                men[i] = man;
+                break;
             }
         }
-//        return result;
+
+        showSuitablePersonsByAgeAndSex(man);
     }
 
+    private void showSuitablePersonsByAgeAndSex(Man man) {
+        for (Man temp : men) {
+            if (temp.getAge() == man.getAge() && temp.getSex() != man.getSex()) {
+                man.showDataPerson();
+            }
+        }
+    }
 
-    private void writeLog(String log) {
+    // Просматривать зарегистрировавшихся людей. Для мужчин выводить только женщин и наоборот.
+    public void showRegistrationPerson(Sex sex) {
+        for (Man man : men) {
+            if (sex != man.getSex()) {
+                man.showDataPerson();
+            }
+        }
 
-        Path path = Paths.get("./Logs", "Logs.txt");
-        try {
-            Files.write(path, ("\n" + log).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
-        } catch (IOException e) {
-            e.printStackTrace();
+    }
+
+    //Просматривать анкету отдельного человека(поиск по имени и фамилии)
+    public void searchManByFirstNameAndLastName(String name, String surname) {
+        for (Man man : men) {
+            if (man.getName().equals(name) && man.getSurname().equals(surname)) {
+                man.showDataPerson();
+            }
+        }
+    }
+
+    //Организовать "умный поиск". Пользователь вводит требования(город, пол, возраст, количество детей)
+    //   и  выводить людей, которые соответствуют требованиям
+    public void smartSearchCitySexAgeChildren(String city, Sex sex, int age, int children) {
+        for (Man man : men) {
+            if (man.getCity().equals(city) && sex == man.getSex() && age==man.getAge() && children== man.getChildren()) {
+                man.showDataPerson();
+            }
         }
     }
 }
