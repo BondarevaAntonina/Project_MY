@@ -52,6 +52,7 @@ public class OperationArray {
                 actionNumber = -1;
             }
         } while (actionNumber != 0);
+
     }
 
     public void doAction(int actionNumber) throws Exception {
@@ -137,6 +138,10 @@ public class OperationArray {
                 myArrayList.searchLinear(item);
                 break;
 
+            case 12:
+                System.out.println("Log output for all methods");
+                myArrayList.readLogs();
+                break;
         }
 
     }

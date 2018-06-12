@@ -33,20 +33,20 @@ public class WorkWithFiles {
 //        List<String> strings = Files.readAllLines(path);
     }
 
-
-
-    private static void readUsingBufferedReader(String fileName, Charset cs) throws IOException {
+    private static void readUsingFileReader(String fileName) throws IOException {
         File file = new File(fileName);
-        FileInputStream fis = new FileInputStream(file);
-        InputStreamReader isr = new InputStreamReader(fis, cs);
-        BufferedReader br = new BufferedReader(isr);
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
         String line;
         while((line = br.readLine()) != null){
+            //обрабатываем считанную строку - пишем ее в консоль
             System.out.println(line);
         }
         br.close();
+        fr.close();
 
     }
+
 
     private static void readUsingBufferedReaderJava7(String fileName, Charset cs) throws IOException {
         Path path = Paths.get(fileName);
@@ -59,14 +59,7 @@ public class WorkWithFiles {
     }
 
 
-    private static void readUsingScanner(String fileName) throws IOException {
-        Path path = Paths.get(fileName);
-        Scanner scanner = new Scanner(path);
-        //читаем построчно
-        while(scanner.hasNextLine()){
-            String line = scanner.nextLine();
-        }
-    }
+
 
     private static void readUsingFiles(String fileName) throws IOException {
 

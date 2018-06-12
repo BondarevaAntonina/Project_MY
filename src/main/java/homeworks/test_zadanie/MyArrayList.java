@@ -1,13 +1,15 @@
 package homeworks.test_zadanie;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
 
 import static homeworks.test_zadanie.OperationArray.SCANNER;
 
@@ -361,6 +363,22 @@ public class MyArrayList {
 
         }
     }
+
+    public static void readLogs() throws IOException {
+        Path path = Paths.get("./Logs", "Logs.txt");
+
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+
+            String line;
+
+            while (Objects.nonNull(line = reader.readLine())) {
+                System.out.println(line);
+            }
+        }
+    }
+
+
+
 
 
 }
