@@ -378,7 +378,15 @@ public class MyArrayList {
     }
 
 
+    public void readLogsIndicatedByMethod(String metod) throws IOException {
+        Path path = Paths.get("./Logs", "Logs.txt");
 
+        try (BufferedReader reader = Files.newBufferedReader(path)) {
+            String line;
 
-
+            while (Objects.nonNull(line = reader.readLine()) ) {
+                System.out.println(line);
+            }
+        }
+    }
 }

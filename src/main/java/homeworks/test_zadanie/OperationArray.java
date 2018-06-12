@@ -50,13 +50,14 @@ public class OperationArray {
             } catch (Exception e) {
                 System.out.println("Ошибка ввода: " + e);
                 actionNumber = -1;
+                e.printStackTrace();
             }
         } while (actionNumber != 0);
 
     }
 
     public void doAction(int actionNumber) throws Exception {
-
+        Scanner sc = new Scanner(System.in);
         switch (actionNumber) {
             case 1:
                 System.out.println("Enter number ");
@@ -142,6 +143,12 @@ public class OperationArray {
                 System.out.println("Log output for all methods");
                 myArrayList.readLogs();
                 break;
+            case 13:
+                System.out.println("Enter the name of the method for viewing logs");
+                String metod = sc.nextLine();
+                myArrayList.readLogsIndicatedByMethod(metod);
+                break;
+
         }
 
     }

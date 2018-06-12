@@ -1,8 +1,67 @@
 
-2018-06-12T17:44:59.183	addElement	incoming param -> 34
-2018-06-12T17:44:59.259	resizeArray	
-2018-06-12T17:45:01.313	addElement	incoming param -> 4
-2018-06-12T17:45:01.316	resizeArray	
-2018-06-12T17:45:05.934	addElement	incoming param -> 78
-2018-06-12T17:45:05.937	resizeArray	
-2018-06-12T17:45:09.197	printInRightOrder
+2018-06-12T20:48:37.755	addElement	incoming param -> 312
+2018-06-12T20:48:37.828	resizeArray	
+2018-06-12T20:48:41.323	addElement	incoming param -> 75
+2018-06-12T20:48:41.324	resizeArray	
+2018-06-12T20:48:44.677	addElement	incoming param -> 79
+2018-06-12T20:48:44.678	resizeArray	
+2018-06-12T20:48:48.356	addElement	incoming param -> 4
+2018-06-12T20:48:48.357	resizeArray	
+2018-06-12T20:48:51.669	printInRightOrder
+2018-06-12T20:48:57.190	addElement	incoming param -> 49
+2018-06-12T20:48:57.191	resizeArray	
+2018-06-12T20:48:58.917	printInRightOrder
+2018-06-12T20:51:28.600	addElement	incoming param -> 12
+2018-06-12T20:51:28.672	resizeArray	
+2018-06-12T20:51:31.922	addElement	incoming param -> 5
+2018-06-12T20:51:31.923	resizeArray	
+2018-06-12T20:51:33.851	addElement	incoming param -> 7
+2018-06-12T20:51:33.852	resizeArray	
+2018-06-12T20:51:37.363	printInRightOrder
+2018-06-12T21:00:51.163	addElement	incoming param -> 2
+2018-06-12T21:00:51.233	resizeArray	
+2018-06-12T21:00:53.815	addElement	incoming param -> 4
+2018-06-12T21:00:53.815	resizeArray	
+2018-06-12T21:00:55.647	printInRightOrder
+2018-06-12T21:10:29.459	addElement	incoming param -> 32
+2018-06-12T21:10:29.530	resizeArray	
+2018-06-12T21:10:44.833	addElement	incoming param -> 23
+2018-06-12T21:10:44.903	resizeArray	
+2018-06-12T21:10:47.142	addElement	incoming param -> 43
+2018-06-12T21:10:47.143	resizeArray	
+2018-06-12T21:10:49.204	printInRightOrder
+2018-06-12T21:18:31.141	addElement	incoming param -> 23
+2018-06-12T21:18:31.211	resizeArray	
+2018-06-12T21:18:33.590	addElement	incoming param -> 32
+2018-06-12T21:18:33.591	resizeArray	
+2018-06-12T21:18:34.990	printInRightOrder
+2018-06-12T21:21:52.657	addElement	incoming param -> 23
+2018-06-12T21:21:52.717	resizeArray	
+2018-06-12T21:27:16.371	addElement	incoming param -> 21
+2018-06-12T21:27:16.461	resizeArray	
+2018-06-12T21:27:40.204	addElement	incoming param -> 34
+2018-06-12T21:27:40.204	resizeArray	
+2018-06-12T21:27:50.604	printInRightOrder
+2018-06-12T21:34:00.995	addElement	incoming param -> 3
+2018-06-12T21:34:01.076	resizeArray	
+2018-06-12T21:34:12.340	addElement	incoming param -> 2
+2018-06-12T21:34:12.410	resizeArray	
+2018-06-12T21:34:14.824	addElement	incoming param -> 3
+2018-06-12T21:34:14.825	resizeArray	
+2018-06-12T21:34:17.157	addElement	incoming param -> 7
+2018-06-12T21:34:17.157	resizeArray	
+2018-06-12T21:34:18.267	printInRightOrder
+2018-06-12T21:35:45.431	addElement	incoming param -> 2
+2018-06-12T21:35:45.511	resizeArray	
+2018-06-12T21:35:57.544	addElement	incoming param -> 23
+2018-06-12T21:35:57.554	resizeArray	
+2018-06-12T21:39:25.780	addElement	incoming param -> 21
+2018-06-12T21:39:25.840	resizeArray	
+2018-06-12T21:39:28.152	addElement	incoming param -> 32
+2018-06-12T21:39:28.152	resizeArray	
+2018-06-12T21:39:29.492	printInRightOrder
+2018-06-12T21:42:14.346	addElement	incoming param -> 3
+2018-06-12T21:42:14.416	resizeArray	
+2018-06-12T21:42:16.503	addElement	incoming param -> 4
+2018-06-12T21:42:16.503	resizeArray	
+2018-06-12T21:42:17.669	printInRightOrder
