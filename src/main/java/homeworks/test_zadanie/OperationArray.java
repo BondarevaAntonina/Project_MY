@@ -136,10 +136,6 @@ public class OperationArray {
                 int item = SCANNER.nextInt();
                 myArrayList.searchLinear(item);
                 break;
-            case 12:
-                System.out.println("Enter a number");
-                myArrayList.resizeArray();
-                break;
 
         }
 

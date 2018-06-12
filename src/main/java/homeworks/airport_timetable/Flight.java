@@ -5,5 +5,6 @@ package homeworks.airport_timetable;
  *
  *
  */
-public class Airport {
+public class Flight {
+
 }

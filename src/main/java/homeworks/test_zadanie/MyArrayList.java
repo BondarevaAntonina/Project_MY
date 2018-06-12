@@ -65,6 +65,7 @@ public class MyArrayList {
 
         writeLog(log);
 
+
         resizeArray();
 
         for (int i = 0; i < mArraylist.length; i++) {
