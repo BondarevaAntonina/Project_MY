@@ -87,7 +87,7 @@ public class TestMeeting {
             //2 - After registration, list the suitable men / women for this person by age
             case 2: {
 
-                System.out.print("Enter genter man");
+                System.out.print("Enter genter man: ");
 
                 Sex sex = Sex.valueOf(sc.nextLine().toUpperCase());
 
@@ -100,7 +100,7 @@ public class TestMeeting {
             // View people who have registered. For men, only women should be removed and vice versa
             case 3: {
 
-                System.out.print("Enter genter man");
+                System.out.print("Enter genter man: ");
 
                 Sex sex = Sex.valueOf(sc.nextLine().toUpperCase());
 

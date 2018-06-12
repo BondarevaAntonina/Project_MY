@@ -3,7 +3,7 @@ package homeworks.meeting;
 
 import homeworks.learn_enum.Sex;
 
-import java.time.LocalDateTime;
+
 import java.util.Objects;
 
 public class PersonService {
@@ -12,6 +12,7 @@ public class PersonService {
     public PersonService() {
         men = new Man[10];
     }
+
 //1
 //Регистрироваться человеку старше 18 лет
 
@@ -19,7 +20,7 @@ public class PersonService {
 
         resizeArray();
 
-        if (man.getAge() <= 18) {
+        if (man.getAge() < 18) {
             System.out.println();
 
             return;
@@ -70,7 +71,7 @@ public class PersonService {
 
                 man.showDataPerson();
             }
-            man.showDataPerson();
+//            man.showDataPerson();
         }
     }
 
@@ -100,8 +101,6 @@ public class PersonService {
 
             men = tmpArray;
         }
-
-
     }
 
 }
