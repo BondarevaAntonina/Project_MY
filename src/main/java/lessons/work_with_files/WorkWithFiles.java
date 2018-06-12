@@ -6,15 +6,17 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class WorkWithFiles {
+    public String fileName = "/Logs/logs.txt";
+
     public static void main(String[] args) throws IOException {
 
         Path path = Paths.get("./Logs", "logs.txt");
+
 
 //        Files.write(path, "Hello1".getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
 
@@ -31,19 +33,6 @@ public class WorkWithFiles {
 //        List<String> strings = Files.readAllLines(path);
     }
 
-    private static void readUsingFileReader(String fileName) throws IOException {
-        File file = new File(fileName);
-        FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
-        String line;
-        while((line = br.readLine()) != null){
-            //обрабатываем считанную строку - пишем ее в консоль
-            System.out.println(line);
-        }
-        br.close();
-        fr.close();
-
-    }
 
 
     private static void readUsingBufferedReader(String fileName, Charset cs) throws IOException {
@@ -80,6 +69,7 @@ public class WorkWithFiles {
     }
 
     private static void readUsingFiles(String fileName) throws IOException {
+
         Path path = Paths.get(fileName);
         //считываем содержимое файла в массив байт
         byte[] bytes = Files.readAllBytes(path);
