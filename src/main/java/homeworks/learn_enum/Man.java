@@ -24,15 +24,7 @@ public class Man {
     //private Position position;
     private PositionNEW positionNEW;
 
-/*
-    public Man(Sex sex, String name, String surname, int age, Position position) {
-        this.sex = sex;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.position = position;
 
-    }*/
 
     public Man(Sex sex, String name, String surname, int age, PositionNEW position) {
         this.sex = sex;
