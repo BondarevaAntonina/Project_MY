@@ -52,7 +52,7 @@ public class Flight {
     }
 
 
-    public void showDataMan() {
+    public void showDataAirport() {
         String dataFlight= nameFlight + " " + departureCityName + " " + cityName + " " + cityName + " " + numberSeats + " " + timeInFlight + " ";
         System.out.println(dataFlight);
 
