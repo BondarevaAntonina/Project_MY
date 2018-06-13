@@ -384,8 +384,10 @@ public class MyArrayList {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line;
 
-            while (Objects.nonNull(line = reader.readLine()) ) {
-                System.out.println(line);
+            while (Objects.nonNull(line = reader.readLine()))  {
+                if (line.contains(metod)) {
+                    System.out.println(line);
+                }
             }
         }
     }
