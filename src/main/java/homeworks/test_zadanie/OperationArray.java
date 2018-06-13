@@ -146,7 +146,7 @@ public class OperationArray {
             case 13:
                 System.out.println("Enter the name of the method for viewing logs");
                 String metod = sc.nextLine();
-                myArrayList.readLogsIndicatedByMethod(metod);
+                myArrayList.readLogsByMethod(metod);
                 break;
 
         }
