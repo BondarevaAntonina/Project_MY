@@ -16,6 +16,7 @@ import java.util.Objects;
  */
 public class AirportService {
 
+
     private Flight[] flights;
 
     public AirportService() {
@@ -23,15 +24,19 @@ public class AirportService {
     }
 
     //
-    public void addFlight(Flight flights) {
+    public void addFlight(Flight flight) {
 
         resizeMassive();
 
+        for (Flight temp: flights){
+            System.out.println(temp);
+        }
 
-
+        flight.showDataAirport();
 
 
     }
+
 
 
     public void resizeMassive() {
