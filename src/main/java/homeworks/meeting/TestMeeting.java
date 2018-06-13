@@ -54,27 +54,27 @@ public class TestMeeting {
             //1 - To be registered to the person is more senior 18 years
             case 1: {
 
-                System.out.print("Enter the person's age:");
+                System.out.print("Enter the person's age: ");
 
                 int age = SCANNER.nextInt();
 
-                System.out.print("Enter the person's gender:");
+                System.out.print("Enter the person's gender: ");
 
                 Sex sex = Sex.valueOf(sc.nextLine().toUpperCase());
 
-                System.out.println("Enter the person's name:");
+                System.out.println("Enter the person's name: ");
 
                 String name = sc.nextLine();
 
-                System.out.println("Enter the person's surname:");
+                System.out.println("Enter the person's surname: ");
 
                 String surname = sc.nextLine();
 
-                System.out.print("Enter the number of children:");
+                System.out.print("Enter the number of children: ");
 
                 int children = SCANNER.nextInt();
 
-                System.out.print("Enter the city where you live:");
+                System.out.print("Enter the city where you live: ");
 
                 String city = sc.next();
 

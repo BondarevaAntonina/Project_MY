@@ -6,12 +6,16 @@ package homeworks.airport_timetable;
  */
 public enum CityOfArrival {
 
-    CITY_OF_ARRIVAL("Nurnberg"), CITY_OF_ARRIVAL2("Munchen");
+
+    CITY("BOB");
 
     private String cityName;
 
-    CityOfArrival(String name) {
-        cityName = name;
+    CityOfArrival(String nameCity) {
+        cityName = nameCity;
     }
 
 }
+
+
+

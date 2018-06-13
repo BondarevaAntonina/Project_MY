@@ -1,7 +1,5 @@
 package homeworks.airport_timetable;
 
-import homeworks.learn_enum.Sex;
-import homeworks.meeting.TestMeeting;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -30,7 +28,6 @@ public class TestAirport {
     }
 
 
-
     public static void main(String[] args) throws Exception {
 
         TestAirport testAirport = new TestAirport();
@@ -42,7 +39,7 @@ public class TestAirport {
         int userActionNumber;
 
         do {
-            System.out.println("------- Dating for dating -------\n" + "1 - To be registered to the person is more senior 18 years\n" +
+            System.out.println("------- Dating for dating -------\n" + "1 - Add flights to schedule\n" +
 
                     "0 - Exit");
             try {
@@ -64,17 +61,19 @@ public class TestAirport {
             //1 - To be registered to the person is more senior 18 years
             case 1: {
 
-                System.out.print("Enter the name of the flight");
+                System.out.print("Enter the name of the flight:");
 
                 String nameFlight = sc.nextLine();
 
-                System.out.print("Enter the city of dispatch:");
-
-                String departureCityName = sc.nextLine();
 
                 System.out.print("Enter arrival city:");
 
-                String cityName = sc.nextLine();
+
+                CityOfArrival cityName = CityOfArrival.valueOf(sc.nextLine().toUpperCase());
+
+                System.out.print("Enter the city of dispatch:");
+
+                DepartureCity departureCityName = DepartureCity.valueOf(sc.nextLine().toUpperCase());
 
                 System.out.print("Enter the number of seats:");
 
@@ -84,11 +83,12 @@ public class TestAirport {
 
                 int timeInFlight = SCANNER.nextInt();
 
-//                airportService.addFlight();
+                Flight flight = new Flight(nameFlight, cityName, departureCityName, numberSeats, timeInFlight);
+
+                airportService.addFlight(flight);
 
                 break;
             }
-
 
         }
     }

@@ -19,20 +19,29 @@ public class Flight {
     private int numberSeats;
     private int timeInFlight;
 
-    public Flight(String nameFlight, CityOfArrival cityName, DepartureCity departureCityName, int numberSeats, int timeInFlight) {
+
+    public String getNameFlight() {
+        return nameFlight;
+    }
+
+    public void setNameFlight(String nameFlight) {
         this.nameFlight = nameFlight;
-        this.cityName = cityName;
+    }
+
+    public DepartureCity getDepartureCityName() {
+        return departureCityName;
+    }
+
+    public void setDepartureCityName(DepartureCity departureCityName) {
         this.departureCityName = departureCityName;
-        this.numberSeats = numberSeats;
-        this.timeInFlight = timeInFlight;
     }
 
-    public int getTimeInFlight() {
-        return timeInFlight;
+    public CityOfArrival getCityName() {
+        return cityName;
     }
 
-    public void setTimeInFlight(int timeInFlight) {
-        this.timeInFlight = timeInFlight;
+    public void setCityName(CityOfArrival cityName) {
+        this.cityName = cityName;
     }
 
     public int getNumberSeats() {
@@ -43,13 +52,25 @@ public class Flight {
         this.numberSeats = numberSeats;
     }
 
-    public String getNameFlight() {
-        return nameFlight;
+    public int getTimeInFlight() {
+        return timeInFlight;
     }
 
-    public void setNameFlight(String nameFlight) {
-        this.nameFlight = nameFlight;
+    public void setTimeInFlight(int timeInFlight) {
+        this.timeInFlight = timeInFlight;
     }
+
+    public Flight(String nameFlight, CityOfArrival nameCity, DepartureCity departureCityName, int numberSeats, int timeInFlight) {
+        this.nameFlight = nameFlight;
+        this.cityName = nameCity;
+        this.departureCityName = departureCityName;
+        this.numberSeats = numberSeats;
+        this.timeInFlight = timeInFlight;
+    }
+
+
+
+
 
 
     public void showDataAirport() {
