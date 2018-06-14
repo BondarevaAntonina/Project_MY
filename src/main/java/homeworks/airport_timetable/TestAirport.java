@@ -39,8 +39,13 @@ public class TestAirport {
         int userActionNumber;
 
         do {
-            System.out.println("------- Dating for dating -------\n" + "1 - Add flights to schedule\n" +
-
+            System.out.println("------- Dating for dating -------\n" +
+                    "1 - Add flights to schedule\n" +
+                    "2 -After entering the city of arrival and, display a list of suitable flights\n" +
+                    "3 -After entering the city of departure, display a list of suitable flights\n" +
+                    "4 -View all flights\n" +
+                    "5 -View information about a specific flight\n" +
+                    "6 -Organize \"smart search\". The user enters requirements (city of departure, city of arrival, time in flight, number of seats)\n" +
                     "0 - Exit");
             try {
                 userActionNumber = SCANNER.nextInt();
@@ -88,6 +93,65 @@ public class TestAirport {
                 break;
             }
 
+            case 2: {
+                System.out.print("Enter arrival city:");
+
+                CityOfArrival cityOfArrival = CityOfArrival.valueOf(sc.nextLine().toUpperCase());
+
+                airportService.showCityOfArrival(cityOfArrival);
+
+                break;
+            }
+
+            case 3: {
+                System.out.print("Enter the city of dispatch:");
+
+                DepartureCity departureCity = DepartureCity.valueOf(sc.nextLine().toUpperCase());
+
+                airportService.showDepartureCity(departureCity);
+
+                break;
+            }
+            case 4: {
+
+                airportService.showFlight();
+
+                break;
+            }
+
+            case 5: {
+
+                System.out.print("Enter the name of the flight:");
+
+                String nameFlight = sc.nextLine();
+
+                airportService.searchFlight(nameFlight);
+
+                break;
+            }
+
+            case 6: {
+
+                System.out.print("Enter arrival city:");
+
+                CityOfArrival cityOfArrival = CityOfArrival.valueOf(sc.nextLine().toUpperCase());
+
+                System.out.print("Enter the city of dispatch:");
+
+                DepartureCity departureCity = DepartureCity.valueOf(sc.nextLine().toUpperCase());
+
+                System.out.print("Enter the flight time:");
+
+                int timeInFlight = SCANNER.nextInt();
+
+                System.out.print("Enter the number of seats:");
+
+                int numberSeats = SCANNER.nextInt();
+
+                airportService.searchCityTimeInFlightNumberSeats(cityOfArrival, departureCity, timeInFlight, numberSeats);
+
+                break;
+            }
         }
     }
 }

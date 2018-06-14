@@ -7,7 +7,7 @@ import java.util.Objects;
  * Создать приложение, позволяющие создавать расписание аэропорта.
  * Приложение должно позволять:
  * 1) Создавать рейс.
- * 2) После ввода страны прибытия и/или страны отправления выводить список подходящих рейсов.
+ * 2) После ввода города прибытия и/или города отправления выводить список подходящих рейсов.
  * 3) Просматривать все рейсы.
  * 4) Просматривать информацию о конкретном рейсе.
  * 5) Организовать "умный поиск". Пользователь вводит требования(город отправления, город прибытия, время в полете, количество мест)
@@ -23,20 +23,92 @@ public class AirportService {
         flights = new Flight[10];
     }
 
-    //
+    // 1)Create a flight
     public void addFlight(Flight flight) {
 
         resizeMassive();
 
-        for (Flight temp: flights){
+        for (Flight temp : flights) {
             System.out.println(temp);
         }
 
         flight.showDataAirport();
+    }
+    //После ввода города прибытия и/или города отправления выводить список подходящих рейсов.
+    //2) After entering the city of arrival, display a list of suitable flights.
 
+    public void showCityOfArrival(CityOfArrival cityOfArrival) {
+
+        for (Flight flight : flights) {
+            if (Objects.nonNull(flight) && flight.getCityName().equals(cityOfArrival)) {
+
+                flight.showDataAirport();
+            }
+        }
+    }
+
+    //После ввода города прибытия и/или города отправления выводить список подходящих рейсов.
+    //3 After entering the city of departure, display a list of suitable flights.
+
+    public void showDepartureCity(DepartureCity departureCity) {
+
+        for (Flight flight : flights) {
+
+            if (Objects.nonNull(flight) && flight.getDepartureCityName().equals(departureCity)) {
+
+                flight.showDataAirport();
+
+            }
+        }
+    }
+
+    // 4) Просматривать все рейсы
+    // View all flights
+    public void showFlight() {
+        for (Flight flight : flights) {
+            if (Objects.nonNull(flights)) {
+                flight.showDataAirport();
+            }
+        }
+    }
+
+    // 5) Просматривать информацию о конкретном рейсе
+    //View information about a specific flight
+    public void searchFlight(String nameFlight) {
+        for (Flight flight : flights) {
+
+            if (Objects.nonNull(flight) && flight.getNameFlight().equals(nameFlight)) {
+
+                flight.showDataAirport();
+            }
+
+        }
+    }
+    //6) Организовать "умный поиск". Пользователь вводит требования(город отправления, город прибытия, время в полете, количество мест)
+    // * и выводить рейс, который соответствует требованиям
+
+    public void searchCityTimeInFlightNumberSeats(CityOfArrival cityOfArrival, DepartureCity departureCity, int timeInFlight, int numberSeats) {
+
+        for (Flight flight: flights) {
+            if(Objects.nonNull(flight) && cityOfArrival == flight.getCityName() && departureCity == flight.getDepartureCityName() &&
+                    timeInFlight ==flight.getTimeInFlight() &&  numberSeats == flight.getNumberSeats()){
+                flight.showDataAirport();
+            }
+        }
 
     }
 
+
+
+//    public void smartSearchCitySexAgeChildren(String city, Sex sex, int age, int children) {
+//        for (Man man : men) {
+//
+//            if (Objects.nonNull(man) && man.getCity().equals(city) && sex == man.getSex() && age == man.getAge() && children == man.getChildren()) {
+//
+//                man.showDataPerson();
+//            }
+//        }
+//    }
 
 
     public void resizeMassive() {

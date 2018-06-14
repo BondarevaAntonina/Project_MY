@@ -71,7 +71,7 @@ public class PersonService {
 
                 man.showDataPerson();
             }
-//            man.showDataPerson();
+
         }
     }
 
