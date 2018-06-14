@@ -41,11 +41,11 @@ public class TestAirport {
         do {
             System.out.println("------- Dating for dating -------\n" +
                     "1 - Add flights to schedule\n" +
-                    "2 -After entering the city of arrival and, display a list of suitable flights\n" +
-                    "3 -After entering the city of departure, display a list of suitable flights\n" +
-                    "4 -View all flights\n" +
-                    "5 -View information about a specific flight\n" +
-                    "6 -Organize \"smart search\". The user enters requirements (city of departure, city of arrival, time in flight, number of seats)\n" +
+                    "2 - After entering the city of arrival and, display a list of suitable flights\n" +
+                    "3 - After entering the city of departure, display a list of suitable flights\n" +
+                    "4 - View all flights\n" +
+                    "5 - View information about a specific flight\n" +
+                    "6 - Organize smart search. The user enters requirements (city of departure, city of arrival, time in flight, number of seats)\n" +
                     "0 - Exit");
             try {
                 userActionNumber = SCANNER.nextInt();
