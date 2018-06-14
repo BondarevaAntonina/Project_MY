@@ -1,5 +1,6 @@
 package lessons.regex;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Regex {
@@ -56,5 +57,47 @@ public class Regex {
         String text = "AAAfer44   ";
 
         System.out.println(Pattern.matches(regex, text));
+    }
+}
+
+class UsePatternClass {
+    public static void main(String[] args) {
+        String regex = "\\d{3}";
+
+        String text1 = "123";
+
+        String text2 = "456";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        Matcher matcher = pattern.matcher(text1);
+
+//        System.out.println(matcher.matches());
+//        String text3 = "This is text for testing is bad";
+        String phone = "(095)779-65-46";
+
+        String[] split = phone.split("-\\d{3}-\\d{2}-\\d{2}");
+
+        System.out.println();
+//        String[] r = text3.split("is");
+
+        System.out.println();
+
+    }
+}
+
+
+class UseMatcherClass {
+    public static void main(String[] args) {
+        String text =  "This is text for testing is bad";
+
+        Pattern pattern = Pattern.compile("is");
+
+        Matcher matcher = pattern.matcher(text);
+
+        while (matcher.find()) {
+            System.out.println("Start = " + matcher.start() + "\tFinish = " +
+                    matcher.end() + "\t Value = " + matcher.group());
+        }
     }
 }

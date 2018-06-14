@@ -26,10 +26,14 @@ public class AirportService {
     // 1)Create a flight
     public void addFlight(Flight flight) {
 
-        resizeMassive();
+        resize();
 
-        for (Flight temp : flights) {
-            System.out.println(temp);
+        for (int i = 0; i < flights.length; i++) {
+
+            if (Objects.isNull(flights[i])) {
+                flights[i] = flight;
+                break;
+            }
         }
 
         flight.showDataAirport();
@@ -54,7 +58,7 @@ public class AirportService {
 
         for (Flight flight : flights) {
 
-            if (Objects.nonNull(flight) && flight.getDepartureCityName().equals(departureCity)) {
+            if (Objects.nonNull(flight) && flight.getDepartureCity().equals(departureCity)) {
 
                 flight.showDataAirport();
 
@@ -64,7 +68,7 @@ public class AirportService {
 
     // 4) Просматривать все рейсы
     // View all flights
-    public void showFlight() {
+    public void showFlights() {
         for (Flight flight : flights) {
             if (Objects.nonNull(flights)) {
                 flight.showDataAirport();
@@ -74,7 +78,7 @@ public class AirportService {
 
     // 5) Просматривать информацию о конкретном рейсе
     //View information about a specific flight
-    public void searchFlight(String nameFlight) {
+    public void searchFlightByName(String nameFlight) {
         for (Flight flight : flights) {
 
             if (Objects.nonNull(flight) && flight.getNameFlight().equals(nameFlight)) {
@@ -87,11 +91,15 @@ public class AirportService {
     //6) Организовать "умный поиск". Пользователь вводит требования(город отправления, город прибытия, время в полете, количество мест)
     // * и выводить рейс, который соответствует требованиям
 
-    public void searchCityTimeInFlightNumberSeats(CityOfArrival cityOfArrival, DepartureCity departureCity, int timeInFlight, int numberSeats) {
+    public void searchCityTimeInFlightNumberSeats(CityOfArrival cityOfArrival, DepartureCity departureCity,
+                                                  int timeInFlight, int numberSeats) {
 
         for (Flight flight: flights) {
-            if(Objects.nonNull(flight) && cityOfArrival == flight.getCityName() && departureCity == flight.getDepartureCityName() &&
-                    timeInFlight ==flight.getTimeInFlight() &&  numberSeats == flight.getNumberSeats()){
+            if(Objects.nonNull(flight) &&
+                    cityOfArrival == flight.getCityName() &&
+                    departureCity == flight.getDepartureCity() &&
+                    timeInFlight ==flight.getTimeInFlight() &&
+                    numberSeats == flight.getNumberSeats()){
                 flight.showDataAirport();
             }
         }
@@ -99,20 +107,7 @@ public class AirportService {
     }
 
 
-
-//    public void smartSearchCitySexAgeChildren(String city, Sex sex, int age, int children) {
-//        for (Man man : men) {
-//
-//            if (Objects.nonNull(man) && man.getCity().equals(city) && sex == man.getSex() && age == man.getAge() && children == man.getChildren()) {
-//
-//                man.showDataPerson();
-//            }
-//        }
-//    }
-
-
-    public void resizeMassive() {
-
+    private void resize() {
         if (Objects.isNull(flights[flights.length - 1])) {
 
             int newSize = flights.length * 2;

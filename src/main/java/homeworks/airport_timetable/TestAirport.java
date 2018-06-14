@@ -66,9 +66,7 @@ public class TestAirport {
             //1 - To be registered to the person is more senior 18 years
             case 1: {
 
-                System.out.print("Enter the name of the flight:");
-
-                String nameFlight = sc.nextLine();
+                String nameFlight = getString("Enter the name of the flight:");
 
                 System.out.print("Enter arrival city:");
 
@@ -114,7 +112,7 @@ public class TestAirport {
             }
             case 4: {
 
-                airportService.showFlight();
+                airportService.showFlights();
 
                 break;
             }
@@ -125,7 +123,7 @@ public class TestAirport {
 
                 String nameFlight = sc.nextLine();
 
-                airportService.searchFlight(nameFlight);
+                airportService.searchFlightByName(nameFlight);
 
                 break;
             }
@@ -154,4 +152,10 @@ public class TestAirport {
             }
         }
     }
+
+    private String getString(String message) {
+        System.out.println(message);
+        return SCANNER.next();
+    }
+
 }
