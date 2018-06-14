@@ -6,11 +6,16 @@ package homeworks.airport_timetable;
  */
 public enum DepartureCity {
 
-    DEPARTURE_CITY("Bob"), DEPARTURE_CITY2("Hamburg");
+    DEPARTURE("Bremen"), DEPARTURE2("Hamburg");
 
     private String departureCityName;
 
     DepartureCity(String departureCity) {
         departureCityName = departureCity;
+    }
+
+    @Override
+    public String toString() {
+        return departureCityName;
     }
 }

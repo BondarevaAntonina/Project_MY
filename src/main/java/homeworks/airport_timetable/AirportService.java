@@ -20,7 +20,7 @@ public class AirportService {
     private Flight[] flights;
 
     public AirportService() {
-        flights = new Flight[100];
+        flights = new Flight[10];
     }
 
     //

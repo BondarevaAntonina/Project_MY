@@ -74,7 +74,7 @@ public class Flight {
 
 
     public void showDataAirport() {
-        String dataFlight= nameFlight + " " + departureCityName + " " + cityName + " " + cityName + " " + numberSeats + " " + timeInFlight + " ";
+        String dataFlight= nameFlight + " " + cityName + " " + departureCityName + " " + numberSeats + " " + timeInFlight + " ";
         System.out.println(dataFlight);
 
     }

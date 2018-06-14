@@ -65,9 +65,7 @@ public class TestAirport {
 
                 String nameFlight = sc.nextLine();
 
-
                 System.out.print("Enter arrival city:");
-
 
                 CityOfArrival cityName = CityOfArrival.valueOf(sc.nextLine().toUpperCase());
 
