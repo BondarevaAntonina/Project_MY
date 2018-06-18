@@ -13,6 +13,9 @@
          6) Please create an abstarct class Shape and two subclasses Square and Circle. Replace code in method drawShape()
          according to principles of polymorphism. Please propose the other solutions for improving quality of the code.
 
+         Создайте класс формы abstarct и два подкласса Square и Circle. Заменить код в методе drawShape ()  в соответствии
+         с принципами полиморфизма. Предлагайте другие решения для улучшения качества кода.
+
          enum ShareType {
              SQUARE, CIRCLE
          }
