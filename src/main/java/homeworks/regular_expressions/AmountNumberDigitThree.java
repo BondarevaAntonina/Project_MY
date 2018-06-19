@@ -12,26 +12,11 @@ public class AmountNumberDigitThree {
 
     public static void main(String[] args) {
 
-        String regex = "^[А-Яа-яёЁA-Za-z]+$";
+        String regex = "g([A-Z]{1}[a-z]{1,6})";
 
-        String text = "Фамилия Имя";
+        String text = "Фамилия";
 
         System.out.println(Pattern.matches(regex, text));
     }
-
-
-//    private bool CheckNameAndPatr(string text)
-//
-//    {
-//
-//        Regex reg = new Regex(@"^[А-Яа-яёЁA-Za-z]+$");
-//
-//        if (reg.IsMatch(text) || text == "")
-//
-//            return true;
-//
-//        else return false;
-//
-//    }
 
 }
