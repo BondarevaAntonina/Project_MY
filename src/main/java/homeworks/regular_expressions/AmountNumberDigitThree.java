@@ -1,5 +1,6 @@
 package homeworks.regular_expressions;
 
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
@@ -7,14 +8,16 @@ import java.util.regex.Pattern;
  * Проверить, чтобы первые буквы были в верхнем регистре, а остальные буквы - в нижнем.
  */
 public class AmountNumberDigitThree {
-//    Scanner sc = new Scanner(System.in);
-
 
     public static void main(String[] args) {
 
-        String regex = "g([A-Z]{1}[a-z]{1,6})";
+        Scanner sc = new Scanner(System.in);
 
-        String text = "Фамилия";
+        String regex = "\\w[A-Za-z0-9]\\s";
+
+        System.out.println("Enter the Surname and First Name");
+
+        String text = sc.nextLine();
 
         System.out.println(Pattern.matches(regex, text));
     }
