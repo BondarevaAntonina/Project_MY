@@ -13,7 +13,7 @@ public class AmountNumberDigitThree {
 
         Scanner sc = new Scanner(System.in);
 
-        String regex = "\\w[A-Za-z0-9]\\s";
+        String regex = "(((\\w[A-Z]{0})[a-z]*)(\\s))((\\w[A-Z]{0})[a-z]*)";
 
         System.out.println("Enter the Surname and First Name");
 
