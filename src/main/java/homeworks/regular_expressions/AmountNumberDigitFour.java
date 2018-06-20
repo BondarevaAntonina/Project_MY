@@ -8,11 +8,13 @@ import java.util.regex.Pattern;
  */
 public class AmountNumberDigitFour {
     public static void main(String[] args) {
-        Pattern p = Pattern.compile("-?\\d+");
-        Matcher m = p.matcher("The line contains words and numbers1111; It is necessary to allocat777e numbers and count their sum");
+        Pattern p = Pattern.compile("-?\\d");
+        Matcher m = p.matcher("The line contains words and numbers1111; It is necessary to allocat777e numbers and" +
+                " count their sum");
+        int sum = 0;
         while (m.find()) {
-            System.out.print(m.group());
+            sum += Integer.valueOf(m.group());
         }
-
+        System.out.println("Sum = " + sum);
     }
 }
