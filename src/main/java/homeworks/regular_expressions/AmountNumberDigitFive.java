@@ -21,7 +21,7 @@ public class AmountNumberDigitFive {
 
         String[] splitq = phone.split("-\\d{3}-\\d{2}-\\d{2}");
 
-
+//        if(phone.equals())
 
         System.out.println(Arrays.toString(splitq));
     }
