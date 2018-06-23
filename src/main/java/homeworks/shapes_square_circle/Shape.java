@@ -7,33 +7,22 @@ package homeworks.shapes_square_circle;
 
 public abstract class Shape {
 
-    private ShareType shareType;
-
     //other fields
 
+    public abstract void drawShape();
 
-    public Shape(ShareType shareType) {
-        this.shareType = shareType;
-    }
+}
 
-    public ShareType getShareType() {
-        return shareType;
-    }
-
-    public void drawSquare() {
-        //Code for drawing square
-    }
-
-    public void drawCircle() {
-        //Code for drawing square
-    }
-
+class Circle extends Shape {
+    @Override
     public void drawShape() {
-        if (getShareType() == ShareType.SQUARE) {
-            drawSquare();
-        } else {
-            drawCircle();
-        }
+        System.out.println("Drawing Circle");
     }
+}
 
+class Square extends Shape {
+    @Override
+    public void drawShape() {
+        System.out.println("Drawing Square");
+    }
 }

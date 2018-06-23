@@ -10,15 +10,15 @@ public class Animal  {
     String name = "Some animal";
 
     public void eat() {
-        System.out.println("Animal am eating");
+        System.out.println("Lion am eating");
     }
 
     public void sleep() {
-        System.out.println("Animal am sleeping");
+        System.out.println("Lion am sleeping");
     }
 
     public Object repeat(String param1) throws Exception {
-        System.out.println("Animal am sleeping");
+        System.out.println("Lion am sleeping");
         return null;
     }
 }

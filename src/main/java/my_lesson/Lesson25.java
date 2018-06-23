@@ -5,7 +5,7 @@ package my_lesson;
  */
 public class Lesson25 {
     public static void main(String[] args) {
-//        Animal animal = new Animal();
+//        Lion animal = new Lion();
 //        animal.eat();
 //        animal.sleep();
 
