@@ -7,15 +7,22 @@ import java.util.Scanner;
  */
 public class TestWriter {
 
-    public TestWriter() {
 
+    String textUserConsole;
+
+    public TestWriter(String textUserConsole) {
+        this.textUserConsole = textUserConsole;
     }
+
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
         String textUserConsole = sc.nextLine();
+
+
+
 
 
     }

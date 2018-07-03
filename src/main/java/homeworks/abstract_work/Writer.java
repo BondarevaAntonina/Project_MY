@@ -16,16 +16,26 @@ import java.nio.file.StandardOpenOption;
  */
 public abstract class Writer implements Writable{
 
-    public void modifyText(){
-        System.out.println("modifyText");
+    private String text;
+
+    public Writer(String text) {
+        this.text = text;
+    }
+
+    public void modifyText(String text){
+
     }
 }
 
 class DescendantWriter extends Writer{
 
+    public DescendantWriter(String text) {
+        super(text);
+    }
+
     @Override
-    public void modifyText() {
-        super.modifyText();
+    public void modifyText(String text) {
+        super.modifyText(text);
     }
 
     @Override
