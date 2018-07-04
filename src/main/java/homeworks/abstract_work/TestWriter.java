@@ -16,14 +16,9 @@ public class TestWriter {
 
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-
         String textUserConsole = sc.nextLine();
-
-
-
-
-
+        DescendantWriter descendantWriter = new DescendantWriter();
+        descendantWriter.write(textUserConsole);
     }
 }

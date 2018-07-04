@@ -1,11 +1,5 @@
 package homeworks.abstract_work;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
 /**
  Создать абстрактный класс родителя Writer c методом modifyText, который реализует интерфейс Writable
  c абстрактными методом write. Создать потомка, который будет писать данные в текстовый файл Poem.txt.
@@ -16,42 +10,14 @@ import java.nio.file.StandardOpenOption;
  */
 public abstract class Writer implements Writable{
 
-    private String text;
+    public String modifyText( String text){
 
-    public Writer(String text) {
-        this.text = text;
-    }
+        //return text.replaceFirst("I'm ready for writting to file", "I'm from file");
 
-    public void modifyText(String text){
+        return text.concat(" I'm ready for writting to file \n");
 
     }
 }
 
-class DescendantWriter extends Writer{
 
-    public DescendantWriter(String text) {
-        super(text);
-    }
-
-    @Override
-    public void modifyText(String text) {
-        super.modifyText(text);
-    }
-
-    @Override
-    public void write(String log) {
-
-        Path path = Paths.get("./Logs", "Poem.txt");
-
-        try {
-
-            Files.write(path, ("\n" + log).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-    }
-}
 
