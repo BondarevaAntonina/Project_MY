@@ -23,6 +23,7 @@
    and  five overloaded methods that set this fields with different arguments list.
    Create class that will be use instance of class Person and his methods.
 
+
 6) Создать приложение файловый менеджер.
    Приложение должно позволять:
    1) Создавать текстовые файлы и директории
