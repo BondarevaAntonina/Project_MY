@@ -9,6 +9,11 @@ package homeworks.file_manager_application;
  4) Удалять директории и файлы
  5) Переименовывать директории и файлы
  6) Просматривать содержимое директории
+
+ Использовать Java 7, 8, Files
  */
 public class FileManager {
+
+
+
 }
