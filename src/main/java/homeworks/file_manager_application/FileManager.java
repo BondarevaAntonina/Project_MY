@@ -16,37 +16,63 @@ import java.io.File;
  */
 public class FileManager {
 
-//    private String nameFile;
-//    private String nameDirectory;
+    private String nameFile;
+    private String nameDirectory;
 
     private static final String DIRECT = "d:\\Project_MY\\src\\Directory1";
 
 
-//    public FileManager(String nameFile, String nameDirectory) {
-//        this.nameFile = nameFile;
-//        this.nameDirectory = nameDirectory;
-//    }
+    public FileManager() {
+        this.nameFile = nameFile;
+        this.nameDirectory = nameDirectory;
+    }
 
+    public String getNameFile() {
+        return nameFile;
+    }
+
+    public void setNameFile(String nameFile) {
+        this.nameFile = nameFile;
+    }
+
+    public String getNameDirectory() {
+        return nameDirectory;
+    }
+
+    public void setNameDirectory(String nameDirectory) {
+        this.nameDirectory = nameDirectory;
+    }
+
+    public static String getDIRECT() {
+        return DIRECT;
+    }
 
     // Create a new directory
+
     public void createNewDirectory() throws Exception {
 
         final File direct1 = new File(DIRECT);
         if (!direct1.exists()) {
             if (direct1.mkdir()) {
-                System.out.println("Каталог " + direct1.getAbsolutePath() + " успешно создан.");
+                System.out.println("Directory" + direct1.getAbsolutePath() + " successfully created.");
             } else {
-                System.out.println("Каталог " + direct1.getAbsolutePath() + " создать не удалось.");
+                System.out.println("Directory" + direct1.getAbsolutePath() + " failed to create.");
             }
         } else {
-            System.out.println("Каталог " + direct1.getAbsolutePath() + " уже существует.");
+            System.out.println("Directory" + direct1.getAbsolutePath() + " already exists.");
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        FileManager fileManager = new FileManager();
-        fileManager.createNewDirectory();
+    // Create a new file in directory
+
+    public void createNewFile() throws Exception {
+
+        File dir1 = new File("./Directory");
+
+        File file = new File(dir1, "NewFile.txt");
+
 
     }
+
 
 }
