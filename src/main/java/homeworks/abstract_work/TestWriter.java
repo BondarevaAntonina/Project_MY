@@ -17,8 +17,15 @@ public class TestWriter {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter text");
         String textUserConsole = sc.nextLine();
         DescendantWriter descendantWriter = new DescendantWriter();
         descendantWriter.write(textUserConsole);
+
+        DescendantReader descendantReader = new DescendantReader();
+        descendantReader.read();
     }
+
+
+
 }

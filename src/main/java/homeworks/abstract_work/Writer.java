@@ -12,8 +12,6 @@ public abstract class Writer implements Writable{
 
     public String modifyText( String text){
 
-        //return text.replaceFirst("I'm ready for writting to file", "I'm from file");
-
         return text.concat(" I'm ready for writting to file \n");
 
     }
