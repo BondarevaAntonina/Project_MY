@@ -12,7 +12,7 @@ import java.io.IOException;
  * iText(http://howtodoinjava.com/apache-commons/create-pdf-files-in-java-itext-tutorial/#itext_overview)
  * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО
  * 4) Удалять директории и файлы  - СДЕЛАНО
- * 5) Переименовывать директории и файлы
+ * 5) Переименовывать директории и файлы - СДЕЛАНО
  * 6) Просматривать содержимое директории
  * <p>
  * Использовать Java 7, 8, Files
@@ -161,6 +161,25 @@ public class FileManager {
 
         System.out.println("Renamed: " + renamed);
 
+    }
+
+    // View the contents of the directory
+
+    public void contentDirectory() {
+
+        File content = new File(".\\src\\Directory7");
+
+        for (File item : content.listFiles()) {
+
+            if (item.isDirectory()) {
+
+                System.out.println(item.getName());
+
+            } else {
+
+                System.out.println(item.getName());
+            }
+        }
     }
 
 }

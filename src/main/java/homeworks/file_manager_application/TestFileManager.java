@@ -23,7 +23,7 @@ public class TestFileManager {
 
         fileManager.renameDirectory(); //Rename directories
 
-
+        fileManager.contentDirectory(); // View the contents of the directory
 
 
     }
