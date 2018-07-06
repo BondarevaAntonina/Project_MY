@@ -36,9 +36,13 @@ public class FileManager {
     public void createNewDirectory() throws Exception {
 
         final File direct1 = new File(DIRECT);
+
         if (!direct1.exists()) {
+
             if (direct1.mkdir()) {
+
                 System.out.println("Directory" + direct1.getAbsolutePath() + " successfully created.");
+
             } else {
                 System.out.println("Directory" + direct1.getAbsolutePath() + " failed to create.");
             }
@@ -52,9 +56,12 @@ public class FileManager {
     public void createNewFile() throws Exception {
 
         File newFile = new File(".\\src\\Directory1\\test.txt");
+
         try {
             boolean created = newFile.createNewFile();
+
             if (created) System.out.println("File has been created");
+
         } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
@@ -72,10 +79,14 @@ public class FileManager {
     public void copyFilesToDirect() {
 
         File source = new File(".\\src\\Directory1");
+
         File dest = new File(".\\src\\Directory2");
+
         try {
             FileUtils.copyDirectory(source, dest);
+
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }
@@ -99,21 +110,29 @@ public class FileManager {
     public void removeDirectoryContents() {
 
         File index = new File(".\\src\\Directory3");
-        String[] entries = index.list();
-        for (String s : entries) {
-            File currentFile = new File(index.getPath(), s);
-            currentFile.delete();
 
+        String[] entries = index.list();
+
+        for (String s : entries) {
+
+            File currentFile = new File(index.getPath(), s);
+
+            currentFile.delete();
         }
     }
 
     // Deleting directory
 
     public void removeDirectory() {
+
         removeDirectoryContents();
+
         File file = new File(".\\src\\Directory3");
+
         if (file.delete()) {
+
             System.out.println(file + " has been removed from the project's root directory");
+
         } else System.out.println(file + "was not found in the root directory of the project or is not empty");
     }
 
