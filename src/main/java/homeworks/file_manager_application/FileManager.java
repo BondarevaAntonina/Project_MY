@@ -1,6 +1,7 @@
 package homeworks.file_manager_application;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Приложение должно позволять:
@@ -67,12 +68,22 @@ public class FileManager {
 
     public void createNewFile() throws Exception {
 
-        File dir1 = new File("./Directory");
+        File newFile = new File(".\\src\\Directory1\\test.txt");
+        try
+        {
+            boolean created = newFile.createNewFile();
+            if(created)
+                System.out.println("File has been created");
+        }
+        catch(IOException ex){
 
-        File file = new File(dir1, "NewFile.txt");
-
-
+            System.out.println(ex.getMessage());
+        }
     }
 
 
 }
+
+
+
+

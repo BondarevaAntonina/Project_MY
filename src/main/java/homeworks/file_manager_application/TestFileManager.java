@@ -9,5 +9,7 @@ public class TestFileManager {
         FileManager fileManager = new FileManager();
         fileManager.createNewDirectory();
 
+        fileManager.createNewFile();
+
     }
 }
