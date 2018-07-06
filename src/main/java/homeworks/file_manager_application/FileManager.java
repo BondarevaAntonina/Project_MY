@@ -1,14 +1,16 @@
 package homeworks.file_manager_application;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 
 /**
  * Приложение должно позволять:
- * 1) Создавать текстовые файлы и директории
+ * 1) Создавать текстовые файлы и директории  - СДЕЛАНО
  * 2) Конвертацию текстовых файлов в PDF файлы с помощью библиотеки
  * iText(http://howtodoinjava.com/apache-commons/create-pdf-files-in-java-itext-tutorial/#itext_overview)
- * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его
+ * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО
  * 4) Удалять директории и файлы
  * 5) Переименовывать директории и файлы
  * 6) Просматривать содержимое директории
@@ -20,7 +22,7 @@ public class FileManager {
     private String nameFile;
     private String nameDirectory;
 
-    private static final String DIRECT = "d:\\Project_MY\\src\\Directory1";
+    private static final String DIRECT = "d:\\Project_MY\\src\\Directory2";
 
 
     public FileManager() {
@@ -28,25 +30,6 @@ public class FileManager {
         this.nameDirectory = nameDirectory;
     }
 
-    public String getNameFile() {
-        return nameFile;
-    }
-
-    public void setNameFile(String nameFile) {
-        this.nameFile = nameFile;
-    }
-
-    public String getNameDirectory() {
-        return nameDirectory;
-    }
-
-    public void setNameDirectory(String nameDirectory) {
-        this.nameDirectory = nameDirectory;
-    }
-
-    public static String getDIRECT() {
-        return DIRECT;
-    }
 
     // Create a new directory
 
@@ -69,20 +52,39 @@ public class FileManager {
     public void createNewFile() throws Exception {
 
         File newFile = new File(".\\src\\Directory1\\test.txt");
-        try
-        {
+        try {
             boolean created = newFile.createNewFile();
-            if(created)
-                System.out.println("File has been created");
-        }
-        catch(IOException ex){
+            if (created) System.out.println("File has been created");
+        } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
         }
     }
 
+    //Convert text files to PDF files
 
+    public void convertTextToPDF() throws Exception {
+
+    }
+
+//Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его
+
+    public void copyFilesToDirect() {
+//
+        File source = new File(".\\src\\Directory1");
+        File dest = new File(".\\src\\Directory2");
+        try {
+            FileUtils.copyDirectory(source, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
+
+
 
 
 
