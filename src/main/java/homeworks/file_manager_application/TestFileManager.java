@@ -17,6 +17,10 @@ public class TestFileManager {
 
         fileManager.removeFile(); // Delete files
 
+        fileManager.removeDirectory(); // Deleting directory
+
+        fileManager.renameFile(); //Rename files
+
 
     }
 }

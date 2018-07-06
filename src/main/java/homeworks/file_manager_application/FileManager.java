@@ -11,7 +11,7 @@ import java.io.IOException;
  * 2) Конвертацию текстовых файлов в PDF файлы с помощью библиотеки
  * iText(http://howtodoinjava.com/apache-commons/create-pdf-files-in-java-itext-tutorial/#itext_overview)
  * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО
- * 4) Удалять директории и файлы
+ * 4) Удалять директории и файлы  - СДЕЛАНО
  * 5) Переименовывать директории и файлы
  * 6) Просматривать содержимое директории
  * <p>
@@ -22,7 +22,7 @@ public class FileManager {
     private String nameFile;
     private String nameDirectory;
 
-    private static final String DIRECT = "d:\\Project_MY\\src\\Directory2";
+    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
 
     public FileManager() {
@@ -95,7 +95,41 @@ public class FileManager {
 
     }
 
-    //Удалять директории
+    // Deleting directory contents
+    public void removeDirectoryContents() {
+
+        File index = new File(".\\src\\Directory3");
+        String[] entries = index.list();
+        for (String s : entries) {
+            File currentFile = new File(index.getPath(), s);
+            currentFile.delete();
+
+        }
+    }
+
+    // Deleting directory
+
+    public void removeDirectory() {
+        removeDirectoryContents();
+        File file = new File(".\\src\\Directory3");
+        if (file.delete()) {
+            System.out.println(file + " has been removed from the project's root directory");
+        } else System.out.println(file + "was not found in the root directory of the project or is not empty");
+    }
+
+    //Rename files
+
+    public void renameFile() {
+        File srcFile = new File(".\\src\\Directory4\\test1.txt");
+
+        File destFile = new File(".\\src\\Directory4\\map.txt");
+
+        boolean renamed = srcFile.renameTo(destFile);
+
+        System.out.println("Renamed: " + renamed);
+    }
+
+    //Rename directories
 
 
 }
