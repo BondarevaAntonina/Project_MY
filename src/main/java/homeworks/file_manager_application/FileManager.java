@@ -139,6 +139,7 @@ public class FileManager {
     //Rename files
 
     public void renameFile() {
+
         File srcFile = new File(".\\src\\Directory4\\test1.txt");
 
         File destFile = new File(".\\src\\Directory4\\map.txt");
@@ -150,6 +151,17 @@ public class FileManager {
 
     //Rename directories
 
+    public void renameDirectory() {
+
+        File srcFile = new File(".\\src\\Directory5");
+
+        File destFile = new File(".\\src\\Directory6");
+
+        boolean renamed = srcFile.renameTo(destFile);
+
+        System.out.println("Renamed: " + renamed);
+
+    }
 
 }
 

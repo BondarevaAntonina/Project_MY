@@ -21,6 +21,10 @@ public class TestFileManager {
 
         fileManager.renameFile(); //Rename files
 
+        fileManager.renameDirectory(); //Rename directories
+
+
+
 
     }
 }
