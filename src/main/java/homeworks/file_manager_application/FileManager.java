@@ -2,8 +2,7 @@ package homeworks.file_manager_application;
 
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Приложение должно позволять:
@@ -67,6 +66,65 @@ public class FileManager {
             System.out.println(ex.getMessage());
         }
     }
+
+    // Read the file and write the string
+
+    public void reaFileTxt() {
+
+        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки"; // строка для записи
+        try(FileOutputStream fos=new FileOutputStream(".\\src\\Directory1\\test2Modify.txt"))
+        {
+            byte[] buffer = text.getBytes();
+
+            fos.write(buffer, 0, buffer.length);
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("The file has been written");
+    }
+
+
+    public void readModifySavePdf() {
+
+        try {
+            File file = new File(".\\src\\Directory1\\test2Modify.txt");
+
+            FileReader fr = new FileReader(file);
+
+            BufferedReader reader = new BufferedReader(fr);
+
+            String line = reader.readLine();
+
+            while (line != null) {
+
+                System.out.println(line);
+
+                line = reader.readLine();
+            }
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     // Convert text files to PDF files
 

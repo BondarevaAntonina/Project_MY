@@ -9,21 +9,29 @@ public class TestFileManager {
 
         FileManager fileManager = new FileManager();
 
-        fileManager.createNewDirectory(); // Create a new directory
+//        fileManager.createNewDirectory(); // Create a new directory
+//
+//        fileManager.createNewFile(); // Create a new file in directory
 
-        fileManager.createNewFile(); // Create a new file in directory
+//        fileManager.reaFileTxt(); // Read the file and write the string
 
-        fileManager.copyFilesToDirect(); // Copy files from one directory to another, if such a file already exists, overwrite it
+        fileManager.readModifySavePdf();
 
-        fileManager.removeFile(); // Delete files
 
-        fileManager.removeDirectory(); // Deleting directory
 
-        fileManager.renameFile(); //Rename files
 
-        fileManager.renameDirectory(); //Rename directories
 
-        fileManager.contentDirectory(); // View the contents of the directory
+//        fileManager.copyFilesToDirect(); // Copy files from one directory to another, if such a file already exists, overwrite it
+//
+//        fileManager.removeFile(); // Delete files
+//
+//        fileManager.removeDirectory(); // Deleting directory
+//
+//        fileManager.renameFile(); //Rename files
+//
+//        fileManager.renameDirectory(); //Rename directories
+//
+//        fileManager.contentDirectory(); // View the contents of the directory
 
 
     }
