@@ -61,16 +61,16 @@ public class FileManager {
         }
     }
 
-    //Convert text files to PDF files
+    // Convert text files to PDF files
 
     public void convertTextToPDF() throws Exception {
 
     }
 
-//Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его
+    //Copy files from one directory to another, if such a file already exists, overwrite it
 
     public void copyFilesToDirect() {
-//
+
         File source = new File(".\\src\\Directory1");
         File dest = new File(".\\src\\Directory2");
         try {
@@ -79,6 +79,25 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
+
+    // Delete files
+
+    public void removeFile() {
+
+        File file = new File(".\\src\\Directory1\\test1.txt");
+
+        if (file.delete()) {
+
+            System.out.println("File test1.txt was removed from the project's root folder");
+
+        } else System.out.println("File test1.txt was not found in the project root folder");
+
+    }
+
+    //Удалять директории
+
+
 }
 
 
