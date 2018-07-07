@@ -24,16 +24,31 @@ public class AmountNumberDigitFive {
 
 //      String phone = "(068)234-56-78";
 
-        Pattern p = Pattern.compile("\\(\\d{3}\\)");
+        String regexCode = "\\(\\d{3}\\)";
+
+        String regexNumber = "(\\(095\\)|\\(099\\))\\d{3}-\\d{2}-\\d{2}";
+
+        Pattern p = Pattern.compile(regexNumber);
 
         Matcher m = p.matcher(phone);
 
-        if (m.find()) {
-            if (m.group().equals("(095)") || m.group().equals("(099)")) {
+        Pattern p1 = Pattern.compile(regexCode);
+
+        Matcher m1 = p1.matcher(phone);
+
+        if (!m.matches()) {
+            System.out.println("Incorrect number");
+            return;
+        }
+
+        if (m1.find()) {
+            String group = m1.group();
+
+            if (group.equals("(095)") || group.equals("(099)")) {
 
                 System.out.println("User has MTS number");
 
-            } else if (m.group().equals("(068)") || m.group().equals("(067)")) {
+            } else if (group.equals("(068)") || m.group().equals("(067)")) {
 
                 System.out.println("The user has a Kyivstar number");
 

@@ -72,13 +72,11 @@ public class FileManager {
     public void reaFileTxt() {
 
         String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки"; // строка для записи
-        try(FileOutputStream fos=new FileOutputStream(".\\src\\Directory1\\test2Modify.txt"))
-        {
+        try (FileOutputStream fos = new FileOutputStream(".\\src\\Directory1\\test2Modify.txt")) {
             byte[] buffer = text.getBytes();
 
             fos.write(buffer, 0, buffer.length);
-        }
-        catch(IOException ex){
+        } catch (IOException ex) {
 
             System.out.println(ex.getMessage());
         }
@@ -113,17 +111,7 @@ public class FileManager {
         }
 
 
-
     }
-
-
-
-
-
-
-
-
-
 
 
     // Convert text files to PDF files

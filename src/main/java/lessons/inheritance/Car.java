@@ -5,6 +5,8 @@ import java.io.Serializable;
 public abstract class Car implements Drivable {
     private String name;
 
+    public static int age = 0;
+
     public Car(String name) {
         this.name = name;
     }
@@ -37,6 +39,9 @@ public abstract class Car implements Drivable {
 
 class Bmw extends Car {//is-a
     private String specificBmw;//has-a
+
+    public static int age = 0;
+
 
     public Bmw(String name, String specificBmw) {
         super(name);
@@ -85,6 +90,7 @@ class Mercedes extends Car {
 class TestInheritance {
     public static void main(String[] args) {
         Bmw bmw = new Bmw("BMW", "X5");
+        Bmw.age = 5;
 
 //        Car car = new Bmw("BMW1", "X5");
         Runnable car = new Bmw("BMW1", "X5");
@@ -95,6 +101,7 @@ class TestInheritance {
 
 interface Drivable extends Runnable, Serializable {
     int PATH = 5;
+
     public abstract void drive();
 
     default void print() {

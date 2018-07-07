@@ -1,4 +1,4 @@
-package homeworks.abstract_work;
+package homeworks.abstract_work.writer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,14 +9,13 @@ import java.nio.file.StandardOpenOption;
 /**
  * Created by antoni on 04.07.2018.
  */
-public class DescendantReader  extends Reader {
+public class DescendantWriter extends Writer {
 
     @Override
-    public void read() {
+    public void write(String log) {
         Path path = Paths.get("./Logs", "Poem.txt");
 //        Path path = Paths.get("Poem.txt");
         try {
-            String log = new String(Files.readAllBytes(path));
             //Files.write(path, ("\n" + modifyText(log)).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE_NEW);
             Files.write(path, modifyText(log).getBytes(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         } catch (IOException e) {

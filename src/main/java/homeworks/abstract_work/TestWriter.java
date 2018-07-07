@@ -1,5 +1,8 @@
 package homeworks.abstract_work;
 
+import homeworks.abstract_work.reader.DescendantReader;
+import homeworks.abstract_work.writer.DescendantWriter;
+
 import java.util.Scanner;
 
 /**
@@ -17,9 +20,13 @@ public class TestWriter {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Enter text");
+
         String textUserConsole = sc.nextLine();
+
         DescendantWriter descendantWriter = new DescendantWriter();
+
         descendantWriter.write(textUserConsole);
 
         DescendantReader descendantReader = new DescendantReader();

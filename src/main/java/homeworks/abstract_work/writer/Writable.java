@@ -1,4 +1,4 @@
-package homeworks.abstract_work;
+package homeworks.abstract_work.writer;
 
 /**
  * Created by antoni on 02.07.2018.

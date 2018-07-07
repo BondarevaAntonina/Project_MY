@@ -18,9 +18,6 @@ public class TestFileManager {
         fileManager.readModifySavePdf();
 
 
-
-
-
 //        fileManager.copyFilesToDirect(); // Copy files from one directory to another, if such a file already exists, overwrite it
 //
 //        fileManager.removeFile(); // Delete files

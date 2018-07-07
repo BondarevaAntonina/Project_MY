@@ -20,9 +20,11 @@ public class AmountNumberDigit {
 
     public static void main(String[] args) {
 
-        String regex = "232 234234 234 234234 \\w{2} 345 45345 345 25445";
+        String regex = "\\w*\\d{2}";
+//        String regex = "[0-9\\s]*is[0-9\\s]*";
 
-        String text = "232 234234 234 234234 is 345 45345 345 25445";
+//        String text = "232 234234 234 234234 is 345 45345 345 25445";
+        String text = "drtry85";
 
         System.out.println(Pattern.matches(regex, text));
     }
