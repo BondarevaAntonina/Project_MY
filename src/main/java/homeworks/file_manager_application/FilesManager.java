@@ -46,8 +46,6 @@ public class FilesManager {
 
             try {
 
-                // Creating The New Directory Structure
-
                 Files.createDirectories(dirPathObj);
 
                 System.out.println("New Directory Successfully Created");
