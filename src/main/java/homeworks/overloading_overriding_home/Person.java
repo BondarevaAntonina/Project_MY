@@ -7,11 +7,11 @@ package homeworks.overloading_overriding_home;
  */
 public class Person {
 
-    private String firstName = "Petrienko";
-    private String lastName = "Ivan";
-    private int age = 30;
-    private String gender = "M";
-    private int phoneNumber = 5252;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String gender;
+    private int phoneNumber;
 
     public Person() {
         this.firstName = firstName;
@@ -24,7 +24,8 @@ public class Person {
 
 
     public void print(String firstName, String lastName, int age, String gender, int phoneNumber) {
-        String dataPerson = String.format("фамилия: %s имя: %s возраст: %d, пол: %s, телефон: %d", firstName, lastName, age, gender, phoneNumber);
+        String dataPerson = String.format("фамилия: %s имя: %s возраст: %d, пол: %s, телефон: %d",
+                firstName, lastName, age, gender, phoneNumber);
         System.out.println(dataPerson);
 
     }
