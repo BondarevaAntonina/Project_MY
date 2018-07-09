@@ -7,15 +7,15 @@ public class TestFileManager {
 
     public static void main(String[] args) throws Exception {
 
-        FileManager fileManager = new FileManager();
+        FilesManager fileManager = new FilesManager();
 
-//        fileManager.createNewDirectory(); // Create a new directory
+        fileManager.createNewDirectory(); // Create a new directory
 //
 //        fileManager.createNewFile(); // Create a new file in directory
 
 //        fileManager.reaFileTxt(); // Read the file and write the string
 
-        fileManager.readModifySavePdf();
+//        fileManager.readModifySavePdf();
 
 
 
