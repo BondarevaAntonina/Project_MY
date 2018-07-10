@@ -1,9 +1,13 @@
 package homeworks.file_manager_application;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+
+import static com.google.common.io.Files.copy;
 
 /**
  * Приложение должно позволять:
@@ -24,6 +28,9 @@ public class FilesManager {
 
 //    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
+    private static final String FILE_PATH = ".\\src\\Direct\\test1.txt";
+
+
     public FilesManager() {
         this.nameFile = nameFile;
         this.nameDirectory = nameDirectory;
@@ -33,12 +40,13 @@ public class FilesManager {
 
     public void createNewDirectory() throws IOException {
 
-        String dirPath = ".\\src\\Direct";
+        String dirPath = ".\\src\\Directory2";
+
         Path dirPathObj = Paths.get(dirPath);
 
         boolean dirExists = Files.exists(dirPathObj);
 
-        if(dirExists) {
+        if (dirExists) {
 
             System.out.println("Directory Already Exists");
 
@@ -48,7 +56,7 @@ public class FilesManager {
 
                 Files.createDirectories(dirPathObj);
 
-                System.out.println("New Directory Successfully Created");
+                System.out.println("New Directory successfully Created");
 
             } catch (IOException ioExceptionObj) {
 
@@ -60,45 +68,25 @@ public class FilesManager {
 
     }
 
+    // Create a new file in directory
 
+    public void createNewFile() throws Exception {
 
+        try {
 
+            Path path = Files.createFile(Paths.get(FILE_PATH));
 
-//    public void createNewDirectory() throws Exception {
-//
-//        final File direct1 = new File(DIRECT);
-//
-//        if (!direct1.exists()) {
-//
-//            if (direct1.mkdir()) {
-//
-//                System.out.println("Directory" + direct1.getAbsolutePath() + " successfully created.");
-//
-//            } else {
-//                System.out.println("Directory" + direct1.getAbsolutePath() + " failed to create.");
-//            }
-//        } else {
-//            System.out.println("Directory" + direct1.getAbsolutePath() + " already exists.");
-//        }
-//    }
+            System.out.println("File has been created");
 
+        } catch (IOException e) {
 
-//    // Create a new file in directory
-//
-//    public void createNewFile() throws Exception {
-//
-//        File newFile = new File(".\\src\\Directory1\\test.txt");
-//
-//        try {
-//            boolean created = newFile.createNewFile();
-//
-//            if (created) System.out.println("File has been created");
-//
-//        } catch (IOException ex) {
-//
-//            System.out.println(ex.getMessage());
-//        }
-//    }
+            e.printStackTrace();
+
+            System.out.println(e.getMessage());
+        }
+        System.out.println("File has not been created");
+    }
+
 //
 //    // Read the file and write the string
 //
@@ -165,37 +153,65 @@ public class FilesManager {
 //
 //    }
 //
-//    //Copy files from one directory to another, if such a file already exists, overwrite it
+    //Copy files from one directory to another, if such a file already exists, overwrite it
 //
-//    public void copyFilesToDirect() {
+    public void copyFilesToDirect() throws InterruptedException, IOException {
+
+        ArrayList<String> selectFiles = new ArrayList<>();
+        File folder = new File(".\\src\\Directory1\\");
+        File[] listOfFiles = folder.listFiles();
+
+        for (File f : listOfFiles) {
+            selectFiles.add(f + "");
+        }
+
+        File source = new File(" " + selectFiles);// ПОЛУЧАЮ СПИСОК ФАЙЛОВ ПРИСВАИВАЮ ПЕРЕМЕННУЮ С ФАЙЛАМИ
+        File dest = new File(".\\src\\Directory2\\");// ПРОПИСЫВАЮ ПУТЬ КУДА КОПИРОВАТЬ
+        copy(source, dest);
+
+        Files.copy(source.toPath(), dest.toPath());
+
+
+//        Path source = Paths.get(".\\src\\Directory1");
 //
-//        File source = new File(".\\src\\Directory1");
-//
-//        File dest = new File(".\\src\\Directory2");
+//        Path dest = Paths.get(".\\src\\Directory2");
 //
 //        try {
-//            FileUtils.copyDirectory(source, dest);
+//            Files.copy(source, dest);
 //
 //        } catch (IOException e) {
 //
 //            e.printStackTrace();
 //        }
-//    }
-//
-//
-//    // Delete files
-//
-//    public void removeFile() {
-//
-//        File file = new File(".\\src\\Directory1\\test1.txt");
-//
-//        if (file.delete()) {
-//
-//            System.out.println("File test1.txt was removed from the project's root folder");
-//
-//        } else System.out.println("File test1.txt was not found in the project root folder");
-//
-//    }
+    }
+
+
+    // Delete files
+
+    public void removeFile() {
+
+        Path path = Paths.get(".\\src\\Direct\\test1.txt");
+
+        boolean pathExists = Files.exists(path);
+
+        if (pathExists) {
+            System.out.println("File test1.txt was removed from the project's root folder");
+        }
+
+        try {
+            Files.delete(path);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
 //
 //    // Deleting directory contents
 //    public void removeDirectoryContents() {
