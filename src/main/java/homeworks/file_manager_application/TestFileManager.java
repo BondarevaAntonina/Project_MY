@@ -9,7 +9,8 @@ public class TestFileManager {
 
         FilesManager fileManager = new FilesManager();
 
-        fileManager.createNewDirectory(); // Create a new directory
+//
+//        fileManager.createNewDirectory(); // Create a new directory
 //
 //        fileManager.createNewFile(); // Create a new file in directory
 
@@ -18,7 +19,7 @@ public class TestFileManager {
 //        fileManager.readModifySavePdf();
 
 
-//        fileManager.copyFilesToDirect(); // Copy files from one directory to another, if such a file already exists, overwrite it
+        fileManager.copyFilesToDirect(".\\src\\Directory1", ".\\src\\Directory2"); // Copy files from one directory to another, if such a file already exists, overwrite it
 ////
 //        fileManager.removeFile(); // Delete files
 ////

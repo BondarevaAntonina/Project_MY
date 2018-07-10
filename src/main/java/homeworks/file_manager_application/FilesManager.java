@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-
-import static com.google.common.io.Files.copy;
+import java.nio.file.StandardCopyOption;
 
 /**
  * Приложение должно позволять:
@@ -155,34 +153,23 @@ public class FilesManager {
 //
     //Copy files from one directory to another, if such a file already exists, overwrite it
 //
-    public void copyFilesToDirect() throws InterruptedException, IOException {
+    public void copyFilesToDirect(String sourceDirName, String targetSourceDir) throws InterruptedException, IOException {
 
-        ArrayList<String> selectFiles = new ArrayList<>();
-        File folder = new File(".\\src\\Directory1\\");
+        File folder = new File(sourceDirName);
+
         File[] listOfFiles = folder.listFiles();
 
-        for (File f : listOfFiles) {
-            selectFiles.add(f + "");
+        Path destDir = Paths.get(targetSourceDir);
+
+        if (listOfFiles != null) {
+
+            System.out.println("Copy files from one directory to another successfully");
         }
 
-        File source = new File(" " + selectFiles);// ПОЛУЧАЮ СПИСОК ФАЙЛОВ ПРИСВАИВАЮ ПЕРЕМЕННУЮ С ФАЙЛАМИ
-        File dest = new File(".\\src\\Directory2\\");// ПРОПИСЫВАЮ ПУТЬ КУДА КОПИРОВАТЬ
-        copy(source, dest);
+        for (File file : listOfFiles)
 
-        Files.copy(source.toPath(), dest.toPath());
+            Files.copy(file.toPath(), destDir.resolve(file.getName()), StandardCopyOption.REPLACE_EXISTING);
 
-
-//        Path source = Paths.get(".\\src\\Directory1");
-//
-//        Path dest = Paths.get(".\\src\\Directory2");
-//
-//        try {
-//            Files.copy(source, dest);
-//
-//        } catch (IOException e) {
-//
-//            e.printStackTrace();
-//        }
     }
 
 
