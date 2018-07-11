@@ -2,10 +2,10 @@ package homeworks.file_manager_application;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  * Приложение должно позволять:
@@ -85,7 +85,7 @@ public class FilesManager {
         System.out.println("File has not been created");
     }
 
-//
+    //
 //    // Read the file and write the string
 //
 //    public void reaFileTxt() {
@@ -168,7 +168,7 @@ public class FilesManager {
 
         for (File file : listOfFiles)
 
-            Files.copy(file.toPath(), destDir.resolve(file.getName()), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(file.toPath(), destDir.resolve(file.getName()), REPLACE_EXISTING);
 
     }
 
@@ -196,66 +196,85 @@ public class FilesManager {
         }
     }
 
+    // Deleting directory contents
+
+    public void removeDirectoryContents() throws IOException {
 
 
+        Path path = Paths.get(".\\src\\Directory3");
 
-//
-//    // Deleting directory contents
-//    public void removeDirectoryContents() {
-//
-//        File index = new File(".\\src\\Directory3");
-//
-//        String[] entries = index.list();
-//
-//        for (String s : entries) {
-//
-//            File currentFile = new File(index.getPath(), s);
-//
-//            currentFile.delete();
-//        }
-//    }
-//
-//    // Deleting directory
-//
-//    public void removeDirectory() {
-//
-//        removeDirectoryContents();
-//
-//        File file = new File(".\\src\\Directory3");
-//
-//        if (file.delete()) {
-//
-//            System.out.println(file + " has been removed from the project's root directory");
-//
-//        } else System.out.println(file + "was not found in the root directory of the project or is not empty");
-//    }
-//
-//    //Rename files
-//
-//    public void renameFile() {
-//
-//        File srcFile = new File(".\\src\\Directory4\\test1.txt");
-//
-//        File destFile = new File(".\\src\\Directory4\\map.txt");
-//
-//        boolean renamed = srcFile.renameTo(destFile);
-//
-//        System.out.println("Renamed: " + renamed);
-//    }
+        try {
+            Files.walkFileTree(path, new SimpleFileVisitor <Path>() {//SimpleFileVisitor напечатать все записи в дереве файла
+
+                @Override
+
+                //BasicFileAttributeView – базовые атрибуты, поддерживаемые всеми реализациями файловых систем
+
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+
+                    System.out.println("Deleting file: " + file);
+
+                    Files.delete(file);
+
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                //Вызванный после того, как все записи в каталоге посещают. Если с какими-либо ошибками встречаются, определенное исключение передают к методу
+                public FileVisitResult postVisitDirectory(Path path, IOException exc) throws IOException {
+
+                    System.out.println("Deleting path: " + path);
+
+                    if (exc == null) {
+
+                        Files.delete(path);
+
+                        return FileVisitResult.CONTINUE; //CONTINUE – Указывает, что обход файла должен продолжаться
+
+                    } else {
+
+                        throw exc;
+                    }
+                }
+            });
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+
+    //Rename files
+
+    public void renameFile() throws IOException {
+
+        Path source = Paths.get(".\\src\\Directory2\\source.txt");
+
+        Path newdir = Paths.get(".\\src\\Directory2\\test1.txt");
+
+        if(Files.exists(source)) {
+
+        }
+            System.out.println("This file exists");
+
+        Files.move(source, newdir, REPLACE_EXISTING);
+
+    }
+
 //
 //    //Rename directories
-//
-//    public void renameDirectory() {
-//
-//        File srcFile = new File(".\\src\\Directory5");
-//
-//        File destFile = new File(".\\src\\Directory6");
-//
-//        boolean renamed = srcFile.renameTo(destFile);
-//
-//        System.out.println("Renamed: " + renamed);
-//
-//    }
+
+    public void renameDirectory() throws IOException {
+
+        Path file1 = Paths.get(".\\src\\Directory3");
+
+        Path file2 = Paths.get(".\\src\\Directory2");
+
+        if (Files.exists(file1)) {
+            System.out.println("Directory successfully renamed");
+            Files.move(file1, file2, REPLACE_EXISTING);
+        }
+    }
 //
 //    // View the contents of the directory
 //

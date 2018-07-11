@@ -19,13 +19,13 @@ public class TestFileManager {
 //        fileManager.readModifySavePdf();
 
 
-        fileManager.copyFilesToDirect(".\\src\\Directory1", ".\\src\\Directory2"); // Copy files from one directory to another, if such a file already exists, overwrite it
-////
+//        fileManager.copyFilesToDirect(".\\src\\Directory1", ".\\src\\Directory2"); // Copy files from one directory to another, if such a file already exists, overwrite it
+
 //        fileManager.removeFile(); // Delete files
-////
-//        fileManager.removeDirectory(); // Deleting directory
-//
-//        fileManager.renameFile(); //Rename files
+
+//        fileManager.removeDirectoryContents();
+
+        fileManager.renameFile(); //Rename files
 //
 //        fileManager.renameDirectory(); //Rename directories
 //
