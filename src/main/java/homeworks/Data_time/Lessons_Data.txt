@@ -1,0 +1,296 @@
+1) Различия между классами. Применение
+
+Класс java.time.LocalDate хранит год, месяц и день. Он используется для хранения и обработки даты без времени.
+Примеры создания:
+
+LocalDate date = LocalDate.of(2000, Month.NOVEMBER, 20);
+LocalDate nextWed = date.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+В дополнение к обычным методам класс java.time.LocalDate  содержит методы для получения информации о дате. Метод
+getDayOfWeek  возвращает день недели. Например, следующий код вернёт MONDAY:
+
+DayOfWeek dotw = LocalDate.of(2012, Month.JULY, 9).getDayOfWeek();
+Следующий пример использует TemporalAdjuster, чтобы следующую среду от указанной даты:
+
+LocalDate date = LocalDate.of(2000, Month.NOVEMBER, 20);
+TemporalAdjuster adj = TemporalAdjusters.next(DayOfWeek.WEDNESDAY);
+LocalDate nextWed = date.with(adj);
+System.out.printf("For the date of %s, the next Wednesday is %s.%n",
+                  date, nextWed);
+
+
+
+Класс java.time.LocalDateTime хранит дату и время. Он является нечтом вроде комбинации LocalDate  и LocalTime.
+В дополнение к методу now(), который есть у каждого временного класса, класс LocalDateTime  содержит большое
+количество методов of, которые позволяют создать экземпляры LocalDateTime. Метод from  конвертирует экземпляр
+другого класса в LocalDateTime. Также есть методы для добавления и вычитания часов, минут, дней и недель
+
+
+Класс java.util.Calendar является абстрактным классом. Единственная реализация — java.util.GregorianCalendar. Новый
+экземпляр создаётся фабричным методом:
+
+Calendar rightNow = Calendar.getInstance();
+
+Calendar предоставляет методы установки значений различных полей вроде YEAR, MONTH, DAY_OF_MONTH, HOUR и т. д,
+манипуляции этими полями, например добавление дня или месяца. Дата и время представляется количеством миллисекунд,
+прошедших с 1 января 1970 года 00:00:00.000 GMT. Обычно класс java.util.Calendar используется для создания экземпляров
+java.util.Date, представляющих необходимую дату и время.
+
+Calendar имеет два режима интерпретации полей: мягкий (lenient) и жёсткий (non-lenient). Когда Calendar в мягком
+(lenient) режиме, то он принимает больший диапазон значений полей, чем возвращает. Когда Calendar пересчитывает значения
+полей, возвращаемых get(), то все поля нормализуются. Например, мягкий GregorianCalendar интерпретирует MONTH == JANUARY,
+DAY_OF_MONTH == 32 как 1 февраля.
+
+Когда Calendar в жёстком (non-lenient) режиме, то он бросает исключение в подобных случаях. Например, GregorianCalendar
+всегда возвращает значение поля DAY_OF_MONTH в диапазоне от 1 до длины месяца. Жёсткий GregorianCalendar бросает
+исключение во время выполнения вычислений своего времени или поля, если хоть одно поле выходит за допустимые границы.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2) Конструкторы
+
+Почему объекты LocalDate, LocalTime и Stream используют factory метод() вместо конструктора?
+Почему LocalDate, LocalTime, Stream и т.д. объекты используют метод factory of() вместо конструктора?
+
+Я нашел объяснение, почему методы factory должны использоваться вместо new здесь. Этот ответ дает ряд причин, но
+единственное, что имеет отношение к Java Date/Time API, следующее:
+в отличие от конструкторов, они не обязаны создавать новый объект каждый time theyre invoked
+
+Поскольку LocalDate и LocalTime неизменяемы, вероятно, имеет смысл использовать factory и повторно использовать
+существующие объекты, а не создавать новый объект каждый раз.
+
+Это причина, по которой объекты типа LocalDate и LocalTime создаются с помощью метода factory (т.е. LocalDate.of())
+Кроме того, объекты Stream изменяемы. Почему метод factory (Stream.of()) используется для создания Stream
+
+
+
+Вы можете прочитать Эффективный Java-элемент 1: Рассмотрите статические factory методы вместо конструкторов. В
+нем описаны преимущества использования методов factory:
+
+Одним из преимуществ статических методов factory является то, что, в отличие от конструкторов, они имеют имена
+
+Второе преимущество статических методов factory заключается в том, что, в отличие от конструкторов, они не обязаны
+создавать новый объект каждый раз при вызове theyre.
+
+Третье преимущество статических методов factory заключается в том, что, в отличие от конструкторов, они могут возвращать
+объект любого подтипа возвращаемого типа.
+
+Четвертое преимущество статических методов factory заключается в том, что они уменьшают многословие создания экземпляров
+с параметризованным типом (кажется, устарели со времен Java 7).
+                                                                                                                                                                                 Четвертое преимущество статических методов factory заключается в том, что они уменьшают многословие создания экземпляров с параметризованным типом (кажется, устарели со времен Java 7)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      3) Методы LocalDate:
+       - format
+       format(DateTimeFormatter formatter)
+       Форматы эта дата, используя указанное средство форматирования.
+
+       DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d.MM.YYYY");
+       System.out.println(dateTimeFormatter.format(localDate));  //  30.06.2014
+
+       try
+       {
+       System.out.println(dateTimeFormatter.format(localTime));
+       }
+       catch (UnsupportedTemporalTypeException e)
+       {
+       System.out.println("Wrong formatter.");
+       }
+
+       System.out.println(dateTimeFormatter.format(localDateTime)); //  30.06.2014
+
+
+
+       //- minus
+       localTime = localTime.minusMinutes(60)
+       .plusHours(1)
+       .plusSeconds(60)
+       .minusMinutes(1);
+
+       localDate = localDate.minusYears(1)
+       .plusMonths(12)
+       .minusDays(365)
+       .plusYears(1);
+
+       localDateTime = localDateTime.minusMinutes(60)
+       .plusHours(1)
+       .minusMinutes(1)
+       .plusSeconds(60)
+       .plusMonths(12)
+       .minusYears(1)
+       .minusDays(365)
+       .plusYears(1);
+
+       System.out.println(localTime); // 15:06:58.074
+       System.out.println(localDate); // 2014-06-30
+       System.out.println(localDateTime); // 2014-06-30T15:08:19.809
+
+
+
+    //   -  3 метода now
+
+Три класса для работы c датами и временем:
+•	LocalDate. Позволяет работать только с датами, без времени.
+•	LocalTime. Позволяет работать только со временем, без дат.
+•	LocalDateTime. Позволяет работать и с датами, и с временем.
+
+       System.out.println(LocalDate.now());
+       System.out.println(LocalTime.now());
+       System.out.println(LocalDateTime.now());
+
+
+
+     //  -  parse
+
+Рассмотренный шаблон можно так же применить для преобразования строк в дату и время. Рассмотрим пример:
+
+
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+LocalDate date = LocalDate.parse("12 02 2016", formatter);
+LocalTime time = LocalTime.parse("22:12");
+LocalDateTime dateTime = LocalDateTime.of(date, time);
+System.out.println(dateTime); //2016-02-12T22:12
+
+В примере мы использовали два разных подхода для преобразования строк в дату и время: дату мы преобразовали с
+использованием нами разработанного шаблона, а вот время без. Как видите оба способа отработали корректно, но будьте
+готовы к тому что может быть сгенерировано исключение если в качестве строковых параметров передать некорректные
+значения:
+
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+LocalDate date = LocalDate.parse("60 02 2016", formatter);  //DateTimeParseException
+
+     //  -  plus
+
+     LocalDate date = LocalDate.of(2016, Month.MARCH, 1);
+     System.out.println(date);   // 2016-03-01
+     Прибавим к созданной дате один день:
+
+
+     date = date.plusDays(1);
+     System.out.println(date);   // 2016-03-02
+
+     Название метода plusDays() говорит само за себя. Для добавления недели можно передать
+     в метод plusDays() целочисленную константу 7, а можно сделать проще:
+
+
+     date = date.plusWeeks(1);
+     System.out.println(date);   // 2016-03-09
+
+     метод plusWeeks() удобно использовать, если необходимо добавить несколько недель. Теперь месяцы:
+
+
+     date = date.plusMonths(1);
+     System.out.println(date);   // 2016-04-09
+
+     И года:
+
+     date = date.plusYears(1);
+     System.out.println(date);   // 2017-04-09
+
+
+      // -  of
+
+
+      // -  until
+
+public long periodUntil(Temporal endDate,
+                        TemporalUnit unit)
+Вычисляет количество времени до другой даты с точки зрения указанного модуля.
+Это вычисляет количество времени между два LocalDate объекты с точки зрения сингла TemporalUnit. Запуск и конечные
+точки this и указанная дата. Результат будет отрицателен, если конец будет перед запуском. Temporal переданный к этому
+методу должен быть a LocalDate. Например, количество в днях между двумя датами может быть вычислено, используя
+startDate.periodUntil(endDate, DAYS).
+
+Вычисление возвращает целое число, представляя число полных модулей между этими двумя датами. Например, количество в
+месяцах между 15.06.2012 и 14.08.2012 только будет одним месяцем, поскольку это - один день за исключением двух месяцев.
+
+Есть два эквивалентных способа использовать этот метод. Первое должно вызвать этот метод. Второе должно использовать
+TemporalUnit.between(Temporal, Temporal):
+
+   // these two lines are equivalent
+   amount = start.periodUntil(end, MONTHS);
+   amount = MONTHS.between(start, end);
+
+Выбор должен быть сделан основанный, которого делает код более читаемым.
+Вычисление реализуется в этом методе для ChronoUnit. Модули DAYS, WEEKS, MONTHS, YEARS, DECADES, CENTURIES, MILLENNIA и
+ERAS поддерживаются. Другой ChronoUnit значения выдадут исключение.
+
+Если модуль не является a ChronoUnit, тогда результат этого метода получается, вызывая TemporalUnit.between(Temporal,
+Temporal) передача this как первый параметр и ввод, временный как второй параметр.
+
+Этот экземпляр является неизменным и незатронутым этим вызовом метода.
+
+Определенный:
+periodUntil в интерфейсе ChronoLocalDate<LocalDate>
+Определенный:
+periodUntil в интерфейсе Temporal
+Параметры:
+endDate - дата окончания, которая должна быть a LocalDate, не нуль
+unit - модуль, чтобы измерить количество в, не нуль
+Возвраты:
+количество времени между этой датой и дата окончания
+Броски:
+DateTimeException - если количество не может быть вычислено
+UnsupportedTemporalTypeException - если модуль не поддерживается
+ArithmeticException - если числовое переполнение происходит
+
+
+       //-  isAfter
+
+       public boolean isAfter(ChronoLocalDate<?> other)
+       Проверки, если эта дата после указанной даты.
+       Это проверяет, чтобы видеть, представляет ли эта дата точку на локальной временной шкале после другой даты.
+
+          LocalDate a = LocalDate.of(2012, 6, 30);
+          LocalDate b = LocalDate.of(2012, 7, 1);
+          a.isAfter(b) == false
+          a.isAfter(a) == false
+          b.isAfter(a) == true
+
+       Этот метод только рассматривает позицию этих двух дат на локальной временной шкале. Это не принимает во внимание
+       хронологию, или календарную систему. Это отличается от сравнения в compareTo(ChronoLocalDate), но тот же самый
+       подход как ChronoLocalDate.timeLineOrder().
+
+       Определенный:
+       isAfter в интерфейсе ChronoLocalDate<LocalDate>
+       Параметры:
+       other - другая дата, чтобы сравнить с, не нуль
+       Возвраты:
+       истина, если эта дата после указанной даты
+
+
+      // -  isBefore
+
+      public boolean isBefore(ChronoLocalDate<?> other)
+      Проверки, если эта дата перед указанной датой.
+      Это проверяет, чтобы видеть, представляет ли эта дата точку на локальной временной шкале перед другой датой.
+
+         LocalDate a = LocalDate.of(2012, 6, 30);
+         LocalDate b = LocalDate.of(2012, 7, 1);
+         a.isBefore(b) == true
+         a.isBefore(a) == false
+         b.isBefore(a) == false
+
+      Этот метод только рассматривает позицию этих двух дат на локальной временной шкале. Это не принимает во внимание
+      хронологию, или календарную систему. Это отличается от сравнения в compareTo(ChronoLocalDate), но тот же самый
+      подход как ChronoLocalDate.timeLineOrder().
+
+      Определенный:
+      isBefore в интерфейсе ChronoLocalDate<LocalDate>
+      Параметры:
+      other - другая дата, чтобы сравнить с, не нуль
+      Возвраты:
+      истина, если эта дата перед указанной датой
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       4) Методы LocalDateTime:
+       - atZone
+       - atOffset
+       - from
+       -  truncatedTo
+       -  range
+       5) Методы Calendar:
+       - add
+       - getInstance(TimeZone zone)
+       - getTimeZone()
+       - set
+      Примеры кода использования методов. Получение из этих объектов, объект Date

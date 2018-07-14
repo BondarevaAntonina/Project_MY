@@ -1,0 +1,36 @@
+LocalDateTime
+
+Класс java.time.LocalDateTime хранит дату и время. Он является нечтом вроде комбинации LocalDate  и LocalTime.
+В дополнение к методу now(), который есть у каждого временного класса, класс LocalDateTime  содержит большое количество
+методов of, которые позволяют создать экземпляры LocalDateTime. Метод from  конвертирует экземпляр другого класса в
+LocalDateTime. Также есть методы для добавления и вычитания часов, минут, дней и недель Пример:
+
+Java
+
+System.out.printf("now: %s%n", LocalDateTime.now());
+
+System.out.printf("Apr 15, 1994 @ 11:30am: %s%n",
+                  LocalDateTime.of(1994, Month.APRIL, 15, 11, 30));
+
+System.out.printf("now (from Instant): %s%n",
+                  LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()));
+
+System.out.printf("6 months from now: %s%n",
+                  LocalDateTime.now().plusMonths(6));
+
+System.out.printf("6 months ago: %s%n",
+                  LocalDateTime.now().minusMonths(6));
+
+System.out.printf("now: %s%n", LocalDateTime.now());
+
+System.out.printf("Apr 15, 1994 @ 11:30am: %s%n",
+                  LocalDateTime.of(1994, Month.APRIL, 15, 11, 30));
+
+System.out.printf("now (from Instant): %s%n",
+                  LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()));
+
+System.out.printf("6 months from now: %s%n",
+                  LocalDateTime.now().plusMonths(6));
+
+System.out.printf("6 months ago: %s%n",
+                  LocalDateTime.now().minusMonths(6));
