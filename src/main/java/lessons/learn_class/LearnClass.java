@@ -18,7 +18,7 @@ public class LearnClass {
     static {
         LAST_NAME = "12";
 //        System.out.println("Static block initialization");
-//        System.out.println("Hello world");
+//        System.out.println("Hello.txt world");
     }
 
     public LearnClass(int age, String name) {

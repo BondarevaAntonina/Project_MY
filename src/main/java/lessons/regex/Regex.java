@@ -38,7 +38,7 @@ public class Regex {
 
         /*String regex = "He*llo";//repeat multiply times
 
-        String text = "Hello";*/
+        String text = "Hello.txt";*/
 
         /*String regex = "He+llo";//repeat from 1 to  multiply times
 

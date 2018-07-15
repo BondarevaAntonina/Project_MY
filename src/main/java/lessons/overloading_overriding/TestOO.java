@@ -27,7 +27,7 @@ public class TestOO {
 
         List list = new ArrayList();
 
-        list.add("Hello");
+        list.add("Hello.txt");
         list.add(5);
 
         for (Object o : list) {

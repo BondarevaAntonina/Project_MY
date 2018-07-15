@@ -10,7 +10,7 @@ public class Association {
     }
 
     public Association() {
-        name = new Table("Hello");//composition
+        name = new Table("Hello.txt");//composition
     }
 }
 

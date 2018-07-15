@@ -8,8 +8,8 @@ public class Arrays {
      int number = 10; //примитивный тип данных [10]
      int [] numbers = new int [5]; // numbers -> [массив] Ссылочный тип данных/ Иннициализация массива
       //  char character = 'a'; //примитивный тип данных
-      //  String s = "Hello"; // ссылочный тип данных
-      //  String s1 = new String("Hello");
+      //  String s = "Hello.txt"; // ссылочный тип данных
+      //  String s1 = new String("Hello.txt");
       //  System.out.println(numbers[0]); // 0 1 2 3 4
         for (int i = 0; i<numbers.length; i++){
             numbers[i] = i*10;

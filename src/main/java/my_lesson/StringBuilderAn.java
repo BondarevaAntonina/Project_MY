@@ -5,7 +5,7 @@ package my_lesson;
  */
 public class StringBuilderAn {
     public static void main(String[] args) {
-//        StringBuilder sb= new StringBuilder("Hello");
+//        StringBuilder sb= new StringBuilder("Hello.txt");
 //        System.out.println(sb.toString());
 //        sb.append(" my").append(" friend");
 //        System.out.println(sb.toString());

@@ -1,4 +1,4 @@
-package evaluation.overloadoverr;
+package valevskiy;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Exception {
 
-    private int getYear() {
+    public int getYear() {
         return new Date().getYear();
     }
 

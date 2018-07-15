@@ -1,6 +1,13 @@
 package homeworks.file_manager_application;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -21,24 +28,19 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  */
 public class FilesManager {
 
-    private String nameFile;
-    private String nameDirectory;
 
 //    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
-    private static final String FILE_PATH = ".\\src\\Direct\\test1.txt";
+    private static final String FILE_PATH = "./ForFM/";
+    private static final String EXTENSION_TXT = ".txt";
+    private static final String EXTENSION_PDF = ".pdf";
 
-
-    public FilesManager() {
-        this.nameFile = nameFile;
-        this.nameDirectory = nameDirectory;
-    }
 
     // Create a new directory
 
-    public void createNewDirectory() throws IOException {
+    public void createNewDirectory(String nameDir) throws IOException {
 
-        String dirPath = ".\\src\\Directory2";
+        String dirPath = FILE_PATH + nameDir;
 
         Path dirPathObj = Paths.get(dirPath);
 
@@ -48,19 +50,19 @@ public class FilesManager {
 
             System.out.println("Directory Already Exists");
 
-        } else {
+            return;
 
-            try {
+        }
 
-                Files.createDirectories(dirPathObj);
+        try {
 
-                System.out.println("New Directory successfully Created");
+            Files.createDirectory(dirPathObj);
 
-            } catch (IOException ioExceptionObj) {
+            System.out.println("New Directory successfully Created");
 
-                System.out.println("Problem Occured While Creating The Directory Structure= " + ioExceptionObj.getMessage());
+        } catch (IOException ioExceptionObj) {
 
-            }
+            System.out.println("Problem Occured While Creating The Directory Structure= " + ioExceptionObj.getMessage());
 
         }
 
@@ -68,11 +70,11 @@ public class FilesManager {
 
     // Create a new file in directory
 
-    public void createNewFile() throws Exception {
+    public void createNewFile(String nameOfFile) throws Exception {
 
         try {
 
-            Path path = Files.createFile(Paths.get(FILE_PATH));
+            Files.createFile(Paths.get(FILE_PATH + nameOfFile + EXTENSION_TXT));
 
             System.out.println("File has been created");
 
@@ -80,72 +82,45 @@ public class FilesManager {
 
             e.printStackTrace();
 
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage() + "\nFile has not been created");
         }
-        System.out.println("File has not been created");
+
     }
 
     //
 //    // Read the file and write the string
+//TODO change String to Path
+    private String readFileTxt(String nameOfFile) throws IOException {
+
+        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки"; // строка для записи
+
+        byte[] bytes = Files.readAllBytes(Paths.get(FILE_PATH, nameOfFile + EXTENSION_TXT));
+
+        return new String(bytes);
+
+    }
+
+    //
 //
-//    public void reaFileTxt() {
-//
-//        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки"; // строка для записи
-//        try(FileOutputStream fos=new FileOutputStream(".\\src\\Directory1\\test2Modify.txt"))
-//        {
-//            byte[] buffer = text.getBytes();
-//
-//            fos.write(buffer, 0, buffer.length);
-//        }
-//        catch(IOException ex){
-//
-//            System.out.println(ex.getMessage());
-//        }
-//        System.out.println("The file has been written");
-//    }
-//
-//
-//    public void readModifySavePdf() {
-//
-//        try {
-//            File file = new File(".\\src\\Directory1\\test2Modify.txt");
-//
-//            FileReader fr = new FileReader(file);
-//
-//            BufferedReader reader = new BufferedReader(fr);
-//
-//            String line = reader.readLine();
-//
-//            while (line != null) {
-//
-//                System.out.println(line);
-//
-//                line = reader.readLine();
-//            }
-//        } catch (FileNotFoundException e) {
-//
-//            e.printStackTrace();
-//
-//        } catch (IOException e) {
-//
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    // Convert text files to PDF files
+    public void readModifySavePdf(String nameOfFile) {
+
+        Document document = new Document();
+        try {
+            String text = readFileTxt(nameOfFile);
+
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(FILE_PATH + nameOfFile + EXTENSION_PDF));
+            document.open();
+            document.add(new Paragraph(text));
+            document.close();
+            writer.close();
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    //    // Convert text files to PDF files
 //
 //    public void convertTextToPDF() throws Exception {
 //
@@ -153,9 +128,9 @@ public class FilesManager {
 //
     //Copy files from one directory to another, if such a file already exists, overwrite it
 //
-    public void copyFilesToDirect(String sourceDirName, String targetSourceDir) throws InterruptedException, IOException {
+    public void copyFilesToDirectory(String sourceDirName, String targetSourceDir) throws InterruptedException, IOException {
 
-        File folder = new File(sourceDirName);
+        File folder = new File(sourceDirName);//walkFileTRee
 
         File[] listOfFiles = folder.listFiles();
 
@@ -175,18 +150,12 @@ public class FilesManager {
 
     // Delete files
 
-    public void removeFile() {
+    public void removeFile(String nameOfFile) {
 
-        Path path = Paths.get(".\\src\\Direct\\test1.txt");
-
-        boolean pathExists = Files.exists(path);
-
-        if (pathExists) {
-            System.out.println("File test1.txt was removed from the project's root folder");
-        }
+        Path path = Paths.get(".\\src\\Direct\\test1.txt");//FILE_PATH
 
         try {
-            Files.delete(path);
+            Files.deleteIfExists(path);
 
         } catch (IOException e) {
 
@@ -204,7 +173,7 @@ public class FilesManager {
         Path path = Paths.get(".\\src\\Directory3");
 
         try {
-            Files.walkFileTree(path, new SimpleFileVisitor <Path>() {//SimpleFileVisitor напечатать все записи в дереве файла
+            Files.walkFileTree(path, new SimpleFileVisitor<Path>() {//SimpleFileVisitor напечатать все записи в дереве файла
 
                 @Override
 
@@ -212,29 +181,22 @@ public class FilesManager {
 
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-                    System.out.println("Deleting file: " + file);
-
-                    Files.delete(file);
-
-                    return FileVisitResult.CONTINUE;
+                    return action("Deleting file: " + file);
                 }
 
                 @Override
                 //Вызванный после того, как все записи в каталоге посещают. Если с какими-либо ошибками встречаются, определенное исключение передают к методу
                 public FileVisitResult postVisitDirectory(Path path, IOException exc) throws IOException {
 
-                    System.out.println("Deleting path: " + path);
+                    return action("Deleting path: " + path);
+                }
 
-                    if (exc == null) {
+                private FileVisitResult action(String message) throws IOException {
+                    System.out.println();
 
-                        Files.delete(path);
+                    Files.delete(path);
 
-                        return FileVisitResult.CONTINUE; //CONTINUE – Указывает, что обход файла должен продолжаться
-
-                    } else {
-
-                        throw exc;
-                    }
+                    return FileVisitResult.CONTINUE; //CONTINUE – Указывает, что обход файла должен продолжаться
                 }
             });
         } catch (IOException e) {
@@ -246,16 +208,16 @@ public class FilesManager {
 
     //Rename files
 
-    public void renameFile() throws IOException {
+    public void renameFile() throws IOException {//add incoming params
 
         Path source = Paths.get(".\\src\\Directory2\\source.txt");
 
         Path newdir = Paths.get(".\\src\\Directory2\\test1.txt");
 
-        if(Files.exists(source)) {
+        if (Files.exists(source)) {
 
         }
-            System.out.println("This file exists");
+        System.out.println("This file exists");
 
         Files.move(source, newdir, REPLACE_EXISTING);
 
@@ -264,7 +226,7 @@ public class FilesManager {
 //
 //    //Rename directories
 
-    public void renameDirectory() throws IOException {
+    public void renameDirectory() throws IOException {//refactor
 
         Path file1 = Paths.get(".\\src\\Directory3");
 
@@ -275,25 +237,12 @@ public class FilesManager {
             Files.move(file1, file2, REPLACE_EXISTING);
         }
     }
-//
-//    // View the contents of the directory
-//
-//    public void contentDirectory() {
-//
-//        File content = new File(".\\src\\Directory7");
-//
-//        for (File item : content.listFiles()) {
-//
-//            if (item.isDirectory()) {
-//
-//                System.out.println(item.getName());
-//
-//            } else {
-//
-//                System.out.println(item.getName());
-//            }
-//        }
-//    }
+
+    // View the contents of the directory
+
+    public void contentDirectory(String nameDir) {
+//        Files.walkFileTree(Paths.get())
+    }
 
 }
 
