@@ -92,7 +92,7 @@ public class FilesManager {
 //TODO change String to Path
     private String readFileTxt(String nameOfFile) throws IOException {
 
-        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки"; // строка для записи
+        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки";
 
         byte[] bytes = Files.readAllBytes(Paths.get(FILE_PATH, nameOfFile + EXTENSION_TXT));
 
@@ -119,16 +119,11 @@ public class FilesManager {
 
     }
 
-
-    //    // Convert text files to PDF files
-//
-//    public void convertTextToPDF() throws Exception {
-//
-//    }
-//
     //Copy files from one directory to another, if such a file already exists, overwrite it
-//
+
     public void copyFilesToDirectory(String sourceDirName, String targetSourceDir) throws InterruptedException, IOException {
+
+
 
         File folder = new File(sourceDirName);//walkFileTRee
 
