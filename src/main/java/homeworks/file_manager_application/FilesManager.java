@@ -5,8 +5,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.*;
@@ -121,26 +119,31 @@ public class FilesManager {
 
     //Copy files from one directory to another, if such a file already exists, overwrite it
 
-    public void copyFilesToDirectory(String sourceDirName, String targetSourceDir) throws InterruptedException, IOException {
+    public void copyFilesToDirectory() throws InterruptedException, IOException {
 
 
+        Path targetPath = Paths.get("./ForFM/ForFMTwo/"); // target
 
-        File folder = new File(sourceDirName);//walkFileTRee
+        Path sourcePath = Paths.get("./ForFM/ForFMOne/"); // source
 
-        File[] listOfFiles = folder.listFiles();
+                Files.walkFileTree(sourcePath, new SimpleFileVisitor <Path>() {
 
-        Path destDir = Paths.get(targetSourceDir);
+                    @Override
+                    public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
+                        Files.createDirectories(targetPath.resolve(sourcePath.relativize(dir)));
+                        return FileVisitResult.CONTINUE;
+                    }
 
-        if (listOfFiles != null) {
-
-            System.out.println("Copy files from one directory to another successfully");
-        }
-
-        for (File file : listOfFiles)
-
-            Files.copy(file.toPath(), destDir.resolve(file.getName()), REPLACE_EXISTING);
-
+                    @Override
+                    public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
+                        Files.copy(file, targetPath.resolve(sourcePath.relativize(file)));
+                        return FileVisitResult.CONTINUE;
+                    }
+                });
     }
+
+
+
 
 
     // Delete files

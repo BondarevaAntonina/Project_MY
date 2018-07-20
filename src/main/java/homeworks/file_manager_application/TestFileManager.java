@@ -14,10 +14,10 @@ public class TestFileManager {
 
 //        fileManager.createNewFile("FM1"); // Create a new file in directory
 //
-        fileManager.readModifySavePdf("Hello");
+//        fileManager.readModifySavePdf("Hello");
 
 //
-//        fileManager.copyFilesToDirect(".\\src\\Directory1", ".\\src\\Directory2"); // Copy files from one directory to another, if such a file already exists, overwrite it
+        fileManager.copyFilesToDirectory(); // Copy files from one directory to another, if such a file already exists, overwrite it
 //
 //        fileManager.removeFile(); // Delete files
 //
