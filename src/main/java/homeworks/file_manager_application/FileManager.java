@@ -154,13 +154,13 @@ public class FileManager {
 
     public void removeFile() {
 
-        File file = new File(".\\src\\Directory1\\test1.txt");
+        File file = new File(".\\src\\Directory1\\Rename.txt");
 
         if (file.delete()) {
 
-            System.out.println("File test1.txt was removed from the project's root folder");
+            System.out.println("File Rename.txt was removed from the project's root folder");
 
-        } else System.out.println("File test1.txt was not found in the project root folder");
+        } else System.out.println("File Rename.txt was not found in the project root folder");
 
     }
 
@@ -198,7 +198,7 @@ public class FileManager {
 
     public void renameFile() {
 
-        File srcFile = new File(".\\src\\Directory4\\test1.txt");
+        File srcFile = new File(".\\src\\Directory4\\Rename.txt");
 
         File destFile = new File(".\\src\\Directory4\\map.txt");
 

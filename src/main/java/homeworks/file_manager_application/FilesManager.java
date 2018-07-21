@@ -29,9 +29,11 @@ public class FilesManager {
 
 //    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
-    private static final String FILE_PATH = "./ForFM/";
-    private static final String EXTENSION_TXT = ".txt";
-    private static final String EXTENSION_PDF = ".pdf";
+    public static final String FILE_PATH = "./ForFM/";
+    public static final String EXTENSION_TXT = ".txt";
+    public static final String EXTENSION_PDF = ".pdf";
+    public static final String FILE_PATH_DEL = "./ForFMFour/";
+
 
 
     // Create a new directory
@@ -126,31 +128,28 @@ public class FilesManager {
 
         Path sourcePath = Paths.get("./ForFM/ForFMOne/"); // source
 
-                Files.walkFileTree(sourcePath, new SimpleFileVisitor <Path>() {
+        Files.walkFileTree(sourcePath, new SimpleFileVisitor<Path>() {
 
-                    @Override
-                    public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
-                        Files.createDirectories(targetPath.resolve(sourcePath.relativize(dir)));
-                        return FileVisitResult.CONTINUE;
-                    }
+            @Override
+            public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
+                Files.createDirectories(targetPath.resolve(sourcePath.relativize(dir)));
+                return FileVisitResult.CONTINUE;
+            }
 
-                    @Override
-                    public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-                        Files.copy(file, targetPath.resolve(sourcePath.relativize(file)));
-                        return FileVisitResult.CONTINUE;
-                    }
-                });
+            @Override
+            public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
+                Files.copy(file, targetPath.resolve(sourcePath.relativize(file)));
+                return FileVisitResult.CONTINUE;
+            }
+        });
     }
-
-
-
 
 
     // Delete files
 
     public void removeFile(String nameOfFile) {
 
-        Path path = Paths.get(".\\src\\Direct\\test1.txt");//FILE_PATH
+        Path path = Paths.get(FILE_PATH_DEL + nameOfFile);
 
         try {
             Files.deleteIfExists(path);
@@ -206,40 +205,56 @@ public class FilesManager {
 
     //Rename files
 
-    public void renameFile() throws IOException {//add incoming params
-
-        Path source = Paths.get(".\\src\\Directory2\\source.txt");
-
-        Path newdir = Paths.get(".\\src\\Directory2\\test1.txt");
+    public void renameFileDirectory(Path source, Path newDir, Path file1, Path file2) throws IOException {
 
         if (Files.exists(source)) {
-
+            System.out.println("This file exists");
         }
-        System.out.println("This file exists");
-
-        Files.move(source, newdir, REPLACE_EXISTING);
-
-    }
-
-//
-//    //Rename directories
-
-    public void renameDirectory() throws IOException {//refactor
-
-        Path file1 = Paths.get(".\\src\\Directory3");
-
-        Path file2 = Paths.get(".\\src\\Directory2");
+        Files.move(source, newDir, REPLACE_EXISTING);
 
         if (Files.exists(file1)) {
             System.out.println("Directory successfully renamed");
             Files.move(file1, file2, REPLACE_EXISTING);
         }
+
     }
+
+
+
 
     // View the contents of the directory
 
-    public void contentDirectory(String nameDir) {
-//        Files.walkFileTree(Paths.get())
+    public void contentDirectory(Path nameDir) {
+
+        try {
+            Files.walkFileTree(nameDir, new SimpleFileVisitor<Path>() {//SimpleFileVisitor напечатать все записи в дереве файла
+
+                @Override
+
+                //BasicFileAttributeView – базовые атрибуты, поддерживаемые всеми реализациями файловых систем
+
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+
+                    return action("Deleting file: " + file);
+                }
+
+                @Override
+                //Вызванный после того, как все записи в каталоге посещают. Если с какими-либо ошибками встречаются, определенное исключение передают к методу
+                public FileVisitResult postVisitDirectory(Path path, IOException exc) throws IOException {
+
+                    return action("Deleting path: " + path.toFile().getName());
+                }
+
+                private FileVisitResult action(String message) throws IOException {
+                    System.out.println();
+
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 
 }
