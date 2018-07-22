@@ -36,15 +36,7 @@ public class FilesManager {
     public static final String FILE_PATH_DEL = "./ForFMFour/";
 
 
-
-
-
-
-
-
-
-
-    // Create a new directory
+   // Create a new directory
 
     private void createNewDirectory(String nameDir) throws IOException {
 
@@ -78,11 +70,12 @@ public class FilesManager {
 
     // Create a new file in directory
 
-    public void createNewFile(String nameOfFile) throws Exception {
+    public void createNewFile(Path path) throws Exception {
+
 
         try {
 
-            Files.createFile(Paths.get(FILE_PATH + nameOfFile + EXTENSION_TXT));
+            Files.createFile(path);
 
             System.out.println("File has been created");
 
@@ -129,14 +122,9 @@ public class FilesManager {
 
     //Copy files from one directory to another, if such a file already exists, overwrite it
 
-    public void copyFilesToDirectory() throws InterruptedException, IOException {
+    public void copyFilesToDirectory(Path targetPath, Path sourcePath ) throws InterruptedException, IOException {
 
-
-        Path targetPath = Paths.get("./ForFM/ForFMTwo/"); // target
-
-        Path sourcePath = Paths.get("./ForFM/ForFMOne/"); // source
-
-        Files.walkFileTree(sourcePath, new SimpleFileVisitor<Path>() {
+        /*Files.walkFileTree(sourcePath, new SimpleFileVisitor<Path>() {
 
             @Override
             public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
@@ -149,7 +137,9 @@ public class FilesManager {
                 Files.copy(file, targetPath.resolve(sourcePath.relativize(file)));
                 return FileVisitResult.CONTINUE;
             }
-        });
+        });*/
+
+        Files.copy(targetPath, sourcePath, StandardCopyOption.REPLACE_EXISTING);
     }
 
 
@@ -172,10 +162,10 @@ public class FilesManager {
 
     // Deleting directory contents
 
-    public void removeDirectoryContents() throws IOException {
+    public void removeDirectoryContents(Path path) throws IOException {
 
 
-        Path path = Paths.get(".\\src\\Directory3");
+//        Path path = Paths.get(".\\src\\Directory3");
 
         try {
             Files.walkFileTree(path, new SimpleFileVisitor<Path>() {//SimpleFileVisitor напечатать все записи в дереве файла
@@ -240,17 +230,14 @@ public class FilesManager {
 
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-
-                   String isDir = !Files.isDirectory(file) ? "File -> " : "Directory -> ";
-
-                    return action(isDir + file.toFile().getName());
+                    return action("File -> " + file.toFile().getName());
                 }
 
                 @Override
                 //Вызванный после того, как все записи в каталоге посещают. Если с какими-либо ошибками встречаются, определенное исключение передают к методу
                 public FileVisitResult postVisitDirectory(Path path, IOException exc) throws IOException {
 
-                    return action(path.toFile().getName());
+                    return action("Directory -> " + path.toFile().getName());
                 }
 
                 private FileVisitResult action(String message) throws IOException {
