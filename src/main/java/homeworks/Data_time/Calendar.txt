@@ -1,0 +1,242 @@
+Абстрактный класс Calendar позволяет работать с датой в рамках календаря, т.е он умеет прибавлять день, при этом
+учитывать високосные год и прочее, а также позволяет преобразовать время в миллисекундах в более удобном виде - год,
+месяц, день, часы, минуты, секунды. Единственной реализацией Calendar является класс GregorianCalendar, также как и у
+даты конструктор по умолчанию возвращает календарь на текущий день, но можно задать его явно указав все параметры :
+
+Пример использования классов Calendar и GregorianCalendar
+import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import java.text.SimpleDateFormat;
+
+public class Test
+{
+    public void test()
+    {
+        Calendar c = new GregorianCalendar();              // календарь на текущую дату
+        Calendar c2 = new GregorianCalendar(2014, 12, 21); // календарь на 21.12.2014
+        c2.add(Calendar.DAY_OF_YEAR, 1);                   // увеличиваем дату на 1 день
+        System.out.println(c2.getTime());                  // 22.12.2014
+        c2.add(Calendar.DAY_OF_YEAR, -1);                  // уменьшаем дату на 1 день
+    }
+}
+Поля класса Calendar
+
+Переменная типа boolean с именем areFieldsSet указывает, были ли установлены компоненты времени.
+Переменная fields - это массив целочисленных значений, содержащий компоненты времени.
+Переменная isSet - массив типа boolean, указывающий, был ли установлен специфический компонент времени.
+Переменная time (тип long) содержит текущее время объекта.
+Переменная isTimeSet (тип boolean) указывает, что было установлено текущее время.
+
+Календарь достаточно мощный класс, который позволяет получать названия месяцев и дней недели, увеличивать или уменьшать
+различные параметры текущей даты, а также получать их. Для удобства работы с ним нужно просто разобраться с типами данных, с которыми он работает:
+
+DAY_OF_YEAR — день года (0- 365);
+DAY_OF_MONTH — день месяца( какой по счету день в месяце 0 — 31);
+WEEK_OF_MONTH — неделя месяца;
+WEEK_OF_YEAR — неделя в году;
+MONTH — номер месяца;
+Year — номер года;
+Calendar.ERA — эра.
+
+- abstract void add(int field, int value)	добавляет value к компоненту времени или даты, указанному в параметре field
+(например, Calendar.HOUR). Чтобы отнять, используйте отрицательное значение
+
+Можно сдвинуть дату на определённый период с помощью метода add (). Отодвинем дату на два месяца.
+
+GregorianCalendar calendar = new GregorianCalendar(2012, Calendar.DECEMBER, 31);
+calendar.add(Calendar.MONTH, 2);
+System.out.println(calendar.get(Calendar.MONTH));
+
+
+// synchronized static Calendar getInstance()	возвращает объект класса Calendar для региональных данных и часового
+пояса по умолчанию. Есть и другие перегруженные версии.
+
+Класс GregorianCalendar является подклассом Calendar, который представляет обычный Григорианский календарь. Метод
+getInstance() класса Calendar обычно возвращает объект класса GregorianCalendar, инициированный текущей датой и временем
+согласно региональным настройкам.
+
+getInstance(TimeZone zone)
+Получает календарь, используя зону требуемого времени и локаль по умолчанию.
+
+public static Calendar getInstance(TimeZone zone)
+Получает календарь, используя зону требуемого времени и локаль по умолчанию. Calendar возвращенный основано на текущем
+времени в данном часовом поясе с локалью по умолчанию.
+Параметры:
+zone - часовой пояс, чтобы использовать
+Возвраты: Календарь.
+
+public static Calendar getInstance()
+{
+  Calendar cal = createCalendar(TimeZone.getDefaultRef(),
+                                  Locale.getDefault(Locale.Category.FORMAT));
+  cal.sharedZone = true;
+  return cal;
+}
+
+/**
+* Gets a calendar using the specified time zone and default locale.
+* The <code>Calendar</code> returned is based on the current time
+* in the given time zone with the default locale.
+*
+* @param zone the time zone to use
+* @return a Calendar.
+*/
+public static Calendar getInstance(TimeZone zone)
+{
+  return createCalendar(zone, Locale.getDefault(Locale.Category.FORMAT));
+}
+
+/**
+* Gets a calendar using the default time zone and specified locale.
+* The <code>Calendar</code> returned is based on the current time
+* in the default time zone with the given locale.
+*
+* @param aLocale the locale for the week data
+* @return a Calendar.
+*/
+public static Calendar getInstance(Locale aLocale)
+{
+  Calendar cal = createCalendar(TimeZone.getDefaultRef(), aLocale);
+  cal.sharedZone = true;
+  return cal;
+}
+
+/**
+* Gets a calendar with the specified time zone and locale.
+* The <code>Calendar</code> returned is based on the current time
+* in the given time zone with the given locale.
+*
+* @param zone the time zone to use
+* @param aLocale the locale for the week data
+* @return a Calendar.
+*/
+public static Calendar getInstance(TimeZone zone,
+                                 Locale aLocale)
+{
+  return createCalendar(zone, aLocale);
+}
+
+private static Calendar createCalendar(TimeZone zone,
+                                     Locale aLocale)
+{
+  Calendar cal = null;
+
+  String caltype = aLocale.getUnicodeLocaleType("ca");
+  if (caltype == null) {
+      // Calendar type is not specified.
+      // If the specified locale is a Thai locale,
+      // returns a BuddhistCalendar instance.
+      if ("th".equals(aLocale.getLanguage())
+              && ("TH".equals(aLocale.getCountry()))) {
+          cal = new BuddhistCalendar(zone, aLocale);
+      } else {
+          cal = new GregorianCalendar(zone, aLocale);
+      }
+  } else if (caltype.equals("japanese")) {
+      cal = new JapaneseImperialCalendar(zone, aLocale);
+  } else if (caltype.equals("buddhist")) {
+      cal = new BuddhistCalendar(zone, aLocale);
+  } else {
+      // Unsupported calendar type.
+      // Use Gregorian calendar as a fallback.
+      cal = new GregorianCalendar(zone, aLocale);
+  }
+
+  return cal;
+}
+
+/////////
+TimeZone getTimeZone()
+Возвращает часовой пояс.
+
+
+Класс TimeZone предназначен для совместного использования с классами Calendar и DateFormat. Этот класс абстрактный,
+поэтому от него порождать объекты нельзя. Вместо этого определен статический метод getDefault(), который возвращает
+экземпляр наследника TimeZone с настройками, взятыми из операционной системы, под управлением которой работает JVM.
+
+TimeZone имеет статический метод getTimeZone(String ID), используя который можно указать наименование конкретного
+временного пояса, для которого необходимо получить объект TimeZone.
+
+Набор полей, определяющих возможный набор параметров для getTimeZone, нигде явно не описывается. Но имеется статический
+метод getAvailableIds(), возвращающий список возможных значений наименование временных зон типа String[], который можно
+использовать в методе getTimeZone. Так можно определить набор возможных параметров для конкретного временного пояса
+относительно Гринвича String[] getAvailableIds(int offset).
+
+Рассмотрим пример, в котором на консоль последовательно выводятся:
+  - временная зона по умолчанию;
+  - список всех возможных временных зон;
+  - список временных зон, которые совпадают с временной зоной Москвы.
+
+Пример получения списка TimeZone
+import java.util.Arrays;
+import java.util.TimeZone;
+
+public class TimeZoneList
+{
+    private final int    hour       = 1000 * 60 * 60;
+    private final String TEMPL_TZ   = "%s (%s)";
+    private final String TEMPL_OFFS = "hour offset=(%d)";
+
+    String align(String str, int len)
+    {
+        if (len - str.length() > 0){
+            char[] buf = new char[len - str.length()];
+            Arrays.fill (buf, ' ');
+            return str + new String(buf);
+        } else
+            return str.substring(0, len);
+    }
+    private void drawTimeZoneParam(final TimeZone tz)
+    {
+        String line = null;
+        line  = String.format(TEMPL_TZ, tz.getID(), tz.getDisplayName());
+        line  = align(line, 64);
+        line += String.format(TEMPL_OFFS, tz.getRawOffset() / hour);
+        System.out.println(line);
+    }
+    public TimeZoneList()
+    {
+        TimeZone tz = TimeZone.getDefault();
+        int rawOffset = tz.getRawOffset();
+        System.out.println("Текущая TimeZone : " + tz.getID() +
+                         " (" + tz.getDisplayName() + ")\n");
+
+        // Display all available TimeZones
+        System.out.println("Доступные TimeZone\n");
+        String[] timezones = TimeZone.getAvailableIDs();
+
+        for (int cnt = 0; cnt < timezones.length; cnt++){
+            tz = TimeZone.getTimeZone(timezones[cnt]);
+            drawTimeZoneParam(tz);
+        }
+        // Display all available TimeZones same as for Moscow
+        System.out.println("Список TimeZone, соответствующие текущей");
+        timezones = TimeZone.getAvailableIDs(rawOffset);
+        for(int cnt = 0;cnt < timezones.length;cnt++){
+            tz = TimeZone.getTimeZone(timezones[cnt]);
+            drawTimeZoneParam(tz);
+        }
+    }
+    public static void main(String[] args) {
+        new TimeZoneList();
+        System.exit(0);
+    }
+}
+
+Код программы несложный. Метод align выполняет выравнивание для отображения смещения по времени TimeZone от среднего
+времени по Гринвичу GMT — времени меридиана, проходящего через прежнее место расположения Гринвичской обсерватории около
+Лондона. Метод drawTimeZoneParam отображает параметры TimeZone. В конструкторе класса TimeZoneList сначала определяется
+текущая TimeZone, после чего выводится список возможных TimeZone. И в заключении, используя метод getAvailableIDs получаем
+список TimeZone, у которых смещение по времени соответствует текущей зоне.
+
+
+Изменить состояние объекта можно через метод set (). Например, установим новую дату у нашего объекта.
+
+GregorianCalendar calendar = new GregorianCalendar(2012, Calendar.DECEMBER, 31);
+calendar.set(2013, Calendar.FEBRUARY, 23);
+// Убедимся, что возвращает 1 - февраль
+System.out.println(calendar.get(Calendar.MONTH));
+
+

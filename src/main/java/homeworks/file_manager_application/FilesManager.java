@@ -4,6 +4,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.junit.Test;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,15 +19,14 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  * 1) Создавать текстовые файлы и директории  - СДЕЛАНО
  * 2) Конвертацию текстовых файлов в PDF файлы с помощью библиотеки
  * iText(http://howtodoinjava.com/apache-commons/create-pdf-files-in-java-itext-tutorial/#itext_overview)
- * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО
+ * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО RULE
  * 4) Удалять директории и файлы  - СДЕЛАНО
- * 5) Переименовывать директории и файлы - СДЕЛАНО
+ * 5) Переименовывать директории и файлы - СДЕЛАНО RULE
  * 6) Просматривать содержимое директории
  * <p>
  * Использовать Java 7, 8, Files
  */
 public class FilesManager {
-
 
 //    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
@@ -36,9 +37,16 @@ public class FilesManager {
 
 
 
+
+
+
+
+
+
+
     // Create a new directory
 
-    public void createNewDirectory(String nameDir) throws IOException {
+    private void createNewDirectory(String nameDir) throws IOException {
 
         String dirPath = FILE_PATH + nameDir;
 
@@ -87,10 +95,10 @@ public class FilesManager {
 
     }
 
-    //
-//    // Read the file and write the string
+   // Read the file and write the string
 //TODO change String to Path
     private String readFileTxt(String nameOfFile) throws IOException {
+
 
         String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки";
 
@@ -219,9 +227,6 @@ public class FilesManager {
 
     }
 
-
-
-
     // View the contents of the directory
 
     public void contentDirectory(Path nameDir) {
@@ -235,18 +240,21 @@ public class FilesManager {
 
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-                    return action("Deleting file: " + file);
+
+                   String isDir = !Files.isDirectory(file) ? "File -> " : "Directory -> ";
+
+                    return action(isDir + file.toFile().getName());
                 }
 
                 @Override
                 //Вызванный после того, как все записи в каталоге посещают. Если с какими-либо ошибками встречаются, определенное исключение передают к методу
                 public FileVisitResult postVisitDirectory(Path path, IOException exc) throws IOException {
 
-                    return action("Deleting path: " + path.toFile().getName());
+                    return action(path.toFile().getName());
                 }
 
                 private FileVisitResult action(String message) throws IOException {
-                    System.out.println();
+                    System.out.println(message);
 
                     return FileVisitResult.CONTINUE;
                 }
