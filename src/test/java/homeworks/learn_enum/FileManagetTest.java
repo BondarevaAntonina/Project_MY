@@ -1,6 +1,5 @@
 package homeworks.learn_enum;
 
-import com.sun.jna.platform.win32.OaIdl;
 import homeworks.file_manager_application.FilesManager;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +13,22 @@ public class FileManagetTest {
     private FilesManager fm = new FilesManager();
 
     @Test
-    @Title("")
+    @Title("Create a new directory")
+    public void shouldCreateDirectory() throws Exception {
+
+        String nameOfDirectory = "TempDirectory";
+
+        Path path = Paths.get(FilesManager.FILE_PATH + nameOfDirectory);
+
+        fm.createNewDirectory(path);
+
+        Assert.assertTrue(Files.exists(path));
+
+    }
+
+
+    @Test
+    @Title("Create a new file in directory")
     public void shouldCreateFile() throws Exception {
         String nameOfFile = "Temp";
 
@@ -28,6 +42,30 @@ public class FileManagetTest {
     }
 
 
+    @Test
+    @Title("Read the file and write the string")
+    public void shouldReadAndWriteAndModifySavePdf() throws Exception {
+
+    }
+
+    @Test
+    @Title("Copy files from one directory to another, if such a file already exists, overwrite it")
+    public void shouldCopyFilesToDirectory() throws Exception {
+
+        Path targetPath = Paths.get(FilesManager.FILE_PATH);
+
+        Path sourcePath = Paths.get(FilesManager.FILE_TO_COPY);
+
+        fm.copyFilesToDirectory(targetPath,sourcePath);
+
+
+
+
+
+
+
+
+    }
 
 
 }

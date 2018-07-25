@@ -13,8 +13,7 @@ public class TestFileManager {
 
         FilesManager fileManager = new FilesManager();
 
-//
-//        fileManager.createNewFile("FM1"); // Create a new file in directory
+
 //
 //        fileManager.readModifySavePdf("Hello");
 //

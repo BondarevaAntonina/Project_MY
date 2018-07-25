@@ -4,8 +4,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.junit.Test;
-import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,6 +29,7 @@ public class FilesManager {
 //    private static final String DIRECT = ".\\Project_MY\\src\\Directory2";
 
     public static final String FILE_PATH = "./ForFM/";
+    public static final String FILE_TO_COPY = "./ForFMOne/";
     public static final String EXTENSION_TXT = ".txt";
     public static final String EXTENSION_PDF = ".pdf";
     public static final String FILE_PATH_DEL = "./ForFMFour/";
@@ -38,13 +37,10 @@ public class FilesManager {
 
    // Create a new directory
 
-    private void createNewDirectory(String nameDir) throws IOException {
+    public void createNewDirectory(Path path) throws IOException {
 
-        String dirPath = FILE_PATH + nameDir;
 
-        Path dirPathObj = Paths.get(dirPath);
-
-        boolean dirExists = Files.exists(dirPathObj);
+        boolean dirExists = Files.exists(path);
 
         if (dirExists) {
 
@@ -56,7 +52,7 @@ public class FilesManager {
 
         try {
 
-            Files.createDirectory(dirPathObj);
+            Files.createDirectory(path);
 
             System.out.println("New Directory successfully Created");
 
@@ -123,21 +119,6 @@ public class FilesManager {
     //Copy files from one directory to another, if such a file already exists, overwrite it
 
     public void copyFilesToDirectory(Path targetPath, Path sourcePath ) throws InterruptedException, IOException {
-
-        /*Files.walkFileTree(sourcePath, new SimpleFileVisitor<Path>() {
-
-            @Override
-            public FileVisitResult preVisitDirectory(final Path dir, final BasicFileAttributes attrs) throws IOException {
-                Files.createDirectories(targetPath.resolve(sourcePath.relativize(dir)));
-                return FileVisitResult.CONTINUE;
-            }
-
-            @Override
-            public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-                Files.copy(file, targetPath.resolve(sourcePath.relativize(file)));
-                return FileVisitResult.CONTINUE;
-            }
-        });*/
 
         Files.copy(targetPath, sourcePath, StandardCopyOption.REPLACE_EXISTING);
     }
