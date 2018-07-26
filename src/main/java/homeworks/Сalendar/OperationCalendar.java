@@ -1,6 +1,7 @@
 package homeworks.Сalendar;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -16,7 +17,6 @@ public class OperationCalendar {
         applicationCalendar = new ApplicationCalendar();
 
     }
-    EventDate eventDate = new EventDate();
 
     public static void main(String[] args) throws IOException {
 
@@ -53,8 +53,8 @@ public class OperationCalendar {
         Scanner sc = new Scanner(System.in);
         switch (actionNumber) {
             case 1:
-                applicationCalendar.souldDateZoneAndDevelopments();
-                eventDate.shoudDateEvent();
+                applicationCalendar.souldDateZone();
+
                 break;
 
 
