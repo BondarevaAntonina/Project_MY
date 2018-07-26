@@ -5,6 +5,7 @@
 
 LocalDate date = LocalDate.of(2000, Month.NOVEMBER, 20);
 LocalDate nextWed = date.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY));
+
 В дополнение к обычным методам класс java.time.LocalDate  содержит методы для получения информации о дате. Метод
 getDayOfWeek  возвращает день недели. Например, следующий код вернёт MONDAY:
 

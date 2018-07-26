@@ -16,6 +16,7 @@ public class OperationCalendar {
         applicationCalendar = new ApplicationCalendar();
 
     }
+    EventDate eventDate = new EventDate();
 
     public static void main(String[] args) throws IOException {
 
@@ -30,7 +31,7 @@ public class OperationCalendar {
         int actionNumber;
 
         do {
-            System.out.println("------- Menu -----------\n" +
+            System.out.println("\n---------- Menu -----------\n" +
                     "1 - Display the current time and date in several time zones (to choose from). When outputting the " +
                     "date and time, also output the events for the given day\n" +
 
@@ -53,6 +54,7 @@ public class OperationCalendar {
         switch (actionNumber) {
             case 1:
                 applicationCalendar.souldDateZoneAndDevelopments();
+                eventDate.shoudDateEvent();
                 break;
 
 
