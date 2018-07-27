@@ -1,6 +1,4 @@
 import homeworks.Сalendar.ApplicationCalendar;
-import org.junit.Test;
-import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * Created by antoni on 25.07.2018.
@@ -17,14 +15,14 @@ public class CalendarTest {
     ApplicationCalendar applicationCalendar = new ApplicationCalendar();
 
 
-    @Test
-    @Title("Execute the current time and date in several time zones (to choose from). In the output of the date and " +
-            "time, also output the events for the given day")
-    public void souldDateZoneAndDevelopmentsTest() throws Exception {
-        applicationCalendar.souldDateZoneAndDevelopments();
-
-
-    }
+//    @Test
+//    @Title("Execute the current time and date in several time zones (to choose from). In the output of the date and " +
+//            "time, also output the events for the given day")
+//    public void souldDateZoneAndDevelopmentsTest() throws Exception {
+//        applicationCalendar.souldDateZoneAndDevelopments();
+//
+//
+//    }
 
 
 
