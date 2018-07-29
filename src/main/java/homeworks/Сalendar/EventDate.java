@@ -8,7 +8,6 @@ import java.util.Date;
  */
 public class EventDate {
 
-
     private String nameEvent;
     //private LocalDate date;
     private Date date;

@@ -1,4 +1,5 @@
 1) Create new branch
-2) Names of variables by convention
+2) Names of variables and methods by convention
 3) All words in English.
 4) ctrl + alt + l - format code
+5) Initialize fields inside constructor(s)
