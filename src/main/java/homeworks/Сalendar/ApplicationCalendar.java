@@ -179,7 +179,6 @@ public class ApplicationCalendar {
         System.out.println(localDate.format(DateTimeFormatter.ofPattern("d::MMM::uuuu")));
         System.out.println(localDate.format(DateTimeFormatter.BASIC_ISO_DATE));
 
-
         LocalDateTime dateTime = LocalDateTime.now();
         System.out.println("standard date format for LocalDateTime : " + dateTime);
         System.out.println(dateTime.format(DateTimeFormatter.ofPattern("d::MMM::uuuu HH::mm::ss")));

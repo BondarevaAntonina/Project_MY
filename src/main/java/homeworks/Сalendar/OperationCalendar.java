@@ -128,6 +128,7 @@ public class OperationCalendar {
                 applicationCalendar.showFormatDate();
 
                 break;
+
         }
     }
 }
