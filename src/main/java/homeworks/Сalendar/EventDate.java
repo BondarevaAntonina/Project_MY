@@ -1,6 +1,6 @@
 package homeworks.Сalendar;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 /**
@@ -9,11 +9,11 @@ import java.util.Date;
 public class EventDate {
 
     private String nameEvent;
-    //private LocalDate date;
-    private Date date;
+    private LocalDate date;
+//    private Date date;
 
 
-    public EventDate(String nameEvent, Date date) {
+    public EventDate(String nameEvent, LocalDate date) {
         this.nameEvent = nameEvent;
         this.date = date;
     }
@@ -22,7 +22,7 @@ public class EventDate {
         return nameEvent;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
 
         return date;
     }

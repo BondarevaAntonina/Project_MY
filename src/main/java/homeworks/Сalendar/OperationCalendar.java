@@ -1,7 +1,10 @@
 package homeworks.Сalendar;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -36,15 +39,19 @@ public class OperationCalendar {
                     "1 - Display the current time and date in several time zones (to choose from). When outputting the " +
                         "date and time, also output the events for the given day\n" +
                     "2 - Create an event on a specific date and list the events as required by the user \n" +
-                    "3 - Possibility to delete events \n" +
-                    "4 - Allow the user to enter his city (country / city), define his time zone and display the " +
+                    "3 - output event lists \n" +
+                    "4 - Possibility to delete events \n" +
+                    "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
+                    "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
                         "current time, day of the week in this time zone \n" +
+                    "6 - Output date in a week, month, year \n" +
+                    "7 -  \n" +
 
                     "0 - Exit");
             try {
                 actionNumber = SCANNER.nextInt();
                 doAction(actionNumber);
-            } catch (Exception e) {
+            } catch (Exception e ) {
                 System.out.println("Input Error: " + e);
                 actionNumber = -1;
                 e.printStackTrace();
@@ -60,47 +67,34 @@ public class OperationCalendar {
     // Display the current time and date in several time zones (to choose from)
             case 1:
 
-                Date d1 = new Date();
-
-                c.setTime(d1);
-
-                c.add(Calendar.DATE, 1);
-
-                d1 = c.getTime();
-
-                applicationCalendar.createEvent(d1, "task1");
-
-                applicationCalendar.createEvent(new Date(), "task2");
-
-                applicationCalendar.createEvent(new Date(), "task3");
-
-                applicationCalendar.createEvent(new Date(), "task4");
-
                 applicationCalendar.showDateInDifferentTimeZones();
 
                 break;
+
     //Create an event on a specific date and list the events as required by the user
             case 2:
-                Date d2 = new Date();
 
-                c.setTime(d2);
-
-                applicationCalendar.showEventsBySpecificDate();
+                applicationCalendar.createEvent(LocalDate.now(),"Going to the gym");
 
                 break;
-    //Possibility to delete events
+
+    //Output event list
+
             case 3:
-                Date d3 = new Date();
 
-                c.setTime(d3);
-
-                System.out.println("Delete list events");
-
-                applicationCalendar.deleteEvents(new Date(1532846338000L));
+                applicationCalendar.showEventsBySpecificDate(LocalDate.now());
 
                 break;
-    //Allow the user to enter his city (country / city), define his time zone
+
+    //Possibility to delete events
             case 4:
+
+                applicationCalendar.deleteEvents(LocalDate.of(2018,8,3));
+
+                break;
+
+    //Allow the user to enter his city (country / city), define his time zone
+            case 5:
 
                 System.out.print("Enter country/city:");
 
@@ -108,6 +102,13 @@ public class OperationCalendar {
 
                 applicationCalendar.showDateInSpecificCountryAndCity(nameFlightCountryCity);
 
+                break;
+
+    // Output date in a week, month, year
+
+            case 6:
+
+                applicationCalendar.showDateInWeek();
 
                 break;
         }

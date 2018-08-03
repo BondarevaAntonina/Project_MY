@@ -4,23 +4,20 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalField;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * java.time
  * Приложение должно позволять:
  * 1) Выводить текущее время и дату в нескольких тайм-зонах(на выбор). При выводе даты и времени выводить также события
- * на даный день.
+ * на даный день. СДЕЛАНО
  * 2) Создавать событие на конкретную дату и по требованию пользователя выводить список событий. Добавить возможность
- * удалять события.
+ * удалять события. СДЕЛАНО
  * 3) Позволять пользователю вводить свой город(страну/город), определить его тайм-зону и выводить текущее время, день
- * недели в этой тайм-зоне.
- * 4) По требованию пользователя выводить в консоль дату через неделю, месяц, год.
+ * недели в этой тайм-зоне. СДЕЛАНО
+ * 4) По требованию пользователя выводить в консоль дату через неделю, месяц, год. СДЕЛАНО
  * 5) По требованию пользователя выводить в консоль только время и/или дату, день недели, номер дня в году, количество
- * дней оставшеееся до Нового Года.
+ * дней оставшеееся  до Нового Года.
  * 6) Позволить пользователю вводить формат даты и выводить дату в этом формате.
  */
 public class ApplicationCalendar {
@@ -31,87 +28,89 @@ public class ApplicationCalendar {
         events = new ArrayList<>();
     }
 
-    private int countEvent = 0;//move to local variable
 
-    Calendar calendar = Calendar.getInstance();//shouldn't use
+    //Display the current time and date in several time zones (to choose from)
 
-    // Выводить текущее время и дату в нескольких тайм-зонах(на выбор)
     public void showDateInDifferentTimeZones() {
 
-        calendar.setTime(new Date());//shouldn't use
+        LocalDateTime today = LocalDateTime.now();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//shouldn't use
+        System.out.println("Current Date= " + today);
 
-        sdf.setTimeZone(TimeZone.getTimeZone("America/New_York"));
-        //sdf3.setTimeZone(TimeZone.getTimeZone("Europe/Copenhagen"));
-        //System.out.println( "Current date and time in a particular timezone America/New_York :" + sdf.format(calendar.getTime()));
+        LocalDateTime todayKolkata = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
 
-        for (EventDate events : events) {//move to separate
-            //System.out.println(events.getDate().compareTo(calendar.getTime()));
-            if (events.getDate().equals(calendar.getTime()) /*after(calendar.getTime()*/) {
+        System.out.println("Current Date in IST=" + todayKolkata);
 
-                //sdf.setTimeZone(TimeZone.getTimeZone("America/New_York"));
-                System.out.println("Current date and time in a particular timezone America/New_York: "
-                        + sdf.format(calendar.getTime()));
+        events.add(new EventDate("Trip on a business trip", LocalDate.now()));
 
-                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        events.add(new EventDate("Webinar2", LocalDate.of(2018, 8, 3)));
 
-                System.out.println("Current date and time in a particular timezone Our time zone:    "
-                        + sdf1.format(events.getDate()));
-                // sdf.setTimeZone(TimeZone.getDefault());
-                // System.out.println(sdf.format(calendar.getTime()));
-//                System.out.println("Current date and time in a particular timezone : " + dateAndTimeInNewYork);
-                countEvent++;//should use boolean variable
-            }
-        }
+        events.add(new EventDate("Vacation", LocalDate.of(2018, 8, 2)));
 
-        if (countEvent == 0) {
-            System.out.println("No events on the given date");
-        }
+        events.add(new EventDate("Vacation", LocalDate.of(2018, 8, 1)));
+
+        reviewListOfEventsOnTheDate(LocalDate.now());
     }
 
-    public void createEvent(Date date, String name) {
+    //Create an event on a specific date and list the events as required by the user
 
-        EventDate event = new EventDate(name, date);
+    public void createEvent(LocalDate date, String nameEvent) {
+
+        EventDate event = new EventDate(nameEvent, LocalDate.now());
 
         events.add(event);
     }
 
-    public void showEventsBySpecificDate() {
+    //Output event list
 
-        for (EventDate events : events) {
+    public void showEventsBySpecificDate(LocalDate date) {
 
-            if (events.getDate().equals(calendar.getTime())) {
+        events.add(new EventDate("Lessons", LocalDate.of(2018, 8, 3)));
 
-                System.out.println(events.getNameEvent());
+        events.add(new EventDate("Webinar", LocalDate.of(2018, 8, 2)));
+
+        events.add(new EventDate("Webinar2", LocalDate.of(2018, 8, 1)));
+
+        events.add(new EventDate("Webinar3", LocalDate.of(2018, 8, 3)));
+
+        events.add(new EventDate("Webinar4", LocalDate.now()));
+
+        reviewListOfEventsOnTheDate(LocalDate.now());
+
+    }
+
+    public void reviewListOfEventsOnTheDate(LocalDate date) {
+        for (EventDate event : events) {
+
+            if (event.getDate().equals(date)) {
+
+                System.out.println(event.getNameEvent());
             }
         }
-
-        if (countEvent == 0)
-
-            System.out.println("No events on the given date");
 
     }
 
     //Possibility to delete events by date
-    public void deleteEvents(Date date) {
 
-        events.add(new EventDate("BirthDay", new Date(1532846338000L)));
-        events.add(new EventDate("BirthDay2", new Date()));
+    public void deleteEvents(LocalDate date) throws ConcurrentModificationException {
 
+        events.add(new EventDate("BirthDay", LocalDate.of(2018, 8, 3)));
+
+        events.add(new EventDate("BirthDay2", LocalDate.now()));
 
         for (EventDate event : events) {
 
             if (event.getDate().equals(date)) {
+
                 events.remove(event);
+
                 System.out.println(event.getNameEvent());
             }
-
         }
-
         System.out.println();
-
     }
+
+    // Allow the user to enter his city (country / city), define his time zone
 
     public void showDateInSpecificCountryAndCity(String countryAndCity) {
 
@@ -123,15 +122,34 @@ public class ApplicationCalendar {
 
         ZonedDateTime dateTime = ZonedDateTime.now(zoneName);
 
-//        int week = calendar.get(Calendar.DAY_OF_WEEK);
-
         DayOfWeek dayOfWeek = localtDateAndTime.getDayOfWeek();
 
         System.out.println("Current date and time in a particular timezone : " + dateTime +
                 " week day " + dayOfWeek);
-
     }
 
+    // Output date in a week, month, year
+
+    public void showDateInWeek() {
+
+        LocalDate localtDate = LocalDate.now();
+
+        System.out.println("The current date: " + localtDate);
+
+        localtDate = localtDate.plusWeeks(1);
+
+        System.out.println("Output date in a week: " + localtDate);
+
+        localtDate = localtDate.plusMonths(1);
+
+        System.out.println("Output date in a month: " + localtDate);
+
+        localtDate = localtDate.plusYears(1);
+
+        System.out.println("Output date in a year: " + localtDate);
+
+
+    }
 
 }
 
