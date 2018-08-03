@@ -1,5 +1,8 @@
 package homeworks.Сalendar;
 
+import sun.security.util.Length;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -148,8 +151,48 @@ public class ApplicationCalendar {
 
         System.out.println("Output date in a year: " + localtDate);
 
-
     }
 
+
+    //Conclusion time and / or date, day of the week, day of the year, the number of days left before the New Year
+
+    public void showNumberOfDaysLeftUntilNewYear() {
+
+        LocalDate localDate = LocalDate.now();
+
+        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+
+
+        System.out.println("The current date: " + localDate + "\n" +
+                "week:  " + dayOfWeek + "\n" +
+                "day of the year:  " + localDate.getDayOfYear() + "\n" +
+                "number of days left until the New Year: " +
+                (localDate.lengthOfYear() - localDate.getDayOfYear()));
+    }
+
+    // Display the date format and display the date in this format
+
+    public void showFormatDate() throws ParseException {
+
+        LocalDate localDate = LocalDate.now();
+        System.out.println("standard date format for LocalDate : " + localDate);
+        System.out.println(localDate.format(DateTimeFormatter.ofPattern("d::MMM::uuuu")));
+        System.out.println(localDate.format(DateTimeFormatter.BASIC_ISO_DATE));
+
+
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println("standard date format for LocalDateTime : " + dateTime);
+        System.out.println(dateTime.format(DateTimeFormatter.ofPattern("d::MMM::uuuu HH::mm::ss")));
+        System.out.println(dateTime.format(DateTimeFormatter.BASIC_ISO_DATE));
+
+        Instant timestamp = Instant.now();
+        System.out.println("standard date format: " + timestamp);
+
+        String date_s = " 2018-08-01 00:00:00.0";
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        Date date = dt.parse(date_s);
+        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+        System.out.println(dt1.format(date));
+    }
 }
 

@@ -1,6 +1,7 @@
 package homeworks.Сalendar;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -45,8 +46,9 @@ public class OperationCalendar {
                     "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
                         "current time, day of the week in this time zone \n" +
                     "6 - Output date in a week, month, year \n" +
-                    "7 -  \n" +
-
+                    "7 - Conclusion time and / or date, day of the week, day of the year, the number of days left " +
+                        "before the New Year \n" +
+                    "8 - Display the date format and display the date in this format \n" +
                     "0 - Exit");
             try {
                 actionNumber = SCANNER.nextInt();
@@ -60,7 +62,7 @@ public class OperationCalendar {
 
     }
 
-    public void doAction(int actionNumber) {
+    public void doAction(int actionNumber) throws ParseException {
         Scanner sc = new Scanner(System.in);
         switch (actionNumber) {
 
@@ -111,8 +113,21 @@ public class OperationCalendar {
                 applicationCalendar.showDateInWeek();
 
                 break;
+
+    // Conclusion time and / or date, day of the week, day of the year, the number of days left before the New Year
+
+            case 7:
+
+                applicationCalendar.showNumberOfDaysLeftUntilNewYear();
+
+                break;
+
+    // Display the date format and display the date in this format
+            case 8:
+
+                applicationCalendar.showFormatDate();
+
+                break;
         }
-
     }
-
 }
