@@ -40,7 +40,7 @@ public class OperationCalendar {
                     "1 - Display the current time and date in several time zones (to choose from). When outputting the " +
                         "date and time, also output the events for the given day\n" +
                     "2 - Create an event on a specific date and list the events as required by the user \n" +
-                    "3 - output event lists \n" +
+                    "3 - Output event lists \n" +
                     "4 - Possibility to delete events \n" +
                     "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
                     "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
