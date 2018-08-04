@@ -56,8 +56,6 @@ public class FileManagerRules {
 
         File tempDir1 = folder.newFolder("ForCopy");
 
-        Path path = Paths.get(tempDir.getPath());
-
         Path sourcePath = Paths.get(tempDir1.getPath());
 
         fm.contentDirectory(sourcePath);
