@@ -125,7 +125,7 @@ public class OperationCalendar {
     // Display the date format and display the date in this format
             case 8:
 
-                applicationCalendar.showFormatDate();
+                applicationCalendar.showFormatDate("");
 
                 break;
 

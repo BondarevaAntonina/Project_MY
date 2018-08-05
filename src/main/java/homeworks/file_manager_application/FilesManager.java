@@ -19,7 +19,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
  * iText(http://howtodoinjava.com/apache-commons/create-pdf-files-in-java-itext-tutorial/#itext_overview)
  * 3) Копировать файлы из одной директории в другую, если такой файл уже существует - перезатирать его -  СДЕЛАНО RULE
  * 4) Удалять директории и файлы  - СДЕЛАНО
- * 5) Переименовывать директории и файлы - СДЕЛАНО RULE
+ * 5) Переименовывать директории и файлы - СДЕЛАНО
  * 6) Просматривать содержимое директории
  * <p>
  * Использовать Java 7, 8, Files

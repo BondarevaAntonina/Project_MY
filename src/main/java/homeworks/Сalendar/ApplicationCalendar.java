@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalField;
 import java.util.*;
 
@@ -29,6 +30,33 @@ public class ApplicationCalendar {
 
     public ApplicationCalendar() {
         events = new ArrayList<>();
+
+        fillEvents();
+    }
+
+    private void fillEvents() {
+        events.addAll(Arrays.asList(
+                new EventDate("Trip on a business trip", LocalDate.now()),
+
+                new EventDate("Webinar2", LocalDate.of(2018, 8, 3)),
+
+                new EventDate("Vacation", LocalDate.of(2018, 8, 2)),
+
+                new EventDate("Vacation", LocalDate.of(2018, 8, 1)),
+
+                new EventDate("Lessons", LocalDate.of(2018, 8, 3)),
+
+                new EventDate("Webinar", LocalDate.of(2018, 8, 2)),
+
+                new EventDate("Webinar2", LocalDate.of(2018, 8, 1)),
+
+                new EventDate("Webinar3", LocalDate.of(2018, 8, 3)),
+
+                new EventDate("Webinar4", LocalDate.now()),
+
+                new EventDate("BirthDay", LocalDate.of(2018, 8, 3)),
+
+                new EventDate("BirthDay2", LocalDate.now())));
     }
 
 
@@ -44,14 +72,6 @@ public class ApplicationCalendar {
 
         System.out.println("Current Date in IST=" + todayKolkata);
 
-        events.add(new EventDate("Trip on a business trip", LocalDate.now()));
-
-        events.add(new EventDate("Webinar2", LocalDate.of(2018, 8, 3)));
-
-        events.add(new EventDate("Vacation", LocalDate.of(2018, 8, 2)));
-
-        events.add(new EventDate("Vacation", LocalDate.of(2018, 8, 1)));
-
         reviewListOfEventsOnTheDate(LocalDate.now());
     }
 
@@ -66,17 +86,7 @@ public class ApplicationCalendar {
 
     //Output event list
 
-    public void showEventsBySpecificDate(LocalDate date) {
-
-        events.add(new EventDate("Lessons", LocalDate.of(2018, 8, 3)));
-
-        events.add(new EventDate("Webinar", LocalDate.of(2018, 8, 2)));
-
-        events.add(new EventDate("Webinar2", LocalDate.of(2018, 8, 1)));
-
-        events.add(new EventDate("Webinar3", LocalDate.of(2018, 8, 3)));
-
-        events.add(new EventDate("Webinar4", LocalDate.now()));
+    public void showEventsBySpecificDate(LocalDate date) {//remove
 
         reviewListOfEventsOnTheDate(LocalDate.now());
 
@@ -97,10 +107,6 @@ public class ApplicationCalendar {
 
     public void deleteEvents(LocalDate date) throws ConcurrentModificationException {
 
-        events.add(new EventDate("BirthDay", LocalDate.of(2018, 8, 3)));
-
-        events.add(new EventDate("BirthDay2", LocalDate.now()));
-
         for (EventDate event : events) {
 
             if (event.getDate().equals(date)) {
@@ -115,17 +121,17 @@ public class ApplicationCalendar {
 
     // Allow the user to enter his city (country / city), define his time zone
 
-    public void showDateInSpecificCountryAndCity(String countryAndCity) {
+    public void showDateInSpecificCountryAndCity(String countryAndCity) {//separate on two variables
 
         ZoneId zoneName = ZoneId.of(countryAndCity);
 
-        LocalDateTime localtDateAndTime = LocalDateTime.now();
+        LocalDateTime localDateTime = LocalDateTime.now();
 
-        System.out.println(localtDateAndTime);
+        System.out.println(localDateTime);
 
         ZonedDateTime dateTime = ZonedDateTime.now(zoneName);
 
-        DayOfWeek dayOfWeek = localtDateAndTime.getDayOfWeek();
+        DayOfWeek dayOfWeek = localDateTime.getDayOfWeek();
 
         System.out.println("Current date and time in a particular timezone : " + dateTime +
                 " week day " + dayOfWeek);
@@ -162,6 +168,11 @@ public class ApplicationCalendar {
 
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
 
+        LocalDate with = localDate.with(TemporalAdjusters.lastDayOfYear());
+
+        Period between = Period.between(localDate, with);
+
+        between.getDays();
 
         System.out.println("The current date: " + localDate + "\n" +
                 "week:  " + dayOfWeek + "\n" +
@@ -172,11 +183,11 @@ public class ApplicationCalendar {
 
     // Display the date format and display the date in this format
 
-    public void showFormatDate() throws ParseException {
+    public void showFormatDate(String format) throws ParseException {//refactor
 
         LocalDate localDate = LocalDate.now();
         System.out.println("standard date format for LocalDate : " + localDate);
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern("d::MMM::uuuu")));
+        System.out.println(localDate.format(DateTimeFormatter.ofPattern(format)));
         System.out.println(localDate.format(DateTimeFormatter.BASIC_ISO_DATE));
 
         LocalDateTime dateTime = LocalDateTime.now();
