@@ -35,7 +35,7 @@ public class FilesManager {
     public static final String FILE_PATH_DEL = "./ForFMFour/";
 
 
-   // Create a new directory
+    // Create a new directory
 
     public void createNewDirectory(Path path) throws IOException {
 
@@ -84,9 +84,9 @@ public class FilesManager {
 
     }
 
-   // Read the file and write the string
+    // Read the file and write the string
 //TODO change String to Path
-    private String readFileTxt(String nameOfFile) throws IOException {
+    public String readFileTxt(String nameOfFile) throws IOException {
 
 
         String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки";
@@ -234,6 +234,3 @@ public class FilesManager {
     }
 
 }
-
-
-
