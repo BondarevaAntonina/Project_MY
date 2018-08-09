@@ -187,7 +187,7 @@ public class FilesManager {
     public void renameFileDirectory(Path source, Path newDir, Path file1, Path file2) throws IOException {
 
         if (Files.exists(source)) {
-            System.out.println("This file exists");
+            System.out.println("This file exists: " + "\n" + file1 + "\n" + file2);
         }
         Files.move(source, newDir, REPLACE_EXISTING);
 

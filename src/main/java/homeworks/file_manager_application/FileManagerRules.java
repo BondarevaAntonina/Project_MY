@@ -102,7 +102,7 @@ public class FileManagerRules {
 
         fm.createNewFile(path);
 
-        fm.readFileTxt(nameOfFile);
+        fm.readModifySavePdf(nameOfFile);
     }
 
 }
