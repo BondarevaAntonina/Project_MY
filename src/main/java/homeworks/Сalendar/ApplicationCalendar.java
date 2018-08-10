@@ -1,14 +1,14 @@
 package homeworks.Сalendar;
 
-import sun.security.util.Length;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalField;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Date;
 
 /**
  * java.time
@@ -38,19 +38,19 @@ public class ApplicationCalendar {
         events.addAll(Arrays.asList(
                 new EventDate("Trip on a business trip", LocalDate.now()),
 
-                new EventDate("Webinar2", LocalDate.of(2018, 8, 3)),
+                new EventDate("Webinar2", LocalDate.of(2018, 8, 10)),
 
                 new EventDate("Vacation", LocalDate.of(2018, 8, 2)),
 
                 new EventDate("Vacation", LocalDate.of(2018, 8, 1)),
 
-                new EventDate("Lessons", LocalDate.of(2018, 8, 3)),
+                new EventDate("Lessons", LocalDate.of(2018, 8, 10)),
 
                 new EventDate("Webinar", LocalDate.of(2018, 8, 2)),
 
                 new EventDate("Webinar2", LocalDate.of(2018, 8, 1)),
 
-                new EventDate("Webinar3", LocalDate.of(2018, 8, 3)),
+                new EventDate("Webinar3", LocalDate.of(2018, 8, 10)),
 
                 new EventDate("Webinar4", LocalDate.now()),
 
@@ -77,11 +77,12 @@ public class ApplicationCalendar {
 
     //Create an event on a specific date and list the events as required by the user
 
-    public void createEvent(LocalDate date, String nameEvent) {
+    public String createEvent(LocalDate date, String nameEvent) {
 
         EventDate event = new EventDate(nameEvent, LocalDate.now());
 
         events.add(event);
+        return nameEvent;
     }
 
     //Output event list
@@ -205,4 +206,3 @@ public class ApplicationCalendar {
         System.out.println(dt1.format(date));
     }
 }
-

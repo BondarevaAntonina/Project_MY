@@ -50,6 +50,7 @@ public class FileManagerRules {
         Assert.assertTrue(Files.exists(sourcePath));
 
     }
+
     @Title("View the contents of the directory")
     @Test
     public void testProcessFilesFromFolder() throws Exception {
@@ -73,6 +74,7 @@ public class FileManagerRules {
         assertTrue(log.contains("Text.txt") && log.contains(path1.toFile().getName()));
 
     }
+
     @Title("Rename directory")
     @Test
     public void testRenameFile() throws Exception {
@@ -87,9 +89,10 @@ public class FileManagerRules {
 
         Path renameFile = Files.createFile(pathTo);
 
-        fm.renameFileDirectory(path, pathTo, nameOfFile, renameFile );
+        fm.renameFileDirectory(path, pathTo, nameOfFile, renameFile);
 
     }
+
     @Title("Convert text files to PDF files using the library")
     @Test
     public void testConvertFilesTxtToPdf() throws Exception {
@@ -102,7 +105,21 @@ public class FileManagerRules {
 
         fm.createNewFile(path);
 
-        fm.readModifySavePdf(nameOfFile);
+        fm.readModifySavePdf(nameOfFile, path);
+
     }
+
+    @Test
+    public void testModifySavePdf() throws Exception {
+
+        FilesManager filesManager = new FilesManager();
+
+        String nameFile = " Root";
+
+        Path path = Paths.get(FilesManager.FILE_PATH);
+
+        filesManager.readModifySavePdf(nameFile, path);
+    }
+
 
 }
