@@ -1,5 +1,5 @@
 package test;
-//package edu.javacourse.collection;
+//package edu.javacourse.collections;
 
 /**
  * Created by antoni on 14.03.2018.

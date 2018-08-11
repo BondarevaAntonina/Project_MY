@@ -1,27 +1,37 @@
 package homeworks.generic_home;
 
+import java.util.Arrays;
+
 /**
  * Created by antoni on 10.08.2018.
- *
+ * <p>
  * Create class MyTestMethod with generic static methodcalcNum (with two parameters: an array T[] and
- variable maxElem of type T) that counts the number of elements in
- an array T[] that are greater than a specified element maxElem.
-
-  */
-
+ * variable maxElem of type T) that counts the number of elements in
+ * an array T[] that are greater than a specified element maxElem.
+ */
 
 public class MyTestMethod {
 
 
+    public static void main(String[] args) {
+        Integer[] array = {8, 6, 7, 5, 5};
 
-//    public static void methodcalcNum(T[] array, T maxElem) {
-//        T[] result = (T[])new Object[array.length+1];
-////        result[array.length] = item;
-////        return result;
-//        System.out.println(Arrays.toString(array));
-//    }
+        CalcNum.methodcalcNum(array, 5);
 
-
+    }
+}
 
 
+class CalcNum {
+    public static <T extends Comparable<T>> void methodcalcNum(T[] array, T maxElem) {
+
+        int count = 0;
+
+        for (T t : array) {
+            if (t.compareTo(maxElem) > 0) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
 }

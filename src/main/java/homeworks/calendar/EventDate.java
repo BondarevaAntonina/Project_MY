@@ -1,4 +1,4 @@
-package homeworks.Сalendar;
+package homeworks.calendar;
 
 import java.time.LocalDate;
 

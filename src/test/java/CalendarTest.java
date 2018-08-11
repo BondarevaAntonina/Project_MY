@@ -1,4 +1,4 @@
-import homeworks.Сalendar.ApplicationCalendar;
+import homeworks.calendar.ApplicationCalendar;
 
 /**
  * Created by antoni on 25.07.2018.

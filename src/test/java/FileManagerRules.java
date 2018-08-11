@@ -1,5 +1,4 @@
-package homeworks.file_manager_application;
-
+import homeworks.file_manager_application.FilesManager;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,6 +10,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 import static org.junit.Assert.assertTrue;
 
@@ -101,12 +101,16 @@ public class FileManagerRules {
 
         String nameOfFile = "Temp";
 
-        Path path = Paths.get(tempDirectory.getPath(), nameOfFile);
+        Path path = Paths.get(tempDirectory.getPath());
 
-        fm.createNewFile(path);
+        Path path1 = Paths.get(tempDirectory.getPath(),nameOfFile + FilesManager.EXTENSION_TXT);
+
+        Files.write(path1, "Hello".getBytes(), StandardOpenOption.CREATE);
 
         fm.readModifySavePdf(nameOfFile, path);
 
+        Assert.assertTrue(Files.exists(Paths.get(path.toString(), nameOfFile + FilesManager.EXTENSION_PDF)));
+//        Assert.assertEquals(true, Files.exists(Paths.get(path.toString(), nameOfFile + FilesManager.EXTENSION_PDF)));
     }
 
     @Test

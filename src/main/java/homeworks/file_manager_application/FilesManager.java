@@ -86,26 +86,23 @@ public class FilesManager {
 
     // Read the file and write the string
 //TODO change String to Path
-    public String readFileTxt(String nameOfFile, Path path) throws IOException {
+    public String readFileTxt(String name, Path path) throws IOException {
 
 
-        String text = "Конвертацию текстовых файлов в PDF файлы с помощью библиотеки";
-
-        byte[] bytes = Files.readAllBytes(Paths.get(String.valueOf(path), nameOfFile + EXTENSION_TXT));
+        byte[] bytes = Files.readAllBytes(Paths.get(String.valueOf(path), name + EXTENSION_TXT));
 
         return new String(bytes);
 
     }
 
-    //
-//
+
     public void readModifySavePdf(String nameOfFile, Path path) {
 
         Document document = new Document();
         try {
-            String text = readFileTxt(nameOfFile,path );
+            String text = readFileTxt(nameOfFile, path);
 
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream( nameOfFile + EXTENSION_PDF));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path.toFile().getPath() + "/" + nameOfFile + FilesManager.EXTENSION_PDF));
             document.open();
             document.add(new Paragraph(text));
             document.close();
@@ -118,7 +115,7 @@ public class FilesManager {
 
     //Copy files from one directory to another, if such a file already exists, overwrite it
 
-    public void copyFilesToDirectory(Path targetPath, Path sourcePath ) throws InterruptedException, IOException {
+    public void copyFilesToDirectory(Path targetPath, Path sourcePath) throws InterruptedException, IOException {
 
         Files.copy(targetPath, sourcePath, StandardCopyOption.REPLACE_EXISTING);
     }

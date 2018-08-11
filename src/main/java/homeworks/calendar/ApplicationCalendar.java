@@ -1,4 +1,4 @@
-package homeworks.Сalendar;
+package homeworks.calendar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +32,15 @@ public class ApplicationCalendar {
         events = new ArrayList<>();
 
         fillEvents();
+    }
+    //TODO for test only
+    public ArrayList<EventDate> getEvents() {
+        return events;
+    }
+
+    //TODO for test only
+    public void setEvents(ArrayList<EventDate> events) {
+        this.events = events;
     }
 
     private void fillEvents() {
@@ -77,12 +86,11 @@ public class ApplicationCalendar {
 
     //Create an event on a specific date and list the events as required by the user
 
-    public String createEvent(LocalDate date, String nameEvent) {
+    public void createEvent(LocalDate date, String nameEvent) {
 
         EventDate event = new EventDate(nameEvent, LocalDate.now());
 
         events.add(event);
-        return nameEvent;
     }
 
     //Output event list
@@ -119,6 +127,7 @@ public class ApplicationCalendar {
         }
         System.out.println();
     }
+
 
     // Allow the user to enter his city (country / city), define his time zone
 
@@ -159,7 +168,6 @@ public class ApplicationCalendar {
         System.out.println("Output date in a year: " + localtDate);
 
     }
-
 
     //Conclusion time and / or date, day of the week, day of the year, the number of days left before the New Year
 
