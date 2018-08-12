@@ -1,8 +1,7 @@
 import homeworks.calendar.ApplicationCalendar;
 import homeworks.calendar.EventDate;
-import org.junit.Rule;
+import homeworks.calendar.OperationCalendar;
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -15,16 +14,14 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(LocalDateTime.class)
-public class CalendarPoverMock {
+@PrepareForTest(OperationCalendar.class)
+
+
+public class LocalDateTimePowerMoke {
+
 
     private ApplicationCalendar calendar = new ApplicationCalendar();
-
-    @Rule
-    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-
 
     @Title("Create events on LocalDate.now ")
     @Test
@@ -40,18 +37,27 @@ public class CalendarPoverMock {
 
     }
 
+    @Title("List events on LocalDate.now ")
     @Test
-    public void shouldShowDateinDifferentTimeZones() {
+    public void testShouldEventsToDate() {
 
-        PowerMockito.mockStatic(LocalDateTime.class);
+        ArrayList<EventDate> events = calendar.getEvents();
 
-        PowerMockito.when(LocalDateTime.now()).thenReturn(LocalDateTime.of(2018, 8, 11, 13, 0));
+        LocalDate date = LocalDate.now();
 
-        System.out.println();
+        calendar.reviewListOfEventsOnTheDate(date);
+
     }
 
+    @Test
+    public void shouldMock() {
+        PowerMockito.mockStatic(LocalDateTime.class);
 
+        LocalDateTime of = LocalDateTime.of(18, 8, 13,4,2);
 
+        PowerMockito.when(LocalDateTime.now()).thenReturn(of);
 
+        System.out.println(LocalDateTime.now());
+    }
 }
 
