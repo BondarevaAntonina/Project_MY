@@ -48,13 +48,14 @@ public class CalendarPoverMock {
 
         PowerMockito.mockStatic(ApplicationCalendar.class);
 
-        LocalDateTime of = LocalDateTime.of(2018, 8, 16, 13, 0);
+        LocalDateTime ldt = LocalDateTime.of(2018, 8, 16, 13, 0);
 
-        when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
+        when(ApplicationCalendar.getLocalDateTime()).thenReturn(ldt);
 
         System.out.println(ApplicationCalendar.getLocalDateTime());
 
 //        assertEquals("2018-08-16T13:00", ApplicationCalendar.getLocalDateTime());
+
 
     }
 
@@ -65,9 +66,9 @@ public class CalendarPoverMock {
 
         PowerMockito.mockStatic(ApplicationCalendar.class);
 
-        LocalDate of = LocalDate.of(2018, 8, 16);
+        LocalDate ldt = LocalDate.of(2018, 8, 16);
 
-        PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(of);
+        PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(ldt);
 
         calendar.showDateInWeek();
     }
@@ -97,6 +98,20 @@ public class CalendarPoverMock {
 
         calendar.showNumberOfDaysLeftUntilNewYear();
     }
+
+    @Title("Display the date format and display the date in this format ")
+    @Test
+    public void testShowDateInSpecificCountryAndCity() throws ParseException {
+
+        PowerMockito.mockStatic(ApplicationCalendar.class);
+
+        LocalDateTime of = LocalDateTime.of(2018, 8, 16, 13, 0);
+
+        PowerMockito.when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
+
+        calendar.showDateInSpecificCountryAndCity("Asia/Kolkata");
+    }
+
 
 
 }
