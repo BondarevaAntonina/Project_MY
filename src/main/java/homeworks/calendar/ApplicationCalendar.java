@@ -1,14 +1,12 @@
 package homeworks.calendar;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
-import java.util.Date;
 
 /**
  * java.time
@@ -57,13 +55,13 @@ public class ApplicationCalendar {
 
                 new EventDate("Webinar", LocalDate.of(2018, 8, 2)),
 
-                new EventDate("Webinar2", LocalDate.of(2018, 8, 1)),
+                new EventDate("Webinar2", LocalDate.of(2018, 8, 17)),
 
-                new EventDate("Webinar3", LocalDate.of(2018, 8, 10)),
+                new EventDate("Webinar3", LocalDate.of(2018, 8, 16)),
 
                 new EventDate("Webinar4", LocalDate.now()),
 
-                new EventDate("BirthDay", LocalDate.of(2018, 8, 3)),
+                new EventDate("BirthDay", LocalDate.of(2018, 8, 16)),
 
                 new EventDate("BirthDay2", LocalDate.now())));
     }
@@ -192,25 +190,34 @@ public class ApplicationCalendar {
 
     // Display the date format and display the date in this format
 
-    public void showFormatDate(String format) throws ParseException {//refactor
+    public void showFormatDate() throws ParseException {//refactor
 
-        LocalDate localDate = LocalDate.now();
-        System.out.println("standard date format for LocalDate : " + localDate);
-        System.out.println(localDate.format(DateTimeFormatter.ofPattern(format)));
-        System.out.println(localDate.format(DateTimeFormatter.BASIC_ISO_DATE));
+//        LocalDate localDate = LocalDate.now();
+//        System.out.println("standard date format for LocalDate : " + localDate);
+//        System.out.println(localDate.format(DateTimeFormatter.ofPattern(format)));
+//        System.out.println(localDate.format(DateTimeFormatter.BASIC_ISO_DATE));
 
         LocalDateTime dateTime = LocalDateTime.now();
-        System.out.println("standard date format for LocalDateTime : " + dateTime);
+//        System.out.println("standard date format for LocalDateTime : " + dateTime);
         System.out.println(dateTime.format(DateTimeFormatter.ofPattern("d::MMM::uuuu HH::mm::ss")));
-        System.out.println(dateTime.format(DateTimeFormatter.BASIC_ISO_DATE));
 
-        Instant timestamp = Instant.now();
-        System.out.println("standard date format: " + timestamp);
 
-        String date_s = " 2018-08-01 00:00:00.0";
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        Date date = dt.parse(date_s);
-        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
-        System.out.println(dt1.format(date));
+//        Instant timestamp = Instant.now();
+//        System.out.println("standard date format: " + timestamp);
+//
+//        String date_s = " 2018-08-01 00:00:00.0";
+//        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+//        Date date = dt.parse(date_s);
+//        SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+//        System.out.println(dt1.format(date));
     }
+
+    public static LocalDateTime getLocalDateTime() {
+        return LocalDateTime.now();
+    }
+
+    public static LocalDate getLocalDate() {
+        return LocalDate.now();
+    }
+
 }

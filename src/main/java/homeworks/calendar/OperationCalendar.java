@@ -35,16 +35,16 @@ public class OperationCalendar {
         do {
             System.out.println("\n---------- Menu -----------\n" +
                     "1 - Display the current time and date in several time zones (to choose from). When outputting the " +
-                        "date and time, also output the events for the given day\n" +
+                    "date and time, also output the events for the given day\n" +
                     "2 - Create an event on a specific date and list the events as required by the user \n" +
                     "3 - Output event lists \n" +
                     "4 - Possibility to delete events \n" +
                     "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
                     "5 - Allow the user to enter his city (country / city), define his time zone and display the " +
-                        "current time, day of the week in this time zone \n" +
+                    "current time, day of the week in this time zone \n" +
                     "6 - Output date in a week, month, year \n" +
                     "7 - Conclusion time and / or date, day of the week, day of the year, the number of days left " +
-                        "before the New Year \n" +
+                    "before the New Year \n" +
                     "8 - Display the date format and display the date in this format \n" +
                     "0 - Exit");
             try {
@@ -63,21 +63,21 @@ public class OperationCalendar {
         Scanner sc = new Scanner(System.in);
         switch (actionNumber) {
 
-    // Display the current time and date in several time zones (to choose from)
+            // Display the current time and date in several time zones (to choose from)
             case 1:
 
                 applicationCalendar.showDateInDifferentTimeZones();
 
                 break;
 
-    //Create an event on a specific date and list the events as required by the user
+            //Create an event on a specific date and list the events as required by the user
             case 2:
 
                 applicationCalendar.createEvent(LocalDate.now(),"Going to the gym");
 
                 break;
 
-    //Output event list
+            //Output event list
 
             case 3:
 
@@ -85,14 +85,14 @@ public class OperationCalendar {
 
                 break;
 
-    //Possibility to delete events
+            //Possibility to delete events
             case 4:
 
                 applicationCalendar.deleteEvents(LocalDate.of(2018,8,3));
 
                 break;
 
-    //Allow the user to enter his city (country / city), define his time zone
+            //Allow the user to enter his city (country / city), define his time zone
             case 5:
 
                 System.out.print("Enter country/city:");
@@ -103,7 +103,7 @@ public class OperationCalendar {
 
                 break;
 
-    // Output date in a week, month, year
+            // Output date in a week, month, year
 
             case 6:
 
@@ -111,7 +111,7 @@ public class OperationCalendar {
 
                 break;
 
-    // Conclusion time and / or date, day of the week, day of the year, the number of days left before the New Year
+            // Conclusion time and / or date, day of the week, day of the year, the number of days left before the New Year
 
             case 7:
 
@@ -119,10 +119,10 @@ public class OperationCalendar {
 
                 break;
 
-    // Display the date format and display the date in this format
+            // Display the date format and display the date in this format
             case 8:
 
-                applicationCalendar.showFormatDate("");
+//                applicationCalendar.showFormatDate("");
 
                 break;
 

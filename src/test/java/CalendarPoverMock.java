@@ -9,15 +9,17 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import ru.yandex.qatools.allure.annotations.Title;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.powermock.api.mockito.PowerMockito.when;
 
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(LocalDateTime.class)
+@PrepareForTest(ApplicationCalendar.class)
 public class CalendarPoverMock {
 
     private ApplicationCalendar calendar = new ApplicationCalendar();
@@ -30,7 +32,7 @@ public class CalendarPoverMock {
     @Test
     public void testCreateEventsToDate() {
 
-        ArrayList<EventDate> events = calendar.getEvents();
+        ArrayList <EventDate> events = calendar.getEvents();
 
         events.clear();
 
@@ -40,18 +42,63 @@ public class CalendarPoverMock {
 
     }
 
+    @Title("Create events on LocalDate.now ")
     @Test
-    public void shouldShowDateinDifferentTimeZones() {
+    public void testshowDateInDifferentTimeZones() {
 
-        PowerMockito.mockStatic(LocalDateTime.class);
+        PowerMockito.mockStatic(ApplicationCalendar.class);
 
-        PowerMockito.when(LocalDateTime.now()).thenReturn(LocalDateTime.of(2018, 8, 11, 13, 0));
+        LocalDateTime of = LocalDateTime.of(2018, 8, 16, 13, 0);
 
-        System.out.println();
+        when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
+
+        System.out.println(ApplicationCalendar.getLocalDateTime());
+
+//        assertEquals("2018-08-16T13:00", ApplicationCalendar.getLocalDateTime());
+
     }
 
 
+    @Title("Create events on LocalDate.now ")
+    @Test
+    public void testShowDateInWeek() {
+
+        PowerMockito.mockStatic(ApplicationCalendar.class);
+
+        LocalDate of = LocalDate.of(2018, 8, 16);
+
+        PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(of);
+
+        calendar.showDateInWeek();
+    }
+
+    @Title("Display the date format and display the date in this format ")
+    @Test
+    public void testShowFormatDate() throws ParseException {
+
+        PowerMockito.mockStatic(ApplicationCalendar.class);
+
+        LocalDateTime of = LocalDateTime.of(2018, 8, 16, 13, 0);
+
+        PowerMockito.when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
+
+        calendar.showFormatDate();
+    }
+
+    @Title("Create events on LocalDate.now ")
+    @Test
+    public void testShowNumberOfDaysLeftUntilNewYear() {
+
+        PowerMockito.mockStatic(ApplicationCalendar.class);
+
+        LocalDate of = LocalDate.of(2018, 8, 16);
+
+        PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(of);
+
+        calendar.showNumberOfDaysLeftUntilNewYear();
+    }
 
 
 }
+
 
