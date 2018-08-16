@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 
@@ -25,7 +26,7 @@ public class CalendarPoverMock {
     private ApplicationCalendar calendar = new ApplicationCalendar();
 
     @Rule
-    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+    public final SystemOutRule outRule = new SystemOutRule().enableLog();
 
 
     @Title("Create events on LocalDate.now ")
@@ -48,15 +49,17 @@ public class CalendarPoverMock {
 
         PowerMockito.mockStatic(ApplicationCalendar.class);
 
-        LocalDateTime ldt = LocalDateTime.of(2018, 8, 16, 13, 0);
+        LocalDateTime ldt = LocalDateTime.of(2018, 8, 16, 13, 0);//move to constant
 
         when(ApplicationCalendar.getLocalDateTime()).thenReturn(ldt);
 
-        System.out.println(ApplicationCalendar.getLocalDateTime());
+        calendar.showDateInDifferentTimeZones();
 
-//        assertEquals("2018-08-16T13:00", ApplicationCalendar.getLocalDateTime());
+        String log = outRule.getLog();
 
-
+        assertTrue(log.contains("Trip on a business trip"));
+        assertTrue(log.contains("Webinar3"));
+        assertTrue(log.contains("Webinar4"));
     }
 
 
@@ -71,6 +74,7 @@ public class CalendarPoverMock {
         PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(ldt);
 
         calendar.showDateInWeek();
+
     }
 
     @Title("Display the date format and display the date in this format ")

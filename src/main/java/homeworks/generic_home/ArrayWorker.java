@@ -14,46 +14,38 @@ package homeworks.generic_home;
 public class ArrayWorker {
 
     public static void main(String[] args) {
-        GeneralArray<Integer, Double> integerType = new GeneralArray<>();
 
-        Integer[] arrayInt = {1, 2, 3};
+        Integer[] arrayInt = {1, 2, 3, 1};
 
-        Double[] arrayDouble = {1D, 2D, 3D};
+        Double[] arrayDouble = {1D, 2D, 3D, 1D};
 
+        GeneralArray<Integer> integerType = new GeneralArray<>(arrayInt);
+
+        GeneralArray<Double> doubleType = new GeneralArray<>(arrayDouble);
+
+        integerType.methodcalcNum(1);
+        doubleType.methodcalcNum(1);
     }
 
 
 }
 
-class GeneralArray<T, D extends Number> {
-    private T[] arrayInt;
-    private D[] arrayDouble;
+class GeneralArray<D extends Number> {
+    private D[] array;
 
-    public T[] getArrayInt() {
-        return arrayInt;
+    public GeneralArray(D[] array) {
+        this.array = array;
     }
 
-    public void setArrayInt(T[] arrayInt) {
-        this.arrayInt = arrayInt;
-    }
-
-    public D[] getArrayDouble() {
-        return arrayDouble;
-    }
-
-    public void setArrayDouble(D[] arrayDouble) {
-        this.arrayDouble = arrayDouble;
-    }
-
-
-    public static <T, D extends Number> void methodcalcNum(T[] arrayInt, D[] arrayDouble, T maxElem, D maxElemD) {
+    public <D extends Number> void methodcalcNum(D maxElem) {
 
         int count = 0;
 
-        for (T t : arrayInt) {
-
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].doubleValue() == maxElem.doubleValue()) {
+                count++;
+            }
         }
-
 
         System.out.println(count);
     }
