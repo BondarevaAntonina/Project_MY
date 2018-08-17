@@ -55,11 +55,8 @@ public class CalendarPoverMock {
 
         calendar.showDateInDifferentTimeZones();
 
-        String log = outRule.getLog();
+        assertEquals(ldt, ApplicationCalendar.getLocalDateTime());
 
-        assertTrue(log.contains("Trip on a business trip"));
-        assertTrue(log.contains("Webinar3"));
-        assertTrue(log.contains("Webinar4"));
     }
 
 
@@ -75,6 +72,15 @@ public class CalendarPoverMock {
 
         calendar.showDateInWeek();
 
+        String log = outRule.getLog();
+
+        assertTrue(log.contains("The current date: 2018-08-17"));
+
+        assertTrue(log.contains("Output date in a week: 2018-08-24"));
+
+        assertTrue(log.contains("Output date in a month: 2018-09-24"));
+
+        assertTrue(log.contains("Output date in a year: 2019-09-24"));
     }
 
     @Title("Display the date format and display the date in this format ")
@@ -88,6 +94,13 @@ public class CalendarPoverMock {
         PowerMockito.when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
 
         calendar.showFormatDate();
+
+        String log = outRule.getLog();
+
+        assertEquals(of, ApplicationCalendar.getLocalDateTime());
+//        assertTrue(log.contains("17::авг::2018 13::10::45"));
+
+
     }
 
     @Title("Create events on LocalDate.now ")
@@ -101,6 +114,17 @@ public class CalendarPoverMock {
         PowerMockito.when(ApplicationCalendar.getLocalDate()).thenReturn(of);
 
         calendar.showNumberOfDaysLeftUntilNewYear();
+
+        String log = outRule.getLog();
+
+        assertTrue(log.contains("The current date: 2018-08-17"));
+
+        assertTrue(log.contains("week:  FRIDAY"));
+
+        assertTrue(log.contains("day of the year:  229"));
+
+        assertTrue(log.contains("number of days left until the New Year: 136"));
+
     }
 
     @Title("Display the date format and display the date in this format ")
@@ -114,8 +138,12 @@ public class CalendarPoverMock {
         PowerMockito.when(ApplicationCalendar.getLocalDateTime()).thenReturn(of);
 
         calendar.showDateInSpecificCountryAndCity("Asia/Kolkata");
-    }
 
+        String log = outRule.getLog();
+
+//        assertTrue(log.contains("2018-08-17T13:17:30.513\r\nCurrent date and time in a particular timezone : 2018-08-17T15:47:30.515+05:30[Asia/Kolkata] week day FRIDAY\r\n"));
+        assertTrue(log.contains("Current date and time in a particular timezone : 2018-08-17T15:47:30.515+05:30[Asia/Kolkata] week day FRIDAY"));
+    }
 
 
 }
