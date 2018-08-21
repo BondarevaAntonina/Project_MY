@@ -98,6 +98,7 @@ public class CalendarPoverMock {
         String log = outRule.getLog();
 
         assertEquals(of, ApplicationCalendar.getLocalDateTime());
+//        assertTrue(log.contains("17::авг::2018 13::10::45"));
 
 
     }
@@ -140,7 +141,8 @@ public class CalendarPoverMock {
 
         String log = outRule.getLog();
 
-
+//        assertTrue(log.contains("2018-08-17T13:17:30.513\r\nCurrent date and time in a particular timezone : 2018-08-17T15:47:30.515+05:30[Asia/Kolkata] week day FRIDAY\r\n"));
+        assertTrue(log.contains("Current date and time in a particular timezone : 2018-08-17T15:47:30.515+05:30[Asia/Kolkata] week day FRIDAY"));
     }
 
 

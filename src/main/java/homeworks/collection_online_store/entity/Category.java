@@ -5,26 +5,26 @@ import java.util.List;
 public class Category {
 
 
-    private String name;
+    private String nameCat;
     private String tags;
-
-
+    private String sire;
     private List<Product> productList;
+    private Subcategory subcategory;
 
-    public Category() {
+    public Category(String name, String tags, String sire, List<Product> productList, Subcategory subcategory) {
+        this.nameCat = name;
+        this.tags = tags;
+        this.sire = sire;
+        this.productList = productList;
+        this.subcategory = subcategory;
     }
-
-    public Category(String name) {
-        this.name = name;
-    }
-
 
     public String getName() {
-        return name;
+        return nameCat;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nameCat = name;
     }
 
     public String getTags() {
@@ -46,7 +46,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return getName() + " [Name: " + name + "]";
+        return getName() + " [Name: " + nameCat + "]";
     }
 
 }

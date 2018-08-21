@@ -5,25 +5,44 @@ import java.util.List;
 
 public class Customer extends Person {
 
-    private List<CustomerOrder> customerOrderList;
+    private List<Customer> customerList;
 
-    public Customer(String firstName, String lastName, String email, String address, String city, List <CustomerOrder> customerOrderList) {
-        super(firstName, lastName, email, address, city);
-        this.customerOrderList = new ArrayList<CustomerOrder>();
+    public Customer(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
+    public Customer(Integer id, List<Customer> customerList) {
+        super(id);
+        this.customerList = customerList;
+    }
+
+    public Customer(Integer id, String firstName, String lastName, String email, String address, String city, List<Customer> customerOrderList) {
+        super(id, firstName, lastName, email, address, city);
+        this.customerList = customerOrderList;
+    }
+
+    public Customer(Integer id, String firstname, String lastname, String email, String address, String city) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.customerList = new ArrayList<Customer>();
     }
 
 
-    public List<CustomerOrder> getCustomerOrderList() {
-        return customerOrderList;
+    public List<Customer> getCustomerList() {
+        return customerList;
     }
 
-    public void setCustomerOrderList(List<CustomerOrder> customerOrderList) {
-        this.customerOrderList = customerOrderList;
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
     }
 
 
     @Override
     public String toString() {
-        return "Customer[firstname=" + firstname + "]";
+        return "Customer[id=" + id + "]";
     }
 }

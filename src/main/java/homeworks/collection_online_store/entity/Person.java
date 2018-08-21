@@ -1,27 +1,32 @@
 package homeworks.collection_online_store.entity;
 
+
 public class Person {
 
-    protected String firstname;
-    protected String lastname;
-    protected String email;
-    protected String address;
-    protected String city;
+    private Integer id;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String address;
+    private String city;
 
-
-    public Person(String firstName,
-                  String lastName,
-                  String email,
-                  String address,
-                  String city) {
-        this.firstname = firstName;
-        this.lastname = lastName;
+    public Person(Integer id, String firstname, String lastname, String email, String address, String city) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.address = address;
         this.city = city;
     }
 
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -66,7 +71,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person[ firstname=" + firstname + " ]";
+        return "Person[ id=" + id + " ]";
     }
 
 }

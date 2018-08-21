@@ -1,26 +1,28 @@
 package homeworks.collection_online_store.entity;
 
+/**
+ * название, производитель, дата производства и т.д.
+ */
+
+import java.time.LocalDate;
 
 public class Product {
 
     private String name;
+    private String breeder;
+    private LocalDate dateBreeder;
     private double price;
     private String description;
-    private String img;
-    private byte[] imgSrc;
     private Category category;
 
-    public Product() {
-    }
-
-
-
-    public Product(String name, double price, String description) {
+    public Product(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category) {
         this.name = name;
+        this.breeder = breeder;
+        this.dateBreeder = dateBreeder;
         this.price = price;
         this.description = description;
+        this.category = category;
     }
-
 
     public String getName() {
         return name;
@@ -28,6 +30,22 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getBreeder() {
+        return breeder;
+    }
+
+    public void setBreeder(String breeder) {
+        this.breeder = breeder;
+    }
+
+    public LocalDate getDateBreeder() {
+        return dateBreeder;
+    }
+
+    public void setDateBreeder(LocalDate dateBreeder) {
+        this.dateBreeder = dateBreeder;
     }
 
     public double getPrice() {
@@ -46,22 +64,6 @@ public class Product {
         this.description = description;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String simg) {
-        this.img = simg;
-    }
-
-    public byte[] getImgSrc() {
-        return imgSrc;
-    }
-
-    public void setImgSrc(byte[] imgSrc) {
-        this.imgSrc = imgSrc;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -72,6 +74,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product[name=" + name + "]";
+        return "Product[id=" + name + "]";
+    }
+
+
+    public void addProduct() {
+
     }
 }
