@@ -1,10 +1,8 @@
 package homeworks.collection_online_store.entity;
 
-import homeworks.collection_online_store.entity.Category;
 
 public class Product {
 
-    private Integer id;
     private String name;
     private double price;
     private String description;
@@ -15,24 +13,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id) {
-        this.id = id;
-    }
 
-    public Product(Integer id, String name, double price, String description) {
-        this.id = id;
+
+    public Product(String name, double price, String description) {
         this.name = name;
         this.price = price;
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -84,6 +72,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product[id=" + id + "]";
+        return "Product[name=" + name + "]";
     }
 }

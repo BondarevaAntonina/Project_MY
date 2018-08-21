@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Category {
 
-    private Integer id;
+
     private String name;
     private String tags;
 
@@ -14,22 +14,10 @@ public class Category {
     public Category() {
     }
 
-    public Category(Integer id) {
-        this.id = id;
-    }
-
-    public Category(Integer id, String name) {
-        this.id = id;
+    public Category(String name) {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -58,7 +46,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return getName() + " [ID: " + id + "]";
+        return getName() + " [Name: " + name + "]";
     }
 
 }

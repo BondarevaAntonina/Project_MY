@@ -6,32 +6,15 @@ import java.util.List;
 public class CustomerOrder {
 
     private LocalDate dateCreated;
-    private Integer id;
     private double amount;
-    private OrderStatus orderStatus;
     private Customer customer;
 
     private List<OrderDetail> orderDetailList;
 
-    public CustomerOrder() {
-    }
 
-    public CustomerOrder(Integer id) {
-        this.id = id;
-    }
-
-    public CustomerOrder(Integer id, double amount, LocalDate dateCreated) {
-        this.id = id;
+    public CustomerOrder(double amount, LocalDate dateCreated) {
         this.amount = amount;
         this.dateCreated = dateCreated;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public double getAmount() {
@@ -48,14 +31,6 @@ public class CustomerOrder {
 
     public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
     }
 
     public Customer getCustomer() {
@@ -80,7 +55,7 @@ public class CustomerOrder {
 
     @Override
     public String toString() {
-        return "CustomerOrder[id=" + id + "]";
+        return "CustomerOrder[customer=" + customer + "]";
     }
 
 

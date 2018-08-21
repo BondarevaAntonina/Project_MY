@@ -7,27 +7,11 @@ public class Customer extends Person {
 
     private List<CustomerOrder> customerOrderList;
 
-    public Customer() {
+    public Customer(String firstName, String lastName, String email, String address, String city, List <CustomerOrder> customerOrderList) {
+        super(firstName, lastName, email, address, city);
         this.customerOrderList = new ArrayList<CustomerOrder>();
-        this.groupsList = new ArrayList<Groups>();
     }
 
-    public Customer(Integer id) {
-        this.id = id;
-        this.customerOrderList = new ArrayList<CustomerOrder>();
-        this.groupsList = new ArrayList<Groups>();
-    }
-
-    public Customer(Integer id, String firstname, String lastname, String email, String address, String city) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.address = address;
-        this.city = city;
-        this.customerOrderList = new ArrayList<CustomerOrder>();
-        this.groupsList = new ArrayList<Groups>();
-    }
 
     public List<CustomerOrder> getCustomerOrderList() {
         return customerOrderList;
@@ -40,6 +24,6 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer[id=" + id + "]";
+        return "Customer[firstname=" + firstname + "]";
     }
 }
