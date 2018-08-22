@@ -1,17 +1,18 @@
 package homeworks.collection_online_store.entity;
 
+/**
+ * Человек
+ */
 
 public class Person {
 
-    private Integer id;
     private String firstname;
     private String lastname;
     private String email;
     private String address;
     private String city;
 
-    public Person(Integer id, String firstname, String lastname, String email, String address, String city) {
-        this.id = id;
+    public Person(String firstname, String lastname, String email, String address, String city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -19,14 +20,6 @@ public class Person {
         this.city = city;
     }
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -71,7 +64,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person[ id=" + id + " ]";
+        return "Person[ firstname =" + firstname + " ]";
     }
 
 }

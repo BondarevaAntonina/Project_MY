@@ -1,5 +1,6 @@
 package homeworks.collection_online_store.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Category {
@@ -42,6 +43,8 @@ public class Category {
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
+
+
 
 
     @Override
