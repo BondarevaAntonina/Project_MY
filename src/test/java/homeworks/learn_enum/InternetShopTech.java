@@ -2,23 +2,21 @@ package homeworks.learn_enum;
 
 import homeworks.collection_online_store.OperationService;
 import homeworks.collection_online_store.entity.Category;
-import homeworks.collection_online_store.entity.Product;
-import org.junit.Assert;
+
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Title;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javax.management.monitor.Monitor;
 import java.time.LocalDate;
 import java.util.List;
 
 public class InternetShopTech {
 
+    private static final Object Category = "Monitor";
     OperationService os = new OperationService();
 
-    @Title("Creating a text file")
+
+    @Title("Create Product")
     @Test
     public void testAddProduct() throws Exception {
 
