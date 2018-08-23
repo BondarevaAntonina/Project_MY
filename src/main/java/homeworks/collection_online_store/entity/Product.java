@@ -14,8 +14,10 @@ public class Product {
     private double price;
     private String description;
     private Category category;
+    private Subcategory subcategory;
 
-    public Product(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category) {
+    public Product(String name, String breeder, LocalDate dateBreeder,
+                   double price, String description, Category category) {
         this.name = name;
         this.breeder = breeder;
         this.dateBreeder = dateBreeder;

@@ -9,6 +9,8 @@ public class Category {
     private ArrayList<Product> productList;
     private Subcategory subcategory;
 
+//    COMPUTER, MOBILE
+
     public Category(String name, String tags, String manufacturer, ArrayList<Product> productList, Subcategory subcategory) {
         this.nameCategory = name;
         this.manufacturer = manufacturer;

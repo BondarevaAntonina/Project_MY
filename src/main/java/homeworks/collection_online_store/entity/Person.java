@@ -1,5 +1,8 @@
 package homeworks.collection_online_store.entity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Человек
  */
@@ -11,6 +14,7 @@ public class Person {
     private String email;
     private String address;
     private String city;
+    private Map<Product, Integer> bucket;
 
     public Person(String firstname, String lastname, String email, String address, String city) {
         this.firstname = firstname;
@@ -18,6 +22,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.city = city;
+        bucket = new HashMap<>();
     }
 
 

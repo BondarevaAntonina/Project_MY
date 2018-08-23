@@ -1,25 +1,21 @@
 package homeworks.collection_online_store;
 
-import homeworks.calendar.EventDate;
-import homeworks.collection_online_store.entity.Category;
 import homeworks.collection_online_store.entity.Product;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class OperationService {
 
-    private ArrayList<Product> products;
+    private List<Product> products;
 
     public OperationService() {
-        products = new ArrayList<>();
+        products = new LinkedList<>();
 
     }
 
 
-    public void addProduct(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category) {
-
-        Product product = new Product( name,  breeder,  dateBreeder,  price,  description, category);
+    public void addProduct(Product product) {
 
         products.add(product);
     }
