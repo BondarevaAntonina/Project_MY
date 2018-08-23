@@ -1,4 +1,7 @@
 package homeworks.collection_online_store;
+
+import java.util.ArrayList;
+
 /**
  Создать приложение интернет - магазина. Приложение должен выполнять следующие операции:
 
@@ -17,6 +20,21 @@ public class OnlineStore {
 
     }
 
+    public void addProduct() {
 
+        ArrayList<String> category = new ArrayList<String>();
+        category.add("Компьютеры и ноутбуки");
+        category.add("Бытовая техника, интерьер");
+        category.add("Товары для дома");
+        category.add("Сантехника и ремонт");
+
+        System.out.printf("ArrayList has %d elements \n", category.size());
+        for(String person : category){
+
+            System.out.println(person);
+
+
+        }
+    }
 
 }

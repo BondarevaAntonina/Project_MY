@@ -1,46 +1,34 @@
 package homeworks.collection_online_store.entity;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Category {
 
-
-    private String nameCat;
-    private String tags;
-    private String sire;
-    private List<Product> productList;
+    private String nameCategory;
+    private String manufacturer;
+    private ArrayList<Product> productList;
     private Subcategory subcategory;
 
-    public Category(String name, String tags, String sire, List<Product> productList, Subcategory subcategory) {
-        this.nameCat = name;
-        this.tags = tags;
-        this.sire = sire;
+    public Category(String name, String tags, String manufacturer, ArrayList<Product> productList, Subcategory subcategory) {
+        this.nameCategory = name;
+        this.manufacturer = manufacturer;
         this.productList = productList;
         this.subcategory = subcategory;
     }
 
     public String getName() {
-        return nameCat;
+        return nameCategory;
     }
 
     public void setName(String name) {
-        this.nameCat = name;
+        this.nameCategory = name;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public List<Product> getProductList() {
+    public ArrayList<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
+    public void setProductList(ArrayList<Product> productList) {
         this.productList = productList;
     }
 
@@ -49,7 +37,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return getName() + " [Name: " + nameCat + "]";
+        return getName() + " [Name: " + nameCategory + "]";
     }
 
 }
