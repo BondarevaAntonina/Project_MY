@@ -1,23 +1,17 @@
 package homeworks.collection_online_store.entity;
 
-import java.util.ArrayList;
-
 /**
- * Created by antoni on 21.08.2018.
+ * PHONE, HEAD_PHONES
  */
-public class Subcategory extends Category {
 
-//    PHONE, HEAD_PHONES
+public enum Subcategory {
 
-    private String nameSubCat;
+    PHONE("Phone"), HEAD_PHONES("Head_phones");
 
-    public Subcategory(String name, String tags, String sire, ArrayList<Product> productList, Subcategory subcategory, String nameSubCat) {
-        super(name, tags, sire, productList, subcategory);
-        this.nameSubCat = nameSubCat;
+    private String subcategory;
+
+    Subcategory(String namesubcat) {
+        subcategory = namesubcat;
     }
 
-    @Override
-    public String toString() {
-        return getName() + " [Name: " + nameSubCat + "]";
-    }
 }

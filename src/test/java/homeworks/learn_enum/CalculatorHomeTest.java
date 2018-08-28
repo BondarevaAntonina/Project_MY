@@ -1,3 +1,5 @@
+package homeworks.learn_enum;
+
 import for_test.CalculatorOperation;
 import org.junit.Assert;
 import org.junit.Test;

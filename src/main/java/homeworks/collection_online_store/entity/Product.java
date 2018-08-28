@@ -16,14 +16,15 @@ public class Product {
     private Category category;
     private Subcategory subcategory;
 
-    public Product(String name, String breeder, LocalDate dateBreeder,
-                   double price, String description, Category category) {
+
+    public Product(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category, Subcategory subcategory) {
         this.name = name;
         this.breeder = breeder;
         this.dateBreeder = dateBreeder;
         this.price = price;
         this.description = description;
         this.category = category;
+        this.subcategory = subcategory;
     }
 
     public String getName() {
