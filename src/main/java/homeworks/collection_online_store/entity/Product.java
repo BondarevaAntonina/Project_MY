@@ -28,7 +28,8 @@ public class Product {
     }
 
     public String getName() {
-        return name;
+
+        return "Name product: "  + name;
     }
 
     public void setName(String name) {
@@ -36,7 +37,7 @@ public class Product {
     }
 
     public String getBreeder() {
-        return breeder;
+        return "Breeder: "  + breeder;
     }
 
     public void setBreeder(String breeder) {
@@ -44,6 +45,7 @@ public class Product {
     }
 
     public LocalDate getDateBreeder() {
+
         return dateBreeder;
     }
 
@@ -78,11 +80,6 @@ public class Product {
 
 
 
-
-    @Override
-    public String toString() {
-        return "Product[id=" + name + "]";
-    }
 
 
 
