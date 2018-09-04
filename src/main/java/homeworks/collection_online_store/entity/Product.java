@@ -5,7 +5,7 @@ package homeworks.collection_online_store.entity;
  */
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Product {
 
@@ -17,13 +17,13 @@ public class Product {
     private Category category;
     private Subcategory subcategory;
 
-    private ArrayList<Product> relatedProductList;
-    // private LinkedList<RelatedProduct> mlinProducts;
+//    private ArrayList<Product> relatedProductList;
 
+    LinkedList<Product> relatedProductList = new LinkedList<>();
 
 
     public Product(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category, Subcategory subcategory) {
-        relatedProductList = new ArrayList<Product>();
+        relatedProductList = new LinkedList<Product>();
         this.name = name;
         this.breeder = breeder;
         this.dateBreeder = dateBreeder;
@@ -41,7 +41,11 @@ public class Product {
         relatedProductList.add(product);
     }
 
-    public ArrayList<Product> getRelatedProductList() {
+    public void removeRelation(Product product) {
+        relatedProductList.remove(product);
+    }
+
+    public LinkedList <Product> getRelatedProductList() {
         return relatedProductList;
     }
 

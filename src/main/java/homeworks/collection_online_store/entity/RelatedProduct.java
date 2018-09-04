@@ -2,6 +2,9 @@ package homeworks.collection_online_store.entity;
 
 import java.time.LocalDate;
 
+/**
+ * Created by antoni on 04.09.2018.
+ */
 public class RelatedProduct extends Product{
 
     private int rebate;
@@ -12,11 +15,5 @@ public class RelatedProduct extends Product{
         this.rebate = rebate;
     }
 
-    public int getRebate() {
-        return rebate;
-    }
 
-    public void setRebate(int rebate) {
-        this.rebate = rebate;
-    }
 }
