@@ -5,7 +5,7 @@ package homeworks.collection_online_store.entity;
  */
 
 import java.time.LocalDate;
-import java.util.LinkedList;
+import java.util.Objects;
 
 public class Product {
 
@@ -17,13 +17,8 @@ public class Product {
     private Category category;
     private Subcategory subcategory;
 
-//    private ArrayList<Product> relatedProductList;
-
-    LinkedList<Product> relatedProductList = new LinkedList<>();
-
-
-    public Product(String name, String breeder, LocalDate dateBreeder, double price, String description, Category category, Subcategory subcategory) {
-        relatedProductList = new LinkedList<Product>();
+    public Product(String name, String breeder, LocalDate dateBreeder, double price,
+                   String description, Category category, Subcategory subcategory) {
         this.name = name;
         this.breeder = breeder;
         this.dateBreeder = dateBreeder;
@@ -34,19 +29,7 @@ public class Product {
     }
 
     public String getName() {
-        return "Name product: "  + name;
-    }
-
-    public void addRelation(Product product){
-        relatedProductList.add(product);
-    }
-
-    public void removeRelation(Product product) {
-        relatedProductList.remove(product);
-    }
-
-    public LinkedList <Product> getRelatedProductList() {
-        return relatedProductList;
+        return name;
     }
 
     public void setName(String name) {
@@ -57,45 +40,54 @@ public class Product {
         return "Breeder: "  + breeder;
     }
 
-    public void setBreeder(String breeder) {
-        this.breeder = breeder;
-    }
-
     public LocalDate getDateBreeder() {
 
         return dateBreeder;
     }
 
-    public void setDateBreeder(LocalDate dateBreeder) {
-        this.dateBreeder = dateBreeder;
+    public Subcategory getSubcategory() {
+        return subcategory;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", breeder='" + breeder + '\'' +
+                ", dateBreeder=" + dateBreeder +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                ", subcategory=" + subcategory +
+                '}';
     }
 
     @Override
-    public String toString() {
-        return this.name;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(breeder, product.breeder) &&
+                Objects.equals(dateBreeder, product.dateBreeder) &&
+                Objects.equals(description, product.description) &&
+                category == product.category &&
+                subcategory == product.subcategory;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, breeder, dateBreeder, price, description, category, subcategory);
     }
 }
