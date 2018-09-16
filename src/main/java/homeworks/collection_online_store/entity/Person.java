@@ -10,10 +10,10 @@ public class Person {
     private String lastname;
     private String email;
     private String address;
-    private String city;
+    private City city;
     private Map<Product, Integer> bucket;
 
-    public Person(String firstName, String lastName, String email, String address, String city) {//WOMAN -> Kyiv
+    public Person(String firstName, String lastName, String email, String address, City city) {
         this.firstname = firstName;
         this.lastname = lastName;
         this.email = email;
@@ -28,7 +28,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person[ firstname =" + firstname + " ]";
+        return firstname;
     }
 
 }

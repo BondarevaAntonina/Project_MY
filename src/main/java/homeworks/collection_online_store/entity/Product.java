@@ -37,7 +37,7 @@ public class Product {
     }
 
     public String getBreeder() {
-        return "Breeder: "  + breeder;
+        return breeder;
     }
 
     public LocalDate getDateBreeder() {
@@ -83,11 +83,5 @@ public class Product {
                 Objects.equals(description, product.description) &&
                 category == product.category &&
                 subcategory == product.subcategory;
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(name, breeder, dateBreeder, price, description, category, subcategory);
     }
 }
