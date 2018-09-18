@@ -4,10 +4,14 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class InternetShop {
-    private List<Product> products;
+    private List <Product> products;
+
+    private  Map<Person, Integer> personMap;
+
+
 
     public InternetShop() {
-        products = new LinkedList<>();
+        products = new LinkedList <>();
 
         products.addAll(Arrays.asList(
                 new Product("32LG27MP68VQ-P", "Китай",
@@ -44,9 +48,7 @@ public class InternetShop {
         System.out.println(prod);
 
         for (Product product : products) {
-            if (prod.getCategory() == product.getCategory() &&
-                    !prod.getName().equals(product.getName()) &&
-                    prod.getSubcategory() != product.getSubcategory()) {
+            if (prod.getCategory() == product.getCategory() && !prod.getName().equals(product.getName()) && prod.getSubcategory() != product.getSubcategory()) {
                 System.out.println(product);
             }
         }
@@ -56,7 +58,7 @@ public class InternetShop {
 
         Product prod = null;
 
-        List<Product> list = new ArrayList<>();
+        List <Product> list = new ArrayList <>();
 
         for (Product product : products) {//9
 
@@ -72,7 +74,7 @@ public class InternetShop {
 
         for (Product product : products) {//9
 
-            if (product.getCategory() == prod.getCategory() && !product.getName().equals(prod.getName()) ) {
+            if (product.getCategory() == prod.getCategory() && !product.getName().equals(prod.getName())) {
                 list.add(product);
             }
         }
@@ -95,4 +97,19 @@ public class InternetShop {
         System.out.println(products);
     }
 
+
+    public void addProductsToBucket(Product product, Integer count) {
+
+        Map <Product, Integer> bucket = new HashMap <>();
+        bucket.put(product, count);
+        System.out.println(bucket);
+
+
+
+    }
+
+    public void showSummaAmountProduct() {
+
+
+    }
 }

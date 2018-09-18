@@ -11,7 +11,7 @@ public class Person {
     private String email;
     private String address;
     private City city;
-    private Map<Product, Integer> bucket;
+    private Map <Product, Integer> bucket;
 
     public Person(String firstName, String lastName, String email, String address, City city) {
         this.firstname = firstName;
@@ -19,11 +19,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.city = city;
-        bucket = new HashMap<>();
-    }
-
-    public void addProductsToBucket(Product product, int count) {
-        bucket.put(product, count);
+        bucket = new HashMap <>();
     }
 
     @Override
