@@ -16,11 +16,13 @@ public class Product {
     private String description;
     private Category category;
     private Subcategory subcategory;
+    private int count;
 
-    public Product(String name, String breeder, LocalDate dateBreeder, double price,
-                   String description, Category category, Subcategory subcategory) {
+    public Product(String name, String breeder, LocalDate dateBreeder, double price, String description,
+                   Category category, Subcategory subcategory, int count) {
         this.name = name;
         this.breeder = breeder;
+        this.count = count;
         this.dateBreeder = dateBreeder;
         this.price = price;
         this.description = description;
@@ -68,6 +70,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", category=" + category +
                 ", subcategory=" + subcategory +
+                ", count=" + count +
                 '}';
     }
 
@@ -82,6 +85,7 @@ public class Product {
                 Objects.equals(dateBreeder, product.dateBreeder) &&
                 Objects.equals(description, product.description) &&
                 category == product.category &&
-                subcategory == product.subcategory;
+                subcategory == product.subcategory  &&
+                Objects.equals(count, product.count);
     }
 }
