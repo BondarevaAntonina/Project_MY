@@ -12,7 +12,7 @@ public class Product {
     private String name;
     private String breeder;
     private LocalDate dateBreeder;
-    private double price;
+    private double price;//change on float
     private String description;
     private Category category;
     private Subcategory subcategory;
@@ -30,6 +30,10 @@ public class Product {
         this.subcategory = subcategory;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,6 +49,10 @@ public class Product {
     public LocalDate getDateBreeder() {
 
         return dateBreeder;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public Subcategory getSubcategory() {

@@ -5,21 +5,17 @@ import java.util.*;
 
 public class InternetShop {
 
-    private List <Product> products;
-
-    private List<Order> orders;
-
-    Map <String, Product> bucket = new HashMap <>();
-
+    private static List<Product> products;
 
 
     public InternetShop() {
-        products = new LinkedList <>();
+        products = new LinkedList<>();
 
         products.addAll(Arrays.asList(
                 new Product("32LG27MP68VQ-P", "Китай",
                         LocalDate.of(2015, 10, 14), 6689,
-                        "Монитор 27 LG 27MP68VQ-P + 0,01% кредит на 5 мес", Category.COMPUTER, Subcategory.NOTEBOOK, 0),
+                        "Монитор 27 LG 27MP68VQ-P + 0,01% кредит на 5 мес", Category.COMPUTER,
+                        Subcategory.NOTEBOOK, 0),
 
                 new Product("Lenovo Tab 7 Essential TB-7304i 3G", "Китай",
                         LocalDate.of(2017, 5, 17), 3399,
@@ -37,11 +33,9 @@ public class InternetShop {
                         Category.MOBILE, Subcategory.HEAD_PHONES, 0)));
     }
 
-
-
-    public Product getProductByName( String name ) {
-        for (Product product: products) {
-             if(product.getName().equals(name)) return  product;
+    public Product getProductByName(String name) {
+        for (Product product : products) {
+            if (product.getName().equals(name)) return product;
         }
         return null;
     }
@@ -70,7 +64,7 @@ public class InternetShop {
 
         Product prod = null;
 
-        List <Product> list = new ArrayList <>();
+        List<Product> list = new ArrayList<>();
 
         for (Product product : products) {//9
 
@@ -96,13 +90,11 @@ public class InternetShop {
         System.out.println();
 
        /* Iterator<Product> iterator = products.iterator();
-
         while (iterator.hasNext()) {
-
             Product product = iterator.next();
-
             if (Objects.equals(product.getName(), nameProduct)) {
-                products.remove(product);
+                //products.remove(product);
+                iterator.remove();
             }
         }*/
 
@@ -110,19 +102,31 @@ public class InternetShop {
     }
 
 
-    public void addProductsToBucket(Product product) {
-        bucket.put(product.getName(), product);
-        System.out.println(bucket);
+    public void addProduct(Product product) {
+
+        if (!products.contains(product)) {
+            products.add(product);
+            return;
+        }
+
+        for (Product product1 : products) {
+            if (product1.equals(product)) {
+                product1.setCount(product.getCount());
+            }
+        }
     }
 
-    public void addProductsToBucket(Product... products) {
-        for ( Product pr : products )
-            addProductsToBucket(pr);
-        System.out.println(orders);
-    }
+    public static int checkCountProduct(Product prod) {
 
-    public void showSummaAmountProduct() {
+        int count = 0;
 
+        for (Product product : products) {
+            if (product.equals(prod)) {
+                count = product.getCount();
+                break;
+            }
+        }
 
+        return count;
     }
 }
