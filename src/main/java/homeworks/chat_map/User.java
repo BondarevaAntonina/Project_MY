@@ -1,11 +1,9 @@
 package homeworks.chat_map;
 
 import homeworks.collection_online_store.entity.City;
-import homeworks.collection_online_store.entity.Product;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Создать приложение Чат на основе Map.
@@ -27,10 +25,10 @@ public class User {
     private int age;
     private City city;
     private NetworkStatus networkStatus;
-    private String[] users;
+    private List[] users;
 
     public User(String firstName, String lastName, String login, LocalDate dateOfBirth, int age, City city,
-                NetworkStatus networkStatus, String[] users) {
+                NetworkStatus networkStatus, List[] users) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
@@ -39,5 +37,9 @@ public class User {
         this.city = city;
         this.networkStatus = networkStatus;
         this.users = users;
+    }
+
+    public User() {
+
     }
 }

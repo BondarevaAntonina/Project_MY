@@ -17,7 +17,7 @@ public class UserRegisterPresenter {
         System.out.println(login + " connected");
 
         if (!this.onlineUsers.containsKey(login)) {
-//            this.onlineUsers.put(login, new User(login, localDate, city));
+            this.onlineUsers.put(login, new User());
         }
         else {
             int i = 1;
@@ -25,7 +25,7 @@ public class UserRegisterPresenter {
                 login = login +i;
                 i++;
             }
-//            this.onlineUsers.put(login, new User(login, localDate, city));
+            this.onlineUsers.put(login, new User());
         }
 
     }
@@ -47,15 +47,6 @@ public class UserRegisterPresenter {
             System.out.println(m.getKey());
             s = s + m.getKey();
         }
-
         return clientsList;
     }
-
-
 }
-/*
-
-
-
-
- */
