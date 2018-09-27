@@ -12,14 +12,15 @@ import java.util.Map;
 public class UserRegisterPresenter {
 
 
-    private Map<String, User> onlineUsers = new HashMap<String, User>();
+    private Map<String, User> onlineUsers = new HashMap<>();
 
     public void addUser(String login, LocalDate localDate, City city) {
-        System.out.println(login + " connected");
+        System.out.println(login + " registered");
 
         if (!this.onlineUsers.containsKey(login)) {
             this.onlineUsers.put(login, new User(login, LocalDate.now(), city));
         }
+
         else {
             int i = 1;
             while ((this.onlineUsers.containsKey(login)))
@@ -28,6 +29,13 @@ public class UserRegisterPresenter {
                 i++;
             }
         }
+//        for (Map.Entry<String, User> user : onlineUsers.entrySet()) {
+//            if (onlineUsers.equals(login)) {
+//                onlineUsers.put(login, new User(login, LocalDate.now(), city));
+//                System.out.println(user);
+//            }
+//            System.out.println("This user exists");
+//        }
 
     }
 
