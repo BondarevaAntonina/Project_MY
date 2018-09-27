@@ -7,14 +7,14 @@ import java.util.List;
 
 /**
  * Создать приложение Чат на основе Map.
- Приложение должно позволять:
- - писать сообщение определенному зарегистрированному пользователю и если он имеет статус "В сети".
- - сохранять историю переписки.
- - выводить историю(за весь период и за определенный период).
- - выводить личную информацию о пользователе(имя, фамилия, возраст).
- - смена автора.
- - регистрироваться пользователю.
- - отправлять файлы.
+ * Приложение должно позволять:
+ * - писать сообщение определенному зарегистрированному пользователю и если он имеет статус "В сети".
+ * - сохранять историю переписки.
+ * - выводить историю(за весь период и за определенный период).
+ * - выводить личную информацию о пользователе(имя, фамилия, возраст).
+ * - смена автора.
+ * - регистрироваться пользователю.
+ * - отправлять файлы.
  */
 public class User {
 
@@ -22,24 +22,87 @@ public class User {
     private String lastName;
     private String login;
     LocalDate dateOfBirth;
-    private int age;
+    private int ageUser;
     private City city;
     private NetworkStatus networkStatus;
     private List[] users;
 
-    public User(String firstName, String lastName, String login, LocalDate dateOfBirth, int age, City city,
-                NetworkStatus networkStatus, List[] users) {
+    public User(String firstName, String lastName, String login, LocalDate dateOfBirth, int ageUser, City city, NetworkStatus networkStatus, List[] users) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
+        this.ageUser = ageUser;
         this.city = city;
         this.networkStatus = networkStatus;
         this.users = users;
     }
 
-    public User() {
+    public User(String login, LocalDate dateOfBirth, City city) {
 
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getAge() {
+        return ageUser;
+    }
+
+    public void setAge(int age) {
+        this.ageUser = age;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public NetworkStatus getNetworkStatus() {
+        return networkStatus;
+    }
+
+    public void setNetworkStatus(NetworkStatus networkStatus) {
+        this.networkStatus = networkStatus;
+    }
+
+    public List[] getUsers() {
+        return users;
+    }
+
+    public void setUsers(List[] users) {
+        this.users = users;
     }
 }

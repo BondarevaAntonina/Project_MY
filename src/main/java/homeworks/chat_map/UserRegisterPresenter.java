@@ -6,6 +6,7 @@ import homeworks.collection_online_store.entity.City;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserRegisterPresenter {
@@ -17,15 +18,15 @@ public class UserRegisterPresenter {
         System.out.println(login + " connected");
 
         if (!this.onlineUsers.containsKey(login)) {
-            this.onlineUsers.put(login, new User());
+            this.onlineUsers.put(login, new User(login, LocalDate.now(), city));
         }
         else {
             int i = 1;
-            while ((this.onlineUsers.containsKey(login))) {
+            while ((this.onlineUsers.containsKey(login)))
+            this.onlineUsers.put(login, new User(login, LocalDate.now(), city));{
                 login = login +i;
                 i++;
             }
-            this.onlineUsers.put(login, new User());
         }
 
     }
@@ -34,8 +35,8 @@ public class UserRegisterPresenter {
         this.onlineUsers.remove(login);
     }
 
-    public String[] getUsers() {
-        return this.onlineUsers.keySet().toArray(new String[0]);
+    public List[] getUsers() {
+        return this.onlineUsers.keySet().toArray(new List [0]);
     }
 
     public ArrayList<User> getClientsList() {

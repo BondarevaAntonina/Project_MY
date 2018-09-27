@@ -1,6 +1,5 @@
 package homeworks.chat_map;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,19 +20,26 @@ import java.util.Map;
 public class Chat {
 
     private String login;
-    private String message;
+    private Message message;
     private LocalDateTime dateTime;
+    private NetworkStatus networkStatus;
+    private DerictoryUser derictoryUser;
     private Map<User, Integer> chatUsers;
 
-    public Chat(String login, String message, LocalDateTime dateTime, Map<User, Integer> chatUsers) {
+    public Chat(String login, Message message, LocalDateTime dateTime, NetworkStatus networkStatus, DerictoryUser derictoryUser, Map <User, Integer> chatUsers) {
         this.login = login;
         this.message = message;
         this.dateTime = dateTime;
-        chatUsers = new HashMap<>();
+        this.networkStatus = networkStatus;
+        this.derictoryUser = derictoryUser;
+        this.chatUsers = new HashMap<>();
     }
 
-    public  void sendingMessage(ArrayList<User> userArrayList, String message, LocalDateTime dateTime, DerictoryUser derictoryUser) {
+    public  void sendMessage(ArrayList<User> userArrayList, String message, LocalDateTime dateTime, DerictoryUser derictoryUser, NetworkStatus networkStatus) {
 
+        for (User user : userArrayList) {
+
+        }
 
     }
 
@@ -43,15 +49,11 @@ public class Chat {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getMessage() {
+    public Message getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Message message) {
         this.message = message;
     }
 
