@@ -3,6 +3,7 @@ package homeworks.chat_map;
 import homeworks.collection_online_store.entity.City;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Создать приложение Чат на основе Map.
@@ -20,64 +21,32 @@ public class User {
     private String firstName;
     private String lastName;
     private String login;
-    LocalDate dateOfBirth;
-    private int ageUser;
+    private LocalDate dateOfBirth;
+    private int age;
     private City city;
     private NetworkStatus networkStatus;
 
-
-    public User(String firstName, String lastName, String login, LocalDate dateOfBirth, int ageUser, City city, NetworkStatus networkStatus) {
+    public User(String firstName, String lastName, String login, LocalDate dateOfBirth,
+                int age, City city, NetworkStatus networkStatus) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
         this.dateOfBirth = dateOfBirth;
-        this.ageUser = ageUser;
+        this.age = age;
         this.city = city;
         this.networkStatus = networkStatus;
-    }
-
-    public User(String login, LocalDate dateOfBirth, City city) {
-
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public int getAge() {
-        return ageUser;
+        return age;
     }
 
     public void setAge(int age) {
-        this.ageUser = age;
+        this.age = age;
     }
 
     public City getCity() {
@@ -88,12 +57,26 @@ public class User {
         this.city = city;
     }
 
-    public NetworkStatus getNetworkStatus() {
-        return networkStatus;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (age != user.age) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (dateOfBirth != null ? !dateOfBirth.equals(user.dateOfBirth) : user.dateOfBirth != null) return false;
+        if (city != user.city) return false;
+        return networkStatus == user.networkStatus;
     }
 
-    public void setNetworkStatus(NetworkStatus networkStatus) {
-        this.networkStatus = networkStatus;
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(firstName, lastName, login, dateOfBirth, age, city, networkStatus);
     }
 
     @Override
@@ -102,8 +85,8 @@ public class User {
                 firstName + '\'' + ", lastName='" +
                 lastName + '\'' + ", login='" +
                 login + '\'' + ", dateOfBirth=" +
-                dateOfBirth + ", ageUser=" +
-                ageUser + ", city=" +
+                dateOfBirth + ", age=" +
+                age + ", city=" +
                 city + ", networkStatus=" +
                 networkStatus + '}';
     }

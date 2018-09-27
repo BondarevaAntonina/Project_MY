@@ -1,52 +1,32 @@
 package homeworks.chat_map;
 
 
+import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Message {
-
-    private String login;
+    private String from;
+    private String to;
     private String message;
-    private List[] users;
     private LocalDateTime dateTime;
+    private Path path;
 
-    public Message(String login, String message, List[] users, LocalDateTime dateTime) {
-        this.login = login;
+    public Message(String from, String to, String message, LocalDateTime dateTime) {
+        this.from = from;
+        this.from = to;
         this.message = message;
-        this.users = users;
         this.dateTime = dateTime;
     }
 
-    public String getLogin() {
-        return login;
+    public String getFrom() {
+        return from;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List[] getUsers() {
-        return users;
-    }
-
-    public void setUsers(List[] users) {
-        this.users = users;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setPath(Path path) {
+        this.path = path;
     }
 }

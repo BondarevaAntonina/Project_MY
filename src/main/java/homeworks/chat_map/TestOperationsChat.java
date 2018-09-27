@@ -3,6 +3,7 @@ package homeworks.chat_map;
 import homeworks.collection_online_store.entity.City;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 /**
  * Создать приложение Чат на основе Map.
@@ -19,16 +20,14 @@ import java.time.LocalDate;
 public class TestOperationsChat {
     public static void main(String[] args) {
 
-//        OparetionUserChat oparetionUserChat = new OparetionUserChat();
-//
-//        oparetionUserChat.showUsersList("KerMax");
-//
-        UserRegisterPresenter userRegisterPresenter = new UserRegisterPresenter();
+/*        userList.addAll(Arrays.asList(new User("Kernosov", "Maksim", "KerMax",
+                        LocalDate.of(1985, 5, 17), 33, City.KHARKOV, NetworkStatus.ONLINE),
 
-        userRegisterPresenter.addUser("Barrom", LocalDate.now(), City.ODESSA);
-        userRegisterPresenter.addUser("Trishova", LocalDate.now(), City.ODESSA);
+                new User("Barvinov", "Roman", "Barrom",
+                        LocalDate.of(1986, 4, 28), 33, City.KHARKOV, NetworkStatus.ONLINE),
 
-        userRegisterPresenter.getClientsList();
+                new User("Paleev", "Oleg", "Paloleg",
+                        LocalDate.of(1986, 11, 21), 33, City.KHARKOV, NetworkStatus.ONLINE)));*/
     }
 
 }
