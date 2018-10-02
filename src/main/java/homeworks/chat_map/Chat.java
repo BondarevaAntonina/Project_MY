@@ -1,10 +1,10 @@
 package homeworks.chat_map;
 
+import org.apache.http.HttpRequest;
+import org.apache.http.message.BasicHttpRequest;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * * Создать приложение Чат на основе Map.
@@ -19,52 +19,47 @@ import java.util.Map;
 
 public class Chat {
 
-    private Map <User, List <Message>> chatUsers;
+    private Map<User, List<Message>> chatUsers;
 
     public Chat() {
-        this.chatUsers = new HashMap <>();
+        this.chatUsers = new HashMap<>();
     }
 
     public void sendMessage(String userSender, String userConsumer, Message message) {
 
-        List <Message> messages = chatUsers.get(userSender);
-        List <Message> messages1 = chatUsers.get(userConsumer);
+//        List<Message> messages1 = chatUsers.get(userConsumer);
 
-        User user = new User();
-        if (chatUsers.containsKey(userConsumer) && chatUsers.containsKey(userSender) &&
-                !user.getNetworkStatus().equals(NetworkStatus.OFFLINE)) {
-            messages.add(new Message("Barvinov", "Petrov", "Отправка сообщения", LocalDateTime.now()));
-            messages1.add(new Message("Barvinov", "Petrov", "Отправка сообщения", LocalDateTime.now()));
+
+//        boolean b = chatUsers.keySet().stream().anyMatch(u -> u.getLogin().equals(userSender));
+
+        User sender = chatUsers.keySet().stream().filter(u -> u.getLogin().equals(userSender) &&
+                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+        User consumer = chatUsers.keySet().stream().filter(u -> u.getLogin().equals(userConsumer) &&
+                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+
+        if (Objects.isNull(consumer) && Objects.isNull(sender)) {
+            System.out.println("Such a user does not exist");
         }
-        System.out.println("hh");
-//        chatUsers.put(user, new ArrayList <Message>());
-        System.out.println(messages);
-    }
 
-    /*
-        public void sendMessage(String userSender, String userConsumer, Message message) {
+        List<Message> messages = chatUsers.get(sender);
 
-        List <Message> messages = chatUsers.get(userSender);
-        List <Message> messages1 = chatUsers.get(userConsumer);
-        User user = new User();
+        List<Message> messages1 = chatUsers.get(consumer);
 
-        if (chatUsers.containsKey(userConsumer) && chatUsers.containsKey(userSender)&&
-                !user.getNetworkStatus().equals(NetworkStatus.OFFLINE)) {
-            System.out.println("Такой пользователь находится OFFLINE");
+        messages.add(new Message(userSender, userConsumer, "Отправка сообщения", LocalDateTime.now()));
+        messages1.add(new Message(userSender, userConsumer, "Отправка сообщения", LocalDateTime.now()));
+
+
+        //        chatUsers.put(user, new ArrayList <Message>());
         }
-        messages.add(new Message("Barvinov", "Petrov", "Отправка сообщения", LocalDateTime.now()));
-        messages1.add(new Message("Barvinov", "Petrov", "Отправка сообщения", LocalDateTime.now()));
-//        chatUsers.put(user, new ArrayList <Message>());
-        System.out.println(messages);
-    }
-     */
 
     public void addUser(User user) {
         if (chatUsers.containsKey(user)) {
             System.out.println("This user exists");
             return;
         }
-        chatUsers.put(user, new ArrayList <>());
+
+        chatUsers.put(user, new ArrayList<>());
+
         System.out.println(user);
     }
 

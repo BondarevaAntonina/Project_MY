@@ -20,11 +20,12 @@ import java.time.LocalDateTime;
 public class TestOperationsChat {
 
     public static void main(String[] args) {
-User user = new User();
 
         Chat chat = new Chat();
+
         chat.addUser(new User("Kernosov", "Maksim", "KerMax",
                 LocalDate.of(1985, 5, 17), 33, City.KHARKOV, NetworkStatus.ONLINE));
+
         chat.addUser(new User("Barvinov", "Roman", "Barrom",
                 LocalDate.of(1986, 4, 28), 33, City.KIEV, NetworkStatus.ONLINE));
 
@@ -37,10 +38,9 @@ User user = new User();
         chat.addUser(new User("Sereda", "Aleksandr", "Seralek",
                 LocalDate.of(1982, 11, 21), 37, City.KIEV, NetworkStatus.OFFLINE));
 
-        chat.sendMessage("Kernosov", "Paleev", (
-                new Message("Kernosov", "Paleev", "Отправка сообщения", LocalDateTime.now())));
 
-
+        chat.sendMessage("Barvinov","Paleev",
+                new Message("Kernosov", "Paleev", "Send message", LocalDateTime.now()));
     }
 }
 
