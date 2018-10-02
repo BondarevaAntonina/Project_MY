@@ -13,7 +13,7 @@ public class Message {
 
     public Message(String from, String to, String message, LocalDateTime dateTime) {
         this.from = from;
-        this.from = to;
+        this.to = to;
         this.message = message;
         this.dateTime = dateTime;
     }
