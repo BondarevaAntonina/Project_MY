@@ -18,6 +18,21 @@ public class Message {
         this.dateTime = dateTime;
     }
 
+    public Message(String message, LocalDateTime dateTime, Path path) {
+        this.message = message;
+        this.dateTime = dateTime;
+        this.path = path;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" + "from='" + from + '\'' + ", " +
+                "to='" + to + '\'' + ", " +
+                "message='" + message + '\'' + ", " +
+                "dateTime=" + dateTime + ", " +
+                "path=" + path + '}';
+    }
+
     public String getFrom() {
         return from;
     }

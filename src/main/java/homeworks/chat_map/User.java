@@ -37,6 +37,10 @@ public class User {
         this.networkStatus = networkStatus;
     }
 
+    public User() {
+        this.age = age;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -55,6 +59,10 @@ public class User {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public NetworkStatus getNetworkStatus() {
+        return networkStatus;
     }
 
     @Override
