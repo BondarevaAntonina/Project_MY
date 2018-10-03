@@ -1,7 +1,14 @@
 package homeworks.chat_map;
 
+import homeworks.abstract_work.writer.DescendantWriter;
+import homeworks.abstract_work.writer.Writer;
 import homeworks.collection_online_store.entity.City;
+import homeworks.file_manager_application.FilesManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,6 +25,9 @@ import java.time.LocalDateTime;
  */
 
 public class TestOperationsChat {
+
+
+    private Chat chat;
 
     public static void main(String[] args) throws Exception {
 
@@ -37,11 +47,29 @@ public class TestOperationsChat {
 
         chat.addUser(new User("Sereda", "Aleksandr", "Seralek",
                 LocalDate.of(1982, 11, 21), 37, City.KIEV, NetworkStatus.OFFLINE));
-        System.out.println("");
 
+        chat.addUser(new User("Vasilcova", "Nataliya", "Vasilnat",
+                LocalDate.of(1972, 4, 4), 47, City.KIEV, NetworkStatus.ONLINE));
 
-        chat.sendMessage("Barvinov","Paleev",
-                new Message("Kernosov", "Paleev", "Send message", LocalDateTime.now(), null));
+        System.out.println("Send messages users");
+
+        Path testFilePath = Paths.get("./DirectoryUser/Test.txt");
+
+        chat.sendMessage("Barvinov", "Paleev",
+                new Message("Barvinov", "Paleev", "Send message",
+                        LocalDateTime.of(2018, 10, 1, 13, 45), null));
+
+        chat.sendMessage("Barvinov", "Vasilcova",
+                new Message("Barvinov", "Vasilcova", "Send message",
+                        LocalDateTime.of(2018, 10, 1, 13, 45), testFilePath));
+
+        chat.sendMessage("Barvinov", "Vasilcova",
+                new Message("Barvinov", "Vasilcova", "Send message",
+                                LocalDateTime.of(2018, 10, 2, 11, 25), testFilePath));
+
+        System.out.println("Инфорамция о пользователе");
+
+        chat.showInfoUser("Vasilcova");
     }
 }
 

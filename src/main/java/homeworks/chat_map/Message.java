@@ -1,6 +1,8 @@
 package homeworks.chat_map;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 
@@ -10,6 +12,7 @@ public class Message {
     private String message;
     private LocalDateTime dateTime;
     private Path path;
+
 
     public Message(String from, String to, String message, LocalDateTime dateTime, Path path) {
         this.from = from;
@@ -24,6 +27,7 @@ public class Message {
         this.dateTime = dateTime;
         this.path = path;
     }
+
 
     @Override
     public String toString() {
