@@ -37,10 +37,11 @@ public class TestOperationsChat {
 
         chat.addUser(new User("Sereda", "Aleksandr", "Seralek",
                 LocalDate.of(1982, 11, 21), 37, City.KIEV, NetworkStatus.OFFLINE));
+        System.out.println("");
 
 
         chat.sendMessage("Barvinov","Paleev",
-                new Message("Kernosov", "Paleev", "Send message", LocalDateTime.now()));
+                new Message("Kernosov", "Paleev", "Send message", LocalDateTime.now(), null));
     }
 }
 

@@ -41,6 +41,10 @@ public class User {
         this.age = age;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     public String getLogin() {
         return login;
     }

@@ -11,11 +11,12 @@ public class Message {
     private LocalDateTime dateTime;
     private Path path;
 
-    public Message(String from, String to, String message, LocalDateTime dateTime) {
+    public Message(String from, String to, String message, LocalDateTime dateTime, Path path) {
         this.from = from;
         this.to = to;
         this.message = message;
         this.dateTime = dateTime;
+        this.path = path;
     }
 
     public Message(String message, LocalDateTime dateTime, Path path) {
