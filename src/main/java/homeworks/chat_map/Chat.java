@@ -16,28 +16,35 @@ import java.util.*;
 
 public class Chat {
 
-    public Map<User, List<Message>> chatUsers;
+    private Map<User, List<Message>> chatUsers;
 
     public Chat() {
         this.chatUsers = new HashMap<>();
     }
 
-    public void sendMessage(String userSender, String userConsumer, Message message) {
+    public void sendMessage(String userSender, String userConsumer, Message message) throws Exception {
 
 //        List<Message> messages1 = chatUsers.get(userConsumer);
 
 
 //        boolean b = chatUsers.keySet().stream().anyMatch(u -> u.getLogin().equals(userSender));
 
-        User sender = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(userSender) &&
-                u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
-        User consumer = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(userConsumer) &&
-                u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+        User sender   = null;
+        User consumer = null;
 
-        if (Objects.isNull(consumer) | Objects.isNull(sender)) {
+             sender =  findUsers(userSender); //chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(userSender) &&
+                    //u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+
+             consumer =  findUsers(userConsumer);// chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(userConsumer) &&
+                    //u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+
+
+
+/*
+        if (Objects.isNull(consumer)) {
             System.out.println("Such a user does not exist");
         }
-
+*/
         List<Message> messages = chatUsers.get(sender);
 
         List<Message> messages1 = chatUsers.get(consumer);
@@ -47,6 +54,19 @@ public class Chat {
 
         System.out.println(messages);
         //        chatUsers.put(user, new ArrayList <Message>());
+    }
+
+
+    private User findUsers( String bynName ) throws Exception {
+       User user = null;
+       try {
+           user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(bynName) &&
+                   u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+       } catch (Exception e){
+
+       }
+       if(user == null) throw new Exception("Пользователь " + bynName + " не найден");
+       return user;
     }
 
     public void addUser(User user) {
