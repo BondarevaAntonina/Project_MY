@@ -57,15 +57,15 @@ public class Chat {
     }
 
 
-    private User findUsers( String bynName ) throws Exception {
+    private User findUsers( String byName ) throws Exception {
        User user = null;
        try {
-           user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(bynName) &&
+           user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
        } catch (Exception e){
 
        }
-       if(user == null) throw new Exception("Пользователь " + bynName + " не найден");
+       if(user == null) throw new Exception("User " + byName + " not found");
        return user;
     }
 
