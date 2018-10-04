@@ -73,10 +73,12 @@ public class Chat {
     }
 
     public void showInfoUser(String firstName) throws Exception {
-        User user = new User();
-        if (chatUsers.keySet().stream().anyMatch(u -> u.getLogin().equals(firstName))) {
-            System.out.println(chatUsers.toString());
-        }
-
+        User user;
+        user = findUsers(firstName);
+        System.out.println(user);
    }
+
+
+
+
 }

@@ -1,12 +1,7 @@
 package homeworks.chat_map;
 
-import homeworks.abstract_work.writer.DescendantWriter;
-import homeworks.abstract_work.writer.Writer;
 import homeworks.collection_online_store.entity.City;
-import homeworks.file_manager_application.FilesManager;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -67,9 +62,13 @@ public class TestOperationsChat {
                 new Message("Barvinov", "Vasilcova", "Send message",
                                 LocalDateTime.of(2018, 10, 2, 11, 25), testFilePath));
 
-        System.out.println("Инфорамция о пользователе");
+        System.out.println();
+        System.out.println("Information about the requested user");
 
         chat.showInfoUser("Vasilcova");
+
+
+
     }
 }
 
