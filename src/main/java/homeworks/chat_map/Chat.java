@@ -16,10 +16,10 @@ import java.util.*;
 
 public class Chat {
 
-    private Map<User, List<Message>> chatUsers;
+    private Map <User, List <Message>> chatUsers;
 
     public Chat() {
-        this.chatUsers = new HashMap<>();
+        this.chatUsers = new HashMap <>();
     }
 
     public void sendMessage(String userSender, String userConsumer, Message message) throws Exception {
@@ -32,9 +32,9 @@ public class Chat {
 
         consumer = findUsers(userConsumer);
 
-        List<Message> messages = chatUsers.get(sender);
+        List <Message> messages = chatUsers.get(sender);
 
-        List<Message> messages1 = chatUsers.get(consumer);
+        List <Message> messages1 = chatUsers.get(consumer);
 
         messages.add(new Message(userSender, userConsumer, "Send message", LocalDateTime.now(), null));
 
@@ -50,8 +50,7 @@ public class Chat {
         User user = null;
 
         try {
-            user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
-                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+            user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) && u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
         } catch (Exception e) {
 
         }
@@ -67,18 +66,27 @@ public class Chat {
             return;
         }
 
-        chatUsers.put(user, new ArrayList<>());
+        chatUsers.put(user, new ArrayList <>());
 
         System.out.println(user);
     }
+
+    public void showHistoryMessageByUser(String firstName) throws Exception {
+        chatUsers.entrySet().stream().filter(e -> e.getKey().getFirstName().contains(firstName)).forEach(e -> {
+            System.out.println(e.toString());
+        });
+    }
+
+    public void showHistoryMessageThePeriod(LocalDateTime in, LocalDateTime on) throws Exception {
+
+    }
+
 
     public void showInfoUser(String firstName) throws Exception {
         User user;
         user = findUsers(firstName);
         System.out.println(user);
-   }
-
-
+    }
 
 
 }

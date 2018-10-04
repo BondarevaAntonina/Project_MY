@@ -14,8 +14,6 @@ import java.time.LocalDateTime;
  * - сохранять историю переписки.
  * - выводить историю(за весь период и за определенный период).
  * - выводить личную информацию о пользователе(имя, фамилия, возраст).
- * - смена автора.
- * - регистрироваться пользователю.
  * - отправлять файлы.
  */
 
@@ -54,20 +52,36 @@ public class TestOperationsChat {
                 new Message("Barvinov", "Paleev", "Send message",
                         LocalDateTime.of(2018, 10, 1, 13, 45), null));
 
+        chat.sendMessage("Vasilcova", "Paleev",
+                new Message("Vasilcova", "Paleev", "Send message",
+                        LocalDateTime.of(2018, 10, 1, 13, 45), null));
+
         chat.sendMessage("Barvinov", "Vasilcova",
                 new Message("Barvinov", "Vasilcova", "Send message",
                         LocalDateTime.of(2018, 10, 1, 13, 45), testFilePath));
 
         chat.sendMessage("Barvinov", "Vasilcova",
                 new Message("Barvinov", "Vasilcova", "Send message",
-                                LocalDateTime.of(2018, 10, 2, 11, 25), testFilePath));
+                        LocalDateTime.of(2018, 10, 4, 11, 25), testFilePath));
 
         System.out.println();
+
         System.out.println("Information about the requested user");
 
         chat.showInfoUser("Vasilcova");
 
+        System.out.println();
 
+        System.out.println("Show history (for the entire period and for a certain period)");
+
+        chat.showHistoryMessageByUser("Paleev");
+
+        System.out.println();
+
+        System.out.println("Show history for a certain period");
+
+        chat.showHistoryMessageThePeriod(LocalDateTime.of(2018, 10, 1, 13, 45),
+                                        LocalDateTime.of(2018, 10, 4, 11, 25));
 
     }
 }

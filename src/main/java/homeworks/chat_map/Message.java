@@ -1,8 +1,6 @@
 package homeworks.chat_map;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 
@@ -40,6 +38,10 @@ public class Message {
 
     public String getFrom() {
         return from;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     public void setFrom(String from) {
