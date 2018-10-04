@@ -3,6 +3,7 @@ package homeworks.chat_map;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Message {
     private String from;
@@ -20,28 +21,33 @@ public class Message {
         this.path = path;
     }
 
-    public Message(String message, LocalDateTime dateTime, Path path) {
-        this.message = message;
-        this.dateTime = dateTime;
-        this.path = path;
+    public boolean isInPeriod(LocalDateTime from, LocalDateTime to) {
+        return dateTime.isAfter(from) && dateTime.isBefore(to);
     }
-
 
     @Override
     public String toString() {
-        return "Message{" + "from='" + from + '\'' + ", " +
+        return "\nMessage{" + "from='" + from + '\'' + ", " +
                 "to='" + to + '\'' + ", " +
                 "message='" + message + '\'' + ", " +
                 "dateTime=" + dateTime + ", " +
-                "path=" + path + '}';
+                (Objects.nonNull(path) ? "path=" + path : "") + '}';
     }
 
     public String getFrom() {
         return from;
     }
 
+    public Path getPath() {
+        return path;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
     }
 
     public void setFrom(String from) {

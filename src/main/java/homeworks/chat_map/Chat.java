@@ -20,35 +20,38 @@ import java.util.*;
  */
 
 public class Chat {
+    public static final String name = "John";
 
-    private Map <User, List <Message>> chatUsers;
+    private Map<User, List<Message>> chatUsers;
 
     public static final String FILE_PATH = "./DirectoryUser/";
 
     public Chat() {
-        this.chatUsers = new HashMap <>();
+        this.chatUsers = new HashMap<>();
     }
 
     public void sendMessage(String userSender, String userConsumer, Message message) throws Exception {
 //        boolean b = chatUsers.keySet().stream().anyMatch(u -> u.getLogin().equals(userSender));
 
-        User sender;
-        User consumer;
+        User sender = findUsers(userSender);
 
-        sender = findUsers(userSender);
+        User consumer = findUsers(userConsumer);
 
-        consumer = findUsers(userConsumer);
+        List<Message> messages = chatUsers.get(sender);
 
-        List <Message> messages = chatUsers.get(sender);
+        List<Message> messages1 = chatUsers.get(consumer);
 
-        List <Message> messages1 = chatUsers.get(consumer);
+        String from = message.getFrom();
 
-        messages.add(new Message(userSender, userConsumer, "Send message", LocalDateTime.now(), null));
+        message.setFrom(null);
 
-        messages1.add(new Message(userSender, userConsumer, "Send message1", LocalDateTime.now(), null));
+        messages.add(message);
 
-        System.out.println(messages);
-        System.out.println(messages1);
+        message.setFrom(from);
+
+        message.setTo(null);
+
+        messages1.add(message);
 
     }
 
@@ -56,12 +59,13 @@ public class Chat {
     private User findUsers(String byName) throws Exception {
         User user = null;
 
-        try {
-            user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) && u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
-        } catch (Exception e) {
+            user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
+                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
 
-        }
-        if (user == null) throw new Exception("User " + byName + " not found");
+            if (user == null) {
+                throw new Exception("User " + byName + " not found");
+            }
+
         return user;
 
     }
@@ -73,7 +77,7 @@ public class Chat {
             return;
         }
 
-        chatUsers.put(user, new ArrayList <>());
+        chatUsers.put(user, new ArrayList<>());
 
         System.out.println(user);
     }
@@ -84,40 +88,24 @@ public class Chat {
         });
     }
 
-    public void showHistoryMessageThePeriod(LocalDateTime in) throws Exception {
-        for (Map.Entry <User, List <Message>> chat : chatUsers.entrySet()) {
-//            if (chat.getKey().getFirstName().contains(chatUsers.)) {
-//            }
-        }
+    /*public void showHistoryMessageThePeriod(LocalDateTime from, LocalDateTime to) throws Exception {
+        chatUsers.values().stream().forEach(list -> {
+            list.stream().filter(m -> {
+                LocalDateTime dateTime = m.getDateTime();
 
+                return dateTime.isAfter(from) && dateTime.isBefore(to);
+            }).forEach(System.out::println);
+        });
+    }*/
+
+    public void showHistoryMessageThePeriod(LocalDateTime from, LocalDateTime to) throws Exception {
+        chatUsers.values().stream().forEach(list ->
+            list.stream().filter(m -> m.isInPeriod(from, to)).forEach(System.out::println));
     }
 
 
     public void showInfoUser(String firstName) throws Exception {
-        User user;
-        user = findUsers(firstName);
-        System.out.println(user);
+         System.out.println(findUsers(firstName));
     }
 
-    public void createNewFileForUser(Path path) throws Exception {
-
-        File tempDir = new File(FILE_PATH);
-
-        String nameOfFile = "Temp.txt";
-
-        path = Paths.get(tempDir.getPath(), nameOfFile);
-
-        try {
-
-            Files.createFile(path);
-
-            System.out.println("File has been created in directory");
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-            System.out.println(e.getMessage() + "\nFile has not been created");
-        }
-    }
 }
