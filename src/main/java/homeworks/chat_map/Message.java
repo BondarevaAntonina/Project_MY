@@ -40,8 +40,8 @@ public class Message {
         return from;
     }
 
-    public String getMessage() {
-        return message;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
     public void setFrom(String from) {
