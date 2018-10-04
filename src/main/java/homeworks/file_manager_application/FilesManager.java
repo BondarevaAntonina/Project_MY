@@ -67,8 +67,6 @@ public class FilesManager {
     // Create a new file in directory
 
     public void createNewFile(Path path) throws Exception {
-
-
         try {
 
             Files.createFile(path);
@@ -81,7 +79,6 @@ public class FilesManager {
 
             System.out.println(e.getMessage() + "\nFile has not been created");
         }
-
     }
 
     // Read the file and write the string

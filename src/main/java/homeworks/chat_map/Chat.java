@@ -1,5 +1,10 @@
 package homeworks.chat_map;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -17,6 +22,8 @@ import java.util.*;
 public class Chat {
 
     private Map <User, List <Message>> chatUsers;
+
+    public static final String FILE_PATH = "./DirectoryUser/";
 
     public Chat() {
         this.chatUsers = new HashMap <>();
@@ -77,7 +84,11 @@ public class Chat {
         });
     }
 
-    public void showHistoryMessageThePeriod(LocalDateTime in, LocalDateTime on) throws Exception {
+    public void showHistoryMessageThePeriod(LocalDateTime in) throws Exception {
+        for (Map.Entry <User, List <Message>> chat : chatUsers.entrySet()) {
+//            if (chat.getKey().getFirstName().contains(chatUsers.)) {
+//            }
+        }
 
     }
 
@@ -88,5 +99,25 @@ public class Chat {
         System.out.println(user);
     }
 
+    public void createNewFileForUser(Path path) throws Exception {
 
+        File tempDir = new File(FILE_PATH);
+
+        String nameOfFile = "Temp.txt";
+
+        path = Paths.get(tempDir.getPath(), nameOfFile);
+
+        try {
+
+            Files.createFile(path);
+
+            System.out.println("File has been created in directory");
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            System.out.println(e.getMessage() + "\nFile has not been created");
+        }
+    }
 }

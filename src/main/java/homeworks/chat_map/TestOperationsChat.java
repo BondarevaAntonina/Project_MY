@@ -46,7 +46,7 @@ public class TestOperationsChat {
 
         System.out.println("Send messages users");
 
-        Path testFilePath = Paths.get("./DirectoryUser/Test.txt");
+        Path testFilePath = Paths.get("./DirectoryUser/");
 
         chat.sendMessage("Barvinov", "Paleev",
                 new Message("Barvinov", "Paleev", "Send message",
@@ -64,11 +64,13 @@ public class TestOperationsChat {
                 new Message("Barvinov", "Vasilcova", "Send message",
                         LocalDateTime.of(2018, 10, 4, 11, 25), testFilePath));
 
+
         System.out.println();
 
         System.out.println("Information about the requested user");
 
         chat.showInfoUser("Vasilcova");
+
 
         System.out.println();
 
@@ -76,12 +78,19 @@ public class TestOperationsChat {
 
         chat.showHistoryMessageByUser("Paleev");
 
+
         System.out.println();
 
         System.out.println("Show history for a certain period");
 
-        chat.showHistoryMessageThePeriod(LocalDateTime.of(2018, 10, 1, 13, 45),
-                                        LocalDateTime.of(2018, 10, 4, 11, 25));
+        chat.showHistoryMessageThePeriod(LocalDateTime.of(2018, 10, 1, 13, 45));
+
+
+        System.out.println("Create file");
+
+        Path path1 = Paths.get("./DirectoryUser/");
+        chat.createNewFileForUser(path1);
+
 
     }
 }
