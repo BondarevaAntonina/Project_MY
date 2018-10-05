@@ -85,14 +85,4 @@ public class Man {
         return address.equals(man.address);
     }
 
-    @Override
-    public int hashCode() {
-        int result = firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + surName.hashCode();
-        result = 31 * result + age;
-        result = 31 * result + countOfChildren;
-        result = 31 * result + address.hashCode();
-        return result;
-    }
 }

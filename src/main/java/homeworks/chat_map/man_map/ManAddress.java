@@ -21,11 +21,20 @@ public class ManAddress {
             return;
         }
         infoMan.put(man, new ArrayList <>());
-        System.out.println(man);
     }
 
     public void selectMan() {
-
+        System.out.println("SELECT * FROM Man");
+        for (Man man : infoMan.keySet()) {
+            System.out.println("Key: " + man);
+        }
     }
+
+//    public void selectAddress() {
+//        System.out.println("SELECT * FROM Address");
+//        for (ArrayList<> : infoMan.keySet()) {
+//            System.out.println("Key: " + man);
+//        }
+//    }
 
 }

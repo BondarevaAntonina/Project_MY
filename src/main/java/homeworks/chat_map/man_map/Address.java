@@ -52,6 +52,15 @@ public class Address {
     }
 
     @Override
+    public String toString() {
+        return "Address{" + "country=" +
+                country + ", city=" +
+                city + ", nameOfStreet='" +
+                nameOfStreet + '\'' + ", countOfCitizens=" +
+                countOfCitizens + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -64,12 +73,4 @@ public class Address {
         return nameOfStreet.equals(address.nameOfStreet);
     }
 
-    @Override
-    public int hashCode() {
-        int result = country.hashCode();
-        result = 31 * result + city.hashCode();
-        result = 31 * result + nameOfStreet.hashCode();
-        result = 31 * result + countOfCitizens;
-        return result;
-    }
 }
