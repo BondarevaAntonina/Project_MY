@@ -12,10 +12,9 @@ public class Man {
     private int countOfChildren;
     private Address address;
 
-    public Man(String firstName, String lastName, String surName, int age, int countOfChildren, Address address) {
+    public Man(String firstName, String lastName, int age, int countOfChildren, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.surName = surName;
         this.age = age;
         this.countOfChildren = countOfChildren;
         this.address = address;
@@ -27,10 +26,6 @@ public class Man {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public String getSurName() {
-        return surName;
     }
 
     public int getAge() {
@@ -53,9 +48,6 @@ public class Man {
         this.lastName = lastName;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
 
     public void setAge(int age) {
         this.age = age;
