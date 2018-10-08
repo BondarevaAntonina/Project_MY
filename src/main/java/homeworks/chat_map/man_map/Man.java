@@ -7,7 +7,6 @@ public class Man {
 
     private String firstName;
     private String lastName;
-    private String surName;
     private int age;
     private int countOfChildren;
     private Address address;
@@ -65,7 +64,7 @@ public class Man {
     public String toString() {
         return "Man{" + "firstName='" + firstName + '\'' + ", " +
                 "lastName='" + lastName + '\'' + ", " +
-                "surName='" + surName + '\'' + ", age=" + age + ", " +
+                "age=" + age + ", " +
                 "countOfChildren=" + countOfChildren + ", " +
                 "address=" + address + '}';
     }
@@ -81,7 +80,6 @@ public class Man {
         if (countOfChildren != man.countOfChildren) return false;
         if (!firstName.equals(man.firstName)) return false;
         if (!lastName.equals(man.lastName)) return false;
-        if (!surName.equals(man.surName)) return false;
         return address.equals(man.address);
     }
 

@@ -1,12 +1,10 @@
 package homeworks.chat_map;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * * Создать приложение Чат на основе Map.
@@ -57,9 +55,7 @@ public class Chat {
 
 
     private User findUsers(String byName) throws Exception {
-        User user = null;
-
-            user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
+        User user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
                     u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
 
             if (user == null) {

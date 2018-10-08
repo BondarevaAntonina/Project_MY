@@ -25,16 +25,16 @@ public class ManAddress {
 
     public void selectMan() {
         System.out.println("SELECT * FROM Man");
-        for (Man man : infoMan.keySet()) {
-            System.out.println("Key: " + man);
-        }
+        infoMan.keySet().forEach(key-> System.out.println(key));
     }
 
-//    public void selectAddress() {
-//        System.out.println("SELECT * FROM Address");
-//        for (ArrayList<> : infoMan.keySet()) {
-//            System.out.println("Key: " + man);
-//        }
-//    }
+    public void selectAddress() {
+        System.out.println("SELECT * FROM Address");
+//        infoMan.entrySet().stream().filter(adres -> adres.getValue().forEach(k -> {
+//            System.out.println(k);
+//        }));
+
+
+    }
 
 }

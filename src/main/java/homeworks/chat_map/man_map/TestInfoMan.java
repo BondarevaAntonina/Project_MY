@@ -33,6 +33,8 @@ public class TestInfoMan {
                 (new Address(Country.RUSSIA, City.SOCHI, "ул. Сумсскаяб 72", 2000))));
 
       manAddress.selectMan();
+
+      manAddress.selectAddress();
     }
 }
 
