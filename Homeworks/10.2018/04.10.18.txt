@@ -4,7 +4,7 @@
 
 Использовать коллекцию ArrayList. Запросы для класса Адрес делать из класса Man.
 
-"SELECT * FROM Man";
+"SELECT * FROM Man"; - DONE
 
 "SELECT * FROM Address";
 

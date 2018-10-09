@@ -1,40 +1,43 @@
 package homeworks.chat_map.man_map;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by antoni on 05.10.2018.
  */
 public class ManAddress {
 
-    private Map <Man, ArrayList <Address>> infoMan;
+    //    private Map <Man, ArrayList <Address>> infoMan;
+    private List <Man> men = new ArrayList <>();
+
 
     public ManAddress() {
-        this.infoMan = new HashMap <>();
+
     }
 
+
     public void addMan(Man man) {
-        if (infoMan.containsKey(man)) {
-            System.out.println("This man exists");
-            return;
-        }
-        infoMan.put(man, new ArrayList <>());
+        men.add(man);
     }
 
     public void selectMan() {
         System.out.println("SELECT * FROM Man");
-        infoMan.keySet().forEach(key-> System.out.println(key));
+        men.stream().forEach(m -> System.out.println(m));
+
     }
 
     public void selectAddress() {
         System.out.println("SELECT * FROM Address");
-//        infoMan.entrySet().stream().filter(adres -> adres.getValue().forEach(k -> {
-//            System.out.println(k);
-//        }));
+        men.stream().map(list -> list.getAddress()).forEach(System.out::println);
 
+    }
 
+    public void selectAgeTwentyOrderByFirstName() {
+        System.out.println("SELECT firstName, lastName, countOfChildren FROM Man WHERE age >= 20 ORDER BY firstName");
+//        men.stream().filter(m -> m.getAge() > 20).map(Man::getFirstName).forEach(System.out::println);
+        men.stream().filter(m -> m.getAge() > 20).sorted(Comparator.comparing(n -> n.getFirstName())).map(Man::getFirstName).forEach(System.out::println);
     }
 
 }

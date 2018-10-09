@@ -39,6 +39,8 @@ public class Man {
         return address;
     }
 
+
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
