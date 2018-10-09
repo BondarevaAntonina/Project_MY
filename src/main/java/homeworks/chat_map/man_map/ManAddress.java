@@ -1,8 +1,10 @@
 package homeworks.chat_map.man_map;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by antoni on 05.10.2018.
@@ -36,8 +38,11 @@ public class ManAddress {
 
     public void selectAgeTwentyOrderByFirstName() {
         System.out.println("SELECT firstName, lastName, countOfChildren FROM Man WHERE age >= 20 ORDER BY firstName");
-//        men.stream().filter(m -> m.getAge() > 20).map(Man::getFirstName).forEach(System.out::println);
-        men.stream().filter(m -> m.getAge() > 20).sorted(Comparator.comparing(n -> n.getFirstName())).map(Man::getFirstName).forEach(System.out::println);
+        men.stream().filter(m -> m.getAge() > 20).sorted(Comparator.comparing(n -> n.getFirstName())).
+                map(Man::getFirstName).forEach(System.out::println);
+
     }
+
+
 
 }
