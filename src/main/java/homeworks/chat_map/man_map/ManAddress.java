@@ -60,7 +60,6 @@ public class ManAddress {
                 .filter(adr -> adr.getCountry().equals(Country.CANADA) && adr.getNumberOfHome().equals("3"))
                 .forEach(System.out::println);
 
-
     }
 }
 
