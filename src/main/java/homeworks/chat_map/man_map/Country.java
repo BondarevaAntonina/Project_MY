@@ -5,7 +5,7 @@ package homeworks.chat_map.man_map;
  */
 public enum Country {
 
-    UKRAINE("Ukraine"), RUSSIA("Russia"), BELARUS("Belarus");
+    UKRAINE("Ukraine"), RUSSIA("Russia"), BELARUS("Belarus"), US("US"), CANADA("Canada");
 
     private String nameCountry;
 
