@@ -3,6 +3,8 @@ package homeworks.chat_map.man_map;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by antoni on 05.10.2018.
@@ -49,6 +51,15 @@ public class ManAddress {
     public void updateMan() {
         System.out.println("UPDATE Man SET firstName = 'John', lastName = 'Kennedi', countOfChildren = 3 "
                 + "WHERE " + "country == 'US' (or another country)");
+        men.stream()
+                .map(list -> list.getAddress())
+                .filter(adr -> adr.getCountry().equals(Country.US))
+                .forEach(System.out::println);
+
+
+
+
+
     }
 
     public void selectCountry() {

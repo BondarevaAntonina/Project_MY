@@ -6,9 +6,9 @@
 
 "SELECT * FROM Man"; - DONE
 
-"SELECT * FROM Address";
+"SELECT * FROM Address"; - DONE
 
-"SELECT firstName, lastName, countOfChildren FROM Man WHERE age >= 20 ORDER BY firstName";
+"SELECT firstName, lastName, countOfChildren FROM Man WHERE age >= 20 ORDER BY firstName"; - DONE
 
 "UPDATE Man SET firstName = 'John', lastName = 'Kennedi', countOfChildren = 3 WHERE country == 'US' (or another country)
 
