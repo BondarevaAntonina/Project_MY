@@ -59,6 +59,10 @@ public class TestInfoMan {
 
       manAddress.selectCountry();
 
+      System.out.println();
+
+      manAddress.selectGroupByCountOfChildren();
+
     }
 }
 

@@ -3,6 +3,8 @@ package homeworks.chat_map.man_map;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by antoni on 05.10.2018.
@@ -54,12 +56,19 @@ public class ManAddress {
     public void selectCountry() {
         System.out.println("SELECT firstName, lastName, nameOfStreet FROM Man "
                 + "WHERE country == 'Canada' AND numberOfHome == 3 OR age >= 25");
-        men.stream()
-                .filter(w -> w.getAge() >= 25)
-                .map(list -> list.getAddress())
-                .filter(adr -> adr.getCountry().equals(Country.CANADA) && adr.getNumberOfHome().equals("3"))
-                .forEach(System.out::println);
+//        men.stream()
+//                .filter(w -> w.getAge() >= 25).forEach(g -> System.out.println(g.getFirstName() + g.getLastName() + g.getCountOfChildren()))
+//                .map(list -> list.getAddress())
+//                .filter(adr -> adr.getCountry().equals(Country.CANADA) && adr.getNumberOfHome().equals("3"))
+//                .forEach(a -> System.out.println(a.getNameOfStreet()));
 
     }
+
+    public void selectGroupByCountOfChildren() {
+        System.out.println("SELECT count(*) FROM Man GROUP BY countOfChildren");
+//    men.stream().sorted(Comparator.comparing(n -> n.getCountOfChildren())).forEach(m -> System.out.println(m));
+    Map<Man, Integer> result = men.stream().collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors.summingInt(Man::getCountOfChildren)));
+    }
+
 }
 
