@@ -1,0 +1,24 @@
+Создать имитацию запросов в базу данных на основе коллекции c применением lambdas.
+
+Сущности Man(имя, фамилия, возраст, количество детей, Адрес), Адрес(страна, город, улица, количество жителей)
+
+Использовать коллекцию ArrayList. Запросы для класса Адрес делать из класса Man.
+
+"SELECT count(*) FROM Man GROUP BY countOfChildren, age"
+
+"SELECT count(*) FROM Address GROUP BY city, nameOfStreet";
+
+"SELECT count(*) FROM Address GROUP BY city, nameOfStreet HAVING countOfCitizens > 4";
+
+"SELECT count(*) FROM Man GROUP BY city, nameOfStreet";
+
+"SELECT count(*) FROM Man GROUP BY city , nameOfStreet HAVING countOfCitizens > 4";
+
+2) Создать приложение переводчик.
+
+   Приложение должно позволять:
+   - добавлять новые слова.
+   - переводить предложение с одного из языков(Русский - Украинский, Украинский - Русский, Английский - Русский, Русский - Английский).
+   - после ввода определять язык, на котором ввел юзер
+   - добавлять новые языки
+   После остановки программы сохранять словари.
