@@ -14,10 +14,12 @@ TestInfoMan {
       ManAddress manAddress = new ManAddress();
 
       manAddress.addMan(new Man("Kernosov", "Maksim", 40, 1,
-              (new Address(Country.US, City.UFA, "ул. Пушкинская", 10000, "8"))));
+              (new Address(Country.US, City.UFA, "ул. Пушкинская", 4, "8"))));
 
       manAddress.addMan(new Man("Kernosov", "Maksim", 19, 1,
-                (new Address(Country.CANADA, City.OTTAVA, "ул. Пушкинская", 10000, "8"))));
+                (new Address(Country.CANADA, City.OTTAVA, "ул. Пушкинская", 4, "8"))));
+        manAddress.addMan(new Man("Kernosov", "Maksim", 19, 1,
+                (new Address(Country.CANADA, City.OTTAVA, "ул. Пушкинская", 500, "8"))));
 
       manAddress.addMan(new Man("Mishenko", "Andreu", 27, 1,
                 (new Address(Country.CANADA, City.OTTAVA, "ул. Пушкинская", 10000, "3"))));
@@ -31,46 +33,48 @@ TestInfoMan {
       manAddress.addMan(new Man("Petrov", "Ivan", 18, 1,
                 (new Address(Country.RUSSIA, City.UFA, "Маршала Жукова", 4000, "47"))));
 
-      manAddress.addMan(new Man("Sereda", "Aleksandr", 37, 1,
+      manAddress.addMan(new Man("Sereda", "Aleksandr", 37, 2,
                 (new Address(Country.BELARUS, City.MINSK, "ул. Троицкая", 3000, "8"))));
 
       manAddress.addMan(new Man("Vasilcova", "Nataliya", 40, 3,
                 (new Address(Country.UKRAINE, City.KIEV, "ул. Дружбы Народов", 5000, "28"))));
 
       manAddress.addMan(new Man("Slavutish", "Nataliya", 37, 2,
-                (new Address(Country.RUSSIA, City.SOCHI, "ул. Сумсская", 2000, "72"))));
+                (new Address(Country.RUSSIA, City.SOCHI, "ул. Сумсская", 4000, "72"))));
 
       manAddress.addMan(new Man("Malikova", "Ivan", 21, 1,
                 (new Address(Country.RUSSIA, City.UFA, "Маршала Жукова", 4000, "21" ))));
 
-      manAddress.addMan(new Man("Karsilov", "Ivan", 47, 1,
-                (new Address(Country.US, City.UFA, "Маршала Жукова", 4000, "6"))));
+      manAddress.addMan(new Man("Karsilov", "Ivan", 47, 3,
+                (new Address(Country.US, City.UFA, "Маршала Жукова", 4, "6"))));
 
-      /*System.out.println();
 
-      manAddress.selectMan();
-
-      System.out.println();
+/*      manAddress.selectMan();
 
       manAddress.selectAddress();
 
-      System.out.println();
-
       manAddress.selectAgeTwentyOrderByFirstName();
-
-      System.out.println();
 
       manAddress.updateMan();
 
-      System.out.println();
-
-      manAddress.selectCountry();
-
-      System.out.println();*/
+      manAddress.selectCountry();*/
 
       manAddress.selectCountOfChildren();
+      System.out.println();
 
       manAddress.selectCountOfChildrenAge();
+      System.out.println();
+
+      manAddress.selectAddressCityNameOfStreet();
+      System.out.println();
+
+      manAddress.selectAddressHavingCountOfCitizens();
+      System.out.println();
+
+      manAddress.selectManGroupByCityNameOfStreet();
+      System.out.println();
+
+      manAddress.selectManHavingCityNameOfStreet();
 
     }
 }

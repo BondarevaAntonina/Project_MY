@@ -87,15 +87,52 @@ public class ManAddress {
 
     public void selectCountOfChildrenAge() {
         System.out.println("SELECT count(*) FROM Man GROUP BY countOfChildren, age\"");
-       /* men
-                .stream()
-                .collect(Collectors.groupingBy(Man::getCountOfChildren,
-                        Collectors.groupingBy(Man::getAge)), Collectors.counting())
-                .forEach((key, value) -> System.out.println("Count children: " + key + "\t" + "Count people: " + value));*/
 
-       men.stream().collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors
-                       .groupingBy(Man::getAge, Collectors.counting())))
+       men
+               .stream().collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors
+               .groupingBy(Man::getAge, Collectors.counting())))
                .forEach((key, value) -> System.out.println("Count children: " + key + "\t" + "Count people: " + value));
+    }
+
+    public void selectAddressCityNameOfStreet() {
+        System.out.println("SELECT count(*) FROM Address GROUP BY city, nameOfStreet");
+        men
+                .stream()
+                .map(Man::getAddress).collect(Collectors.groupingBy(Address::getCountry, Collectors
+                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
+    }
+
+    public void selectAddressHavingCountOfCitizens() {
+        System.out.println("SELECT count(*) FROM Address GROUP BY city, nameOfStreet HAVING countOfCitizens > 4");
+        men
+                .stream()
+                .map(Man::getAddress)
+                .filter(man -> man.getCountOfCitizens()>4)
+                .collect(Collectors.groupingBy(Address::getCountry, Collectors
+                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
+    }
+
+    public void selectManGroupByCityNameOfStreet() {
+        System.out.println("SELECT count(*) FROM Man GROUP BY city, nameOfStreet");
+        men
+                .stream()
+                .map(Man::getAddress)
+                .collect(Collectors.groupingBy(Address::getCountry, Collectors
+                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
+    }
+
+    public void selectManHavingCityNameOfStreet() {
+        System.out.println("SELECT count(*) FROM Man GROUP BY city, nameOfStreet");
+        men
+                .stream()
+                .map(Man::getAddress)
+                .filter(man -> man.getCountOfCitizens()>4)
+                .collect(Collectors.groupingBy(Address::getCountry, Collectors
+                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
     }
 }
 

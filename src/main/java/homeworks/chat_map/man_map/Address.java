@@ -1,7 +1,5 @@
 package homeworks.chat_map.man_map;
 
-import homeworks.chat_map.man_map.City;
-
 /**
  * Created by antoni on 05.10.2018.
  */

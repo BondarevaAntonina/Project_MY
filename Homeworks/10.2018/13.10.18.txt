@@ -4,15 +4,15 @@
 
 Использовать коллекцию ArrayList. Запросы для класса Адрес делать из класса Man.
 
-"SELECT count(*) FROM Man GROUP BY countOfChildren, age"
+"SELECT count(*) FROM Man GROUP BY countOfChildren, age" DONE
 
-"SELECT count(*) FROM Address GROUP BY city, nameOfStreet";
+"SELECT count(*) FROM Address GROUP BY city, nameOfStreet"; DONE
 
-"SELECT count(*) FROM Address GROUP BY city, nameOfStreet HAVING countOfCitizens > 4";
+"SELECT count(*) FROM Address GROUP BY city, nameOfStreet HAVING countOfCitizens > 4"; DONE
 
-"SELECT count(*) FROM Man GROUP BY city, nameOfStreet";
+"SELECT count(*) FROM Man GROUP BY city, nameOfStreet"; DONE
 
-"SELECT count(*) FROM Man GROUP BY city , nameOfStreet HAVING countOfCitizens > 4";
+"SELECT count(*) FROM Man GROUP BY city , nameOfStreet HAVING countOfCitizens > 4"; DONE
 
 2) Создать приложение переводчик.
 
