@@ -46,7 +46,7 @@ TestInfoMan {
       manAddress.addMan(new Man("Karsilov", "Ivan", 47, 1,
                 (new Address(Country.US, City.UFA, "Маршала Жукова", 4000, "6"))));
 
-      System.out.println();
+      /*System.out.println();
 
       manAddress.selectMan();
 
@@ -66,9 +66,11 @@ TestInfoMan {
 
       manAddress.selectCountry();
 
-      System.out.println();
+      System.out.println();*/
 
-      manAddress.selectGroupByCountOfChildren();
+      manAddress.selectCountOfChildren();
+
+      manAddress.selectCountOfChildrenAge();
 
     }
 }

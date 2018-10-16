@@ -9,9 +9,9 @@ public class Address {
 
     private Country country;
     private City city;
-    private  String nameOfStreet;
+    private String nameOfStreet;
     private int countOfCitizens;
-    private  String numberOfHome;
+    private String numberOfHome;
 
     public Address(Country country, City city, String nameOfStreet, int countOfCitizens, String numberOfHome) {
         this.country = country;
