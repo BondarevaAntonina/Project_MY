@@ -36,7 +36,7 @@ TestInfoMan {
       manAddress.addMan(new Man("Sereda", "Aleksandr", 37, 2,
                 (new Address(Country.BELARUS, City.MINSK, "ул. Троицкая", 3000, "8"))));
 
-      manAddress.addMan(new Man("Vasilcova", "Nataliya", 40, 3,
+      manAddress.addMan(new Man("Vasilcova", "Nataliya", 40, 1,
                 (new Address(Country.UKRAINE, City.KIEV, "ул. Дружбы Народов", 5000, "28"))));
 
       manAddress.addMan(new Man("Slavutish", "Nataliya", 37, 2,
@@ -65,7 +65,7 @@ TestInfoMan {
       manAddress.selectCountOfChildrenAge();
       System.out.println();
 
-      manAddress.selectAddressCityNameOfStreet();
+      /*manAddress.selectAddressCityNameOfStreet();
       System.out.println();
 
       manAddress.selectAddressHavingCountOfCitizens();
@@ -75,7 +75,8 @@ TestInfoMan {
       System.out.println();
 
       manAddress.selectManHavingCityNameOfStreet();
-
+*/
     }
 }
+
 

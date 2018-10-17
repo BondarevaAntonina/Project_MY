@@ -1,6 +1,9 @@
 package homeworks.chat_map.man_map;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -10,7 +13,7 @@ import java.util.stream.Collectors;
 public class ManAddress {
 
     //    private Map <Man, ArrayList <Address>> infoMan;
-    private List <Man> men = new ArrayList <>();
+    private List<Man> men = new ArrayList<>();
 
 
     public ManAddress() {
@@ -43,8 +46,8 @@ public class ManAddress {
                 .filter(m -> m.getAge() >= 20)
                 .sorted(Comparator.comparing(n -> n.getFirstName()))
                 .forEach(m -> System.out.println(m.getFirstName() + "  " +
-                                                 m.getLastName() + "  " +
-                         "Count of children:" + m.getCountOfChildren()));
+                        m.getLastName() + "  " +
+                        "Count of children:" + m.getCountOfChildren()));
 
     }
 
@@ -79,19 +82,25 @@ public class ManAddress {
 
     public void selectCountOfChildren() {
         System.out.println("SELECT count(*) FROM Man GROUP BY countOfChildren");
-         men
-                 .stream()
-                 .collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors.counting()))
-                 .forEach((key, value) -> System.out.println(value + "\t" + key));
+        men
+                .stream()
+                .collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors.counting()))
+                .forEach((key, value) -> System.out.println(value + "\t" + key));
     }
 
     public void selectCountOfChildrenAge() {
         System.out.println("SELECT count(*) FROM Man GROUP BY countOfChildren, age\"");
-
+/*
        men
                .stream().collect(Collectors.groupingBy(Man::getCountOfChildren, Collectors
                .groupingBy(Man::getAge, Collectors.counting())))
-               .forEach((key, value) -> System.out.println("Count children: " + key + "\t" + "Count people: " + value));
+               .forEach((key, value) -> System.out.println("Count children: " + key + "\t" + "Count people: " + value));*/
+
+        men
+                .stream().collect(Collectors.groupingBy(man ->
+                        new AbstractMap.SimpleEntry<>(man.getCountOfChildren(), man.getAge()),
+                Collectors.counting()))
+                .forEach((key, value) -> System.out.println("Count children: " + key + "\t" + "Count people: " + value));
     }
 
     public void selectAddressCityNameOfStreet() {
@@ -108,9 +117,9 @@ public class ManAddress {
         men
                 .stream()
                 .map(Man::getAddress)
-                .filter(man -> man.getCountOfCitizens()>4)
+                .filter(man -> man.getCountOfCitizens() > 4)
                 .collect(Collectors.groupingBy(Address::getCountry, Collectors
-                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                        .groupingBy(Address::getNameOfStreet, Collectors.counting())))
                 .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
     }
 
@@ -120,7 +129,7 @@ public class ManAddress {
                 .stream()
                 .map(Man::getAddress)
                 .collect(Collectors.groupingBy(Address::getCountry, Collectors
-                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                        .groupingBy(Address::getNameOfStreet, Collectors.counting())))
                 .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
     }
 
@@ -129,9 +138,9 @@ public class ManAddress {
         men
                 .stream()
                 .map(Man::getAddress)
-                .filter(man -> man.getCountOfCitizens()>4)
-                .collect(Collectors.groupingBy(Address::getCountry, Collectors
-                .groupingBy(Address::getNameOfStreet, Collectors.counting())))
+                .filter(man -> man.getCountOfCitizens() > 4)
+                .collect(Collectors.groupingBy(Address::getCity, Collectors
+                        .groupingBy(Address::getNameOfStreet, Collectors.counting())))
                 .forEach((key, value) -> System.out.println("Count city: " + key + "\t" + "nameOfStreet: " + value));
     }
 }
