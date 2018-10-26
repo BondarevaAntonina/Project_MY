@@ -1,17 +1,13 @@
 package homeworks.test_zadanie;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
-
-import static homeworks.test_zadanie.OperationArray.SCANNER;
 
 /**
  * Создать имитацию коллекции(с помощью массива) ArrayList для работы с типом int.
