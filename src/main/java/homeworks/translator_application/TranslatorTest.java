@@ -1,9 +1,11 @@
 package homeworks.translator_application;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -19,29 +21,18 @@ import java.util.Set;
 public class TranslatorTest {
 
     public static void main(String[] args) throws Exception {
-        Map<String, String> dictionary = new HashMap<>();
-        dictionary.put("java", "джава");
-        dictionary.put("drive", "управляет");
-        dictionary.put("whole", "цэлый");
-        dictionary.put("world", "мир");
 
-        System.out.println("Input your line: ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        String s = buf.readLine();
+    Translator translator = new Translator();
 
-        String[] s2 = s.split(" ");
-        for (String arr : s2) {
+        Scanner sc = new Scanner(System.in);
 
-            Set<Map.Entry<String, String>> ent = dictionary.entrySet();
-            for (Map.Entry<String, String> mapEnt : ent) {
-                String s1 = mapEnt.getKey();
-                if (s1.equals(arr)) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(mapEnt.getValue()).append(" ");
-                    System.out.print(sb.toString());
+        System.out.println("Enter any word or phrase: ");
 
-                }
-            }
-        }
+        String phrase = sc.nextLine();
+
+        translator.languageDetection(phrase);
+
+//        translator.writeTextToFile("закрыть");
+
     }
 }
