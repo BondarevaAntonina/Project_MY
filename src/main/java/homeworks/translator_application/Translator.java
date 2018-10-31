@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -99,6 +100,14 @@ public class Translator {
 
     public void languageDetection(String text) throws IOException {
 
+
+    }
+
+    public void findWordInVocabulary(String newWord) {
+//      map.entrySet().forEach(entry -> entry.getValue().containsValue(newWord));
+      map.entrySet().stream().filter(e -> e.getValue().containsValue(newWord)).forEach(e -> {
+            System.out.println(e.toString());
+        });
 
     }
 

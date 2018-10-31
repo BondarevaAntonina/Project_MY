@@ -24,14 +24,16 @@ public class TranslatorTest {
 
     Translator translator = new Translator();
 
-        Scanner sc = new Scanner(System.in);
+    translator.findWordInVocabulary("create");
+
+      /*  Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter any word or phrase: ");
 
         String phrase = sc.nextLine();
 
         translator.languageDetection(phrase);
-
+*/
 //        translator.writeTextToFile("закрыть");
 
     }
