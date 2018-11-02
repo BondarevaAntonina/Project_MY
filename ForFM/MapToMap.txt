@@ -1,0 +1,9 @@
+/*        for (Map.Entry<LanguagesTrans, Map <String, String>> entry : map.entrySet()) {
+            for (Map.Entry<String, String> entryInner : entry.getValue().entrySet()) {
+                if (entryInner.getKey().equals(newWord)) {
+                    return entryInner.getValue();
+                }
+            }
+
+        }
+        return null;*/

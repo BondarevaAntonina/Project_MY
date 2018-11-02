@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -25,13 +25,16 @@ import java.util.stream.Collectors;
 
 public class Translator {
 
-    private Map<Languages, Map<String, String>> map;
+    private Map <LanguagesTrans, Map <String, String>> map;
+
+    private Map inner = new HashMap <String, String>();
 
     public static final Path PATH = Paths.get("./ForTranslator");
+
     public static final Path PATH_RUS_ENG = Paths.get("./ForTranslator/RUS_ENG");
 
     public Translator() throws IOException {
-        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
+        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
 
         fillMap();
     }
@@ -47,29 +50,26 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap<String, String> right = new HashMap<>();
+            HashMap <String, String> right = new HashMap <>();
 
-            HashMap<String, String> refers = new HashMap<>();
+            HashMap <String, String> refers = new HashMap <>();
 
             try {
 
-                Files.readAllLines(path)
-                        .stream()
-                        .map(line -> line.split(":"))
-                        .forEach(words -> {//Hello:Привет
+                Files.readAllLines(path).stream().map(line -> line.split(":")).forEach(words -> {//Hello:Привет
 
-                            right.put(words[0], words[1]);
+                    right.put(words[0], words[1]);
 
-                            refers.put(words[1], words[0]);
-                        });
+                    refers.put(words[1], words[0]);
+                });
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            map.put(Languages.valueOf(fileName.trim()), right);
+            map.put(LanguagesTrans.valueOf(fileName.trim()), right);
 
-            map.put(Languages.valueOf(refersName.trim()), refers);
+            map.put(LanguagesTrans.valueOf(refersName.trim()), refers);
         });
 
         System.out.println();
@@ -91,9 +91,9 @@ public class Translator {
         System.out.println("The file has been written");
     }
 
-    public void addDictionary(Languages lang) {
+    public void addDictionary(LanguagesTrans lang) {
 
-        map.put(lang, new HashMap<>());//IT_ENG, <>
+        map.put(lang, new HashMap <>());//IT_ENG, <>
 
     }
 
@@ -104,11 +104,19 @@ public class Translator {
     }
 
     public void findWordInVocabulary(String newWord) {
-//      map.entrySet().forEach(entry -> entry.getValue().containsValue(newWord));
-      map.entrySet().stream().filter(e -> e.getValue().containsValue(newWord)).forEach(e -> {
-            System.out.println(e.toString());
-        });
 
+        String result = map
+                .entrySet()
+                .stream()
+                .filter(e -> e
+                        .getValue()
+                        .containsKey(newWord))
+                .findFirst()
+                .get()
+                .getValue()
+                .get(newWord);
+
+        System.out.println("Translate the word: " + newWord + " translation: " + result);
     }
 
 

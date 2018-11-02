@@ -1,13 +1,5 @@
 package homeworks.translator_application;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-
 /**
  1) Создать приложение переводчик.
  Приложение должно позволять:
@@ -24,7 +16,7 @@ public class TranslatorTest {
 
     Translator translator = new Translator();
 
-    translator.findWordInVocabulary("create");
+        translator.findWordInVocabulary("create");
 
       /*  Scanner sc = new Scanner(System.in);
 
