@@ -6,4 +6,6 @@ public enum LanguagesTrans {
     UKR_RUS,
     ENG_RUS,
     RUS_ENG;
+
+
 }

@@ -59,3 +59,27 @@ https://stackoverflow.com/questions/47153287/updating-nested-list-using-lambda-e
                 }
             }
         }
+
+mport java.util.HashMap;
+import java.util.Map;
+
+public class App {
+    public static void main(String[] args) {
+        Map<Lang, Map<String, String>> mainMap = new HashMap<>();
+        Map inner = new HashMap<String, String>();
+
+        inner.put("PRIVET", "HELLO");
+        inner.put("PRIVET2", "HELLO2");
+
+        mainMap.put(Lang.EN, inner);
+        for (Map.Entry<Lang, Map<String, String>> entry : mainMap.entrySet()) {
+            System.out.println(entry.getValue().get("PRIVET"));
+            for (Map.Entry<String, String> innerMapInFor : entry.getValue().entrySet()) {
+                System.out.println("K = " + innerMapInFor.getKey() + ", V= " + innerMapInFor.getValue());
+            }
+        }
+
+        mainMap.forEach((k, v) -> System.out.println("EN=" + v.get("PRIVET")));
+    }
+}
+

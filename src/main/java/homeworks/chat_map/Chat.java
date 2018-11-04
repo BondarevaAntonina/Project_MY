@@ -55,16 +55,16 @@ public class Chat {
 
 
     private User findUsers(String byName) throws Exception {
-        User user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
-                    u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
+    User user = chatUsers.keySet().stream().filter(u -> u.getFirstName().equals(byName) &&
+            u.getNetworkStatus() != NetworkStatus.OFFLINE).findFirst().get();
 
             if (user == null) {
-                throw new Exception("User " + byName + " not found");
-            }
+        throw new Exception("User " + byName + " not found");
+    }
 
         return user;
 
-    }
+}
 
 
     public void addUser(User user) {
@@ -96,7 +96,7 @@ public class Chat {
 
     public void showHistoryMessageThePeriod(LocalDateTime from, LocalDateTime to) throws Exception {
         chatUsers.values().stream().forEach(list ->
-            list.stream().filter(m -> m.isInPeriod(from, to)).forEach(System.out::println));
+                list.stream().filter(m -> m.isInPeriod(from, to)).forEach(System.out::println));
     }
 
 

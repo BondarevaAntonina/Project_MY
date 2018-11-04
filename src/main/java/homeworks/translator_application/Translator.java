@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 /**
@@ -25,16 +26,14 @@ import java.util.Map;
 
 public class Translator {
 
-    private Map <LanguagesTrans, Map <String, String>> map;
-
-    private Map inner = new HashMap <String, String>();
+    private Map<LanguagesTrans, Map<String, String>> map;
 
     public static final Path PATH = Paths.get("./ForTranslator");
 
     public static final Path PATH_RUS_ENG = Paths.get("./ForTranslator/RUS_ENG");
 
     public Translator() throws IOException {
-        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
+        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
 
         fillMap();
     }
@@ -50,18 +49,22 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap <String, String> right = new HashMap <>();
+            HashMap<String, String> right = new HashMap<>();
 
-            HashMap <String, String> refers = new HashMap <>();
+            HashMap<String, String> refers = new HashMap<>();
 
             try {
 
-                Files.readAllLines(path).stream().map(line -> line.split(":")).forEach(words -> {//Hello:Привет
+                Files.readAllLines(path).stream().map(line -> line.trim().split(":"))
+                        .forEach(words -> {//Hello:Привет
 
-                    right.put(words[0], words[1]);
+                            String word = words[0];
+                            String word1 = words[1];
 
-                    refers.put(words[1], words[0]);
-                });
+                            right.put(word, word1);
+
+                            refers.put(word1, word);
+                        });
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -93,7 +96,7 @@ public class Translator {
 
     public void addDictionary(LanguagesTrans lang) {
 
-        map.put(lang, new HashMap <>());//IT_ENG, <>
+        map.put(lang, new HashMap<>());//IT_ENG, <>
 
     }
 
@@ -117,6 +120,34 @@ public class Translator {
                 .get(newWord);
 
         System.out.println("Translate the word: " + newWord + " translation: " + result);
+    }
+
+    public void findLanguage(String ln) throws Exception {
+    /*    LanguagesTrans lang = map.entrySet().stream()
+                .filter(k -> k.getValue().containsValue(ln)).findFirst().get().getKey();*/
+
+
+        LanguagesTrans language = LanguagesTrans.valueOf(ln);
+
+        boolean result = map.keySet().stream().anyMatch(key -> key == language);
+
+        if (!result) {
+            map.put(language, new HashMap<>());
+        }
+
+        System.out.println(map.entrySet()//anyMatch
+                .stream()
+                .filter(e -> e.getValue().containsValue(ln))
+                .findFirst().get().getKey());
+
+/*
+            LanguagesTrans lang = map.keySet().stream().filter(t -> t.equals(ln)).findFirst().get();
+
+            if (lang == null) {
+                throw new Exception("User " + ln + " not found");
+            }
+            return lang;
+*/
     }
 
 

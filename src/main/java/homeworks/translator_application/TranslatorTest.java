@@ -16,7 +16,8 @@ public class TranslatorTest {
 
     Translator translator = new Translator();
 
-        translator.findWordInVocabulary("create");
+//        translator.findWordInVocabulary("create");
+        translator.findLanguage("время");
 
       /*  Scanner sc = new Scanner(System.in);
 
@@ -27,6 +28,8 @@ public class TranslatorTest {
         translator.languageDetection(phrase);
 */
 //        translator.writeTextToFile("закрыть");
+
+
 
     }
 }
