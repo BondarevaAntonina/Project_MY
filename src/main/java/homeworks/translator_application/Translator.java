@@ -1,5 +1,7 @@
 package homeworks.translator_application;
 
+import com.google.common.base.Enums;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 /**
@@ -123,31 +124,44 @@ public class Translator {
     }
 
     public void findLanguage(String ln) throws Exception {
-    /*    LanguagesTrans lang = map.entrySet().stream()
-                .filter(k -> k.getValue().containsValue(ln)).findFirst().get().getKey();*/
-
-
-        LanguagesTrans language = LanguagesTrans.valueOf(ln);
-
-        boolean result = map.keySet().stream().anyMatch(key -> key == language);
-
-        if (!result) {
-            map.put(language, new HashMap<>());
-        }
 
         System.out.println(map.entrySet()//anyMatch
                 .stream()
                 .filter(e -> e.getValue().containsValue(ln))
                 .findFirst().get().getKey());
+    }
 
-/*
-            LanguagesTrans lang = map.keySet().stream().filter(t -> t.equals(ln)).findFirst().get();
 
-            if (lang == null) {
-                throw new Exception("User " + ln + " not found");
-            }
-            return lang;
-*/
+    public static LanguagesTrans getIfPresent(String name) {
+        return Enums.getIfPresent(LanguagesTrans.class, name).orNull();
+    }
+
+    public static LanguagesTrans trycatchValueOf(String name) {
+        try {
+            return LanguagesTrans.valueOf(name);
+        } catch (Exception ex) {
+            System.out.println("Exception Thrown" + ex);
+
+            return null;
+        }
+    }
+
+
+
+
+    public void addNewLanguage(String findLang) {
+        LanguagesTrans language = LanguagesTrans.valueOf(findLang);
+
+//        boolean result = map.keySet().stream().anyMatch(key -> key == language);
+        boolean result = map.keySet().stream().anyMatch(key -> key == language);
+
+
+        if (!result) {
+            map.put(language, new HashMap<>());
+            System.out.println("There is no required language, we add a new one" );
+        }
+
+        throw new IllegalArgumentException(language + " such translation languages exist");
     }
 
 
