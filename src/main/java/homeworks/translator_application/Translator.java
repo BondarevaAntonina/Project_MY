@@ -1,8 +1,6 @@
 package homeworks.translator_application;
 
-import com.google.common.base.Enums;
-
-import java.io.FileOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,16 +25,46 @@ import java.util.Map;
 
 public class Translator {
 
-    private Map<LanguagesTrans, Map<String, String>> map;
+    private Map <String, Map <String, String>> map;
+
+//    Map<String,String> mapL = new HashMap<>();
 
     public static final Path PATH = Paths.get("./ForTranslator");
 
     public static final Path PATH_RUS_ENG = Paths.get("./ForTranslator/RUS_ENG");
 
     public Translator() throws IOException {
-        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
-
+        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
         fillMap();
+        //addLang();
+    }
+
+    public void addLang(String langName, File file) throws IOException {
+
+
+        this.map.clear();
+        fillMap();
+
+        //map.put(langName, fillMapByLang("RUS_UKR"));
+       // map.put("UKR_RUS", new HashMap <>());
+       // map.put("ENG_RUS", new HashMap <>());
+      //  map.put("RUS_ENG", new HashMap <>());
+
+        map.entrySet().forEach(e -> {
+            System.out.println(e.getKey());
+//            System.out.println(e.getKey());
+        });
+    }
+
+    private HashMap fillMapByLang(String langName){
+        HashMap<String, String> tmp = new HashMap <>();
+        //взять фалик  langName
+            //1 прямо поиск
+            //2 перевернуты поиск
+        //считать данные
+        //записать данные в мапу
+
+        return tmp;
     }
 
     private void fillMap() throws IOException {
@@ -50,133 +78,37 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap<String, String> right = new HashMap<>();
+            HashMap <String, String> right = new HashMap <>();
 
-            HashMap<String, String> refers = new HashMap<>();
+            HashMap <String, String> refers = new HashMap <>();
 
             try {
 
-                Files.readAllLines(path).stream().map(line -> line.trim().split(":"))
-                        .forEach(words -> {//Hello:Привет
+                Files.readAllLines(path).stream().map(line -> line.trim().split(":")).forEach(words -> {//Hello:Привет
 
-                            String word = words[0];
-                            String word1 = words[1];
+                    String word = words[0];
+                    String word1 = words[1];
 
-                            right.put(word, word1);
+                    right.put(word, word1);
 
-                            refers.put(word1, word);
-                        });
+                    refers.put(word1, word);
+                });
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            map.put(LanguagesTrans.valueOf(fileName.trim()), right);
+            map.put(fileName.trim(), right);
+            map.put(refersName.trim(), refers);
 
-            map.put(LanguagesTrans.valueOf(refersName.trim()), refers);
+//            map.put(LanguagesTrans.valueOf(fileName.trim()), right);
+
+//            map.put(LanguagesTrans.valueOf(refersName.trim()), refers);
         });
 
         System.out.println();
 
-//        map.forEach((key, value) -> );
-//        map.entrySet().forEach(entry -> entry.get);
-    }
-
-    public void writeTextToFile(String text) {//Files
-
-        try (FileOutputStream fos = new FileOutputStream(String.valueOf(PATH_RUS_ENG))) {
-            byte[] buffer = text.getBytes();
-
-            fos.write(buffer, 0, buffer.length);
-        } catch (IOException ex) {
-
-            System.out.println(ex.getMessage());
-        }
-        System.out.println("The file has been written");
-    }
-
-    public void addDictionary(LanguagesTrans lang) {
-
-        map.put(lang, new HashMap<>());//IT_ENG, <>
-
     }
 
 
-    public void languageDetection(String text) throws IOException {
-
-
-    }
-
-    public void findWordInVocabulary(String newWord) {
-
-        String result = map
-                .entrySet()
-                .stream()
-                .filter(e -> e
-                        .getValue()
-                        .containsKey(newWord))
-                .findFirst()
-                .get()
-                .getValue()
-                .get(newWord);
-
-        System.out.println("Translate the word: " + newWord + " translation: " + result);
-    }
-
-    public void findLanguage(String ln) throws Exception {
-
-        System.out.println(map.entrySet()//anyMatch
-                .stream()
-                .filter(e -> e.getValue().containsValue(ln))
-                .findFirst().get().getKey());
-    }
-
-
-    public static LanguagesTrans getIfPresent(String name) {
-        return Enums.getIfPresent(LanguagesTrans.class, name).orNull();
-    }
-
-    public static LanguagesTrans trycatchValueOf(String name) {
-        try {
-            return LanguagesTrans.valueOf(name);
-        } catch (Exception ex) {
-            System.out.println("Exception Thrown" + ex);
-
-            return null;
-        }
-    }
-
-
-
-
-    public void addNewLanguage(String findLang) {
-        LanguagesTrans language = LanguagesTrans.valueOf(findLang);
-
-//        boolean result = map.keySet().stream().anyMatch(key -> key == language);
-        boolean result = map.keySet().stream().anyMatch(key -> key == language);
-
-
-        if (!result) {
-            map.put(language, new HashMap<>());
-            System.out.println("There is no required language, we add a new one" );
-        }
-
-        throw new IllegalArgumentException(language + " such translation languages exist");
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Translator that = (Translator) o;
-
-        return map.equals(that.map);
-    }
-
-    @Override
-    public int hashCode() {
-        return map.hashCode();
-    }
 }

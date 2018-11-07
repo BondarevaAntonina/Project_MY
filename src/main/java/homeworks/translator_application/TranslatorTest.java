@@ -21,7 +21,7 @@ public class TranslatorTest {
         //после ввода определять язык, на котором ввел юзер
         translator.findLanguage("время");*/
 
-        translator.addNewLanguage("deu");
+//        translator.addNewLanguage("deu");
 
 
     }
