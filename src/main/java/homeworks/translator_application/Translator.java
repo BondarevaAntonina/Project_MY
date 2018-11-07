@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class Translator {
 
-    private Map <String, Map <String, String>> map;
+    private Map<String, Map<String, String>> map;
 
 //    Map<String,String> mapL = new HashMap<>();
 
@@ -34,33 +34,17 @@ public class Translator {
     public static final Path PATH_RUS_ENG = Paths.get("./ForTranslator/RUS_ENG");
 
     public Translator() throws IOException {
-        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
-        fillMap();
-        //addLang();
-    }
-
-    public void addLang(String langName, File file) throws IOException {
-
-
-        this.map.clear();
+        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
         fillMap();
 
-        //map.put(langName, fillMapByLang("RUS_UKR"));
-       // map.put("UKR_RUS", new HashMap <>());
-       // map.put("ENG_RUS", new HashMap <>());
-      //  map.put("RUS_ENG", new HashMap <>());
-
-        map.entrySet().forEach(e -> {
-            System.out.println(e.getKey());
-//            System.out.println(e.getKey());
-        });
     }
 
-    private HashMap fillMapByLang(String langName){
-        HashMap<String, String> tmp = new HashMap <>();
+
+    private HashMap fillMapByLang(String langName) {
+        HashMap<String, String> tmp = new HashMap<>();
         //взять фалик  langName
-            //1 прямо поиск
-            //2 перевернуты поиск
+        //1 прямо поиск
+        //2 перевернуты поиск
         //считать данные
         //записать данные в мапу
 
@@ -78,9 +62,9 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap <String, String> right = new HashMap <>();
+            HashMap<String, String> right = new HashMap<>();
 
-            HashMap <String, String> refers = new HashMap <>();
+            HashMap<String, String> refers = new HashMap<>();
 
             try {
 
@@ -99,6 +83,7 @@ public class Translator {
             }
 
             map.put(fileName.trim(), right);
+
             map.put(refersName.trim(), refers);
 
 //            map.put(LanguagesTrans.valueOf(fileName.trim()), right);
