@@ -1,6 +1,5 @@
 package homeworks.translator_application;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,8 +13,8 @@ import java.util.Map;
  * Приложение должно позволять:
  * - добавлять новые слова.
  * - переводить предложение с одного из языков(Русский - Украинский, Украинский - Русский, Английский - Русский, Русский - Английский).
- * - после ввода определять язык, на котором ввел юзер
- * - добавлять новые языки
+ * - после ввода определять язык, на котором ввел юзер DONE
+ * - добавлять новые языки DONE
  * После остановки программы сохранять словари.
  * <p>
  * /*
@@ -25,23 +24,25 @@ import java.util.Map;
 
 public class Translator {
 
-    private Map<String, Map<String, String>> map;
+    private Map <String, Map <String, String>> map;
 
 //    Map<String,String> mapL = new HashMap<>();
 
     public static final Path PATH = Paths.get("./ForTranslator");
 
-    public static final Path PATH_RUS_ENG = Paths.get("./ForTranslator/RUS_ENG");
+
+    public static final String PATH_AND_FILE = "./ForTranslator/";
+
 
     public Translator() throws IOException {
-        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
+        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
         fillMap();
 
     }
 
 
     private HashMap fillMapByLang(String langName) {
-        HashMap<String, String> tmp = new HashMap<>();
+        HashMap <String, String> tmp = new HashMap <>();
         //взять фалик  langName
         //1 прямо поиск
         //2 перевернуты поиск
@@ -62,9 +63,9 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap<String, String> right = new HashMap<>();
+            HashMap <String, String> right = new HashMap <>();
 
-            HashMap<String, String> refers = new HashMap<>();
+            HashMap <String, String> refers = new HashMap <>();
 
             try {
 
@@ -86,14 +87,99 @@ public class Translator {
 
             map.put(refersName.trim(), refers);
 
-//            map.put(LanguagesTrans.valueOf(fileName.trim()), right);
-
-//            map.put(LanguagesTrans.valueOf(refersName.trim()), refers);
         });
 
         System.out.println();
 
     }
 
+    public void findWordInVocabulary(String newWord) {
 
+        String result = map.entrySet()
+                .stream()
+                .filter(e -> e
+                        .getValue()
+                        .containsKey(newWord))
+                .findFirst()
+                .get()
+                .getValue()
+                .get(newWord);
+
+        System.out.println("Translate the word: " + newWord + " translation: " + result);
+    }
+
+    public void findLanguage(String language) throws Exception {
+
+        boolean result = map.keySet().stream().anyMatch(key -> key.equals(language));
+
+        if (!result) {
+            map.put(language, new HashMap <>());
+        }
+
+        System.out.println(map.entrySet()//anyMatch
+                .stream()
+                .filter(e -> e
+                        .getValue()
+                        .containsValue(language))
+                .findFirst()
+                .get()
+                .getKey());
+    }
+
+    public void createNewFile(String language) throws Exception {
+        try {
+
+            Path path = Paths.get(PATH_AND_FILE + language);
+            Files.createFile(path);
+
+            System.out.println("File has been created to" + path);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+            System.out.println(e.getMessage() + "\nFile has not been created");
+        }
+    }
+
+    //добавлять новые языки
+    public void addNewLanguage(String language) throws Exception {
+
+        boolean result = map.keySet().stream().anyMatch(key -> key.equals(language));
+
+        if (!result) {
+            createNewFile(language);
+            map.put(language, new HashMap<>());
+        } else {
+            System.out.println("Such a language exists");
+            map.entrySet().
+                    forEach(e -> {
+                        System.out.println(e.getKey());
+                    });
+        }
+    }
+
+    private static void writeUsingFiles(String data, String language) {
+        try {
+            Files.write(Paths.get(PATH_AND_FILE + language), data.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void addNewWordsToFile() {
+
+        String data = "понимать : verstehen";
+        String language = "DEU_RUS";
+        writeUsingFiles(data, language);
+
+/*        map.entrySet().
+                forEach(e -> {
+                    System.out.println(e.getKey());
+                });*/
+
+        map.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + entry.getValue());
+        });
+
+    }
 }

@@ -15,13 +15,16 @@ public class TranslatorTest {
 
         Translator translator = new Translator();
 
-/*        // поиск слова
-        translator.findWordInVocabulary("create");
+//        // поиск слова
+//        translator.findWordInVocabulary("create");
+//
+//        //после ввода определять язык, на котором ввел юзер
+//        translator.findLanguage("время");
+//
+//        //добавлять новые языки
+//        translator.addNewLanguage("DEU_RUS");
 
-        //после ввода определять язык, на котором ввел юзер
-        translator.findLanguage("время");*/
-
-//        translator.addNewLanguage("deu");
+        translator.addNewWordsToFile();
 
 
     }
