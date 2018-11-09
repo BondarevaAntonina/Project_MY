@@ -3,3 +3,4 @@
 3) All words in English.
 4) ctrl + alt + l - format code
 5) Initialize fields inside constructor(s)
+6) Delete commented code + yours for tests

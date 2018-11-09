@@ -15,17 +15,19 @@ public class TranslatorTest {
 
         Translator translator = new Translator();
 
-        // поиск слова
-//        translator.findWordInVocabulary("create");
-//
+/*        // поиск слова
+        translator.findWordInVocabulary("create");
+
         //после ввода определять язык, на котором ввел юзер
-        translator.findLanguage("что ты делаешь ");
+        translator.findLanguage("время ");*/
 
         //добавлять новые языки
-//        translator.addNewLanguage("DEU_RUS");
+        translator.addNewLanguage("DEU_RUS");
 
-//        translator.addNewWordsToFile();
+        translator.addNewWordsToFile("DEU_RUS","ab", "ты");
 
+        translator.translationProffer("что ты делаешь");
 
+        translator.writeUsingFiles();
     }
 }

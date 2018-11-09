@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 /**
@@ -24,7 +28,8 @@ import java.util.Map;
 
 public class Translator {
 
-    private Map <String, Map <String, String>> map;
+    public static final String TXT_EXTENSION = ".txt";
+    private Map<String, Map<String, String>> map;
 
 //    Map<String,String> mapL = new HashMap<>();
 
@@ -35,7 +40,7 @@ public class Translator {
 
 
     public Translator() throws IOException {
-        this.map = new HashMap <>();//rus_eng, "Привет", "Hello"
+        this.map = new HashMap<>();//rus_eng, "Привет", "Hello"
         fillMap();
 
     }
@@ -43,7 +48,9 @@ public class Translator {
     private void fillMap() throws IOException {
         Files.newDirectoryStream(PATH).forEach(path -> {
 
-            String fileName = path.toFile().getName();//add validate to equals fileName with enum's object
+            String name = path.toFile().getName();
+
+            String fileName = name.substring(0, name.indexOf(TXT_EXTENSION));//add validate to equals fileName with enum's object
 
             String[] names = fileName.split("_"); //"rus"[0], "eng"[1]
 
@@ -51,26 +58,29 @@ public class Translator {
             /*
              * rus_eng -> eng_rus
              * */
-            HashMap <String, String> right = new HashMap <>();
+            HashMap<String, String> right = new HashMap<>();
 
-            HashMap <String, String> refers = new HashMap <>();
+            HashMap<String, String> refers = new HashMap<>();
 
             try {
 
-                Files.readAllLines(path).stream().map(line -> line.trim().split(":")).forEach(words -> {//Hello:Привет
+                Files.readAllLines(path).stream().map(line ->
+                        line
+                                .replaceAll(" ", "")
+                                .split(":"))
+                        .forEach(words -> {//Hello:Привет
 
-                    String word = words[0];
-                    String word1 = words[1];
+                            String word = words[0];
+                            String word1 = words[1];
 
-                    right.put(word, word1);
+                            right.put(word, word1);
 
-                    refers.put(word1, word);
-                });
+                            refers.put(word1, word);
+                        });
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             map.put(fileName.trim(), right);
 
             map.put(refersName.trim(), refers);
@@ -83,7 +93,13 @@ public class Translator {
 
     public void findWordInVocabulary(String newWord) {
 
-        String result = map.entrySet()
+        String result = getTranslatedWord(newWord);
+
+        System.out.println("Translate the word: " + newWord + " translation: " + result);
+    }
+
+    private String getTranslatedWord(String newWord) {
+        String s = map.entrySet()
                 .stream()
                 .filter(e -> e
                         .getValue()
@@ -93,15 +109,17 @@ public class Translator {
                 .getValue()
                 .get(newWord);
 
-        System.out.println("Translate the word: " + newWord + " translation: " + result);
+        return s;
     }
+
 
     public void findLanguage(String language) throws Exception {
 
         boolean result = map.keySet().stream().anyMatch(key -> key.equals(language));
 
         if (!result) {
-            map.put(language, new HashMap <>());
+            map.put(language, new HashMap<>());
+
         }
 
         System.out.println(map.entrySet()//anyMatch
@@ -112,12 +130,14 @@ public class Translator {
                 .findFirst()
                 .get()
                 .getKey());
+
     }
 
-    public void createNewFile(String language) throws Exception {
+    private void createNewFile(String language) {
         try {
 
-            Path path = Paths.get(PATH_AND_FILE + language);
+            Path path = Paths.get(PATH_AND_FILE + language.concat(TXT_EXTENSION));
+
             Files.createFile(path);
 
             System.out.println("File has been created to" + path);
@@ -131,43 +151,58 @@ public class Translator {
     }
 
     //добавлять новые языки
-    public void addNewLanguage(String language) throws Exception {
+    public void addNewLanguage(String language) {
 
         boolean result = map.keySet().stream().anyMatch(key -> key.equals(language));
 
-        if (!result) {
-            createNewFile(language);
-            map.put(language, new HashMap<>());
-        } else {
+        if (result) {
             System.out.println("Such a language exists");
-            map.entrySet().
-                    forEach(e -> {
-                        System.out.println(e.getKey());
-                    });
+
+            return;
         }
+
+        createNewFile(language);
+
+        map.put(language, new HashMap<>());
     }
 
-    private static void writeUsingFiles(String data, String language) {
-        try {
-            Files.write(Paths.get(PATH_AND_FILE + language), data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void addNewWordsToFile() {
 
-        String data = "понимать : verstehen";
-        String language = "DEU_RUS";
-        writeUsingFiles(data, language);
+    public void writeUsingFiles() {
 
-/*        map.entrySet().
-                forEach(e -> {
-                    System.out.println(e.getKey());
-                });*/
+        map.forEach((key, value) -> {
+            Path path = Paths.get(PATH_AND_FILE, key + TXT_EXTENSION);
 
-        map.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + entry.getValue());
+            List<String> strings = value.entrySet()
+                    .stream()
+                    .map(entry -> entry.getKey().concat(" : ").concat(entry.getValue()))
+                    .collect(Collectors.toList());
+
+            try {
+                Files.write(path, strings, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         });
 
     }
+
+    public void addNewWordsToFile(String language, String from, String to) {
+
+        addNewLanguage(language);
+
+        map.get(language).put(from, to);
+
+    }
+
+    public void translationProffer(String sentence) {
+
+        List<String> strings = Arrays.asList(sentence.split(" "));
+
+        System.out.println();
+
+        strings.forEach(s -> System.out.print(getTranslatedWord(s)));
+
+    }
 }
+
