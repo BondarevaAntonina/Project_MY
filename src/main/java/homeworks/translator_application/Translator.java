@@ -40,18 +40,6 @@ public class Translator {
 
     }
 
-
-    private HashMap fillMapByLang(String langName) {
-        HashMap <String, String> tmp = new HashMap <>();
-        //взять фалик  langName
-        //1 прямо поиск
-        //2 перевернуты поиск
-        //считать данные
-        //записать данные в мапу
-
-        return tmp;
-    }
-
     private void fillMap() throws IOException {
         Files.newDirectoryStream(PATH).forEach(path -> {
 
