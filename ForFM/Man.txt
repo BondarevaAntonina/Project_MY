@@ -83,3 +83,7 @@ public class App {
     }
 }
 
+https://github.com/r-deleon/familyTree/blob/master/src/familytree/Tree.java
+https://intellect.ml/kollektsiya-i-kontejner-v-programmirovanii-primer-kollektsij-na-java-6253
+
+
