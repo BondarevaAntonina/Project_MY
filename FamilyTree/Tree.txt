@@ -1,0 +1,14 @@
+Zaxarov Petr : Sereda Vera
+Zaxarov Petr : Sereda Margarita
+Zaxarova Mariya : Sereda Vera
+Zaxarova Mariya : Sereda Margarita
+Sereda Margarita : Kovaleva Lyudmila
+Sereda Radion : Kovaleva Lyudmila
+Sereda Vladimir : Sereda Yuriu
+Sereda Vera : Sereda Yuriu
+Sereda Yuriu : Sereda Mariya
+Sereda Yuriu : Sereda Alexseu
+Sereda Yuriu : Sereda Marina
+Sereda Svetlana : Sereda Mariya
+Sereda Svetlana : Sereda Alexseu
+Sereda Svetlana : Sereda Marina
