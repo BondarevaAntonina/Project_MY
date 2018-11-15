@@ -34,4 +34,36 @@ public class Family {
 
     }
 
+    public void familyTreeParticularPerson() {
+
+    }
+
+    public void showDirectRelatives() {
+
+    }
+
+    public void showNumberOfLiving() {
+
+    }
+
+    public void showNumberGender() {
+
+    }
+
+    public void showAverageNumberOfChildren() {
+
+    }
+
+    public void showAverageLifeExpectancy() {
+
+    }
+
+    public void showDirectRelativesBrotherSister() {
+
+    }
+
+    public void showAllRelatives() {
+
+    }
+
 }
