@@ -14,23 +14,25 @@ import java.util.Map;
  4) Показывать прямых родственников с братьями и сёстрами, все родственники.
  5) Показывать степень родства двух людей в одной ветке дерева.
  */
-public class Family {
+public class Familly {
 
-    private Map<Person, List<Child>> myChildren;
+    private Map<Person, List<Person>> myChildren;
 
-    public Family() {
+    public Familly() {
         this.myChildren = new HashMap<>();
     }
 
-    public void addChild(Child child) {
-        myChildren.put(child, new ArrayList<>());
-        /*List<Child> child = new ArrayList <>();
-        child.add(new Child("Zaxarov", "Petr", "Vladimirovich", "M", 70,
-                Duration.DEAD, "Petrovna"));
+    public void addChild(Person person, List<Person> people) {
+        ArrayList<Person> list = new ArrayList<>();
+        Person zakhar = new Person("Zaxarov", "Petr", "Vladimirovich", "M", 70,
+                Duration.DEAD);
+/*        .add(zakhar);
         child.add(new Child("Zaxarova", "Mariya", "Alexandrovna", "G", 65,
                 Duration.DEAD, "Petrovna"));
         child.add(new Child("Zaxarova", "Mariya", "Alexandrovna", "G", 65,
                 Duration.DEAD, "Petrovna"));*/
+
+        myChildren.put(zakhar, list);
 
     }
 
