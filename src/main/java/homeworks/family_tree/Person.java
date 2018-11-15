@@ -1,7 +1,5 @@
 package homeworks.family_tree;
 
-import java.time.LocalDate;
-
 /**
  Создать приложение родословная. Приложение должно позволять:
  1) Выводить родословное дерево конкретного человека.
@@ -11,55 +9,49 @@ import java.time.LocalDate;
  4) Показывать прямых родственников с братьями и сёстрами, все родственники.
  5) Показывать степень родства двух людей в одной ветке дерева.
  */
-public class Person implements Featureble {
+public class Person  {
 
     private String surname;
     private String firstName;
     private String middleName;
     private String gender;
-    private LocalDate dateOfBirth;
+    private int age;
     private Duration duration;
-    private Person myFather;
-    private Person myMother;
+
+    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration) {
+        this.surname = surname;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.gender = gender;
+        this.age = age;
+        this.duration = duration;
+    }
+
 
 
     @Override
-    public void familyTreeParticularPerson() {
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Person person = (Person) o;
+
+        if (age != person.age) return false;
+        if (!surname.equals(person.surname)) return false;
+        if (!firstName.equals(person.firstName)) return false;
+        if (!middleName.equals(person.middleName)) return false;
+        if (!gender.equals(person.gender)) return false;
+        return duration == person.duration;
     }
 
     @Override
-    public void showDirectRelatives() {
-
-    }
-
-    @Override
-    public void showNumberOfLiving() {
-
-    }
-
-    @Override
-    public void showNumberGender() {
-
-    }
-
-    @Override
-    public void showAverageNumberOfChildren() {
-
-    }
-
-    @Override
-    public void showAverageLifeExpectancy() {
-
-    }
-
-    @Override
-    public void showDirectRelativesBrotherSister() {
-
-    }
-
-    @Override
-    public void showAllRelatives() {
-
+    public int hashCode() {
+        int result = surname.hashCode();
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + middleName.hashCode();
+        result = 31 * result + gender.hashCode();
+        result = 31 * result + age;
+        result = 31 * result + duration.hashCode();
+        return result;
     }
 }
