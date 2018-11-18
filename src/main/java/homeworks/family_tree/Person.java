@@ -17,17 +17,30 @@ public class Person  {
     private String gender;
     private int age;
     private Duration duration;
+    private Kinsman kinsman;
 
-    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration) {
+    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration, Kinsman kinsman) {
         this.surname = surname;
         this.firstName = firstName;
         this.middleName = middleName;
         this.gender = gender;
         this.age = age;
         this.duration = duration;
+        this.kinsman = kinsman;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "surname='" + surname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", duration=" + duration +
+                ", kinsman=" + kinsman +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -41,7 +54,8 @@ public class Person  {
         if (!firstName.equals(person.firstName)) return false;
         if (!middleName.equals(person.middleName)) return false;
         if (!gender.equals(person.gender)) return false;
-        return duration == person.duration;
+        if (duration != person.duration) return false;
+        return kinsman == person.kinsman;
     }
 
     @Override
@@ -52,6 +66,7 @@ public class Person  {
         result = 31 * result + gender.hashCode();
         result = 31 * result + age;
         result = 31 * result + duration.hashCode();
+        result = 31 * result + kinsman.hashCode();
         return result;
     }
 }
