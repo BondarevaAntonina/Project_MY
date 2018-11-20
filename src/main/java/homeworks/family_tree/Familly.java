@@ -1,9 +1,6 @@
 package homeworks.family_tree;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Создать приложение родословная. Приложение должно позволять:
@@ -16,15 +13,18 @@ import java.util.Map;
  */
 public class Familly {
 
-    private Map <Person, List <Person>> myChildren;
+    private Map<Person, List<Person>> myChildren;
 
     public Familly() {
-        this.myChildren = new HashMap <>();
+        this.myChildren = new HashMap<>();
+        fillFamillyTree();
     }
 
-    public void addChild(Person person, List <Person> people) {
-        ArrayList <Person> list = new ArrayList <>();
+    public void addChild(Person person, List<Person> people) {
+        myChildren.put(person, people);
+    }
 
+    private void fillFamillyTree() {
         Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
                 "G", 32, Duration.ALIVE, null);
         Person zakharBrother = new Person("Zaxarov", "Alexseu", "Yuriivich",
@@ -62,13 +62,17 @@ public class Familly {
         Person danilenkoGreatMother = new Person("Danilenko", "Illona", "Vladimirovna",
                 "G", 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
 
-//        myChildren.put()
-//        myChildren.put(zakharHusbend, list);
+
+        addChild(you, Arrays.asList(strashko, kovalev));
+        addChild(strashko, Arrays.asList(you, zakharBrother, zakharSister, strashkoGrandFather, strashkoGrandMother));
+        addChild(strashkoGrandMother, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));
+
 
     }
 
-    public void familyTreeParticularPerson() {
-
+    // Выводить родословное дерево конкретного человека.
+    public void familyTreeParticularPerson(Person person) {
+//        myChildren.entrySet()
     }
 
     public void showDirectRelatives() {

@@ -19,7 +19,8 @@ public class Person  {
     private Duration duration;
     private Kinsman kinsman;
 
-    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration, Kinsman kinsman) {
+    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration,
+                  Kinsman kinsman) {
         this.surname = surname;
         this.firstName = firstName;
         this.middleName = middleName;
