@@ -16,29 +16,54 @@ import java.util.Map;
  */
 public class Familly {
 
-    private Map<Person, List<Person>> myChildren;
+    private Map <Person, List <Person>> myChildren;
 
     public Familly() {
-        this.myChildren = new HashMap<>();
+        this.myChildren = new HashMap <>();
     }
 
-    public void addChild(Person person, List<Person> people) {
-        ArrayList<Person> list = new ArrayList<>();
-        Person zakharHusbend = new Person("Zaxarov", "Petr", "Vladimirovich", "M",
-                70, Duration.DEAD, Kinsman.HUSBAND);
-        Person zakharWife = new Person("Zaxarova", "Mariya", "Alexandrovna", "G",
-                69, Duration.DEAD, Kinsman.WIFE);
-        Person seredaDaughter = new Person("Sereda", "Vera", "Petrovna", "G",
-                65, Duration.DEAD, Kinsman.SISTER);
-        Person seredaTwoDaughter = new Person("Sereda", "Margarita", "Petrovna", "G",
-                57, Duration.DEAD, Kinsman.SISTER);
-        Person seredaFather = new Person("Sereda", "Radion", "Michailovich", "M",
-                68, Duration.DEAD, Kinsman.HUSBAND);
-        Person kovaleva = new Person("Kovaleva", "Lyudmila", "Radionovna", "G",
-                59, Duration.DEAD, Kinsman.SISTER);
+    public void addChild(Person person, List <Person> people) {
+        ArrayList <Person> list = new ArrayList <>();
 
+        Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
+                "G", 32, Duration.ALIVE, null);
+        Person zakharBrother = new Person("Zaxarov", "Alexseu", "Yuriivich",
+                "M", 28, Duration.ALIVE, Kinsman.BROTHER);
+        Person zakharSister = new Person("Zaxarova", "Marina", "Yuriivna",
+                "G", 36, Duration.ALIVE, Kinsman.BROTHER);
+        Person strashko = new Person("Strashko", "Irina", "Yuriivna",
+                "G", 54, Duration.ALIVE, Kinsman.MOTHER);
+        Person kovalev = new Person("Kovalev", "Yuriu", "Sergeevich",
+                "M", 57, Duration.ALIVE, Kinsman.FATHER);
+        Person strashkoGrandFather = new Person("Strashko", "Yuriu", "Georgievich",
+                "M", 82, Duration.ALIVE, Kinsman.GRANDFATHER);
+        Person strashkoGrandMother = new Person("Strashko", "Valentina", "Aleksandrovna",
+                "G", 81, Duration.DEAD, Kinsman.GRANDMOTHER);
+        Person kovalevGrandFather = new Person("Kovalev", "Yuriu", "Markovich",
+                "M", 83, Duration.ALIVE, Kinsman.GRANDFATHER);
+        Person kovalevGrandMother = new Person("Kovaleva", "Mariya", "Genadievna",
+                "G", 80, Duration.DEAD, Kinsman.GRANDMOTHER);
+        Person kovalevGrandAunt = new Person("Kovaleva", "Alina", "Genadievna",
+                "G", 83, Duration.DEAD, Kinsman.GRANDMOTHER);
+        Person strashkoGreatFather = new Person("Strashko", "Georgiu", "Vladimirovich",
+                "M", 82, Duration.DEAD, Kinsman.GREATGRANDFATHER);
+        Person vasilcovaGreatMother = new Person("Vasilcova", "Vera", "Aleksandrovna",
+                "G", 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
+        Person seredaGreatFather = new Person("Sereda", "Aleksandr", "Petrovich",
+                "M", 82, Duration.DEAD, Kinsman.GREATGRANDFATHER);
+        Person seredaGreatMother = new Person("Sereda", "Margarita", "Michailovna",
+                "G", 68, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
+        Person kovalevGreatFather = new Person("Kovalev", "Mark", "Valereevich",
+                "M", 67, Duration.DEAD, Kinsman.GREATGRANDFATHER);
+        Person kovalevGreatMother = new Person("Kovaleva", "Nataliya", "Alekseevna",
+                "G", 62, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
+        Person danilenkoGreatFather = new Person("Danilenko", "Genadiu", "Sergeevich",
+                "M", 77, Duration.DEAD, Kinsman.GREATGRANDFATHER);
+        Person danilenkoGreatMother = new Person("Danilenko", "Illona", "Vladimirovna",
+                "G", 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
 
-        myChildren.put(zakharHusbend, list);
+//        myChildren.put()
+//        myChildren.put(zakharHusbend, list);
 
     }
 
