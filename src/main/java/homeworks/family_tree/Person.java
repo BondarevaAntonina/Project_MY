@@ -59,7 +59,7 @@ public class Person  {
         return kinsman == person.kinsman;
     }
 
-    @Override
+/*    @Override
     public int hashCode() {
         int result = surname.hashCode();
         result = 31 * result + firstName.hashCode();
@@ -69,5 +69,5 @@ public class Person  {
         result = 31 * result + duration.hashCode();
         result = 31 * result + kinsman.hashCode();
         return result;
-    }
+    }*/
 }

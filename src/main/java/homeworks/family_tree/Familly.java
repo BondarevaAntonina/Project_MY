@@ -1,6 +1,5 @@
 package homeworks.family_tree;
 
-import org.bouncycastle.util.Arrays;
 
 import java.util.*;
 
@@ -32,7 +31,7 @@ public class Familly {
         Person zakharBrother = new Person("Zaxarov", "Alexseu", "Yuriivich",
                 "M", 28, Duration.ALIVE, Kinsman.BROTHER);
         Person zakharSister = new Person("Zaxarova", "Marina", "Yuriivna",
-                "G", 36, Duration.ALIVE, Kinsman.BROTHER);
+                "G", 36, Duration.ALIVE, Kinsman.SISTER);
         Person strashko = new Person("Strashko", "Irina", "Yuriivna",
                 "G", 54, Duration.ALIVE, Kinsman.MOTHER);
         Person kovalev = new Person("Kovalev", "Yuriu", "Sergeevich",
@@ -65,18 +64,29 @@ public class Familly {
                 "G", 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER);
 
 
-        addChild(you, Arrays.asList(strashko, kovalev));
+/*        addChild(you, Arrays.asList(strashko, kovalev));
         addChild(strashko, Arrays.asList(you, zakharBrother, zakharSister, strashkoGrandFather, strashkoGrandMother));
-        addChild(strashkoGrandMother, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));
-
+        addChild(strashkoGrandMother, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));*/
+//
+        addChild(you, Arrays.asList(strashko, kovalev));
+        addChild(you, Arrays.asList(zakharBrother, zakharSister, strashko, kovalev));
+        addChild(strashko, Arrays.asList(strashkoGrandFather, strashkoGrandMother));
+        addChild(strashkoGrandFather, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));
+        addChild(strashkoGrandMother, Arrays.asList(seredaGreatFather, seredaGreatMother));
+        addChild(kovalev, Arrays.asList(kovalevGrandFather, kovalevGrandMother, kovalevGrandAunt));
+        addChild(kovalevGrandFather, Arrays.asList(kovalevGreatFather, kovalevGreatMother));
+        addChild(kovalevGrandMother, Arrays.asList(danilenkoGreatFather, danilenkoGreatMother));
 
     }
 
     // Выводить родословное дерево конкретного человека.
     public void familyTreeParticularPerson(Person person) {
-//        myChildren.entrySet()
-    }
+        myChildren.entrySet().stream().filter(p -> p.getValue().contains(person)).forEach(e -> {
+            System.out.println(e.toString());
+        });
 
+    }
+    // Показывать прямых родственников
     public void showDirectRelatives() {
 
     }
