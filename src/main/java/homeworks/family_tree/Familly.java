@@ -1,7 +1,10 @@
 package homeworks.family_tree;
 
 
+import homeworks.chat_map.man_map.Man;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Создать приложение родословная. Приложение должно позволять:
@@ -68,7 +71,6 @@ public class Familly {
         addChild(strashko, Arrays.asList(you, zakharBrother, zakharSister, strashkoGrandFather, strashkoGrandMother));
         addChild(strashkoGrandMother, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));*/
 //
-        addChild(you, Arrays.asList(strashko, kovalev));
         addChild(you, Arrays.asList(zakharBrother, zakharSister, strashko, kovalev));
         addChild(strashko, Arrays.asList(strashkoGrandFather, strashkoGrandMother));
         addChild(strashkoGrandFather, Arrays.asList(strashkoGreatFather, vasilcovaGreatMother));
@@ -77,22 +79,50 @@ public class Familly {
         addChild(kovalevGrandFather, Arrays.asList(kovalevGreatFather, kovalevGreatMother));
         addChild(kovalevGrandMother, Arrays.asList(danilenkoGreatFather, danilenkoGreatMother));
 
+
+
     }
 
     // Выводить родословное дерево конкретного человека.
     public void familyTreeParticularPerson(Person person) {
-        myChildren.entrySet().stream().filter(p -> p.getValue().contains(person)).forEach(e -> {
+        /*myChildren.entrySet().stream().filter(p -> p.getValue().contains(person)).forEach(e -> {
             System.out.println(e.toString());
-        });
+        });*/
+
+        List<Person> people = myChildren.get(person);
+
+        System.out.println(person);
+
+        if(Objects.isNull(people)) {
+            System.out.println(person);
+            return;
+        }
+
+        System.out.println(people + "\nEnd tree of " + person.getFirstName() + "\t" + person.getSurname());
+
+        people.forEach(this::familyTreeParticularPerson);
 
     }
+
+
     // Показывать прямых родственников
-    public void showDirectRelatives() {
+    public void showDirectRelatives(String surname, String firstname, String middlename) {
+    myChildren.entrySet()
+//            .stream().filter(ppn.ALIVE)).collect(Collectors.counting()).
+            .stream()
+//                .filter(e -> e.getValue().equals(Duration.ALIVE))
+                .filter(e -> {
+                    Person person = e.getKey();
+
+                    return person.getSurname().equals(surname) &&
+                    person.getFirstName().equals(firstname) &&
+                    person.getMiddleName().equals(middlename);
+                }).findFirst().get().getValue().forEach(System.out::println);
 
     }
 
-    public void showNumberOfLiving() {
-
+    public void printInfoTree() {
+        System.out.println(myChildren.keySet().stream().filter(p -> p.getDuration() == Duration.ALIVE).count());
     }
 
     public void showNumberGender() {

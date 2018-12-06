@@ -1,15 +1,15 @@
 package homeworks.family_tree;
 
 /**
- Создать приложение родословная. Приложение должно позволять:
- 1) Выводить родословное дерево конкретного человека.
- 2) Показывать прямых родственников
- 3) Вычислять статистику по всему дереву: количество живых, мужчин/женщин, среднее количество детей,
-  среднюю продолжительность жизни
- 4) Показывать прямых родственников с братьями и сёстрами, все родственники.
- 5) Показывать степень родства двух людей в одной ветке дерева.
+ * Создать приложение родословная. Приложение должно позволять:
+ * 1) Выводить родословное дерево конкретного человека.
+ * 2) Показывать прямых родственников
+ * 3) Вычислять статистику по всему дереву: количество живых, мужчин/женщин, среднее количество детей,
+ * среднюю продолжительность жизни
+ * 4) Показывать прямых родственников с братьями и сёстрами, все родственники.
+ * 5) Показывать степень родства двух людей в одной ветке дерева.
  */
-public class Person  {
+public class Person {
 
     private String surname;
     private String firstName;
@@ -18,6 +18,7 @@ public class Person  {
     private int age;
     private Duration duration;
     private Kinsman kinsman;
+    private int countChildren;
 
     public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration,
                   Kinsman kinsman) {
@@ -28,6 +29,38 @@ public class Person  {
         this.age = age;
         this.duration = duration;
         this.kinsman = kinsman;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Override
@@ -59,7 +92,7 @@ public class Person  {
         return kinsman == person.kinsman;
     }
 
-/*    @Override
+    @Override
     public int hashCode() {
         int result = surname.hashCode();
         result = 31 * result + firstName.hashCode();
@@ -67,7 +100,6 @@ public class Person  {
         result = 31 * result + gender.hashCode();
         result = 31 * result + age;
         result = 31 * result + duration.hashCode();
-        result = 31 * result + kinsman.hashCode();
         return result;
-    }*/
+    }
 }
