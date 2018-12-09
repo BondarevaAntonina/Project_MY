@@ -14,14 +14,13 @@ public class Person {
     private String surname;
     private String firstName;
     private String middleName;
-    private String gender;
+    private Gender gender;
     private int age;
     private Duration duration;
     private Kinsman kinsman;
     private int countChildren;
 
-    public Person(String surname, String firstName, String middleName, String gender, int age, Duration duration,
-                  Kinsman kinsman) {
+    public Person(String surname, String firstName, String middleName, Gender gender, int age, Duration duration, Kinsman kinsman, int countChildren) {
         this.surname = surname;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -29,6 +28,7 @@ public class Person {
         this.age = age;
         this.duration = duration;
         this.kinsman = kinsman;
+        this.countChildren = countChildren;
     }
 
     public Duration getDuration() {
@@ -61,6 +61,38 @@ public class Person {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Kinsman getKinsman() {
+        return kinsman;
+    }
+
+    public void setKinsman(Kinsman kinsman) {
+        this.kinsman = kinsman;
+    }
+
+    public int getCountChildren() {
+        return countChildren;
+    }
+
+    public void setCountChildren(int countChildren) {
+        this.countChildren = countChildren;
     }
 
     @Override

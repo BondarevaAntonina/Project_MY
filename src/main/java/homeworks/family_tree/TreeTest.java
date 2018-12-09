@@ -6,13 +6,16 @@ public class TreeTest {
 
         Familly familly = new Familly();
 
-/*        familly.familyTreeParticularPerson(new Person("Zaxarov", "Alexseu", "Yuriivich",
-                "M", 28, Duration.ALIVE, Kinsman.BROTHER));*/
         Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
-                "G", 32, Duration.ALIVE, null);
+                Gender.WOMAN, 32, Duration.ALIVE, null,0);
+
 //        familly.showDirectRelatives("Zaxarova", "Dariya", "Yuriivna");
+//
 //        familly.familyTreeParticularPerson(you);
-        familly.printInfoTree();
+
+//        familly.printInfoTree();
+
+        familly.showNumberGender();
     }
 
 }

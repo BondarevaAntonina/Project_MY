@@ -5,14 +5,11 @@ public enum Kinsman {
     FATHER("father"),
     SISTER("sister"),
     BROTHER("brother"),
-    HUSBAND("husband"),
-    WIFE("wife"),
     GRANDMOTHER("grandmother"),
     GRANDFATHER("grandfather"),
     GREATGRANDFATHER("greatGrandFather"),
     GREATGRANDMOTHER("greatGrandMother"),
-    AUNT("aunt"),
-    UNCLE("uncle");
+    AUNT("aunt");
 
     private String nameKinsman;
 
