@@ -1,13 +1,7 @@
 package homeworks.family_tree;
 
 
-import homeworks.chat_map.man_map.Address;
-import homeworks.chat_map.man_map.Country;
-import homeworks.chat_map.man_map.Man;
-
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Создать приложение родословная. Приложение должно позволять:
@@ -20,15 +14,15 @@ import java.util.stream.Collectors;
  */
 public class Familly {
 
-    private Map<Person, List<Person>> myChildren;
+    private Map<Person, List<Person>> familyMembers;
 
     public Familly() {
-        this.myChildren = new HashMap<>();
+        this.familyMembers = new HashMap<>();
         fillFamillyTree();
     }
 
     public void addChild(Person person, List<Person> people) {
-        myChildren.put(person, people);
+        familyMembers.put(person, people);
     }
 
     private void fillFamillyTree() {
@@ -84,7 +78,7 @@ public class Familly {
     // Выводить родословное дерево конкретного человека.
     public void familyTreeParticularPerson(Person person) {
 
-        List<Person> people = myChildren.get(person);
+        List<Person> people = familyMembers.get(person);
 
         System.out.println(person);
 
@@ -102,14 +96,14 @@ public class Familly {
 
     // Показывать прямых родственников
     public void showDirectRelatives(String surname, String firstname, String middlename) {
-    myChildren.entrySet()
-            .stream()
+        familyMembers.entrySet()
+                .stream()
                 .filter(e -> {
                     Person person = e.getKey();
 
                     return person.getSurname().equals(surname) &&
-                    person.getFirstName().equals(firstname) &&
-                    person.getMiddleName().equals(middlename);
+                            person.getFirstName().equals(firstname) &&
+                            person.getMiddleName().equals(middlename);
                 }).findFirst().get().getValue().forEach(System.out::println);
 
     }
@@ -117,18 +111,25 @@ public class Familly {
     // Вычислять статистику по всему дереву: количество живых, мужчин/женщин, среднее количество детей,
     // * среднюю продолжительность жизни
     public void printInfoTree() {
-        System.out.println(myChildren.keySet().stream().filter(p -> p.getDuration() == Duration.ALIVE).count());
+        System.out.println(familyMembers.keySet().stream().filter(p -> p.getDuration() == Duration.ALIVE).count());
 
     }
 
     public void showNumberGender() {
 
 /*        Predicate<Person> manPredicate = person -> person.getGender().equals(Gender.MAN);
-        myChildren.entrySet().stream().filter(e -> e.getValue().equals(manPredicate)).forEach(System.out::println);*/
+        familyMembers.entrySet().stream().filter(e -> e.getValue().equals(manPredicate)).forEach(System.out::println);*/
 
-//        List<Person> people = myChildren.entrySet().stream().filter(p -> p.getValue().contains(Gender.WOMAN)).map()
-//
-//        people.forEach(System.out::println);
+//        Stream<Map.Entry <Person, List <Person>>> people = familyMembers.entrySet().stream().filter(p -> p.getValue().contains(Gender.WOMAN));
+
+        familyMembers.entrySet()
+                .stream()
+                .filter(e -> {
+                    List <Person> person = e.getValue();
+
+                    return person.equals(Gender.MAN);
+                }).findFirst().get().getValue().forEach(System.out::println);
+
 
 
     }
