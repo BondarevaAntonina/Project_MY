@@ -2,6 +2,9 @@ package homeworks.family_tree;
 
 
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Создать приложение родословная. Приложение должно позволять:
@@ -115,6 +118,7 @@ public class Familly {
 
     }
 
+
     public void showNumberGender() {
 
 /*        Predicate<Person> manPredicate = person -> person.getGender().equals(Gender.MAN);
@@ -122,6 +126,8 @@ public class Familly {
 
 //        Stream<Map.Entry <Person, List <Person>>> people = familyMembers.entrySet().stream().filter(p -> p.getValue().contains(Gender.WOMAN));
 
+
+/*
         familyMembers.entrySet()
                 .stream()
                 .filter(e -> {
@@ -129,6 +135,15 @@ public class Familly {
 
                     return person.equals(Gender.MAN);
                 }).findFirst().get().getValue().forEach(System.out::println);
+*/
+
+
+        Set<Map.Entry<Person, List <Person>>> entries = familyMembers.entrySet();
+
+        entries.forEach(entry -> {
+            System.out.println(entry.getValue().contains(Gender.MAN));
+        });
+
 
 
 
