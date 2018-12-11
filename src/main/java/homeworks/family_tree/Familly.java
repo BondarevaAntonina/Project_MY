@@ -2,9 +2,8 @@ package homeworks.family_tree;
 
 
 import java.util.*;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+
+import static homeworks.family_tree.Gender.WOMAN;
 
 /**
  * Создать приложение родословная. Приложение должно позволять:
@@ -30,41 +29,41 @@ public class Familly {
 
     private void fillFamillyTree() {
         Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
-                Gender.WOMAN, 32, Duration.ALIVE, null, 0);
+                WOMAN, 32, Duration.ALIVE, null, 0);
         Person zakharBrother = new Person("Zaxarov", "Alexseu", "Yuriivich",
                 Gender.MAN, 28, Duration.ALIVE, Kinsman.BROTHER, 1);
         Person zakharSister = new Person("Zaxarova", "Marina", "Yuriivna",
-                Gender.WOMAN, 36, Duration.ALIVE, Kinsman.SISTER, 2);
+                WOMAN, 36, Duration.ALIVE, Kinsman.SISTER, 2);
         Person strashko = new Person("Strashko", "Irina", "Yuriivna",
-                Gender.WOMAN, 54, Duration.ALIVE, Kinsman.MOTHER, 3);
+                WOMAN, 54, Duration.ALIVE, Kinsman.MOTHER, 3);
         Person kovalev = new Person("Kovalev", "Yuriu", "Sergeevich",
                 Gender.MAN, 57, Duration.ALIVE, Kinsman.FATHER, 3);
         Person strashkoGrandFather = new Person("Strashko", "Yuriu", "Georgievich",
                 Gender.MAN, 82, Duration.ALIVE, Kinsman.GRANDFATHER, 1);
         Person strashkoGrandMother = new Person("Strashko", "Valentina", "Aleksandrovna",
-                Gender.WOMAN, 81, Duration.DEAD, Kinsman.GRANDMOTHER, 2);
+                WOMAN, 81, Duration.DEAD, Kinsman.GRANDMOTHER, 2);
         Person kovalevGrandFather = new Person("Kovalev", "Yuriu", "Markovich",
                 Gender.MAN, 83, Duration.ALIVE, Kinsman.GRANDFATHER, 3);
         Person kovalevGrandMother = new Person("Kovaleva", "Mariya", "Genadievna",
-                Gender.WOMAN, 80, Duration.DEAD, Kinsman.GRANDMOTHER, 1);
+                WOMAN, 80, Duration.DEAD, Kinsman.GRANDMOTHER, 1);
         Person kovalevGrandAunt = new Person("Kovaleva", "Alina", "Genadievna",
-                Gender.WOMAN, 83, Duration.DEAD, Kinsman.AUNT, 1);
+                WOMAN, 83, Duration.DEAD, Kinsman.AUNT, 1);
         Person strashkoGreatFather = new Person("Strashko", "Georgiu", "Vladimirovich",
                 Gender.MAN, 82, Duration.DEAD, Kinsman.GREATGRANDFATHER, 1);
         Person vasilcovaGreatMother = new Person("Vasilcova", "Vera", "Aleksandrovna",
-                Gender.WOMAN, 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 2);
+                WOMAN, 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 2);
         Person seredaGreatFather = new Person("Sereda", "Aleksandr", "Petrovich",
                 Gender.MAN, 82, Duration.DEAD, Kinsman.GREATGRANDFATHER, 2);
         Person seredaGreatMother = new Person("Sereda", "Margarita", "Michailovna",
-                Gender.WOMAN, 68, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 1);
+                WOMAN, 68, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 1);
         Person kovalevGreatFather = new Person("Kovalev", "Mark", "Valereevich",
                 Gender.MAN, 67, Duration.DEAD, Kinsman.GREATGRANDFATHER, 3);
         Person kovalevGreatMother = new Person("Kovaleva", "Nataliya", "Alekseevna",
-                Gender.WOMAN, 62, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 2);
+                WOMAN, 62, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 2);
         Person danilenkoGreatFather = new Person("Danilenko", "Genadiu", "Sergeevich",
                 Gender.MAN, 77, Duration.DEAD, Kinsman.GREATGRANDFATHER, 1);
         Person danilenkoGreatMother = new Person("Danilenko", "Illona", "Vladimirovna",
-                Gender.WOMAN, 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 1);
+                WOMAN, 79, Duration.DEAD, Kinsman.GREATGRANDMOTHER, 1);
 
         addChild(you, Arrays.asList(zakharBrother, zakharSister, strashko, kovalev));
         addChild(zakharBrother, Arrays.asList(strashko, kovalev));
@@ -118,7 +117,6 @@ public class Familly {
 
     }
 
-
     public void showNumberGender() {
 
 /*        Predicate<Person> manPredicate = person -> person.getGender().equals(Gender.MAN);
@@ -138,17 +136,29 @@ public class Familly {
 */
 
 
+/*
         Set<Map.Entry<Person, List <Person>>> entries = familyMembers.entrySet();
+
 
         entries.forEach(entry -> {
             System.out.println(entry.getValue().contains(Gender.MAN));
         });
+*/
 
+//      List<Person> mapPersons = familyMembers.entrySet().stream().collect(Collectors.groupingBy(Person::getGender);
 
+/*        Set<Map.Entry<Person, List <Person>>> entries = familyMembers.entrySet();
+        entries.stream().collect(Collectors.groupingBy(Person::getGender, Collectors.groupingBy(Person::getGender), Collectors.counting()));*/
 
+        for (Map.Entry<Person,List<Person>> header : familyMembers.entrySet()) {
+            if (header.getKey() == null) {
+                List<Person> values = header.getValue();
+                System.out.println(values.stream().filter(p -> p.getGender() == Gender.WOMAN));
+            }
+
+        }
 
     }
-
 
     public void showAverageNumberOfChildren() {
 
