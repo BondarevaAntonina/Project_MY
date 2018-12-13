@@ -15,8 +15,6 @@ public class TreeTest {
 
 //        familly.printInfoTree();
 
-//        familly.showNumberGender();
-
         familly.collectInfo();
 
     }
