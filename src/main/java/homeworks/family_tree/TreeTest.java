@@ -15,7 +15,8 @@ public class TreeTest {
 
 //        familly.printInfoTree();
 
-        familly.collectInfo();
+//        familly.collectInfo();
+        familly.showDirectRelativesBrotherSister();
 
     }
 

@@ -143,6 +143,25 @@ public class Familly {
     }
 
     public void showDirectRelativesBrotherSister() {
+        Person you = new Person("Zaxarova", "Dariya", "Yuriivna", WOMAN, 32, Duration.ALIVE, null, 0);
+
+        List <Person> people = familyMembers.get(you);
+
+//        System.out.println(you);
+
+        if (Objects.isNull(people)) {
+            System.out.println(you);
+            return;
+        }
+
+//        System.out.println(people + "\nEnd tree of " + you.getFirstName() + "\t" + you.getSurname());
+
+//        people.forEach(this::familyTreeParticularPerson);
+
+        Predicate <Person> predicateKinsman = m -> m.getKinsman() == Kinsman.BROTHER;
+
+        people.stream().filter(predicateKinsman).forEach(this::familyTreeParticularPerson);
+
 
     }
 
