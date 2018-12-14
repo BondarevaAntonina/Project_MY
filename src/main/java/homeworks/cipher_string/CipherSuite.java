@@ -2,21 +2,23 @@ package homeworks.cipher_string;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Created by antoni on 11.12.2018.
  */
 public class CipherSuite {
 
-    Map<String, String> hm = new HashMap<String, String>();
+    Map <String, String> hm = new HashMap <>();
 
     public CipherSuite() {
         this.hm = new HashMap <>();
-        fillCipher();
+//        fillCipher();
     }
 
     public void fillCipher() {
-
+        Scanner in = new Scanner(System.in);
+        String user = in.nextLine();
         hm.put("А", "760");
         hm.put("А", "128");
         hm.put("А", "350");
@@ -78,9 +80,16 @@ public class CipherSuite {
         hm.put("", "758");
         hm.put("", "801");
         hm.put("", "849");
-        for (String key : hm.keySet()) {
 
+        for (char letter : user.toCharArray()) {
+            for (String key : hm.keySet()) {
+                if (letter == key.charAt(0)) {
+                    System.out.print(hm.get(key));
+                    System.out.print(" ");
+                }
+            }
         }
+
 
     }
 

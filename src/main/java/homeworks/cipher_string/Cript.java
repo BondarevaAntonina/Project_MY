@@ -8,6 +8,7 @@ public class Cript {
     public static void main(String[] args) {
 
         CipherSuite cipherSuite = new CipherSuite();
+        cipherSuite.fillCipher();
     }
 
 }
