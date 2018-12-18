@@ -46,6 +46,12 @@ public class Decoder {
         String userInput = "104,801,768,765,215,544,849,102,762,759,562";
 
         StringBuilder result = new StringBuilder();
+
+/*        for (String code : userInput.split(",")) {
+        chiperCodes.entrySet().stream().filter(key -> key.getValue().contains(code)).forEach( t -> t.getKey());
+
+        }*/
+
         for (String code : userInput.split(",")) {
             for(Map.Entry<String, String> item : chiperCodes.entrySet()) {
                 if (item.getValue().contains(code)) {
