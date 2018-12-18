@@ -2,24 +2,14 @@ package homeworks.cipher_string;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
- * Created by antoni on 11.12.2018.
+ * Created by antoni on 18.12.2018.
  */
-public class CipherSuite {
+public class Decoder {
 
-
-    Map <String, String> chiperCodes = new HashMap <>();
-
-    public CipherSuite() {
-        this.chiperCodes = new HashMap <>();
-//        fillCipher();
-    }
-
-    public void fillCipher() {
-        Scanner in = new Scanner(System.in);
-        String user = in.nextLine();
+    public static void main(String[] args) {
+        Map<String, String> chiperCodes = new HashMap<>();
         chiperCodes.put("А", "760,128,350,201");
         chiperCodes.put("Б", "101");
         chiperCodes.put("В", "210,106");
@@ -53,19 +43,11 @@ public class CipherSuite {
         chiperCodes.put("Я", "216,104");
         chiperCodes.put(" ", "751,769,758,801,849");
 
-
-    }
-
-    public void showFindLetter() {
-
-        String userInput = "102,762,759,562"; // should be АБВ
-
-/*        Scanner in = new Scanner(System.in);
-        String user = in.nextLine();*/
+        String userInput = "104,801,768,765,215,544,849,102,762,759,562";
 
         StringBuilder result = new StringBuilder();
         for (String code : userInput.split(",")) {
-            for (Map.Entry <String, String> item : chiperCodes.entrySet()) {
+            for(Map.Entry<String, String> item : chiperCodes.entrySet()) {
                 if (item.getValue().contains(code)) {
                     result.append(item.getKey());
                 }
