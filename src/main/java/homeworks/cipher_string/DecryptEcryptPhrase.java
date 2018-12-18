@@ -1,5 +1,6 @@
 package homeworks.cipher_string;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
@@ -28,20 +29,18 @@ public class DecryptEcryptPhrase {
         for (String code : splitPhrase(decryptPhrase)) {
             for(Map.Entry<String, String> item : chiperCodes.entrySet()) {
                 if (item.getKey().equals(code)) {
-                    result.append(getRandonCodePart(item.getValue()));
+                    result.append((item.getValue()));
                 }
             }
         }
+
+        Arrays.stream(splitPhrase(decryptPhrase)).forEach(l -> {
+            chiperCodes.entrySet().stream().filter(entry -> entry.getKey().equals(l)).forEach(f -> result.append(f.getValue()));
+        });
+
         return result.toString();
     }
 
-    private static String getRandonCodePart(String code) {
-        if (code.length() == 3) {
-            return code;
-        }
-        int randomNum = ThreadLocalRandom.current().nextInt(1, code.length() / 3);
-        return code.split(",")[randomNum];
-    }
 
     private static String decryptPhrase(String ecryptPhrase) {
         StringBuilder result = new StringBuilder();
@@ -73,7 +72,7 @@ public class DecryptEcryptPhrase {
         return arr;
     }
 
-    private static void initChiperCodes() {
+    private static void initChiperCodes() {//800767105544743766
         chiperCodes.put("А", "760,128,350,201");
         chiperCodes.put("Б", "101");
         chiperCodes.put("В", "210,106");
@@ -87,7 +86,7 @@ public class DecryptEcryptPhrase {
         chiperCodes.put("Л", "132,354");
         chiperCodes.put("M", "755,742");
         chiperCodes.put("Н", "763,756,212");
-        chiperCodes.put("О", "757,213,765,133,353");
+        chiperCodes.put("О", "757,213,765,133,353");//касса
         chiperCodes.put("П", "743,766");
         chiperCodes.put("Р", "134,532");
         chiperCodes.put("С", "800,767,105");

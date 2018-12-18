@@ -3,6 +3,7 @@ package homeworks.family_tree;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static homeworks.family_tree.Gender.WOMAN;
 
@@ -17,25 +18,25 @@ import static homeworks.family_tree.Gender.WOMAN;
  */
 public class Familly {
 
-    private Map <Person, List <Person>> familyMembers;
-    private Map <String, Integer> infoMap;
+    private Map<Person, List<Person>> familyMembers;
+    private Map<String, Double> infoMap;
 
     public Familly() {
-        this.familyMembers = new HashMap <>();
-        infoMap = new HashMap <>();
+        this.familyMembers = new HashMap<>();
+        infoMap = new HashMap<>();
         fillInfoMap();
         fillFamillyTree();
     }
 
     private void fillInfoMap() {
-        infoMap.put("Count of man", 0);
-        infoMap.put("Count living", 0);
-        infoMap.put("Count of woman", 0);
-        infoMap.put("Count of children", 0);
-        infoMap.put("Count average life expectancy", 0);
+        infoMap.put("Count of man", 0.0);
+        infoMap.put("Count living", 0.0);
+        infoMap.put("Count of woman", 0.0);
+        infoMap.put("Count of children", 0.0);
+        infoMap.put("Count average life expectancy", 0.0);
     }
 
-    public void addChild(Person person, List <Person> people) {
+    public void addChild(Person person, List<Person> people) {
         familyMembers.put(person, people);
     }
 
@@ -74,7 +75,7 @@ public class Familly {
     // Выводить родословное дерево конкретного человека.
     public void familyTreeParticularPerson(Person person) {//you
 
-        List <Person> people = familyMembers.get(person);
+        List<Person> people = familyMembers.get(person);
 
         System.out.println(person);
 
@@ -92,22 +93,23 @@ public class Familly {
     // Вычислять статистику по всему дереву: количество живых, мужчин/женщин, среднее количество детей, среднюю продолжительность жизни
     private void fillInformation(Person person) {
 
-        List <Person> people = familyMembers.get(person);
+        List<Person> people = familyMembers.get(person);
 
         if (Objects.isNull(people)) {
             return;
         }
 
-        Predicate <Person> predicate = m -> m.getCountChildren() < 4;
-        Predicate <Person> predicateMan = m -> m.getSurname().equals(person);
-        Predicate <Person> predicateAge = m -> m.getAge() <= 50;
+        Predicate<Person> predicate = m -> m.getCountChildren() < 4;
+        Predicate<Person> predicateMan = m -> m.getSurname().equals(person);
+        Predicate<Person> predicateAge = m -> m.getAge() <= 50;
 
-        int countAlive = (int) people.stream().filter(p -> p.getDuration() == Duration.ALIVE).count();
-        int countMan = (int) people.stream().filter(p -> p.getGender() == Gender.MAN).count();
+        double countAlive =  people.stream().filter(p -> p.getDuration() == Duration.ALIVE).count();
+        double countMan =  people.stream().filter(p -> p.getGender() == Gender.MAN).count();
 //        int countMan = (int) people.stream().filter(p -> p.getGender() == Gender.MAN).filter(predicateMan).count();
-        int countWomen = (int) people.stream().filter(p -> p.getGender() == Gender.WOMAN).count();
-        int countChildren = (int) people.stream().filter(p -> p.getCountChildren() > 2).filter(predicate).count();
-        int countAge = (int) people.stream().filter(p -> p.getAge() > 35).filter(predicateAge).count();
+        double countWomen =  people.stream().filter(p -> p.getGender() == Gender.WOMAN).count();
+//        int countChildren = (int) people.stream().filter(p -> p.getCountChildren() > 2).filter(predicate).count();
+        double countChildren = people.stream().mapToInt(Person::getCountChildren).average().getAsDouble();
+        double countAge = people.stream().mapToInt(Person::getAge).average().getAsDouble();
 
 
         infoMap.merge("Count living", countAlive, (oldValue, newValue) -> oldValue + newValue);
@@ -126,9 +128,9 @@ public class Familly {
 
         fillInformation(you);
 
-//        familyMembers.entrySet().stream().collect(Collectors.groupingBy(e -> e.getKey().getGender(), Collectors.counting()));
-
         System.out.println(infoMap);
+
+//        familyMembers.entrySet().stream().collect(Collectors.groupingBy(e -> e.getKey().getGender(), Collectors.counting()));
 
     }
 
@@ -144,25 +146,10 @@ public class Familly {
 
     public void showDirectRelativesBrotherSister(Person person) {
 
-        List <Person> people = familyMembers.get(person);
-
-        if (Objects.isNull(people)) {
-            System.out.println(person);
-            return;
-        }
-
-
-        Predicate <Person> predicateKinsman = m -> m.getKinsman() == Kinsman.BROTHER;
-
-//        people.stream().filter(predicateKinsman).forEach(this::familyTreeParticularPerson);
-        people.stream().filter(t -> t.getKinsman().equals(predicateKinsman)).forEach(this::familyTreeParticularPerson);
-
-
-/*        for(Map.Entry <Person, List <Person>> item : familyMembers.entrySet()) {
-            if (familyMembers.equals(predicateKinsman)) {
-                System.out.println(item);
-            }
-        }*/
+        List<Person> people = familyMembers.get(person);
+        familyMembers.get(person).stream()
+                .filter(m -> m.getKinsman() == Kinsman.BROTHER || m.getKinsman() == Kinsman.SISTER)
+                .forEach(System.out::println);
 
     }
 
