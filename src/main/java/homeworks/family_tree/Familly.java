@@ -142,26 +142,27 @@ public class Familly {
 
     }
 
-    public void showDirectRelativesBrotherSister() {
-        Person you = new Person("Zaxarova", "Dariya", "Yuriivna", WOMAN, 32, Duration.ALIVE, null, 0);
+    public void showDirectRelativesBrotherSister(Person person) {
 
-        List <Person> people = familyMembers.get(you);
-
-//        System.out.println(you);
+        List <Person> people = familyMembers.get(person);
 
         if (Objects.isNull(people)) {
-            System.out.println(you);
+            System.out.println(person);
             return;
         }
 
-//        System.out.println(people + "\nEnd tree of " + you.getFirstName() + "\t" + you.getSurname());
-
-//        people.forEach(this::familyTreeParticularPerson);
 
         Predicate <Person> predicateKinsman = m -> m.getKinsman() == Kinsman.BROTHER;
 
-        people.stream().filter(predicateKinsman).forEach(this::familyTreeParticularPerson);
+//        people.stream().filter(predicateKinsman).forEach(this::familyTreeParticularPerson);
+        people.stream().filter(t -> t.getKinsman().equals(predicateKinsman)).forEach(this::familyTreeParticularPerson);
 
+
+/*        for(Map.Entry <Person, List <Person>> item : familyMembers.entrySet()) {
+            if (familyMembers.equals(predicateKinsman)) {
+                System.out.println(item);
+            }
+        }*/
 
     }
 

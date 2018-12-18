@@ -6,8 +6,8 @@ public class TreeTest {
 
         Familly familly = new Familly();
 
-/*        Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
-                Gender.WOMAN, 32, Duration.ALIVE, null,0);*/
+        Person you = new Person("Zaxarova", "Dariya", "Yuriivna",
+                Gender.WOMAN, 32, Duration.ALIVE, null,0);
 
 //        familly.showDirectRelatives("Zaxarova", "Dariya", "Yuriivna");
 //
@@ -16,7 +16,7 @@ public class TreeTest {
 //        familly.printInfoTree();
 
 //        familly.collectInfo();
-        familly.showDirectRelativesBrotherSister();
+        familly.showDirectRelativesBrotherSister(you);
 
     }
 
