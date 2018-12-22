@@ -3,11 +3,11 @@ package homeworks.family_tree;
 
 import java.util.*;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static homeworks.family_tree.Gender.WOMAN;
 
 /**
+ * //https://www.baeldung.com/java-map-duplicate-keys
  * Создать приложение родословная. Приложение должно позволять:
  * 1) Выводить родословное дерево конкретного человека. - DONE
  * 2) Показывать прямых родственников - DONE
@@ -19,10 +19,13 @@ import static homeworks.family_tree.Gender.WOMAN;
 public class Familly {
 
     private Map<Person, List<Person>> familyMembers;
+
     private Map<String, Double> infoMap;
 
+
+
     public Familly() {
-        this.familyMembers = new HashMap<>();
+        this.familyMembers = new HashMap <>();
         infoMap = new HashMap<>();
         fillInfoMap();
         fillFamillyTree();
@@ -38,6 +41,7 @@ public class Familly {
 
     public void addChild(Person person, List<Person> people) {
         familyMembers.put(person, people);
+//        familyMembers.computeIfAbsent().add();
     }
 
     private void fillFamillyTree() {
@@ -69,6 +73,7 @@ public class Familly {
         addChild(kovalev, Arrays.asList(kovalevGrandFather, kovalevGrandMother, kovalevGrandAunt));
         addChild(kovalevGrandFather, Arrays.asList(kovalevGreatFather, kovalevGreatMother));
         addChild(kovalevGrandMother, Arrays.asList(danilenkoGreatFather, danilenkoGreatMother));
+
 
     }
 
@@ -107,7 +112,6 @@ public class Familly {
         double countMan =  people.stream().filter(p -> p.getGender() == Gender.MAN).count();
 //        int countMan = (int) people.stream().filter(p -> p.getGender() == Gender.MAN).filter(predicateMan).count();
         double countWomen =  people.stream().filter(p -> p.getGender() == Gender.WOMAN).count();
-//        int countChildren = (int) people.stream().filter(p -> p.getCountChildren() > 2).filter(predicate).count();
         double countChildren = people.stream().mapToInt(Person::getCountChildren).average().getAsDouble();
         double countAge = people.stream().mapToInt(Person::getAge).average().getAsDouble();
 
@@ -119,6 +123,8 @@ public class Familly {
         infoMap.merge("Count average life expectancy", countAge, (oldValue, newValue) -> oldValue + newValue);
 
         people.forEach(this::fillInformation);
+
+
 
     }
 
