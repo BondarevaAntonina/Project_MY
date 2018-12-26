@@ -26,7 +26,7 @@ public class DuplicateMap {
     }
 
     public Person get(Person k, int index) {
-        return m.get(k).size()-1 < index ? null : m.get(k).get(index);
+        return m.get(k).size() - 1 < index ? null : m.get(k).get(index);
     }
 
     /*

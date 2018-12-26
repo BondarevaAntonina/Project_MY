@@ -1,30 +1,69 @@
 package homeworks.cipher_string;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by antoni on 21.12.2018.
  */
 public class CryptographicWords {
-     Map<String, List<Integer>> cipherCodes = new HashMap<>();
+    Map<String, List<Integer>> cipherCodes;
 
     public CryptographicWords() {
         this.cipherCodes = new HashMap<>();
         initChiperCodes();
     }
 
-    private  String encryptPhrase(String decryptPhrase) {
+    private String encryptPhrase(String decryptPhrase) {
         StringBuilder result = new StringBuilder();
-        Arrays.stream(splitPhrase(decryptPhrase)).forEach(l -> {
+
+        /*Arrays.stream(splitPhrase(decryptPhrase)).forEach(l -> {
             cipherCodes.entrySet().stream().filter(entry -> entry.getKey().equals(l))
                     .forEach(f -> result.append(fillCipher(f.getValue())));
 
+        });*/
+
+        /*IntStream.range(0, decryptPhrase.length()).forEach(l -> {//0...5
+            cipherCodes
+                    .entrySet()
+                    .stream()
+                    .filter(entry -> entry.getKey().equals(String.valueOf(decryptPhrase.charAt(l))))
+                    .forEach(f -> result.append(fillCipher(f.getValue())));
+
+        });*/
+        String text = decryptPhrase.toUpperCase();
+
+        System.out.println("Result!==");
+
+        IntStream.range(0, decryptPhrase.length()).forEach(l -> {//0...5
+            cipherCodes
+                    .entrySet()
+                    .stream()
+                    .filter(entry -> entry.getKey().equals(String.valueOf(text.charAt(l))))
+                    .flatMap(f -> f.getValue().stream())
+                    .forEach(System.out::print);
+
         });
+
+        /*String text = decryptPhrase.toUpperCase();
+
+        IntStream.range(0, text.length()).forEach(l -> {
+
+            String key = String.valueOf(text.charAt(l));
+
+            if (cipherCodes.containsKey(key)) {
+                cipherCodes.get(key).forEach(System.out::print);
+            }
+
+        });*/
+
         return result.toString();
     }
 
-    private String fillCipher(List <Integer> codes) {
+    private String fillCipher(List<Integer> codes) {
         StringBuilder stringBuilder = new StringBuilder();
+
         for (Integer item : codes) {
             stringBuilder.append(item);
         }
@@ -34,7 +73,9 @@ public class CryptographicWords {
 
     private String decryptPhrase(String ecryptPhrase) {
         StringBuilder result = new StringBuilder();
+
         String previousSymbol = "";
+
         Integer previousCode = 0;
 
         for (Integer code : splitDigits(ecryptPhrase)) {
@@ -42,7 +83,7 @@ public class CryptographicWords {
                 previousSymbol = "";
             }
 
-            for (Map.Entry <String, List <Integer>> item : cipherCodes.entrySet()) {
+            for (Map.Entry<String, List<Integer>> item : cipherCodes.entrySet()) {
                 if (item.getValue().contains(code) && !previousSymbol.equalsIgnoreCase(item.getKey())) {
                     result.append(item.getKey());
                     previousSymbol = item.getKey();
@@ -53,29 +94,57 @@ public class CryptographicWords {
                     forEach(f -> result.append(f.getKey()), previousSymbol);*/
 
         }
+
+
         return result.toString();
     }
 
-    private List <Integer> splitDigits(String encryption) {
-        List <Integer> list = new ArrayList<>();
-        int j = 0;
-        for (int i = 0; i < encryption.length() / 3; i++) {
-            list.add(Integer.valueOf(encryption.substring(j, j + 3)));
-            j += 3;
+    private String decryptPhrase1(String ecryptPhrase) {
+        StringBuilder result = new StringBuilder();
+
+        String[] previousSymbol = {""};
+
+        int[] previousCode = {0};
+
+        for (int code : splitDigits(ecryptPhrase)) {
+            if (previousCode[0] == code) {
+                previousSymbol[0] = "";
+            }
+
+            cipherCodes.entrySet()
+                    .stream()
+                    .filter(entry -> entry.getValue().contains(code) && !previousSymbol[0].equalsIgnoreCase(entry.getKey())).
+                    forEach(f -> {
+                        String key = f.getKey();
+
+                        result.append(key);
+
+                        previousCode[0] = code;
+
+                        previousSymbol[0] = key;
+                    });
+
         }
+
+
+        return result.toString();
+    }
+
+    private List<Integer> splitDigits(String encryption) {
+        List<Integer> list = new ArrayList<>();
+
+        for (int i = 0, j = 0; i < encryption.length() / 3; i++, j += 3) {
+            list.add(Integer.valueOf(encryption.substring(j, j + 3)));
+        }
+
+//        String[] strings = text.split("(?<=\\G.{3})");
+
         return list;
     }
 
-    private String[] splitPhrase(String encryption) {
-        String[] arr = new String[encryption.length()];
-        for (int i = 0; i < encryption.length(); i++) {
-            arr[i] = encryption.substring(i, i + 1);
-        }
-        return arr;
-    }
-
-    public void showEncryptedText( String userDecryptInput) {
+    public void showEncryptedText(String userDecryptInput) {
         String encryptPhrase = encryptPhrase(userDecryptInput);
+
         System.out.println("User decrypt input: " + userDecryptInput + ", encryptPhrase: " + encryptPhrase);
     }
 

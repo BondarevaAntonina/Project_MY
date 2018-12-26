@@ -123,9 +123,7 @@ public class Familly {
         infoMap.merge("Count average life expectancy", countAge, (oldValue, newValue) -> oldValue + newValue);
 
         people.forEach(this::fillInformation);
-
-
-
+        
     }
 
     public void collectInfo() {
@@ -137,6 +135,48 @@ public class Familly {
         System.out.println(infoMap);
 
 //        familyMembers.entrySet().stream().collect(Collectors.groupingBy(e -> e.getKey().getGender(), Collectors.counting()));
+
+    }
+
+    private void fillInformation1(Person person, Set<Person> set) {
+
+        List<Person> people = familyMembers.get(person);
+
+        if (Objects.isNull(people)) {
+
+            set.add(person);
+
+            return;
+        }
+
+        set.addAll(people);
+
+        people.forEach(p -> fillInformation1(p, set));
+
+    }
+
+    public void collectInfo1() {
+
+        Person you = new Person("Zaxarova", "Dariya", "Yuriivna", WOMAN, 32, Duration.ALIVE, null, 0);
+
+        HashSet<Person> set = new HashSet<>();
+
+        set.add(you);
+
+        fillInformation1(you, set);
+
+        double countAlive = set.stream().filter(p -> p.getDuration() == Duration.ALIVE).count();
+        double countMan = set.stream().filter(p -> p.getGender() == Gender.MAN).count();
+        double countWomen = set.stream().filter(p -> p.getGender() == WOMAN).count();
+        double countChildren = set.stream().mapToInt(Person::getCountChildren).average().getAsDouble();
+        double countAge = set.stream().mapToInt(Person::getAge).average().getAsDouble();
+
+        System.out.println("Count of man\t=" +  countMan);
+        System.out.println("Count living\t=" +  countAlive);
+        System.out.println("Count of woman\t=" +  countWomen);
+        System.out.println("Count of children\t=" +  countChildren);
+        System.out.println("Count average life expectancy\t=" +  countAge);
+
 
     }
 

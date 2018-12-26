@@ -9,9 +9,9 @@ public class Ecrypt {
 
         CryptographicWords cryptographicWords = new CryptographicWords();
 
-        cryptographicWords.showEncryptedText("ЖИТЬ");
+        cryptographicWords.showEncryptedText("каССа");
 
-        cryptographicWords.showDecryptedText("102762211131759135214562");
+        cryptographicWords.showDecryptedText("754764760128350201800767105800767105760128350201");
 
     }
 }
