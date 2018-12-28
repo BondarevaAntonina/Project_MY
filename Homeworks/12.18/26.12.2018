@@ -12,10 +12,19 @@
 Give your suggestions about relations between classes
 (is-a, has-a, use-a, etc.). Write well commented code with examples of using these classes.
 
+Создайте классы Square и Rectangles с методами расчета периметра и квадрата.
+Дайте свои предложения об отношениях между классами
+(is-a, has-a, use-a и т. д.). Напишите хорошо прокомментированный код с примерами использования этих классов
+
 * Write code for reading and writing collections of these objects from(into) file.
 * Find object with maximal square.
 * Find object with maximal perimeter.
 * Write code for handling the incorrect format of incoming file.
+
+* Написать код для чтения и записи коллекций этих объектов из (в) файла.
+* Найти объект с максимальным квадратом.
+* Найти объект с максимальным периметром.
+* Напишите код для обработки неправильного формата входящего файла.
 
 
 7) Создать приложение для связи рекламодателя и агенства по размещению рекламы.
