@@ -3,7 +3,7 @@ package lessons.serialization;
 import java.io.*;
 
 public class Serializator implements Serializable {
-
+/*
     private String name;
     private transient int age;
 
@@ -50,5 +50,5 @@ public class Serializator implements Serializable {
             System.out.println(object);
 
         }
-    }
+    }*/
 }
