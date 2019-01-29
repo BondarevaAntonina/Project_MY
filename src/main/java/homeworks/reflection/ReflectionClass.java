@@ -2,6 +2,7 @@ package homeworks.reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.LinkedList;
 
 public class ReflectionClass {
     public static void main(String[] args) {
@@ -18,7 +19,6 @@ public class ReflectionClass {
         String name = null; //no getter =(
         System.out.println(number + name);//output 0null
         try {
-
 
 
             Field field = myClass.getClass().getDeclaredField("name");
@@ -50,7 +50,23 @@ public class ReflectionClass {
         System.out.println("isTransient: " + Modifier.isTransient(classModifiers));
         System.out.println("isVolatile: " + Modifier.isVolatile(classModifiers));
 
-        /**   */
+        /** Class object  */
 
+        System.out.println();
+        MyClass a = new MyClass();
+        Class aclass = a.getClass();
+        System.out.println(aclass);
+
+        /** Getting the class parent and implementing interfaces  */
+
+        System.out.println();
+
+        Class c = LinkedList.class;
+        Class[] interfaces = c.getInterfaces();
+        for (Class cInterface : interfaces) {
+            System.out.println(cInterface.getName());
+        }
+
+        /** Comments */
     }
 }
