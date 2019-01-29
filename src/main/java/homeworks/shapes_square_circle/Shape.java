@@ -1,28 +1,41 @@
 package homeworks.shapes_square_circle;
 
 /**
- * Please create an abstarct class Shape and two subclasses Square and Circle. Replace code in method drawShape()
- * according to principles of polymorphism. Please propose the other solutions for improving quality of the code.
+ * Create classes Square and Rectangles with methods for calculating of perimeter and square.
+ * Give your suggestions about relations between classes
+ * (is-a, has-a, use-a, etc.). Write well commented code with examples of using these classes.
+ *
+ * Создайте классы Square(Площадь) и Rectangles (Прямоугольники) с методами расчета периметра и квадрата.
+ * Дайте свои предложения об отношениях между классами
+ * (is-a, has-a, use-a и т. д.). Напишите хорошо прокомментированный код с примерами использования этих классов
  */
 
-public abstract class Shape {
+public interface  Shape {
 
     //other fields
 
-    public abstract void drawShape();
+    double getPerimeter();
+    double getArea();
 
 }
 
-class Circle extends Shape {
-    @Override
-    public void drawShape() {
-        System.out.println("Drawing Circle");
+abstract class Quadrilaterals implements Shape{
+
+    double base,height;
+
+
+    public int getNumberofSidesForQuadrilaterals(){
+
+        final int sides = 4;
+        return sides;
     }
+
 }
 
-class Square extends Shape {
-    @Override
-    public void drawShape() {
-        System.out.println("Drawing Square");
-    }
-}
+
+
+
+
+
+
+
