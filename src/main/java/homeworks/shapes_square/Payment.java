@@ -1,4 +1,4 @@
-package homeworks.shapes_square_circle;
+package homeworks.shapes_square;
 
 
 public class Payment {
