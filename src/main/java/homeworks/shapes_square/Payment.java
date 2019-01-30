@@ -1,24 +1,41 @@
 package homeworks.shapes_square;
 
 
+import java.io.IOException;
+
 public class Payment {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Rectangles rectangle1 = new Rectangles(8, 5);
+        Rectangles rectangle2 = new Rectangles(7, 4);
+        Square square1 = new Square(7, 7);
+        Square square2 = new Square(5, 5);
 
-        System.out.println("Rectangles");
+        ShapeService sp = new ShapeService();
+        sp.addShape(rectangle1);
+        sp.addShape(rectangle2);
+        sp.addShape(square1);
+        sp.addShape(square2);
 
-        Rectangles c = new Rectangles(7, 4);
-        c.getPerimeter();
-        c.getArea();
-        c.getNumberofSidesForQuadrilaterals();
+//        sp.serializeShapes();
 
-        System.out.println();
-        System.out.println("Square");
+        System.out.println(sp.deserializeShapes());
 
-        Square d = new Square(7, 7);
-        d.getPerimeter();
-        d.getArea();
-        d.getNumberofSidesForQuadrilaterals();
+//        System.out.println("Rectangles");
+
+
+        /*System.out.println(c.getPerimeter());
+        System.out.println(c.getArea());*/
+
+
+//        System.out.println();
+
+//        System.out.println("Square");
+
+
+      /*  System.out.println(square.getPerimeter());
+        System.out.println(square.getArea());*/
+
 
     }
 

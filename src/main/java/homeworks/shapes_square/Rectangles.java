@@ -1,30 +1,20 @@
 package homeworks.shapes_square;
 
-public class Rectangles  extends Quadrilaterals  {
+public class Rectangles extends Shape {
 
-    public Rectangles(double base, double height) {
-        this.length = base;
-        this.height = height;
+    public Rectangles(double length, double height) {
+        super(length, height);
     }
 
+
     @Override
-    public double getPerimeter(){
-
-        double perimeter = (2 * length) + (2 * height);
-
-        System.out.println("The perimeter of the Rectangle is " + perimeter);
-
-        return perimeter;
+    public double getPerimeter() {
+        return getHeight() * 2 + getLength() * 2;
     }
 
+
     @Override
-    public double getArea(){
-
-        double area = length * height;
-
-        System.out.println("The area of the Rectangle is " + area);
-
-
-        return length * height;
+    public String toString() {
+        return "Rectangles " + getLength() + "\t" + getHeight();
     }
 }

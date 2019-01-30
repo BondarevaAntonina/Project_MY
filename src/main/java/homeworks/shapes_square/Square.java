@@ -1,44 +1,43 @@
 package homeworks.shapes_square;
 
-public class Square extends Quadrilaterals {
+public class Square extends Shape {
 
-
-    public Square(double base, double height) {
-        this.length = base;
-        this.height = height;
+    public Square(double length, double height) {
+        super(length, height);
     }
 
     @Override
-    public double getPerimeter(){
+    public double getPerimeter() {
 
-        double perimeter = length * 4;
-
-        if (length == height)
-        {
-            System.out.println("The perimeter of the Square is " + perimeter);
-        } else {
+        if (getLength() != getHeight()) {
             System.out.println("The length and height of the square must be equal");
+
+            return 0;
         }
+
+        double perimeter = super.getPerimeter() * 2;
+
+        System.out.println("The perimeter of the Square is " + perimeter);
 
         return perimeter;
 
     }
 
     @Override
-    public double getArea(){
+    public double getArea() {
 
-        double area = length * length;
-
-        if (length == height)
-        {
-            System.out.println("The area of the Square is " + area);
-        } else {
+        if (getLength() != getHeight()) {
             System.out.println("The length and height of the square must be equal");
+            return 0;
         }
 
-        return area;
+        return super.getArea();
+
     }
 
-
+    @Override
+    public String toString() {
+        return "Square " + getLength() + "\t" + getHeight();
+    }
 
 }
