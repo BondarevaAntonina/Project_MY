@@ -21,7 +21,6 @@ package lessons.low_coupling_code;
 public class Gun {
     private Weaponable weaponable;
 
-
     public Gun(Weaponable weaponable) {
         this.weaponable = weaponable;
     }
