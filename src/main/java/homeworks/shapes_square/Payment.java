@@ -1,11 +1,9 @@
 package homeworks.shapes_square;
 
 
-import java.io.IOException;
-
 public class Payment {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+   /* public static void main(String[] args) throws IOException, ClassNotFoundException {
         Rectangles rectangle1 = new Rectangles(8, 5);
         Rectangles rectangle2 = new Rectangles(7, 4);
         Square square1 = new Square(7, 7);
@@ -24,8 +22,8 @@ public class Payment {
 //        System.out.println("Rectangles");
 
 
-        /*System.out.println(c.getPerimeter());
-        System.out.println(c.getArea());*/
+        *//*System.out.println(c.getPerimeter());
+        System.out.println(c.getArea());*//*
 
 
 //        System.out.println();
@@ -33,10 +31,10 @@ public class Payment {
 //        System.out.println("Square");
 
 
-      /*  System.out.println(square.getPerimeter());
-        System.out.println(square.getArea());*/
+      *//*  System.out.println(square.getPerimeter());
+        System.out.println(square.getArea());*//*
 
 
     }
-
+*/
 }

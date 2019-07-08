@@ -24,10 +24,11 @@ public class MassEvenNumber {
                 j++;
             }
         }
+        System.out.println();
 
         for (int i = 0; i < length; ++i) {
             arrayOne[i] = i * 2;
-            System.out.println(arrayOne[i] + "\t");
+            System.out.print(arrayOne[i] + "\t");
         }
 
         System.out.println();
@@ -37,7 +38,7 @@ public class MassEvenNumber {
                 arrayTwo[i] = arrayOne[i];
             }
 
-            System.out.println(arrayTwo[i] + "\t");
+//            System.out.println(arrayTwo[i] + "\t");
 
         }
 

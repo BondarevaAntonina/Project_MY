@@ -8,7 +8,7 @@ package homeworks.one_dim_array;
 public class CharCounter {
     public static void main(String[] args) {
 
-        String str = "Подсчитать количество символов в строке, с учетом их повторений";
+
 /*
         int uniqueCharCount = 0;
 
@@ -33,6 +33,7 @@ public class CharCounter {
             System.out.println("Symbol " + symbol + " appeas " + count + " times");
         }*/
 
+        String str = "Подсчитать количество символов в строке, с учетом их повторений";
         String symbol;
         int count = 0;
         String temp;

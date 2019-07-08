@@ -1,12 +1,8 @@
 package homeworks.shapes_square;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShapeService {
 
-    public static final String FILE_NAME = "Rectangles.fix";
+/*    public static final String FILE_NAME = "Rectangles.fix";
     private List<Shape> shapes;
 
     public ShapeService() {
@@ -23,9 +19,9 @@ public class ShapeService {
 
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        try (fos; oos) {
+*//*        try (fos; oos) {
             oos.writeObject(shapes);
-        }
+        }*//*
 
     }
 
@@ -35,8 +31,8 @@ public class ShapeService {
 
         ObjectInputStream ois = new ObjectInputStream(fis);
 
-        try (fis; ois) {
+*//*        try (fis; ois) {
             return (List<Shape>) ois.readObject();
-        }
-    }
+        }*//*
+    }*/
 }
