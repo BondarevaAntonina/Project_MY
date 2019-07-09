@@ -15,7 +15,7 @@ public abstract class PatternFigura {
 
     abstract void intermediateDrawing();
 
-    public void  drawTriangle (int row){
+    private void  drawTriangle (int row){
         for (int i = 1; i <= row; ++i) {
 
             for (int j = row; j > i; --j) {
