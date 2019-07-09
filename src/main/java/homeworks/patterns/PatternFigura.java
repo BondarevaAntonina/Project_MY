@@ -5,7 +5,7 @@ package homeworks.patterns;
  */
 public abstract class PatternFigura {
 
-    void picture () {
+    public final void picture () {
         drawTriangle(5);
         intermediateDrawing();
         drawTriangle(5);
