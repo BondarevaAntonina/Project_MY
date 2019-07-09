@@ -5,7 +5,7 @@ package homeworks.patterns;
  */
 public abstract class PatternFigura {
 
-    public final void picture () {
+    public final void picture() {
         drawTriangle(5);
         intermediateDrawing();
         drawTriangle(5);
@@ -15,7 +15,7 @@ public abstract class PatternFigura {
 
     abstract void intermediateDrawing();
 
-    private void  drawTriangle (int row){
+    private void drawTriangle(int row) {
         for (int i = 1; i <= row; ++i) {
 
             for (int j = row; j > i; --j) {
@@ -28,10 +28,6 @@ public abstract class PatternFigura {
             System.out.println();
         }
 
-        return;
     }
-
-
-
 
 }
