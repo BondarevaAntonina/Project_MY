@@ -13,9 +13,18 @@ public class OccurrencesOfWordsInText {
 
     public static final String FILE_PATH = "./Multithreading/";
     public static final String EXTENSION_TXT = ".txt";
+
     public static void main(String[] args) throws FileNotFoundException {
+        countNumberOfWordsInFile();
+    }
+
+
+
+    public static void countNumberOfWordsInFile() throws FileNotFoundException {
 
         String nameOfFile = "Story";
+
+        String typedWord = "winter";
 
         Path path = Paths.get(FILE_PATH,nameOfFile + EXTENSION_TXT);
 
@@ -33,20 +42,16 @@ public class OccurrencesOfWordsInText {
         }
 
         ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
-        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
-
-            @Override
-            public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b) {
-                return a.getValue().compareTo(b.getValue());
-            }
-        });
 
         for(int i = 1; i < map.size(); i++){
-            if (entries.get(entries.size() - i - 1).getKey().contains("winter")) {
-                String word = entries.get(entries.size() - i - 1).getKey()+ " " +entries.get(entries.size() - i - 1).getValue();
-            System.out.println(word);
-
+            if (entries.get(entries.size() - i - 1).getKey().equals(typedWord)) {
+                String word = entries.get(entries.size() - i - 1).getKey()+ " has number = " +entries.get(entries.size() - i - 1).getValue();
+                System.out.println("Word  '" + word  + "' " );
             }
         }
     }
+
+
+
+
 }
