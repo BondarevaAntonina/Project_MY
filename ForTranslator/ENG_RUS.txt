@@ -1,0 +1,9 @@
+study : учиться
+doing : делаешь
+select : выбрать
+what : что
+translator : переводчик
+create : создать
+time : время
+hello : привет
+you : ты

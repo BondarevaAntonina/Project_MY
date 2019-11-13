@@ -2,12 +2,11 @@ package homeworks.multithreading;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by antoni on 11.11.2019.
@@ -19,16 +18,19 @@ public class OccurrencesOfWordsInText extends Thread {
 
 
     public static void countNumberOfWordsInFile() throws FileNotFoundException, InterruptedException {
+        long startTime = System.currentTimeMillis();
 
-        String nameOfFile = "Story";
+        String nameOfFile = "Story";//move to const
 
         String typedWord = "winter";
 
         Path path = Paths.get(FILE_PATH, nameOfFile + EXTENSION_TXT);
 
-        Scanner file = new Scanner(new File(String.valueOf(path))).useDelimiter("[^a-zA-Z]+");
+        Scanner file = new Scanner(new File(String.valueOf(path))).useDelimiter("[^a-zA-Z]+");//Files
 
-        HashMap <String, Integer> map = new HashMap <>();
+//        Files.readAllLines(path)
+
+        HashMap<String, Integer> map = new HashMap<>();
 
         while (file.hasNext()) {
             String word = file.next().toLowerCase();
@@ -39,31 +41,25 @@ public class OccurrencesOfWordsInText extends Thread {
             }
         }
 
-        ArrayList <Map.Entry <String, Integer>> entries = new ArrayList <>(map.entrySet());
+        Integer integer = map.get(typedWord);
 
-        for (int i = 1; i < map.size(); i++) {
-            if (entries.get(entries.size() - i - 1).getKey().equals(typedWord)) {
-                String word = entries.get(entries.size() - i - 1).getKey() + " , найдено слов = " + entries.get(entries.size() - i - 1).getValue();
-                String time = readingTimeCalculation();
-                System.out.println("Работник " + Thread.currentThread().getName() + " искал слово '" + word + "' , затратил времени " + time);
-            }
-        }
-    }
-
-    public static String readingTimeCalculation() throws InterruptedException {
-
-        long startTime = System.currentTimeMillis();
-
-        long total = 0;
-        for (int i = 0; i < 10000000; i++) {
-            total += i;
-        }
+//        map.forEach((key, value) -> System.out.println());
 
         long stopTime = System.currentTimeMillis();
-        long elapsedTime = stopTime - startTime;
-
-        return String.valueOf(elapsedTime);
+        System.out.println("Worker " + Thread.currentThread().getName() + " looking for a word \'winter\'"  + (stopTime - startTime));
     }
 
+    public static void main(String[] args) throws IOException {
+
+        String nameOfFile = "Story";//move to const
+
+        String typedWord = "winter";
+
+        Path path = Paths.get(FILE_PATH, nameOfFile + EXTENSION_TXT);
+
+        String[] strings = new String(Files.readAllBytes(path)).split(" ");
+
+        Arrays.stream(strings).filter(s -> s.equals(typedWord)).count();
+    }
 
 }

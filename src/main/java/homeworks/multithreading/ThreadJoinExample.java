@@ -1,5 +1,6 @@
 package homeworks.multithreading;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -14,61 +15,43 @@ public class ThreadJoinExample {
         Thread user5 = new Thread(new MyRunnable(), "User5");
 
 
-        user1.start();
 
         try {
-            user1.join(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        user2.start();
-        user3.start();
-        user4.start();
-
-        try {
+            user1.start();
             user1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        user5.start();
-
-
-        try {
-            user1.join();
+            user2.start();
             user2.join();
+
+            user3.start();
             user3.join();
+
+            user4.start();
             user4.join();
+
+            user5.start();
             user5.join();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Все потоки отработали, завершаем программу");
+        System.out.println("All threads worked, we complete the program");
     }
 
 }
 
-class MyRunnable implements Runnable{
+class MyRunnable implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Поток начал работу :::" + Thread.currentThread().getName());
+        System.out.println("Thread started work :::" + Thread.currentThread().getName());
         try {
             OccurrencesOfWordsInText.countNumberOfWordsInFile();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | FileNotFoundException e) {
             e.printStackTrace();
         }
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Поток отработал:::" + Thread.currentThread().getName());
+        System.out.println("Flow worked:::" + Thread.currentThread().getName());
     }
 
 }
